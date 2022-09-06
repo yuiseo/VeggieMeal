@@ -11,6 +11,6 @@
 |        Title         |    Types     |   Link   | Asisgnee |  
 | :------------------: | :----------: | :------: | :------: |
 | 예) 하둡에 대한 이해 | ```Hadoop``` | [link]() |  정호진  | 
-|                      |              |          |          |  
+|  TypeScript 기본 문법 | ```TypeScript``` | [link](https://studyoon.tistory.com/177) | 김윤주 |  
 |                      |              |          |          | 
 |                      |              |          |          | 
