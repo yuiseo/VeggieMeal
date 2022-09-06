@@ -11,6 +11,6 @@
 |        Title         |    Types     |   Link   | Asisgnee |  
 | :------------------: | :----------: | :------: | :------: |
 | 예) 하둡에 대한 이해 | ```Hadoop``` | [link]() |  정호진  | 
-|                      |              |          |          |  
+|     Sqoop 이해      | ```Sqoop```|[link](https://gy2710.notion.site/Sqoop-SQL-to-Hadoop-ff206ec5557e49c5bd2a8a6cdc06415d)|  이기영  |  
 |                      |              |          |          | 
 |                      |              |          |          | 
