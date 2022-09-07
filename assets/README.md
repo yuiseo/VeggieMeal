@@ -19,3 +19,4 @@
 |  Kafka란?     |     ```Kafka```         |   [link](https://velog.io/@jungedlin/Kafka1)  | 정호진     |
 | Sass 기본 문법 | ```Sass``` | [link](https://luminous24.tistory.com/201) | 유이서 |
 | Kafka 개념 | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/Apache-Kafka-fc371e9344434c00a3100822201aff78) | 김영서 |
+| Sass 개념과 기본 문법 | ```Sass``` | [link](https://studyoon.tistory.com/178) | 김윤주 |
