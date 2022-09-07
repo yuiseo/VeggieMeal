@@ -15,6 +15,6 @@
 |  TypeScript 기본 문법 | ```TypeScript``` | [link](https://studyoon.tistory.com/177) | 김윤주 |
 | Sass 이해 및 Next.js에 설치하기 | `Sass` | [link](https://luminous24.tistory.com/200) | 유이서 |
 |  Spark 이해 및 설치/실습  | ```Spark``` | [link](https://gy2710.notion.site/Spark-7939f160ac744e8293e41feb4b057742) | 이기영 |
-|                      |              |          |          |
+|           Spark           |   ```Spark```            |    [link](https://tiny-august-9a4.notion.site/spark-0abe107ce9a947c785f6666b93f6644b)       |          |
 |                      |              |          |          |
 |                      |              |          |          |
