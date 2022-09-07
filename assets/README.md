@@ -18,3 +18,4 @@
 |           Spark           |   ```Spark```            |    [link](https://tiny-august-9a4.notion.site/spark-0abe107ce9a947c785f6666b93f6644b)       |   정지원       |
 |  Kafka란?     |     ```Kafka```         |   [link](https://velog.io/@jungedlin/Kafka1)  | 정호진     |
 | Sass 기본 문법 | ```Sass``` | [link](https://luminous24.tistory.com/201) | 유이서 |
+| Kafka 개념 | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/Apache-Kafka-fc371e9344434c00a3100822201aff78) | 김영서 |
