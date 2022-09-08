@@ -20,3 +20,7 @@
 | Kafka 개념 | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/Apache-Kafka-fc371e9344434c00a3100822201aff78) | 김영서 |
 | Sass 개념과 기본 문법 | ```Sass``` | [link](https://studyoon.tistory.com/178) | 김윤주 |
 |  Spark 설치 및 실습  | ```Spark``` | [link](https://gy2710.notion.site/Spark-d87f554609bf4d2f8a177e4e109a98c3) | 이기영 |
+| Typescript의 이해 | ```Typescript``` | [link](https://luminous24.tistory.com/202) | 유이서 |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
