@@ -7,7 +7,7 @@
 다음 리스트는 섹션은 따로 나누지 않았습니다. 링크를 누르시면 리스트화된 글을 확인하실 수 있습니다. <br/><br/>
 코드 공유가 필요한 경우 git을 활용하겠습니다! <br/><br/>
 
-
+ 
 |        Title         |    Types     |   Link   | Asisgnee |
 | :------------------: | :----------: | :------: | :------: |
 |     Sqoop 이해      | ```Sqoop```|[link](https://gy2710.notion.site/Sqoop-SQL-to-Hadoop-ff206ec5557e49c5bd2a8a6cdc06415d)|  이기영  |
