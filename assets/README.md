@@ -22,5 +22,5 @@
 |  Spark 설치 및 실습  | ```Spark``` | [link](https://gy2710.notion.site/Spark-d87f554609bf4d2f8a177e4e109a98c3) | 이기영 |
 | Typescript의 이해 | ```Typescript``` | [link](https://luminous24.tistory.com/202) | 유이서 |
 | Spark 구조 |```Spark```  |[link](https://tiny-august-9a4.notion.site/spark-87c41a70f7264a1ba718ec1a88b1fd98)  | 정지원  |
-|  |  |  |  |
-|  |  |  |  |
+| Kafka 2 - 서버와 클라이언트   |```Kafka```         |   [link](https://velog.io/@jungedlin/Kafka2)  | 정호진     |
+| Kafka 3 - Broker / Replication   | ```Kafka```         |   [link](https://velog.io/@jungedlin/Kafka3)  | 정호진     |
