@@ -24,3 +24,4 @@
 | Spark 구조 |```Spark```  |[link](https://tiny-august-9a4.notion.site/spark-87c41a70f7264a1ba718ec1a88b1fd98)  | 정지원  |
 | Kafka 2 - 서버와 클라이언트   |```Kafka```         |   [link](https://velog.io/@jungedlin/Kafka2)  | 정호진     |
 | Kafka 3 - Broker / Replication   | ```Kafka```         |   [link](https://velog.io/@jungedlin/Kafka3)  | 정호진     |
+| 무한스크롤(Infinite Scroll)   | ```Infinite Scroll```         |   [link](https://studyoon.tistory.com/180)  | 김윤주     |
