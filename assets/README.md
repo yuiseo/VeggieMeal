@@ -31,3 +31,4 @@
 | 스프링 카프카 컨슈머 예제 | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/70d1c67d19eb4a82a0bb39967e8e56fd) | 김영서 |
 | RDD, 데이터 프레임, 데이터 셋 | ```Spark``` | [link](https://tiny-august-9a4.notion.site/RDD-72744091fb8441799912c50333cb4147) | 정지원 |
 | EC2 세팅 | ```CI/CD``` | [link](https://tiny-august-9a4.notion.site/EC2-7a8b67788dcb475c9d36523bfd177681) | 정지원 |
+| HDFS 오류(safe mode, data node 미생성) | ```Hadoop``` | [link](https://gy2710.notion.site/HDFS-0be268c6cca44907bc81476b46c897e1) | 이기영 |
