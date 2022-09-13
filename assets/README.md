@@ -7,7 +7,7 @@
 다음 리스트는 섹션은 따로 나누지 않았습니다. 링크를 누르시면 리스트화된 글을 확인하실 수 있습니다. <br/><br/>
 코드 공유가 필요한 경우 git을 활용하겠습니다! <br/><br/>
 
- 
+
 |        Title         |    Types     |   Link   | Asisgnee |
 | :------------------: | :----------: | :------: | :------: |
 |     Sqoop 이해      | ```Sqoop```|[link](https://gy2710.notion.site/Sqoop-SQL-to-Hadoop-ff206ec5557e49c5bd2a8a6cdc06415d)|  이기영  |
@@ -26,3 +26,4 @@
 | Kafka 3 - Broker / Replication   | ```Kafka```         |   [link](https://velog.io/@jungedlin/Kafka3)  | 정호진     |
 | 무한스크롤(Infinite Scroll)   | ```Infinite Scroll```         |   [link](https://studyoon.tistory.com/180)  | 김윤주     |
 | AWS에 카프카 클러스터 설치하기 | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/AWS-71aad5bc9a4c487ca9939d9c80681bfb) | 김영서 |
+| Typescript의 타입 | ```TypeScript``` | [link](https://luminous24.tistory.com/204) | 유이서 |
