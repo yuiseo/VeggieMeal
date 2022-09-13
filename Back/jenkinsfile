@@ -13,7 +13,7 @@ pipeline {
                 dir('backend') { //gradle 권한 설정 후 gradle로 도커 이미지 빌드하는 명령어 실행
                     script{
                         try{
-                            sh "cd Back"
+                            sh "cd /Back"
                             sh "chmod +x gradlew"
                             sh "./gradlew bootBuildImage --imageName=spring"
                         } catch(e){
@@ -27,7 +27,7 @@ pipeline {
                         } catch(e){
                             echo "container none"
                         }
-                    } //8083 포트에서 spring이라는 이미지를 spring이라는 컨테이너이름으로 설정해서 실행
+                    } //8080 포트에서 spring이라는 이미지를 spring이라는 컨테이너이름으로 설정해서 실행
                     sh "docker run -d -p 8080:8080 --name spring spring "
                 }
             }
