@@ -14,7 +14,7 @@ pipeline {
                   dir('veggiemmeal'){
                       script{
                         try{
-                            sh "docker build -t front"
+                            sh "docker build -t front ."
                         } catch(e){
                             echo "fail build"
                         }
