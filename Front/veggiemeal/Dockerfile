@@ -1,8 +1,10 @@
 FROM node:14.19.2 as builder
 
-WORKDIR /app
+WORKDIR /var/jenkins_home/workspace/frontend/Front/veggiemeal
 
-COPY package*.json ./
-RUN npm install
+COPY . ./
+RUN npm i
+RUN npm run build
 
-COPY ./ ./
+CMD ["npm", "start"]
+
