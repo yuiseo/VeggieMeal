@@ -11,7 +11,7 @@ pipeline {
             steps{
                 sh "ls -a"
                 dir('Front') { //gradle 권한 설정 후 gradle로 도커 이미지 빌드하는 명령어 실행
-                  dir('veggiemmeal'){
+                  dir('veggiemeal'){
                       script{
                         try{
                             sh "docker build -t front ."
