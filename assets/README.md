@@ -34,3 +34,5 @@
 | HDFS 오류(safe mode, data node 미생성) | ```Hadoop``` | [link](https://gy2710.notion.site/HDFS-0be268c6cca44907bc81476b46c897e1) | 이기영 |
 | Typescript Interface | ```TypeScript``` | [link](https://luminous24.tistory.com/205) | 유이서 |
 | MapReduce 추가 실습 | ```Hadoop``` | [link](https://gy2710.notion.site/MapReduce-dc48f7bac7d9421ca99594c6815655f8) | 이기영 |
+| SSR vs CSR | ```SSR``` | [link](https://studyoon.tistory.com/182) | 김윤주 |
+
