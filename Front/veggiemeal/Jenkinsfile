@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("git"){ //git에 브랜치 url, credentialsId는 젠킨스에 등록한 인증으로
+            steps{
+                git branch: 'fe/feature', credentialsId: 'gitlabIDPW', url: 'https://lab.ssafy.com/s07-bigdata-dist-sub2/S07P22C205.git'
+            }
+        }
+        stage('build') {
+            steps{
+                sh "ls -a"
+                dir('Front') { //gradle 권한 설정 후 gradle로 도커 이미지 빌드하는 명령어 실행
+                  dir('veggiemmeal'){
+                      script{
+                        try{
+                            sh "docker build -t front"
+                        } catch(e){
+                            echo "fail build"
+                        }
+                      }
+                      script{ //이미 실행 중인 컨테이너가 있으면 중지 후 삭제
+                          try{
+                              sh "docker stop front"
+                              sh "docker rm front"
+                          } catch(e){
+                              echo "container none"
+                          }
+                      } //8083 포트에서 spring이라는 이미지를 spring이라는 컨테이너이름으로 설정해서 실행
+                      sh "docker run -d -p 3000:3000 --name front front "
+                  } 
+                }
+            }
+        }
+    }
+}
