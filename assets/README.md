@@ -36,5 +36,5 @@
 | MapReduce 추가 실습 | ```Hadoop``` | [link](https://gy2710.notion.site/MapReduce-dc48f7bac7d9421ca99594c6815655f8) | 이기영 |
 | SSR vs CSR | ```SSR``` | [link](https://studyoon.tistory.com/182) | 김윤주 |
 | 도커, 젠킨스, nginx 파일 | ```CI/CD``` | [link](https://tiny-august-9a4.notion.site/nginx-0825cb51a4674b65b5413e6d1d9a421d) | 정지원 |
-ㄹㄴ
+| 자바 멀티스레드 카프카 컨슈머 예제 | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/bb0452b9bc7b4f54a7c0aa6ab07de07a) | 김영서 |
 
