@@ -10,7 +10,7 @@ pipeline {
         stage('build') {
             steps{
                 sh "ls -a"
-                dir('Front') { //gradle 권한 설정 후 gradle로 도커 이미지 빌드하는 명령어 실행
+                dir('Front') { 
                   dir('veggiemeal'){
                       script{
                         try{
@@ -26,7 +26,7 @@ pipeline {
                           } catch(e){
                               echo "container none"
                           }
-                      } //8083 포트에서 spring이라는 이미지를 spring이라는 컨테이너이름으로 설정해서 실행
+                      } //3000 포트에서 front이라는 이미지를 front이라는 컨테이너이름으로 설정해서 실행
                       sh "docker run -d -p 3000:3000 --name front front "
                   } 
                 }
