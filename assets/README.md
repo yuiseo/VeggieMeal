@@ -37,4 +37,5 @@
 | SSR vs CSR | ```SSR``` | [link](https://studyoon.tistory.com/182) | 김윤주 |
 | 도커, 젠킨스, nginx 파일 | ```CI/CD``` | [link](https://tiny-august-9a4.notion.site/nginx-0825cb51a4674b65b5413e6d1d9a421d) | 정지원 |
 | 자바 멀티스레드 카프카 컨슈머 예제 | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/bb0452b9bc7b4f54a7c0aa6ab07de07a) | 김영서 |
+| 사용자 흐름도 | ```User Flow``` | [link](https://www.figma.com/file/4t1RkPUMP2Wu7Vc6mkuWhR/%EC%82%AC%EC%9A%A9%EC%9E%90-%ED%9D%90%EB%A6%84%EB%8F%84?node-id=0%3A1) | 유이서 |
 
