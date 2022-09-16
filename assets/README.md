@@ -41,4 +41,4 @@
 | 와이어프레임 | ```Wireframe``` | [link](https://www.figma.com/file/DJsxPiP5FCQme2m4zm7CMl/%EC%99%80%EC%9D%B4%EC%96%B4-%ED%94%84%EB%A0%88%EC%9E%84?node-id=0%3A1) | 김윤주 |
 | Hadoop 쉘 스크립트 | ```Hadoop``` | [link](https://tiny-august-9a4.notion.site/cb284016a76f4b59b5d7204587b0973d) | 정지원 |
 | 우분투 명령어 | ```Ubuntu``` | [link](https://tiny-august-9a4.notion.site/4357ef4454034fe2a0391a5cb7d3908e) | 정지원 |
-**|** Recoil **|** ```Recoil``` **|** [link](https://luminous24.tistory.com/207) **|** 유이서 **|**
+| Recoil | ```Recoil``` | [link](https://luminous24.tistory.com/207) | 유이서 |
