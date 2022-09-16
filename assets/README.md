@@ -27,11 +27,11 @@
 | 무한스크롤(Infinite Scroll)   | ```Infinite Scroll```         |   [link](https://studyoon.tistory.com/180)  | 김윤주     |
 | AWS에 카프카 클러스터 설치하기 | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/AWS-71aad5bc9a4c487ca9939d9c80681bfb) | 김영서 |
 | Typescript의 타입 | ```TypeScript``` | [link](https://luminous24.tistory.com/204) | 유이서 |
-| Recoil | ```Recoil``` | [link](https://studyoon.tistory.com/181) | 김윤주 |
+| Recoil(추가) | ```Recoil``` | [link](https://studyoon.tistory.com/181) | 김윤주 |
 | 스프링 카프카 컨슈머 예제 | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/70d1c67d19eb4a82a0bb39967e8e56fd) | 김영서 |
 | RDD, 데이터 프레임, 데이터 셋 | ```Spark``` | [link](https://tiny-august-9a4.notion.site/RDD-72744091fb8441799912c50333cb4147) | 정지원 |
 | EC2 세팅 | ```CI/CD``` | [link](https://tiny-august-9a4.notion.site/EC2-7a8b67788dcb475c9d36523bfd177681) | 정지원 |
-| HDFS 오류(safe mode, data node 미생성) | ```Hadoop``` | [link](https://gy2710.notion.site/HDFS-0be268c6cca44907bc81476b46c897e1) | 이기영 |
+| HDFS 오류(safe mode, data node) | ```Hadoop``` | [link](https://gy2710.notion.site/HDFS-0be268c6cca44907bc81476b46c897e1) | 이기영 |
 | Typescript Interface | ```TypeScript``` | [link](https://luminous24.tistory.com/205) | 유이서 |
 | MapReduce 추가 실습 | ```Hadoop``` | [link](https://gy2710.notion.site/MapReduce-dc48f7bac7d9421ca99594c6815655f8) | 이기영 |
 | SSR vs CSR | ```SSR``` | [link](https://studyoon.tistory.com/182) | 김윤주 |
@@ -41,3 +41,7 @@
 | 와이어프레임 | ```Wireframe``` | [link](https://www.figma.com/file/DJsxPiP5FCQme2m4zm7CMl/%EC%99%80%EC%9D%B4%EC%96%B4-%ED%94%84%EB%A0%88%EC%9E%84?node-id=0%3A1) | 김윤주 |
 | Hadoop 쉘 스크립트 | ```Hadoop``` | [link](https://tiny-august-9a4.notion.site/cb284016a76f4b59b5d7204587b0973d) | 정지원 |
 | 우분투 명령어 | ```Ubuntu``` | [link](https://tiny-august-9a4.notion.site/4357ef4454034fe2a0391a5cb7d3908e) | 정지원 |
+| Recoil | ```Recoil``` | [link](https://luminous24.tistory.com/207) | 유이서 |
+| 카프카 auto.offset.reset | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/auto-offset-reset-4170da4fb0984c61afb5602c532deb7d) | 김영서 |
+| Hadoop maven 의존성 | ```Hadoop``` | [link](https://tiny-august-9a4.notion.site/maven-pom-xml-ad8b2c1beb6841e284e1f574b4873e81) | 정지원 |
+
