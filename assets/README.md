@@ -42,3 +42,4 @@
 | Hadoop 쉘 스크립트 | ```Hadoop``` | [link](https://tiny-august-9a4.notion.site/cb284016a76f4b59b5d7204587b0973d) | 정지원 |
 | 우분투 명령어 | ```Ubuntu``` | [link](https://tiny-august-9a4.notion.site/4357ef4454034fe2a0391a5cb7d3908e) | 정지원 |
 | Recoil | ```Recoil``` | [link](https://luminous24.tistory.com/207) | 유이서 |
+| 카프카 auto.offset.reset | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/auto-offset-reset-4170da4fb0984c61afb5602c532deb7d) | 김영서 |
