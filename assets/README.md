@@ -43,3 +43,5 @@
 | 우분투 명령어 | ```Ubuntu``` | [link](https://tiny-august-9a4.notion.site/4357ef4454034fe2a0391a5cb7d3908e) | 정지원 |
 | Recoil | ```Recoil``` | [link](https://luminous24.tistory.com/207) | 유이서 |
 | 카프카 auto.offset.reset | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/auto-offset-reset-4170da4fb0984c61afb5602c532deb7d) | 김영서 |
+| Hadoop maven 의존성 | ```Hadoop``` | [link](https://tiny-august-9a4.notion.site/maven-pom-xml-ad8b2c1beb6841e284e1f574b4873e81) | 정지원 |
+
