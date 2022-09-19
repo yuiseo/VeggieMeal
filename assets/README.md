@@ -44,4 +44,5 @@
 | Recoil | ```Recoil``` | [link](https://luminous24.tistory.com/207) | 유이서 |
 | 카프카 auto.offset.reset | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/auto-offset-reset-4170da4fb0984c61afb5602c532deb7d) | 김영서 |
 | Hadoop maven 의존성 | ```Hadoop``` | [link](https://tiny-august-9a4.notion.site/maven-pom-xml-ad8b2c1beb6841e284e1f574b4873e81) | 정지원 |
+| sample data 가공 | ```Hadoop``` | [link](https://gy2710.notion.site/sample-data-1ba490e094284599b44d46cb03f9e4d6) | 이기영 |
 
