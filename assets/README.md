@@ -48,3 +48,4 @@
 | DB 세팅 및 환경 설정 | ```EC2``` | [link](https://tiny-august-9a4.notion.site/DB-f79cc2acd9a84099ac0fcf7124795d4f) | 정지원 |
 |     Jsoup     | ```Sqoop```|[link](https://velog.io/@jungedlin/Jsoup)|  정호진  |
 | Spark 실습 | ```Spark``` | [link](https://gy2710.notion.site/Spark-MapReduce-a3e2b10670d74adb9b7a7106888732be) | 이기영 |
+| Sqoop 개념 및 구조 | ```Sqoop``` | [link](https://tiny-august-9a4.notion.site/sqoop-23c38f13475242ad82a5f8a123b0447c) | 정지원 |
