@@ -10,6 +10,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
+        <header>
+            hi
+        </header>
         <Component {...pageProps} />
       </RecoilRoot>
     </QueryClientProvider>
