@@ -47,3 +47,4 @@
 | sample data 가공 | ```Hadoop``` | [link](https://gy2710.notion.site/sample-data-1ba490e094284599b44d46cb03f9e4d6) | 이기영 |
 | DB 세팅 및 환경 설정 | ```EC2``` | [link](https://tiny-august-9a4.notion.site/DB-f79cc2acd9a84099ac0fcf7124795d4f) | 정지원 |
 |     Jsoup     | ```Sqoop```|[link](https://velog.io/@jungedlin/Jsoup)|  정호진  |
+| Spark 실습 | ```Spark``` | [link](https://gy2710.notion.site/Spark-MapReduce-a3e2b10670d74adb9b7a7106888732be) | 이기영 |
