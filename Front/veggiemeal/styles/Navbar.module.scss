@@ -2,15 +2,12 @@
 
 #navigator {
     padding : 20px 30px;
-}
-
-.logo {
-    margin: auto 0;
+    background-color: white;
 }
 
 #menus {
     a {
-        color:#3e3e3e;
+        color: val.$black;
         font: {
             weight: 600;
             size:15px;
@@ -24,4 +21,8 @@
     a:active {
         color: val.$purple;
     }
+}
+
+.main_img {
+    height:100px;
 }

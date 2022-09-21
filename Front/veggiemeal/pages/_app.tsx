@@ -1,6 +1,5 @@
 import '../styles/globals.scss'
 import '../styles/bootstrap.scss'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import type { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { RecoilRoot } from 'recoil';
