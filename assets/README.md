@@ -50,3 +50,4 @@
 | Spark 실습 | ```Spark``` | [link](https://gy2710.notion.site/Spark-MapReduce-a3e2b10670d74adb9b7a7106888732be) | 이기영 |
 | Sqoop 개념 및 구조 | ```Sqoop``` | [link](https://tiny-august-9a4.notion.site/sqoop-23c38f13475242ad82a5f8a123b0447c) | 정지원 |
 | 자바 쓰레드를 구현과 쓰레드 개수에 대한 고찰 | ```Java```|[link](https://velog.io/@jungedlin/Java-Thread)|  정호진  |
+| sqoop 설치 및 사용 | ```Sqoop``` | [link](https://tiny-august-9a4.notion.site/sqoop-a36cd3d410104ff0b7d8b7925860420f) | 정지원 |
