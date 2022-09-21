@@ -10,17 +10,45 @@
   box-shadow: 0 0 0 #ffffff;
 }
 
-#__next>div>main>section>button:nth-child(1) {
-  position: relative;
+
+#__next>div>main>section>div>div:nth-child(1)>button {
+  display: grid;
   padding: 4rem;
-  margin: 10px;
+  margin: 5px;
   background-color: val.$purple !important;
   border: 0;
+  border-radius: 20px;
+  a:nth-child(1) {
+    font-size: large;
+    font-weight: bolder;
+  }
+  a:nth-child(2){
+    font-size: large;
+  }
+  p {
+    color: #ffffff;
+    font-size: xx-large;
+    font-weight: bolder;
+  }
 }
 
-#__next>div>main>section>button:nth-child(2) {
+#__next>div>main>section>div>div:nth-child(2)>button {
+  display: grid;
   padding: 4rem;
-  margin: 10px;
+  margin: 5px;
   background-color: val.$green !important;
   border: 0;
+  border-radius: 20px;
+  a:nth-child(1) {
+    font-size: large;
+    font-weight: bolder;
+  }
+  a:nth-child(2) {
+    font-size: large;
+  }
+  p {
+    color: #ffffff;
+    font-size: xx-large;
+    font-weight: bolder;
+  }
 }

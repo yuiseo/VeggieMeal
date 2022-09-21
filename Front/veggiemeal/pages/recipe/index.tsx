@@ -5,6 +5,9 @@ import styles from 'styles/Home.module.scss'
 import Button from 'react-bootstrap/Button';
 import leafy from '/public/leafy_green.png';
 import cooking from '/public/cooking.png';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export default function Recipe() {
   const router = useRouter();
@@ -16,31 +19,27 @@ export default function Recipe() {
 
       <main className={styles.main}>
         <header>
-          <h1>레시피 모아보기</h1>
+          <h1 className={styles.recipe_title}>레시피 모아 보기</h1>
         </header>
-        <section>
-          <Button
-            className='btn'
-            onClick={() => router.push('/recipe/veggie')}>
-            <a>채식 단계</a>
-            <a>에 따른 레시피를 보여드려요</a>
-            <Image
-              src={leafy}
-              alt="leafy_green"
-            />
-            <h2>채식</h2>
-          </Button>
-          <Button
-            className="btn"
-            onClick={() => router.push('/recipe/fridge')}>
-            <a>원하는 재료</a>
-            <a>에 따른 레시피를 보여드려요</a>
-            <Image
-              src={cooking}
-              alt="cooking pan"
-            />
-            <h2>냉장고</h2>
-          </Button>
+        <section className={styles.recipe_section}>
+          <Row>
+            <Col sm={6}>
+              <Button className='btn' onClick={() => router.push('/recipe/veggie')}>
+                <a>채식 단계에</a>
+                <a>따른 레시피를 보여드려요</a>
+                <Image src={leafy} alt="leafy_green" quality={100} />
+                <p>채식</p>
+              </Button>
+            </Col>
+            <Col sm={6}>
+              <Button className="btn" onClick={() => router.push('/recipe/fridge')}>
+                <a>원하는 재료에</a>
+                <a>따른 레시피를 보여드려요</a>
+                <Image src={cooking} alt="cooking pan" quality={100} />
+                <p>냉장고</p>
+              </Button>
+            </Col>
+          </Row>
         </section>
       </main>
     </div >
