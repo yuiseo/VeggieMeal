@@ -1,5 +1,7 @@
+@use 'variable' as val;
+
 .now {
-    color:#5C5ACD !important;
+    color:val.$purple !important;
   }
   
 .navbar-toggler-icon {
@@ -9,4 +11,19 @@
 .navbar-toggler {
     border: none !important;
     box-shadow:0 0 0 #ffffff !important;
+}
+
+#__next>div>main>section>button:nth-child(1) {
+  position: relative;
+  padding: 4rem;
+  margin: 10px;
+  background-color: val.$purple !important;
+  border: 0;
+}
+
+#__next>div>main>section>button:nth-child(2) {
+  padding: 4rem;
+  margin: 10px;
+  background-color: val.$green !important;
+  border: 0;
 }
