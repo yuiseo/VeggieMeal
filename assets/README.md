@@ -44,4 +44,9 @@
 | Recoil | ```Recoil``` | [link](https://luminous24.tistory.com/207) | 유이서 |
 | 카프카 auto.offset.reset | ```Kafka``` | [link](https://handsome-silicon-042.notion.site/auto-offset-reset-4170da4fb0984c61afb5602c532deb7d) | 김영서 |
 | Hadoop maven 의존성 | ```Hadoop``` | [link](https://tiny-august-9a4.notion.site/maven-pom-xml-ad8b2c1beb6841e284e1f574b4873e81) | 정지원 |
-
+| sample data 가공 | ```Hadoop``` | [link](https://gy2710.notion.site/sample-data-1ba490e094284599b44d46cb03f9e4d6) | 이기영 |
+| DB 세팅 및 환경 설정 | ```EC2``` | [link](https://tiny-august-9a4.notion.site/DB-f79cc2acd9a84099ac0fcf7124795d4f) | 정지원 |
+|     Jsoup     | ```Java```|[link](https://velog.io/@jungedlin/Jsoup)|  정호진  |
+| Spark 실습 | ```Spark``` | [link](https://gy2710.notion.site/Spark-MapReduce-a3e2b10670d74adb9b7a7106888732be) | 이기영 |
+| Sqoop 개념 및 구조 | ```Sqoop``` | [link](https://tiny-august-9a4.notion.site/sqoop-23c38f13475242ad82a5f8a123b0447c) | 정지원 |
+| 자바 쓰레드를 구현과 쓰레드 개수에 대한 고찰 | ```Java```|[link](https://velog.io/@jungedlin/Java-Thread)|  정호진  |
