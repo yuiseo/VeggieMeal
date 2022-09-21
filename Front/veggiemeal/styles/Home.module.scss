@@ -1,3 +1,5 @@
+@use 'variable' as val;
+
 .container {
   padding: 0 2rem;
 }
@@ -5,18 +7,31 @@
 .main {
   min-height: 100vh;
   padding: 4rem 0;
+  margin-top: 30px;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
+.header {
+  display:flex;
+  justify-content: center;
+}
+
+.header_title {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 3;
+}
 
 .footer {
   display: flex;
   flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
 }
@@ -132,5 +147,38 @@
   text-align: center;
   line-height: 1.5;
   font-weight: 700;
+  margin: 50px auto 0 auto;
+}
+
+.main_img {
+  position:relative;
+  z-index: 1;
+  background-image: url("/background.png");
+  background-size: cover;
+  // background-color: red;
+  width:100vw;
+  height: 100vh;
+}
+
+.main_gradient {
+  position: absolute;
+  z-index:2;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+    );
+  width: 100vw;
+  height: 80vh;
+}
+
+#menu_btn {
   margin-top: 50px;
+  button {
+    background-color: #000000;
+    opacity: 0.8;
+    border:0;
+    border-radius: 10px;
+    padding:10px 20px;
+  }
 }

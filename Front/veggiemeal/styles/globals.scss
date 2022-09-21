@@ -1,9 +1,12 @@
+@use 'variable' as val;
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: 'SUIT Variable', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow-x: hidden;
 }
 
 a {
@@ -14,7 +17,7 @@ a {
 * {
   box-sizing: border-box;
   font-family: 'SUIT Variable';
-  color:#3e3e3e;
+  color:val.$black;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,4 +28,8 @@ a {
     color: white;
     background: black;
   }
+}
+
+.nav_active {
+  color:val.$purple !important;
 }
