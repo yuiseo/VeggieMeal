@@ -1,0 +1,27 @@
+#navigator {
+    padding : 20px 30px;
+}
+
+.logo {
+    margin: auto 0;
+}
+
+#menus {
+    a {
+        color:#3e3e3e;
+        font: {
+            weight: 600;
+            size:13px;
+        }
+        margin-left: auto;
+        margin-right: 15px;
+    }
+    a:hover {
+        color:#29B973;
+    }
+    a:active {
+        color: #5C5ACD;
+    }
+}
+
+
