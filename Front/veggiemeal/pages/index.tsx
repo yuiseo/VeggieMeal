@@ -16,7 +16,9 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <header>
           <h1 className={styles.slogan}>더 건강하고 <br /> 더 경제적인 <br /> 당신의 식사를 위해</h1>
-          {/* <Image /> */}
+          <div className={styles.main_img}>
+          <Image src="/background.png" layout='fill' />
+          </div>
         </header>
       </main>
 
