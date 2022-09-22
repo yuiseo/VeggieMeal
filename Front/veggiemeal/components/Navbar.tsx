@@ -5,7 +5,8 @@ import Image from 'next/image';
 import styles from 'styles/Navbar.module.scss';
 import { useRouter } from 'next/router';
 
-function BasicExample() {
+
+function Navigators() {
   const router = useRouter();
   return (
     <Navbar expand="sm" fixed="top" id={styles.navigator}>
@@ -14,7 +15,7 @@ function BasicExample() {
           <Image src="/Logo.png" alt="베지밀의 로고, 그릇에서 새싹이 발아하는 모습을 형상화했다."
           width={110} height={40} />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto" id={styles.menus}>
             <Nav.Link href="/" className={router.pathname == "/" ? "nav_active" : "" }>홈</Nav.Link>
@@ -28,4 +29,4 @@ function BasicExample() {
   );
 }
 
-export default BasicExample;
+export default Navigators;
