@@ -1,0 +1,26 @@
+@use 'variable' as val;
+
+.Btn {
+    padding:15px 20px;
+    color:white;
+    border:0px;
+    border-radius: 15px;
+    &.green {
+        background-color:val.$green;
+    }
+    &.purple {
+        background-color:val.$purple;
+    }
+    &.black {
+        background-color: val.$black;
+    }
+    &.large {
+        font-size:20px;
+    }
+    &.medium {
+        font-size:18px;
+    }
+    &.small {
+        font-size:16px;
+    }
+}

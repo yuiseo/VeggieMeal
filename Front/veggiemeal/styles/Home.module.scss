@@ -181,13 +181,21 @@
 
 #menu_btn {
   margin-top: 70px;
+  display:flex;
   button {
     background-color: #000000;
     opacity: 0.8;
-    border:0;
-    border-radius: 10px;
-    padding:10px 20px;
     font-size: 16px;
+  }
+  @media (min-width:val.$sm){
+    button {
+      font-size:18px;
+    }
+  }
+  @media (min-width:val.$md){
+    button {
+      font-size:20px;
+    }
   }
 }
 
@@ -281,6 +289,9 @@
   @media (max-width: val.$sm){
     display:none;
   }
+  &.section_gray {
+    background-color: #fafafa;
+  }
 }
 
 .section_bg_mobile {
@@ -290,6 +301,9 @@
   padding: 50px 25px;
   @media (min-width: val.$sm){
     display:none;
+  }
+  &.section_gray {
+    background-color: #fafafa;
   }
 }
 
