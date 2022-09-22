@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import styles from 'styles/Home.module.scss'
+import styles from 'styles/Recipe.module.scss';
+
 import Button from 'react-bootstrap/Button';
 import leafy from '/public/leafy_green.png';
 import cooking from '/public/cooking.png';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -25,16 +25,16 @@ export default function Recipe() {
           <Row>
             <Col sm={6}>
               <Button className='btn' onClick={() => router.push('/recipe/veggie')}>
-                <a>채식 단계에</a>
-                <a>따른 레시피를 보여드려요</a>
+                <span>채식 단계에</span>
+                <span>따른 레시피를 보여드려요</span>
                 <Image src={leafy} alt="leafy_green" quality={100} />
                 <p>채식</p>
               </Button>
             </Col>
             <Col sm={6}>
               <Button className="btn" onClick={() => router.push('/recipe/fridge')}>
-                <a>원하는 재료에</a>
-                <a>따른 레시피를 보여드려요</a>
+                <span>원하는 재료에</span>
+                <span>따른 레시피를 보여드려요</span>
                 <Image src={cooking} alt="cooking pan" quality={100} />
                 <p>냉장고</p>
               </Button>

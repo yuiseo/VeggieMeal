@@ -7,48 +7,52 @@
 
 .navbar-toggler {
   border: none;
-  box-shadow: 0 0 0 #ffffff;
+  box-shadow: 0 0 0 val.$white;
 }
 
-
+// recipe
 #__next>div>main>section>div>div:nth-child(1)>button {
   display: grid;
-  padding: 4rem;
   margin: 5px;
+  padding: 4rem;
   background-color: val.$purple !important;
   border: 0;
   border-radius: 20px;
-  a:nth-child(1) {
+  span:nth-child(1) {
     font-size: large;
     font-weight: bolder;
+    color: val.$white;
   }
-  a:nth-child(2){
+  span:nth-child(2){
     font-size: large;
+    color: val.$white;
   }
   p {
-    color: #ffffff;
     font-size: xx-large;
     font-weight: bolder;
+    color: val.$white;
   }
 }
 
 #__next>div>main>section>div>div:nth-child(2)>button {
   display: grid;
-  padding: 4rem;
   margin: 5px;
+  padding: 4rem;
   background-color: val.$green !important;
   border: 0;
   border-radius: 20px;
-  a:nth-child(1) {
+  span:nth-child(1) {
     font-size: large;
     font-weight: bolder;
+    color: val.$white;
   }
-  a:nth-child(2) {
+  span:nth-child(2) {
     font-size: large;
+    color: val.$white;
   }
   p {
-    color: #ffffff;
     font-size: xx-large;
     font-weight: bolder;
+    color: val.$white;
   }
 }
