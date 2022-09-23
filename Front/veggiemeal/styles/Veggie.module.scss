@@ -1,13 +1,63 @@
+@use 'variable' as var;
 .container {
+  width: 100%;
+  max-width: var.$max-width;
+  margin: 0 auto 20px auto;
   padding: 0 2rem;
 }
-.recipe_header {
-  margin-top: 300px;
-}
-.recipe_title {
-  margin: 50px;
-  text-align: center;
-  font-size: xx-large;
-  font-weight: bolder;;
+
+.main {
+  min-height: 100vh;
+  padding: 4rem 0;
+  margin-top: 30px;
 }
 
+.header {
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.veggie_title {
+  font-weight: 700;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+
+
+.veggie_intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  p {
+    margin: 2px 0;
+  }
+}
+
+
+#veggie_imgs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+  div {
+    margin: 0 5px;
+  }
+}
+
+.veggie_list_title {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 23px;
+  h3 {
+    margin: 0 5px;
+    font-weight: 700;
+  }
+  h3:nth-child(1) {
+    color: var.$purple;
+  }
+}
