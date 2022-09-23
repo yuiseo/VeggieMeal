@@ -36,6 +36,21 @@
   height: 180px;
   padding: 20px;
   flex-direction: column;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 30px;
+    margin: 10px 0;
+    background-color: var.$green;
+    border-radius: 10px;
+    p {
+      padding: 5px;
+      font-weight: 500;
+      color: white;
+    }
+  }
   h4 {
     font-weight: 700;
   }
@@ -45,9 +60,13 @@
   @media (min-width: var.$sm) {
     width: 15rem;
     height: 15rem;
+    div {
+      width: 30%;
+      height: 20%;
+    }
     h4 {
         font-weight: 700;
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
     
       p {

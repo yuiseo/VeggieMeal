@@ -23,42 +23,56 @@ export default function Veggie() {
       recipeId: 1,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU=',
     },
     {
       recipeId: 2,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
     },
     {
       recipeId: 3,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
     },
     {
       recipeId: 4,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
     },
     {
       recipeId: 5,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
     },
     {
       recipeId: 6,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
     },
     {
       recipeId: 7,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
     },
 
@@ -78,15 +92,6 @@ export default function Veggie() {
           <p>채식 단계를 선택해주세요! </p>
           <p>그에 맞는 레시피를 보여드릴게요. </p>
 
-          {/* select 박스 */}
-          <div>
-            <Form.Select aria-label="비건단계 선택" style={{ marginTop: 20 }}>
-              <option>임시로 부트스트랩인데 꽤 예쁜데요...?</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </Form.Select>
-          </div>
           {/* 비건 단계 */}
           <div id={styles.veggie_imgs}>
             <div><Image src={veggie} alt='veggie' quality={100} width={40} height={40} /></div>
@@ -103,10 +108,21 @@ export default function Veggie() {
               </svg>
             </div>
           </div>
+          {/* select 박스 */}
+          <div>
+            <Form.Select aria-label="비건단계 선택" style={{ marginTop: 20 }}>
+              <option>임시로 부트스트랩인데 꽤 예쁜데요...?</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </Form.Select>
+          </div>
 
           {/* 레시피 목록 */}
           <div className={styles.veggie_list_title}>
-            <h3>'락토베지테리언'</h3>
+            <h3>{'{'} </h3>
+            <h3>락토베지테리언</h3>
+            <h3> {'}'}</h3>
             <h3>레시피 목록</h3>
           </div>
           <article className={styles.veggie_list}>
