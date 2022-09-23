@@ -45,9 +45,9 @@ public class VeggiemealMapper extends Mapper<LongWritable, Text, Text, DoubleWri
 
         // isIncome = 1 : Korea, isIncome = 0 : Income
         if(isIncome == 1) {
-            keyStr += ",korea";
+            keyStr += ",korea,";
         } else {
-            keyStr += ",income";
+            keyStr += ",income,";
         }
 
         // 0922 : ignore per piece case
