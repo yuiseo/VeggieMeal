@@ -2,7 +2,6 @@
 
 .list_box {
   display: flex;
-  // justify-content: space-between;
   overflow: hidden;
   width: 350px;
   height:180px;
@@ -34,7 +33,7 @@
   display: flex;
   width: 170px;
   height: 180px;
-  padding: 20px;
+  padding: 18px 20px;
   flex-direction: column;
   div {
     display: flex;
@@ -46,7 +45,7 @@
     background-color: var.$green;
     border-radius: 10px;
     p {
-      padding: 5px;
+      padding: 0.1rem;
       font-weight: 500;
       color: white;
     }
@@ -55,23 +54,25 @@
     font-weight: 700;
   }
   p {
+    margin: 2px 0;
     font-weight: 700;
   }
   @media (min-width: var.$sm) {
     width: 15rem;
     height: 15rem;
+    padding: 30px;
     div {
       width: 30%;
       height: 20%;
     }
     h4 {
-        font-weight: 700;
-        font-size: 1.8rem;
+      font-weight: 800;
+      font-size: 1.5rem;
       }
     
-      p {
-        font-weight: 600;
-        font-size: 1.5rem;
-      }
+    p {
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
   }
 }
