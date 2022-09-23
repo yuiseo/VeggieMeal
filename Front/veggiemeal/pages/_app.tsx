@@ -1,8 +1,24 @@
-import '../styles/globals.css'
+import '../styles/globals.scss'
+import '../styles/bootstrap.scss'
 import type { AppProps } from 'next/app'
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { RecoilRoot } from 'recoil';
+import Navbar from 'components/Navbar';
+
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  const queryClient = new QueryClient();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
+        <header>
+            <Navbar />
+        </header>
+        <Component {...pageProps} />
+      </RecoilRoot>
+    </QueryClientProvider>
+  );
 }
 
 export default MyApp
