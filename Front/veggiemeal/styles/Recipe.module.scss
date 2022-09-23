@@ -1,12 +1,86 @@
-@import 'Home.module.scss';
-
-.recipe_title {
-  margin: 50px;
-  text-align: center;
-  font-size: xx-large;
-  font-weight: bolder;
+@use 'variable' as val;
+.container {
+  padding: 0 2rem;
 }
 
-.recipe_section {
-  margin-top: 1rem;
+.recipe_title {
+  margin: 3rem;
+  text-align: center;
+  font-weight:  700;
+  @media (max-width: val.$sm) {
+    margin: 25px;
+  }
+}
+
+.main {
+  min-height: 100vh;
+  padding: 4rem 0;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+#veggie_btn {
+  padding: 4rem;
+  background-color: val.$purple !important;
+  border: 0;
+  border-radius: 20px;
+
+  @media (max-width: val.$sm) {
+    margin: 0.45rem;
+  }
+  
+  p:nth-child(1) {
+    margin: 0;
+    font-size: large;
+    font-weight: 800;
+    color: white;
+  }
+  
+  p:nth-child(2) {
+    font-size: large;
+    font-weight: 500;
+    color: white;
+  }
+  
+  p:nth-child(4) {
+    margin-top: 16px;
+    margin-bottom: 0;
+    font-size: xx-large;
+    font-weight: 800;
+    color: white;
+  }
+}
+
+#fridge_btn {
+    padding: 4rem;
+    background-color: val.$green  !important;
+    border: 0;
+    border-radius: 20px;
+    @media (max-width: val.$sm) {
+        margin: 0.45rem;
+      }
+  
+    p:nth-child(1) {
+      margin: 0;
+      font-size: large;
+      font-weight: 800;
+      color: white;
+    }
+  
+    p:nth-child(2) {
+      font-size: large;
+      font-weight: 500;
+      color: white;
+    }
+  
+    p:nth-child(4) {
+      margin-top: 16px;
+      margin-bottom: 0;
+      font-size: xx-large;
+      font-weight: 800;
+      color: white;
+    }
 }
