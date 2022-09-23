@@ -16,12 +16,12 @@ import Col from 'react-bootstrap/Col';
 export default function Recipe() {
   const router = useRouter();
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Head>
         <title>레시피 | 베지밀</title>
       </Head>
 
-      <main className={styles.main}>
+      <main>
         <header>
           <h1 className={styles.recipe_title}>레시피 모아 보기</h1>
         </header>
@@ -48,6 +48,6 @@ export default function Recipe() {
           </Container>
         </section>
       </main>
-    </div >
+    </div>
   )
 }
