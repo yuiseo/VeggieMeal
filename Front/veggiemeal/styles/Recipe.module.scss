@@ -6,27 +6,27 @@
 .recipe_title {
   margin: 3rem;
   text-align: center;
-  font-weight:  700;
+  font-weight:  800;
   @media (max-width: val.$sm) {
-    margin: 25px;
+    margin: 20px;
   }
 }
 
 .main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+  padding: 4rem 0;
+  margin-top: 15px;
 }
 
 
 #veggie_btn {
   padding: 4rem;
-  background-color: val.$purple !important;
   border: 0;
   border-radius: 20px;
+  background-color: val.$purple !important;
 
   @media (max-width: val.$sm) {
     margin: 0.45rem;
@@ -40,6 +40,7 @@
   }
   
   p:nth-child(2) {
+    margin-bottom: 21px;
     font-size: large;
     font-weight: 500;
     color: white;
@@ -56,9 +57,9 @@
 
 #fridge_btn {
     padding: 4rem;
-    background-color: val.$green  !important;
     border: 0;
     border-radius: 20px;
+    background-color: val.$green  !important;
     @media (max-width: val.$sm) {
         margin: 0.45rem;
       }
@@ -71,6 +72,7 @@
     }
   
     p:nth-child(2) {
+      margin-bottom: 21px;
       font-size: large;
       font-weight: 500;
       color: white;

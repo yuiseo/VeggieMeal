@@ -1,0 +1,58 @@
+@use 'variable' as var;
+
+.list_box {
+  display: flex;
+  // justify-content: space-between;
+  overflow: hidden;
+  width: 350px;
+  height:180px;
+  margin: 12px;
+  padding: 0;
+  border-radius: 20px;
+  background-color: var.$grey;
+  :hover{
+    cursor: pointer;
+  }
+  @media (min-width: var.$sm) {
+    width: 30rem;
+    height:15rem;
+  }
+}
+
+#list_img {
+  width: 180px;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  @media (min-width: var.$sm) {
+    width: 15rem;
+    height: 15rem;
+  }
+}
+
+#list_content {
+  display: flex;
+  width: 170px;
+  height: 180px;
+  padding: 20px;
+  flex-direction: column;
+  h4 {
+    font-weight: 700;
+  }
+  p {
+    font-weight: 700;
+  }
+  @media (min-width: var.$sm) {
+    width: 15rem;
+    height: 15rem;
+    h4 {
+        font-weight: 700;
+        font-size: 2rem;
+      }
+    
+      p {
+        font-weight: 600;
+        font-size: 1.5rem;
+      }
+  }
+}
