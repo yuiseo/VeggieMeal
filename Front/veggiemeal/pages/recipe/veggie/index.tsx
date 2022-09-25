@@ -1,10 +1,14 @@
 import Head from "next/head";
 import Image from 'next/image';
+import dynamic from 'next/dynamic'
 import { useState } from "react";
 
 import styles from 'styles/Veggie.module.scss';
-import RecipeList from 'components/RecipeList';
-import SelectBox from "components/SelectBox";
+
+const RecipeList = dynamic(() => import('components/RecipeList'))
+const SelectBox = dynamic(() => import('components/SelectBox'))
+// import RecipeList from 'components/RecipeList';
+// import SelectBox from "components/SelectBox";
 
 import leafy from '/public/leafy_green.png';
 import flexi from '/public/veggieStep/flexi.png';
@@ -15,12 +19,12 @@ import pesco from '/public/veggieStep/pesco.png';
 import pollo from '/public/veggieStep/pollo.png';
 import vegan from '/public/veggieStep/vegan.png';
 
-import egg from '/public/egg.png';
-import fish from '/public/fish.png';
-import meat from '/public/meat.png';
-import milk from '/public/milk.png';
-import hen from '/public/hen.png';
-import veggie from '/public/veggie.png';
+// import egg from '/public/egg.png';
+// import fish from '/public/fish.png';
+// import meat from '/public/meat.png';
+// import milk from '/public/milk.png';
+// import hen from '/public/hen.png';
+// import veggie from '/public/veggie.png';
 
 
 import Container from 'react-bootstrap/Container';
@@ -87,9 +91,11 @@ export default function Veggie() {
     },
 
   ]
+  //카테고리
   const veggieCategory = ['비건', '락토 베지테리언', '오보 베지테리언', '락토 오보 베지테리언', '페스코 베지테리언', '폴로 베지테리언', '플렉시테리언']
   const [category, setCategory] = useState<string>('채식단계');
 
+  // select 박스 선택시에만 레시피 목록이 뜨도록 설정하기 위해 Component 분리
   function Recipes() {
     return (
       <>
@@ -109,7 +115,6 @@ export default function Veggie() {
       </>
     )
   }
-
 
   return (
     <div className={styles.container}>
@@ -133,15 +138,23 @@ export default function Veggie() {
           </div>
           {/* 비건 단계 */}
           <div id={styles.veggie_imgs}>
+            {category === '비건' && (<div className={styles.veggie}><Image src={vegan} alt='비건' quality={100} width={390} height={70} /></div>)}
+            {category === '락토 베지테리언' && (<div className={styles.veggie}><Image src={lacto} alt='락토 베지테리언' quality={100} width={390} height={70} /></div>)}
+            {category === '오보 베지테리언' && (<div className={styles.veggie}><Image src={ovo} alt='오보 베지테리언' quality={100} width={390} height={70} /></div>)}
+            {category === '락토 오보 베지테리언' && (<div className={styles.veggie}><Image src={lactoOvo} alt='락토 오보 베지테리언' quality={100} width={390} height={70} /></div>)}
+            {category === '페스코 베지테리언' && (<div className={styles.veggie}><Image src={pesco} alt='페스코 베지테리언' quality={100} width={390} height={70} /></div>)}
+            {category === '폴로 베지테리언' && (<div className={styles.veggie}><Image src={pollo} alt='폴로 베지테리언' quality={100} width={390} height={70} /></div>)}
+            {category === '플렉시테리언' && (<div className={styles.veggie}><Image src={flexi} alt='플렉시테리언' quality={100} width={390} height={70} /></div>)}
+            {category === '채식단계' && (<div className={styles.veggie}><Image src={flexi} alt='플렉시테리언' quality={100} width={390} height={70} /></div>)}
             {/* <div className={styles.veggie_img}>
               <Image src={flexi} quality={100} alt='플렉시테리언' />
             </div> */}
-            <div className={styles.veggie}><Image src={veggie} alt='veggie' quality={100} width={40} height={40} /></div>
+            {/* <div className={styles.veggie}><Image src={veggie} alt='veggie' quality={100} width={40} height={40} /></div>
             <div className={styles.milk}><Image src={milk} alt='milk' quality={100} width={40} height={40} /></div>
             <div className={styles.egg}><Image src={egg} alt='egg' quality={100} width={40} height={40} /></div>
             <div className={styles.fish}><Image src={fish} alt='fish' quality={100} width={40} height={40} /></div>
             <div className={styles.hen}><Image src={hen} alt='hen' quality={100} width={40} height={40} /></div>
-            <div className={styles.meat}><Image src={meat} alt='meat' quality={100} width={40} height={40} /></div>
+            <div className={styles.meat}><Image src={meat} alt='meat' quality={100} width={40} height={40} /></div> */}
             {/* 모달창을 위한 물음표 */}
             <div className={styles.question}>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FFB500" className="bi bi-question-circle" viewBox="0 0 16 16">

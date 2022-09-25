@@ -1,0 +1,34 @@
+@use 'variable' as var;
+
+.box {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 17px;
+  border-radius: 15px;
+  background-color: var.$grey;
+  @media (min-width:var.$md) {
+    // min-width: 50vw;
+    justify-content: flex-start;
+  }
+}
+.number {
+  // margin: 0 10px;
+  border-radius: 100%;
+  background-color: var.$green;
+  p{
+    padding: 7px 10px;
+    margin: 0;
+    font-weight: 600;
+    color: white;
+  }
+}
+.detail {
+  margin: 10px 0 10px 15px;
+  padding: 0;
+  p {
+    margin: 0;
+  }
+}

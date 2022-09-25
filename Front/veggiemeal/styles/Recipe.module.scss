@@ -1,4 +1,4 @@
-@use 'variable' as val;
+@use 'variable' as var;
 .container {
   padding: 0 2rem;
 }
@@ -7,7 +7,7 @@
   margin: 3rem;
   text-align: center;
   font-weight:  800;
-  @media (max-width: val.$sm) {
+  @media (max-width: var.$sm) {
     margin: 20px;
   }
 }
@@ -26,63 +26,85 @@
   padding: 4rem;
   border: 0;
   border-radius: 20px;
-  background-color: val.$purple !important;
+  background-color: var.$purple;
 
-  @media (max-width: val.$sm) {
+  @media (max-width: var.$sm) {
     margin: 0.45rem;
   }
-  
-  p:nth-child(1) {
-    margin: 0;
-    font-size: large;
-    font-weight: 800;
-    color: white;
+
+  div {
+    a {
+      font-size: large;
+      color: white;
+    }
   }
-  
+ 
   p:nth-child(2) {
     margin-bottom: 21px;
     font-size: large;
-    font-weight: 500;
+    font-weight: 400;
     color: white;
   }
   
   p:nth-child(4) {
-    margin-top: 16px;
+    margin-top: 10px;
     margin-bottom: 0;
     font-size: xx-large;
-    font-weight: 700;
+    font-weight: 600;
     color: white;
   }
+  &:hover {
+    border-color: var.$green  !important;
+    background-color: var.$green  !important;
+  }
 }
+#veggie_bold {
+  margin: 0;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+}
+
 
 #fridge_btn {
     padding: 4rem;
     border: 0;
     border-radius: 20px;
-    background-color: val.$green  !important;
-    @media (max-width: val.$sm) {
+    background-color: var.$green;
+    @media (max-width: var.$sm) {
         margin: 0.45rem;
       }
   
-    p:nth-child(1) {
-      margin: 0;
+  div {
+    a {
       font-size: large;
-      font-weight: 800;
       color: white;
     }
-  
-    p:nth-child(2) {
-      margin-bottom: 21px;
-      font-size: large;
-      font-weight: 500;
-      color: white;
-    }
-  
-    p:nth-child(4) {
-      margin-top: 16px;
-      margin-bottom: 0;
-      font-size: xx-large;
-      font-weight: 700;
-      color: white;
-    }
+  }
+
+  p:nth-child(2) {
+    margin-bottom: 21px;
+    font-size: large;
+    font-weight: 400;
+    color: white;
+  }
+
+  p:nth-child(4) {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: xx-large;
+    font-weight: 600;
+    color: white;
+  }
+  &:hover {
+    border-color: var.$purple  !important;
+    background-color: var.$purple  !important;
+  }
+}
+
+#fridge_bold{
+  margin: 0;
+  font-size: large;
+  font-weight: bold;
+  color: white;
 }

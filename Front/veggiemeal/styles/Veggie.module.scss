@@ -44,7 +44,15 @@
     margin: 2px 0;
   }
 }
-
+.question {
+  padding: 1.2rem;
+  @media (max-width:var.$md) {
+    padding: 1rem;
+  }
+  :hover {
+    cursor: pointer;
+  }
+}
 .pick_veggie{
   display: flex;
   flex-direction: column;

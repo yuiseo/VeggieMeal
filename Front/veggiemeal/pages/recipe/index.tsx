@@ -30,17 +30,23 @@ export default function Recipe() {
             <Row className='justify-content-sm-center;align-item-sm-center'>
               <Col>
                 <Button id={styles.veggie_btn} onClick={() => router.push('/recipe/veggie')}>
-                  <p>채식 단계에</p>
+                  <div>
+                    <a id={styles.veggie_bold}>채식 단계</a>
+                    <a>에</a>
+                  </div>
                   <p>따른 레시피를 보여드려요</p>
-                  <Image className={styles.leafy} src={leafy} alt="leafy_green" quality={100} width={70} height={70} />
+                  <Image className={styles.leafy} src={leafy} alt="leafy_green" quality={100} width={90} height={90} />
                   <p>채식</p>
                 </Button>
               </Col>
               <Col>
                 <Button id={styles.fridge_btn} onClick={() => router.push('/recipe/fridge')}>
-                  <p>원하는 재료에</p>
+                  <div>
+                    <a id={styles.fridge_bold}>원하는 재료</a>
+                    <a>에</a>
+                  </div>
                   <p>따른 레시피를 보여드려요</p>
-                  <Image className={styles.cooking} src={cooking} alt="cooking pan" quality={100} width={70} height={70} />
+                  <Image className={styles.cooking} src={cooking} alt="cooking pan" quality={100} width={90} height={90} />
                   <p>냉장고</p>
                 </Button>
               </Col>
