@@ -6,12 +6,14 @@ interface RecipeListPros {
   children?: any;
   recipeId: number;
   name: string;
+  hour: number;
+  category: string;
   cal: number;
   recipeImg: string;
 
 }
 
-export default function RecipeList({ recipeId, name, cal, recipeImg }: RecipeListPros) {
+export default function RecipeList({ recipeId, name, cal, hour, category, recipeImg }: RecipeListPros) {
   const router = useRouter();
   return (
     <>
@@ -20,7 +22,11 @@ export default function RecipeList({ recipeId, name, cal, recipeImg }: RecipeLis
         <div id={styles.list_img} style={{ backgroundImage: `url(${recipeImg})` }}></div>
         {/* 레시피 내용 */}
         <div id={styles.list_content}>
+          <div>
+            <p>{category}</p>
+          </div>
           <h4>{name}</h4>
+          <p>{hour}분</p>
           <p>{cal}Kcal</p>
         </div>
       </article>

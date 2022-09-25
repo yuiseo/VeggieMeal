@@ -1,0 +1,63 @@
+@use 'variable' as var;
+
+.box {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: var.$grey;
+  h4 {
+    margin-bottom: 15px;
+    font-size: x-large;
+    font-weight: 600;
+  }
+}
+
+.button_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 5px 0;
+}
+
+.price_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 30px;
+  border: 0;
+  border-radius: 15px;
+  background-color: var.$green;
+  p {
+    margin: 0;
+    font-weight: 500;
+    color: white;
+  }
+  &:hover {
+    border-color: var.$purple !important;
+    background-color: var.$purple !important;
+  }
+}
+
+.basket_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  margin-left: 10px;
+  padding: 20px 30px;
+  border: 0;
+  border-radius: 15px;
+  background-color: var.$purple;
+  p {
+    margin: 0;
+    font-weight: 500;
+    color: white;
+    }
+  &:hover {
+    border-color: var.$green  !important;
+    background-color: var.$green  !important;
+  }
+}
