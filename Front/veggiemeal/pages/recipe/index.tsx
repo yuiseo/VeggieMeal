@@ -32,7 +32,7 @@ export default function Recipe() {
                 <Button id={styles.veggie_btn} onClick={() => router.push('/recipe/veggie')}>
                   <p>채식 단계에</p>
                   <p>따른 레시피를 보여드려요</p>
-                  <Image className={styles.leafy} src={leafy} alt="leafy_green" quality={100} width={70} height={70} />
+                  <Image className={styles.leafy} src={leafy} alt="leafy_green" quality={100} width={100} height={100} />
                   <p>채식</p>
                 </Button>
               </Col>
@@ -40,7 +40,7 @@ export default function Recipe() {
                 <Button id={styles.fridge_btn} onClick={() => router.push('/recipe/fridge')}>
                   <p>원하는 재료에</p>
                   <p>따른 레시피를 보여드려요</p>
-                  <Image className={styles.cooking} src={cooking} alt="cooking pan" quality={100} width={70} height={70} />
+                  <Image className={styles.cooking} src={cooking} alt="cooking pan" quality={100} width={100} height={100} />
                   <p>냉장고</p>
                 </Button>
               </Col>
