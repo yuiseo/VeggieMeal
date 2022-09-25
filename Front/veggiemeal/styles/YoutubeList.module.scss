@@ -1,0 +1,48 @@
+@use 'variable' as var;
+
+.box {
+  // width: 300px;
+  // height: 300px;
+  width: 80vw;
+  height: 80vw;
+  // box-sizing: border-box;
+  margin: 10px 0;
+  border-radius: 15px;
+  background-color: var.$grey;
+  overflow: hidden;
+  @media (min-width:var.$sm) {
+    width: 70vw;
+    height: 70vw;
+  }
+  @media (min-width:var.$md) {
+    width: 250px;
+    height: 250px;
+    // margin-right: 20px;
+  }
+}
+.thumbnail_box {
+  width: 85vw;
+  height: 45vw;
+  
+  @media (min-width:var.$md) {
+    width: 250px;
+    height: 120px;
+  }
+
+}
+#thumbnail {
+  width: inherit;
+  height: inherit;
+  background-size: cover;
+  background-position: center;
+  background-image: url('/main_cook.png');
+}
+.content {
+  // margin: 10px 15px;
+  padding: 15px;
+  p {
+    margin: 0;
+    font-size: medium;
+    font-weight: 700;
+  }
+}
