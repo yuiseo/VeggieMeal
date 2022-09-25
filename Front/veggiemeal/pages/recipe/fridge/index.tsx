@@ -19,59 +19,74 @@ export default function Fridge() {
       recipeId: 1,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU=',
     },
     {
       recipeId: 2,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
     },
     {
       recipeId: 3,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
     },
     {
       recipeId: 4,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
     },
     {
       recipeId: 5,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
     },
     {
       recipeId: 6,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
     },
     {
       recipeId: 7,
       name: '나물 비빔밥',
       cal: 500,
+      hour: 60,
+      category: '한식',
       recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
     },
+
   ]
 
-  function isIngre(item:string){
-    if (!ingre?.includes(item)){
-      if(ingre){
+  function isIngre(item: string) {
+    if (!ingre?.includes(item)) {
+      if (ingre) {
         setIngre([...ingre, item])
       } else {
         setIngre([item])
       }
-    }else if(ingre?.includes(item)){
+    } else if (ingre?.includes(item)) {
       alert("이미 선택하신 재료입니다.")
     }
   }
 
-  function removeIngre(item:string){
+  function removeIngre(item: string) {
     setIngre(ingre?.filter(ing => ing !== item))
   }
 
@@ -100,9 +115,9 @@ export default function Fridge() {
           </div>) : null}
         </section>
         <section className={styles.search}>
-          <form className={styles.form} onSubmit={(e)=>{
+          <form className={styles.form} onSubmit={(e) => {
             e.preventDefault();
-            if(cat03.includes(searchItem)){
+            if (cat03.includes(searchItem)) {
               isIngre(searchItem)
             } else {
               alert('검색어가 존재하지 않습니다. 다시 검색해주세요.')
@@ -110,11 +125,11 @@ export default function Fridge() {
             setSearchItem("")
           }}>
             <input className={styles.searchbar} placeholder="재료를 입력해주세요" value={searchItem}
-            onChange={(e)=>{
-              setSearchItem(e.target.value)
-            }}></input>
+              onChange={(e) => {
+                setSearchItem(e.target.value)
+              }}></input>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#5C5ACD" className="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
             </svg>
           </form>
         </section>
@@ -122,24 +137,24 @@ export default function Fridge() {
           <div className={`${styles.category} me-3`}>
             <p className={styles.category_title}>대분류</p>
             <ul className={styles.ingre_ul}>
-              {cat01.map((item, index) => <li key={index} className={isSelect01 === String(index) ? `${styles.choice_li}`: 'not_choice'} 
-              onClick={()=>{setIsSelect01(String(index))}}>{item}</li>)}
+              {cat01.map((item, index) => <li key={index} className={isSelect01 === String(index) ? `${styles.choice_li}` : 'not_choice'}
+                onClick={() => { setIsSelect01(String(index)) }}>{item}</li>)}
             </ul>
           </div>
           <div className={`${styles.category} me-3`}>
             <p className={styles.category_title}>중분류</p>
             <ul className={styles.ingre_ul}>
-              {cat02.map((item, index) => <li key={index} className={isSelect02 === String(index) ? `${styles.choice_li}`: 'not_choice'} 
-              onClick={()=>{setIsSelect02(String(index))}}>{item}</li>)}
+              {cat02.map((item, index) => <li key={index} className={isSelect02 === String(index) ? `${styles.choice_li}` : 'not_choice'}
+                onClick={() => { setIsSelect02(String(index)) }}>{item}</li>)}
             </ul>
           </div>
           <div className={styles.category}>
             <p className={styles.category_title}>소분류</p>
             <ul className={styles.ingre_ul}>
-              {cat03.map((item, index) => <li key={index} className={isSelect03 === String(index) ? `${styles.choice_li}`: 'not_choice'} 
-              onClick={()=>{
-                setIsSelect03(String(index))
-                isIngre(item)
+              {cat03.map((item, index) => <li key={index} className={isSelect03 === String(index) ? `${styles.choice_li}` : 'not_choice'}
+                onClick={() => {
+                  setIsSelect03(String(index))
+                  isIngre(item)
                 }}>{item}</li>)}
             </ul>
           </div>

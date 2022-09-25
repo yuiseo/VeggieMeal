@@ -1,0 +1,163 @@
+@use 'variable' as var;
+// .main{
+//   @media (min-width:var.$lg) {
+//       min-width: 1000px;
+//     }
+// }
+
+.header {
+  display: flex;
+  justify-content: center;
+  // align-items: flex-start;
+  min-width: 85vw;
+  h1 {
+    margin: 0px 0 16px 0;
+    font-weight: 600;
+  }
+  @media (max-width:var.$sm) {
+    flex-direction: column;
+  h1 {
+      margin: 15px 0 5px 0;
+      font-weight: 600;
+    }
+  }
+  @media (min-width:var.$sm) {
+    margin: 0 20px;
+  }
+  @media (min-width:var.$lg) {
+    min-width: 85vw;
+    padding: 0 5rem;
+    margin: 20px;
+    justify-content: baseline;
+  }
+}
+.mobile_title {
+  @media (min-width:var.$sm) {
+    display: none;
+  }
+}
+.header_title{
+  display: flex;
+  flex-direction: column;
+}
+
+#img_box{
+  width: 85vw;
+  height: 85vw;
+  overflow: hidden;
+  border-radius: 15px;
+  @media (min-width:var.$sm) {
+    width: 300px;
+    height: 300px;
+    margin-right: 20px;
+  }
+}
+
+#food_img {
+  width: inherit;
+  height: inherit;
+  background-size: cover;
+  background-position: center;
+  background-image: url('/main_cook.png');
+}
+
+.ingredient_section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 85vw;
+  margin: 0 2rem 0 1rem;
+  @media (min-width:var.$sm) {
+      min-width: 1000px;
+      padding: 0 5rem;
+      margin: 20px;
+      justify-content: flex-start;
+    }
+}
+.web_ingredient{
+  p {
+    font-weight: 400;
+  }
+  p:nth-child(2) {
+  font-size: large;
+  font-weight: 700;
+    color: var.$purple;
+  }
+  @media (max-width:var.$sm) {
+      display: none;
+    }
+}
+
+.mobile_ingredient {
+  // margin: 20px 40px;
+  margin: 20px 1rem;
+  p {
+      font-weight: 400;
+      margin: 0;
+    }
+  p:nth-child(1) {
+    margin-bottom: 5px;
+    font-size: large;
+    font-weight: 700;
+    color: var.$purple;
+  }
+  @media (min-width:var.$sm) {
+      display: none;
+  }
+}
+
+
+.step_section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 2rem;
+  h3 {
+    font-weight: 600;
+    margin-bottom: 25px;
+  }
+  @media (min-width:var.$lg) {
+    min-width: 1000px;
+    padding: 0 5rem;
+    margin: 20px;
+    justify-content: flex-start;
+  }
+}
+
+.youtube_section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 4rem;
+  
+  h3 {
+    margin-top: 20px;
+    color: var.$purple;
+    font-weight: 900;
+  }
+  @media (min-width:var.$lg) {
+      min-width: 1000px;
+      padding: 0 5rem;
+      margin: 20px;
+      // justify-content: flex-start;
+    }
+  @media (min-width:var.$sm) {
+    max-width: 90vw;
+  }
+}
+
+.youtube_intro {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0;
+  @media (max-width:var.$sm) {
+    flex-direction: column;
+    p{
+      margin: 0;
+      font-weight: 400;
+    }
+  }
+
+}
