@@ -2,7 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import styles from 'styles/Fridge.module.scss';
-import SelectBox from "components/SelectBox";
+import SelectBox  from "components/SelectBox";
+import RecipeList from "components/RecipeList";
 
 export default function Fridge() {
   const [ingre, setIngre] = useState<string[]>();
@@ -13,6 +14,65 @@ export default function Fridge() {
   const cat01 = ['과일', '채소', '정육', '계란', '수산/건어물', '우유/유제품', '쌀/잡곡'];
   const cat02 = ['감자/고구마', '두부/콩나물/숙주나물', '상추/깻잎/쌈채소', '무/당근', '버섯', '배추/양배추/브로콜리', '시금치/나물'];
   const cat03 = ['감자', '고구마'];
+  const dumidata = [
+    {
+      recipeId: 1,
+      name: '나물 비빔밥',
+      cal: 500,
+      hour: 60,
+      category: '한식',
+      recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU=',
+    },
+    {
+      recipeId: 2,
+      name: '나물 비빔밥',
+      cal: 500,
+      hour: 60,
+      category: '한식',
+      recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
+    },
+    {
+      recipeId: 3,
+      name: '나물 비빔밥',
+      cal: 500,
+      hour: 60,
+      category: '한식',
+      recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
+    },
+    {
+      recipeId: 4,
+      name: '나물 비빔밥',
+      cal: 500,
+      hour: 60,
+      category: '한식',
+      recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
+    },
+    {
+      recipeId: 5,
+      name: '나물 비빔밥',
+      cal: 500,
+      hour: 60,
+      category: '한식',
+      recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
+    },
+    {
+      recipeId: 6,
+      name: '나물 비빔밥',
+      cal: 500,
+      hour: 60,
+      category: '한식',
+      recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
+    },
+    {
+      recipeId: 7,
+      name: '나물 비빔밥',
+      cal: 500,
+      hour: 60,
+      category: '한식',
+      recipeImg: 'https://media.istockphoto.com/photos/bi-bim-bap-picture-id183752521?k=20&m=183752521&s=612x612&w=0&h=SPJ7HvPRH7zwyHbiSqrTjVGUDlk8pyxl0YOKawWwNjU='
+    },
+
+  ]
 
   function isIngre(item: string) {
     if (!ingre?.includes(item)) {
@@ -45,14 +105,14 @@ export default function Fridge() {
           <p>그에 맞는 레시피를 보여드릴게요. </p>
         </section>
         <section className={styles.choice}>
-          {ingre ? ingre.map((item) =>
-            <div className={styles.choice_ingre}>
-              <span>{item}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="white" className="bi bi-x-lg" viewBox="0 0 16 16"
-                onClick={() => { removeIngre(item) }}>
-                <path stroke="white" stroke-width="1" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-              </svg>
-            </div>) : null}
+          {ingre ? ingre.map((item) => 
+          <div className={styles.choice_ingre}>
+            <span>{item}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="white" className="bi bi-x-lg" viewBox="0 0 16 16"
+            onClick={()=>{removeIngre(item)}}>
+              <path stroke="white" strokeWidth="1" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+            </svg>
+          </div>) : null}
         </section>
         <section className={styles.search}>
           <form className={styles.form} onSubmit={(e) => {
@@ -103,6 +163,21 @@ export default function Fridge() {
           <SelectBox data={cat01} setState={setIsSelect01} title="대분류" />
           <SelectBox data={cat02} setState={setIsSelect02} title="중분류" />
           <SelectBox data={cat03} setState={setIsSelect03} title="소분류" another={isIngre} />
+        </section>
+        <section className={styles.recipe_list}>
+          <div className={styles.recipe_list_title}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="#29B973" className="bi bi-circle-fill me-3" viewBox="0 0 16 16">
+            <circle cx="8" cy="8" r="8"/>
+          </svg>
+            <p className={styles.title_purple}>선택된 재료</p>
+            <p>가 포함된 레시피 목록</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="#29B973" className="bi bi-circle-fill ms-3" viewBox="0 0 16 16">
+              <circle cx="8" cy="8" r="8"/>
+            </svg>
+            </div>
+          <div className={styles.recipe_container}>
+                {dumidata.map((item) =><RecipeList key={`recipeId`} {...item}></RecipeList>)}
+            </div>
         </section>
       </main>
     </>

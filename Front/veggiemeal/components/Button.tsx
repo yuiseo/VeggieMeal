@@ -3,7 +3,7 @@ import styles from 'styles/Button.module.scss';
 type BtnProps = {
     content:string,
     bgColor:string,
-    textSize:string,
+    textSize:string
 }
 
 export default function Btn ({content, bgColor, textSize} : BtnProps){

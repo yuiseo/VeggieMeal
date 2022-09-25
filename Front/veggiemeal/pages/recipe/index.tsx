@@ -35,7 +35,7 @@ export default function Recipe() {
                     <a>에</a>
                   </div>
                   <p>따른 레시피를 보여드려요</p>
-                  <Image className={styles.leafy} src={leafy} alt="leafy_green" quality={100} width={90} height={90} />
+                  <Image className={styles.leafy} src={leafy} alt="leafy_green" quality={100} width={100} height={100} />
                   <p>채식</p>
                 </Button>
               </Col>
@@ -46,7 +46,7 @@ export default function Recipe() {
                     <a>에</a>
                   </div>
                   <p>따른 레시피를 보여드려요</p>
-                  <Image className={styles.cooking} src={cooking} alt="cooking pan" quality={100} width={90} height={90} />
+                  <Image className={styles.cooking} src={cooking} alt="cooking pan" quality={100} width={100} height={100} />
                   <p>냉장고</p>
                 </Button>
               </Col>
