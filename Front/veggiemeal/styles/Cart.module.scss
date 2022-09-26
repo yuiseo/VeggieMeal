@@ -47,14 +47,17 @@
 .cart_btn {
     display: flex;
     justify-content: space-between;
-    width:400px;
+    width:450px;
+    @media (max-width:var.$md){
+        width:350px;
+    }
     margin: 30px 0;
     button {
         color:var.$black;
         font-size:22px;
         font-weight: 600;
-        width:190px;
-        @media (max-width:var.$sm){
+        width:210px;
+        @media (max-width:var.$md){
             width:170px;
         }
         &:hover {
@@ -71,10 +74,10 @@
     background-color: var.$grey;
     width: 450px;
     min-height: 400px;
-    max-height: 665px;
+    max-height: 550px;
     border-radius: 15px;
     padding: 35px;
-    @media (max-width:var.$sm){
+    @media (max-width:var.$md){
         width:350px;
     }
     overflow-y: auto;
@@ -102,7 +105,7 @@
             weight: 700;
         }
         margin:0;
-        @media (max-width:var.$sm){
+        @media (max-width:var.$md){
             font-size:20px;
         }
     }
@@ -110,8 +113,7 @@
         color:var.$purple;
         font-size: 25px;
         margin: 0 15px;
-        @media (max-width:var.$sm){
-            font-size: 25px;
+        @media (max-width:var.$md){
             margin: 0 10px;
         }
     }
@@ -184,8 +186,23 @@
         max-width:350px;
         margin-top:30px;
     }
-    @media (min-width:700px){
+    @media (min-width:800px){
         max-width: 800px;
         margin-top: 0;
     }
+}
+
+#mart_swiper{
+    @media(min-width:var.$md){
+        display: none;
+    }
+}
+
+.mart_div {
+    @media(max-width:var.$md){
+        display: none;
+    }
+    display:flex;
+    justify-content: space-between;
+    width:730px;
 }

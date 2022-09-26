@@ -170,16 +170,13 @@ export default function Cart() {
               <Image src="/scale.png" width={50} height={50} quality={100} />
               <p>마트별 가격 비교</p>
             </div>
+            <div className={styles.mart_div}>
+            <Mart title="emart" price={emartPrices} isCheap={cheaper} data={emartList} />
+            <Mart title="homeplus" price={hpPrices} isCheap={cheaper} data={hpList} />
+            </div>
             <Swiper
-            // slidesPerView={2}
-            breakpoints={{
-              500:{
-                slidesPerView:1
-              },
-              1000:{
-                slidesPerView:2
-              }
-            }}
+            id={styles.mart_swiper}
+            slidesPerView={1}
             draggable={true}
             >
               <SwiperSlide style={{marginRight:'30px'}}>

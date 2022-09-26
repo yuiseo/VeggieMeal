@@ -93,6 +93,7 @@
 }
 
 .category_sec_mobile {
+    width:80vw;
     @media (min-width:var.$md){
         display: none;
     }
