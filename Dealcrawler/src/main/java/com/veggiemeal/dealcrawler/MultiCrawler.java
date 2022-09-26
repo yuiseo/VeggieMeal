@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 /* Multi-threaded crawler */
 public class MultiCrawler implements Runnable {
 
-    private final String uri = "http://localhost:8080/kafka/deal?deal=";
+    private final String uri = "http://localhost:8085/kafka/deal?deal=";
     private boolean flag = false; // 수집 날짜가 아닌 다른 날짜의 데이터를 받아오는 경우를 표시
     private String date;
     private int page;
