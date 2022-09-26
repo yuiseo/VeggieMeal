@@ -175,7 +175,7 @@ public class MultiCrawler implements Runnable {
         try {
             TimeUnit.MILLISECONDS.sleep(1);
             RestTemplate restTemplate = new RestTemplate();
-            restTemplate.getForObject(uri, String.class);
+            restTemplate.getForObject(uri + sb.toString(), String.class);
         } catch(Exception e) {
             e.printStackTrace();
         }
