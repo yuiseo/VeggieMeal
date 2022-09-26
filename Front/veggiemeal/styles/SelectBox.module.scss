@@ -3,7 +3,7 @@
 .select {
     display:flex;
     flex-direction: column;
-    width:80vw;
+    // width:80vw;
 }
 
 .selected {
@@ -49,13 +49,13 @@
     }
 }
 
-.select {
-  display: flex;
-  flex-direction: column;
-  width: 80vw;
-  @media (min-width: var.$md){
-    justify-content: center;
-    width: 220px;
-    margin: 10px;
-  }
-}
+// .select {
+//   display: flex;
+//   flex-direction: column;
+//   width: 80vw;
+//   @media (min-width: var.$md){
+//     justify-content: center;
+//     width: 220px;
+//     margin: 10px;
+//   }
+// }

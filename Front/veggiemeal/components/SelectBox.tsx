@@ -10,7 +10,7 @@ type SelectProps = {
     data:string[],
     setState:any,
     title:string,
-    another?:any
+    another?:any,
 }
 
 export default function SelectBox({data, setState, title, another}:SelectProps){

@@ -8,7 +8,8 @@ export default function MartMap(){
     const router = useRouter();
     const [martList, setMartList] = useState<[{[key:number]:{}}]>();
     const [userAddress, setUserAddress] = useState<string[] | undefined>();
-    console.log(userAddress);
+    const [isShow, setIsShow] = useState<boolean>(false);
+
     let map:any;
     let mart:string;
     if(router.query.id === 'emart'){
@@ -111,13 +112,25 @@ export default function MartMap(){
     }, [userAddress])
 
     return(
-      <>
+      <div className={styles.parents}>
       <Head>
         <title>{`내 주변 ${mart} | 베지밀`}</title>
       </Head>
+      {isShow ? 
         <MapModal name={mart} data={martList} />
+      :
+      null
+      }
+        <div className={ isShow ? `${styles.toggle} ${styles.is_show}` : `${styles.toggle} ${styles.isnt_show}`}>
+          <span className={styles.toggleBtn} onClick={()=>{setIsShow(value => !value)}}></span>
+          {isShow ? 
+          <span>마트 목록 끄기</span>
+        :  
+          <span>마트 목록 보기</span>
+        }
+        </div>
         <div id="map">
         </div>
-      </>
+      </div>
     )
 }
