@@ -15,7 +15,7 @@ export default function MapModal({name, data}:MartModalProps){
             </div>
             {}
             <div>
-                {data?.map((item:any, index:string) => <p>{item['address_name']}</p>)}
+                {data?.map((item:any, index:string) => <p key={index}>{item['address_name']}</p>)}
             </div>
         </div>
     )

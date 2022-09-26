@@ -105,8 +105,8 @@ export default function Fridge() {
           <p>그에 맞는 레시피를 보여드릴게요. </p>
         </section>
         <section className={styles.choice}>
-          {ingre ? ingre.map((item) => 
-          <div className={styles.choice_ingre}>
+          {ingre ? ingre.map((item, index) => 
+          <div key={index} className={styles.choice_ingre}>
             <span>{item}</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="white" className="bi bi-x-lg" viewBox="0 0 16 16"
             onClick={()=>{removeIngre(item)}}>
