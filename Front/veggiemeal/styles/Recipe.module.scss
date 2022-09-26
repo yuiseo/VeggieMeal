@@ -4,11 +4,11 @@
 }
 
 .recipe_title {
-  margin: 3rem;
+  margin: 3rem 3rem 5rem 3rem;
   text-align: center;
-  font-weight:  800;
+  font-weight:  700;
   @media (max-width: var.$sm) {
-    margin: 20px;
+    margin: 20px 20px 50px 20px;
   }
 }
 
@@ -23,14 +23,15 @@
 
 
 #veggie_btn {
-  padding: 4rem;
+  width:340px;
+  height:340px;
   border: 0;
   border-radius: 20px;
   background-color: var.$purple;
-
   @media (max-width: var.$sm) {
-    margin: 0.45rem;
+    margin-right:0;
   }
+  margin-right:10px;
 
   div {
     a {
@@ -40,14 +41,14 @@
   }
  
   p:nth-child(2) {
-    margin-bottom: 21px;
+    margin-bottom: 30px;
     font-size: large;
     font-weight: 400;
     color: white;
   }
   
   p:nth-child(4) {
-    margin-top: 10px;
+    margin-top: 30px;
     margin-bottom: 0;
     font-size: xx-large;
     font-weight: 600;
@@ -67,12 +68,16 @@
 
 
 #fridge_btn {
-    padding: 4rem;
+    width:340px;
+    height:340px;
     border: 0;
     border-radius: 20px;
     background-color: var.$green;
-    @media (max-width: var.$sm) {
-        margin: 0.45rem;
+    margin-left:10px;
+    @media (max-width: var.$md) {
+        // margin: 0.45rem;
+        margin-left:0;
+        margin-top:20px;
       }
   
   div {
@@ -83,14 +88,14 @@
   }
 
   p:nth-child(2) {
-    margin-bottom: 21px;
+    margin-bottom: 30px;
     font-size: large;
     font-weight: 400;
     color: white;
   }
 
   p:nth-child(4) {
-    margin-top: 10px;
+    margin-top: 30px;
     margin-bottom: 0;
     font-size: xx-large;
     font-weight: 600;
@@ -107,4 +112,12 @@
   font-size: large;
   font-weight: bold;
   color: white;
+}
+
+.grid_container{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+    @media (max-width: var.$md){
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

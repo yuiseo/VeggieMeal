@@ -10,7 +10,6 @@ interface RecipeListPros {
   category: string;
   cal: number;
   recipeImg: string;
-
 }
 
 export default function RecipeList({ recipeId, name, cal, hour, category, recipeImg }: RecipeListPros) {

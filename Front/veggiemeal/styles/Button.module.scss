@@ -1,4 +1,4 @@
-@use 'variable' as val;
+@use 'variable' as var;
 
 .Btn {
     padding:15px 20px;
@@ -6,13 +6,13 @@
     border:0px;
     border-radius: 15px;
     &.green {
-        background-color:val.$green;
+        background-color:var.$green;
     }
     &.purple {
-        background-color:val.$purple;
+        background-color:var.$purple;
     }
     &.black {
-        background-color: val.$black;
+        background-color: var.$black;
     }
     &.large {
         font-size:20px;

@@ -1,13 +1,21 @@
-@use 'variable' as val;
+@use 'variable' as var;
 
 #navigator {
+    display:flex;
+    justify-content: space-between;
     padding : 20px 30px;
     background-color: white;
+    button {
+        padding:0;
+    }
+    @media (max-width:var.$sm) {
+        padding: 15px 10px;
+    }
 }
 
 #menus {
     a {
-        color: val.$black;
+        color: var.$black;
         font: {
             weight: 600;
             size:16px;
@@ -16,10 +24,10 @@
         margin-right: 15px;
     }
     a:hover {
-        color: val.$green;
+        color: var.$green;
     }
     a:active {
-        color: val.$purple;
+        color: var.$purple;
     }
 }
 
