@@ -1,4 +1,4 @@
-package com.veggiemeal.api.Domain.DTO;
+package com.veggiemeal.api.domain.dto.deal;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

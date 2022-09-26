@@ -1,4 +1,4 @@
-package com.veggiemeal.api.Controller;
+package com.veggiemeal.api.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
