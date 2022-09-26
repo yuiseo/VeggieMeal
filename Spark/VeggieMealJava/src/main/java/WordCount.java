@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class WordCount {
     private static void wordCount(String fileName){
-        SparkConf conf = new SparkConf().setMaster("yarn").setAppName("WordCounter");
+        SparkConf conf = new SparkConf().setMaster("local").setAppName("WordCounter");
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> inputFile = sc.textFile(fileName);
         JavaRDD<String> wordsFromFile = inputFile.flatMap(c -> Arrays.asList(c.split(" ")).iterator());
