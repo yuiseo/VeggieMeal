@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   width: 30vw;
-  z-index:99;
 }
 
 .selected {
@@ -22,6 +21,11 @@
   font-weight: 700;
 }
 
+#arrow{
+  width: 50%;
+  transition: .3s; // 부드럽게 회전
+}
+
 .select_ul {
   background-color: var.$green;
   border-radius: 10px;
@@ -36,7 +40,6 @@
     line-height: 2.5;
     padding: 5px 15px;
     border-bottom: 1px dashed white;
-
     &:hover {
       background-color: var.$purple;
     }
@@ -51,7 +54,7 @@
     }
 
     &.first_li {
-      border-radius: 10px 10px 0 0;
+      border-radius: 10px 10px 0 0;;
     }
   }
 }

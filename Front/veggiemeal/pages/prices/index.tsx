@@ -27,12 +27,12 @@ export default function Prices() {
           {
             type: 'line',
             name: '물가 평균',
-            data: [3000, 1000, 2000, 6000, 8000, 500, 10000, 700],
+            data: [3000, 1000, 2000, 6000, 8000, 500, 1000, 700],
           },
           {
             type: 'bar',
             name: "뭐 넣기로 했죠",
-            data: [3000, 1000, 2000, 6000, 8000, 500, 10000, 700],
+            data: [3000, 1000, 2000, 6000, 8000, 500, 1000, 700],
           },
         ]}
         options={{
@@ -49,7 +49,10 @@ export default function Prices() {
             type: 'category'
           },
           yaxis: {
-            max: 10000,
+            max: function (max) {
+              return Math.max(max) + 1000
+            },
+            forceNiceScale: true,
             min: 0,
             labels: {
               formatter: function (value) {
@@ -94,6 +97,13 @@ export default function Prices() {
           xaxis: {
             type: 'category'
           },
+          yaxis: {
+            labels: {
+              formatter: function (value) {
+                return value.toLocaleString()
+              }
+            }
+          },
           colors: ['#5C5ACD']
         }}
       >
@@ -106,7 +116,7 @@ export default function Prices() {
         <title>물가분석 | 베지밀</title>
       </Head>
 
-      <main>
+      <main className={styles.main}>
         <header className={styles.header}>
           <Image src={glass} alt='magnifying glass' quality={100} width={50} height={50} />
           <h1 className={styles.price_title}>물가분석</h1>
@@ -126,7 +136,6 @@ export default function Prices() {
           </div>
           <div>
             <Chart2 />
-
           </div>
         </section>
       </main>
