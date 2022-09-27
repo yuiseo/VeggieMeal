@@ -44,10 +44,10 @@ public class VeggiemealMapper extends Mapper<LongWritable, Text, Text, DoubleWri
         String keyStr = dateStr + "," + categoryStr + "," + middleClassStr + "," + nameStr;
 
         // isIncome = 1 : Korea, isIncome = 0 : Income
-        if(isIncome == 1) {
-            keyStr += ",korea,";
-        } else {
+        if(isIncome == 0) {
             keyStr += ",income,";
+        } else {
+            keyStr += ",korea,";
         }
 
         // 0922 : ignore per piece case
@@ -56,52 +56,9 @@ public class VeggiemealMapper extends Mapper<LongWritable, Text, Text, DoubleWri
             // keyStr += ",perPiece";
             return;
         } else {
-            // keyStr += ",per100g";
+            Text key = new Text(keyStr);
+            context.write(key, new DoubleWritable(price));
         }
-
-        Text key = new Text(keyStr);
-        context.write(key, new DoubleWritable(price));
-
-//        // Sample Data Map
-//        // ignore row 1
-//        if(isNumberic(DealData[9]) && DealData[0].length() > 2) {
-//            // DealDate (yyyymmdd)
-//            String[] dateSplited = DealData[0].split("-");
-//            String dateStr = dateSplited[0] + dateSplited[1] + dateSplited[2].substring(0, 2);
-//
-//            // name
-//            String nameStr = DealData[4];
-//
-//            // key (DealDate+name)
-//            String keyStr = dateStr + nameStr;
-//            Text key = new Text(keyStr);
-//
-//            // StandardTemp (?.kg)
-//            String standardStr = DealData[7];
-//
-//            Double price;
-//
-//            // find index of "kg"
-//            int idx = standardStr.indexOf("k");
-//
-//            // if idx != -1 --> 'k' exist
-//            if(idx != -1) {
-//                // extract String before "kg"
-//                standardStr = standardStr.substring(0, idx);
-//                // if temp start with '.', add "0"
-//                if(standardStr.charAt(0) == '.') {
-//                    standardStr = "0" + standardStr;
-//                }
-//                Double standard = Double.parseDouble(standardStr) * 10;
-//
-//                // Price (DealPrice / Standard(per 100g))
-//                price = Double.parseDouble(DealData[9]) / standard;
-//            } else {    // else --> 'k' not exist
-//                price = Double.parseDouble(DealData[9]) / Double.parseDouble(standardStr);
-//            }
-//
-//            context.write(key, new DoubleWritable(price));
-
     }
     public static boolean isNumberic(String strNum) {
         if(strNum == null) {

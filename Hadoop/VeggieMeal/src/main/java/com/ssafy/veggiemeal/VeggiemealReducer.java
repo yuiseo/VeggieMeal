@@ -19,8 +19,18 @@ public class VeggiemealReducer extends Reducer<Text, DoubleWritable, Text, Doubl
         for (DoubleWritable val : values) {
             sum += val.get();
             count++;
-            max = Math.max(max, val.get());
-            min = Math.min(min, val.get());
+
+            double avgTemp = sum / count;
+            if(val.get() > avgTemp * 1.5){
+                continue;
+            } else {
+                max = Math.max(max, val.get());
+            }
+            if(val.get() < avgTemp * 0.5){
+                continue;
+            } else {
+                min = Math.min(min, val.get());
+            }
         }
         String keyStr = _key.toString();
         keyStr += Double.toString(max);
