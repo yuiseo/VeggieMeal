@@ -49,6 +49,15 @@ public class DealController {
         return ResponseEntity.status(HttpStatus.OK).body(smallList);
     }
 
+    /*
+     * 부류(large), 품종(medium), 품목(small)을 입력받아 원산지(origin)을 반환
+     */
+    @GetMapping("/origin")
+    public ResponseEntity<List<String>> getOrigin(@RequestParam("large") String large, @RequestParam("medium") String medium, @RequestParam("small") String small){
+        List<String> originList = dealService.getOrigin(large, medium, small);
+        return ResponseEntity.status(HttpStatus.OK).body(originList);
+    }
+
     @GetMapping("/")
     public ResponseEntity<List<DealDto>> getDeal(@RequestParam("large") String large, @RequestParam("medium") String medium, @RequestParam("small") String small, @RequestParam("origin") String origin){
         List<DealDto> dealDtoList = dealService.getDeal(large, medium, small, origin);

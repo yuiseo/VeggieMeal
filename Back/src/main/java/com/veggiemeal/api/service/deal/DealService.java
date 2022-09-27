@@ -12,4 +12,6 @@ public interface DealService {
     List<String> getMedium(String large);
 
     List<String> getSmall(String medium, String large);
+
+    List<String> getOrigin(String large, String medium, String small);
 }

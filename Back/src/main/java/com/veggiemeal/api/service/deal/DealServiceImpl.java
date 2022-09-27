@@ -41,4 +41,10 @@ public class DealServiceImpl implements DealService{
         List<String> smallList = dealRepository.findSmall(large, medium);
         return smallList;
     }
+
+    @Override
+    public List<String> getOrigin(String large, String medium, String small) {
+        List<String> originList = dealRepository.findOrigin(large, medium, small);
+        return originList;
+    }
 }
