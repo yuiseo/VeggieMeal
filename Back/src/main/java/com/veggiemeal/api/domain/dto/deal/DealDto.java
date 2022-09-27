@@ -1,11 +1,13 @@
 package com.veggiemeal.api.domain.dto.deal;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.veggiemeal.api.domain.entity.Deal;
+import com.veggiemeal.api.utils.ModelMapperUtils;
+import lombok.*;
 
 @Data
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -17,4 +19,9 @@ public class DealDto {
     private String small;
     private String origin;
     private Float price;
+
+    public static DealDto of(Deal dealEntity){
+        DealDto dealDto = ModelMapperUtils.getModelMapper().map(dealEntity, DealDto.class);
+        return dealDto;
+    }
 }
