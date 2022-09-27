@@ -16,9 +16,10 @@ public class WordCount {
         JavaRDD<String> inputFile = sc.textFile(input);
         JavaRDD<String> wordsFromFile = inputFile.flatMap(c -> Arrays.asList(c.split(" ")).iterator());
         JavaPairRDD countData = wordsFromFile.mapToPair(t -> new Tuple2<>(t, 1)).reduceByKey((x,y) -> (int)x + (int)y);
-        System.out.println(countData.count());
+        countData.foreach(t-> System.out.println(t)); //RDD result print
         countData.saveAsTextFile(output);
     }
+
     public static void main(String[] args) throws Exception{
         wordCount(args[0], args[1]);
     }
