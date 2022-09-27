@@ -28,4 +28,10 @@ public class DealServiceImpl implements DealService{
         List<String> largeList = dealRepository.findLarge();
         return largeList;
     }
+
+    @Override
+    public List<String> getMedium(String large) {
+        List<String> mediumList = dealRepository.findMedium(large);
+        return mediumList;
+    }
 }

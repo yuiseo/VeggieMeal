@@ -28,6 +28,12 @@ public class DealController {
         return ResponseEntity.status(HttpStatus.OK).body(largeList);
     }
 
+    @GetMapping("/medium")
+    public ResponseEntity<List<String>> getMedium(@RequestParam("large") String large){
+        List<String> mediumList = dealService.getMedium(large);
+        return ResponseEntity.status(HttpStatus.OK).body(mediumList);
+    }
+
     @GetMapping("/")
     public ResponseEntity<List<DealDto>> getDeal(@RequestParam("large") String large, @RequestParam("medium") String medium, @RequestParam("small") String small, @RequestParam("origin") String origin){
         List<DealDto> dealDtoList = dealService.getDeal(large, medium, small, origin);

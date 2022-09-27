@@ -8,4 +8,6 @@ public interface DealService {
     List<DealDto> getDeal(String large, String medium, String small, String origin);
 
     List<String> getLarge();
+
+    List<String> getMedium(String large);
 }
