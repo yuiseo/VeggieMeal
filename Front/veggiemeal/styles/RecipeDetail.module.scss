@@ -164,3 +164,13 @@
   }
 
 }
+
+.step_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0;
+  h3 {
+    margin-bottom: 0;
+  }
+}

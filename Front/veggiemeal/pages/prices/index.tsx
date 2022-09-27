@@ -110,6 +110,95 @@ export default function Prices() {
       </ApexChart>
     )
   }
+
+  function Table() {
+    const dumidata = [
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+    ]
+    return (
+      <>
+        <table width="500" height="300" align="center">
+          <thead>
+            <tr>
+              <th>날짜(주중)</th>
+              <th>최고가(원)</th>
+              <th>최저가(원)</th>
+              <th>평균가(원)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9월 7일</td>
+              <td>3,500</td>
+              <td>3,500</td>
+              <td>3,500</td>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+              <td>9월 8일</td>
+              <td>3,500</td>
+              <td>3,500</td>
+              <td>3,500</td>
+            </tr>
+            <tr>
+              <td>9월 9일</td>
+              <td>3,500</td>
+              <td>3,500</td>
+              <td>3,500</td>
+            </tr>
+            <tr>
+              <td>9월 10일</td>
+              <td>3,500</td>
+              <td>3,500</td>
+              <td>3,500</td>
+            </tr>
+          </tbody>
+        </table>
+      </>
+    )
+  }
   return (
     <div>
       <Head>
@@ -131,12 +220,17 @@ export default function Prices() {
 
         {/* 차트 섹션 */}
         <section className={styles.chart_section}>
-          <div className={styles.chart_1}>
-            <Chart1 />
-          </div>
-          <div>
+          <h3>차트입니다</h3>
+          <Chart1 />
+        </section>
+        <section>
+          <article>
+            <h3>차트이름</h3>
             <Chart2 />
-          </div>
+          </article>
+          <article>
+            <Table />
+          </article>
         </section>
       </main>
     </div>

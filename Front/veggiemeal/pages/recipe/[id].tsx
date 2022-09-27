@@ -6,6 +6,8 @@ import Ingredient from 'components/Ingredient';
 import YoutubeList from "components/YoutubeList";
 import RecipeStep from "components/RecipeStep";
 
+import hourglass from '/public/hourglass.png';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -70,7 +72,10 @@ export default function RecipeDetail() {
 
         {/* 만드는 방법 */}
         <section className={styles.step_section}>
-          <h3>만드는 방법</h3>
+          <section className={styles.step_title}>
+            <Image src={hourglass} width={50} height={50} />
+            <h3>만드는 방법</h3>
+          </section>
           <RecipeStep />
         </section>
 
