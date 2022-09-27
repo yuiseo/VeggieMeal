@@ -10,5 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class DealDto {
-
+    private long deal_id;
+    private String dealDate;
+    private String large;
+    private String medium;
+    private String small;
+    private String origin;
+    private Float price;
 }

@@ -1,4 +1,4 @@
 package com.veggiemeal.api.service.deal;
 
-public class DealServiceImpl {
+public class DealServiceImpl implements DealService{
 }
