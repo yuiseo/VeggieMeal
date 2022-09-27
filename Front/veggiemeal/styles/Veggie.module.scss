@@ -64,7 +64,8 @@
 .web_select{
   display: flex;
   justify-content: center;
-  
+  align-items: center;
+  margin-right: 15px;
   @media (max-width:var.$md) {
     display: none;
   }
@@ -92,7 +93,7 @@
 .veggie_list_title {
   display: flex;
   flex-direction: row;
-  margin: 2rem 0;
+  margin: 2rem 0 3.5rem 0;
   h3 {
     margin: 0 5px;
     font-weight: 700;
@@ -108,7 +109,9 @@
   h3:nth-child(3) {
     font-size: x-large;
     color: var.$green;
-    
+  }
+  @media (max-width:var.$sm) {
+  margin: 2rem 0;
   }
 }
 
@@ -117,4 +120,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (min-width:var.$lg) {
+  padding-left: 50px;
+    }
+
 }
+
+// .recipe_container {
+//   display: grid;
+//   grid-template-columns: repeat(2, 1fr);
+
+//   @media (max-width: var.$md) {
+//     grid-template-columns: repeat(1, 1fr);
+//   }
+// }

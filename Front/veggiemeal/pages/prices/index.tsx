@@ -27,12 +27,12 @@ export default function Prices() {
           {
             type: 'line',
             name: '물가 평균',
-            data: [3000, 1000, 2000, 6000, 8000, 500, 10000, 700],
+            data: [3000, 1000, 2000, 6000, 8000, 500, 1000, 700],
           },
           {
             type: 'bar',
             name: "뭐 넣기로 했죠",
-            data: [3000, 1000, 2000, 6000, 8000, 500, 10000, 700],
+            data: [3000, 1000, 2000, 6000, 8000, 500, 1000, 700],
           },
         ]}
         options={{
@@ -49,7 +49,10 @@ export default function Prices() {
             type: 'category'
           },
           yaxis: {
-            max: 10000,
+            max: function (max) {
+              return Math.max(max) + 1000
+            },
+            forceNiceScale: true,
             min: 0,
             labels: {
               formatter: function (value) {
@@ -94,10 +97,106 @@ export default function Prices() {
           xaxis: {
             type: 'category'
           },
+          yaxis: {
+            labels: {
+              formatter: function (value) {
+                return value.toLocaleString()
+              }
+            }
+          },
           colors: ['#5C5ACD']
         }}
       >
       </ApexChart>
+    )
+  }
+
+  function Table() {
+    const dumidata = [
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+      {
+        date: '9월 7일',
+        max_val: 6700,
+        min_val: 3000,
+        val: 5000,
+      },
+    ]
+    return (
+      <>
+        <table width="500" height="300" align="center">
+          <thead>
+            <tr>
+              <th>날짜(주중)</th>
+              <th>최고가(원)</th>
+              <th>최저가(원)</th>
+              <th>평균가(원)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9월 7일</td>
+              <td>3,500</td>
+              <td>3,500</td>
+              <td>3,500</td>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+              <td>9월 8일</td>
+              <td>3,500</td>
+              <td>3,500</td>
+              <td>3,500</td>
+            </tr>
+            <tr>
+              <td>9월 9일</td>
+              <td>3,500</td>
+              <td>3,500</td>
+              <td>3,500</td>
+            </tr>
+            <tr>
+              <td>9월 10일</td>
+              <td>3,500</td>
+              <td>3,500</td>
+              <td>3,500</td>
+            </tr>
+          </tbody>
+        </table>
+      </>
     )
   }
   return (
@@ -106,7 +205,7 @@ export default function Prices() {
         <title>물가분석 | 베지밀</title>
       </Head>
 
-      <main>
+      <main className={styles.main}>
         <header className={styles.header}>
           <Image src={glass} alt='magnifying glass' quality={100} width={50} height={50} />
           <h1 className={styles.price_title}>물가분석</h1>
@@ -121,13 +220,17 @@ export default function Prices() {
 
         {/* 차트 섹션 */}
         <section className={styles.chart_section}>
-          <div className={styles.chart_1}>
-            <Chart1 />
-          </div>
-          <div>
+          <h3>차트입니다</h3>
+          <Chart1 />
+        </section>
+        <section>
+          <article>
+            <h3>차트이름</h3>
             <Chart2 />
-
-          </div>
+          </article>
+          <article>
+            <Table />
+          </article>
         </section>
       </main>
     </div>
