@@ -73,7 +73,7 @@ public class MultiCrawler implements Runnable {
                 // 1일치 만큼만 데이터 읽어오기
                 String url = beforePageUrl + page++ + afterPageUrl;
                 System.out.println(url); // 어떤 페이지를 읽고있는지 확인하기 위해 필요
-                doc = Jsoup.connect(url).get();
+                doc = Jsoup.connect(url).timeout(30000).get();
                 readContents(outputDateFormatStr, doc);
             }
         } catch (IOException e) {
@@ -178,7 +178,7 @@ public class MultiCrawler implements Runnable {
         sb.append(price/(byNumber == 0 ? 1 : byNumber)).append("\n");
         // after reading one row of a table, This server should send kafka producer
         try {
-            TimeUnit.MILLISECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(10);
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getForObject(uri + sb.toString(), String.class);
         } catch(Exception e) {
