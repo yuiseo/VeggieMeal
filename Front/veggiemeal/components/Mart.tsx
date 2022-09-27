@@ -1,14 +1,10 @@
 import styles from 'styles/Mart.module.scss';
-import Image from 'next/future/image';
 import Button from 'components/Button';
-// import domtoimage from 'dom-to-image';
-import { saveAs } from 'file-saver';
-// import html2canvas from 'html2canvas';
 import * as htmlToImage from 'html-to-image';
 import download from 'downloadjs';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import { useRef } from 'react';
 import {useRouter} from 'next/router';
+import Image from 'next/image';
 
 
 type MartProps={
@@ -28,24 +24,6 @@ export default function Mart({title, price, isCheap, data}: MartProps ){
         .then((dataUrl) => {
            download(dataUrl, 'veggieMeal')
     })};
-
-    // function DownloadMart(){
-    //     const martImg:any = document.getElementsByClassName(`${title}_mart`);
-    //     console.log(martImg)
-    //     html2canvas(martImg).then(canvas=>{
-    //         onSaveAs(canvas.toDataURL('image/png'), 'veggieMeal.jpg')
-    //     })
-    //     }
-
-    // function onSaveAs(uri:string, filename:string){
-    //     console.log(uri)
-    //     var link = document.createElement('a');
-    //     document.body.appendChild(link);
-    //     link.href=uri;
-    //     link.download = filename;
-    //     link.click();
-    //     document.body.removeChild(link)
-    // }
     
     return(
         <article ref={martRef} className={`${title}_mart`} >
@@ -81,10 +59,14 @@ export default function Mart({title, price, isCheap, data}: MartProps ){
                 }
                 <hr className={styles.hr} />
                 <div className={styles.map_btn} onClick={()=>{router.push(`cart/${title}`)}}>
-                    {title === "emart" ? 
-                    <Button content="내 주변 이마트 찾기" bgColor='black' />
+                    {title === "emart" ?
+                    <div className={styles.find_way}>
+                        <p>내 주변 이마트 찾기</p>
+                    </div>
                     : 
-                    <Button content="내 주변 홈플러스 찾기" bgColor='black' />
+                    <div className={styles.find_way}>
+                        <p>내 주변 홈플러스 찾기</p>
+                    </div>
                     }
                 </div>
                 <div className={styles.item_list}>

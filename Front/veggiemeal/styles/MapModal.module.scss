@@ -38,3 +38,51 @@
         font-size:23px;
     }
 }
+
+.mart_div {
+    display:flex;
+    flex-direction: column;
+    background-color: var.$grey;
+    padding: 25px 25px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.mart_header {
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left:5px;
+    p {
+        margin-left:10px;
+        font-weight: 700;
+        font-size: 20px;
+        margin-bottom: 0;
+    }
+}
+
+.mart_location {
+    display:flex;
+    margin: 15px 0 0 9px;
+    p, a {
+        margin-bottom: 0;
+        margin-left:10px;
+        font-weight: 500;
+        font-size:17px;
+        color:var.$black;
+    }
+    a:hover {
+        color:var.$purple;
+    }
+}
+
+.find_road_btn {
+    button {
+        border:0;
+        border-radius: 10px;
+        background-color: var.$black;
+        color:white;
+        padding: 10px 15px;
+    }
+    margin: 0 0 0 auto;
+}

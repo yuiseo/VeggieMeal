@@ -22,11 +22,11 @@ export default function RecipeList({ recipeId, name, cal, hour, category, recipe
         {/* 레시피 내용 */}
         <div id={styles.list_content}>
           <div>
-            <p>{category}</p>
+            <p className={styles.category_name}>{category}</p>
           </div>
           <h4>{name}</h4>
-          <p>{hour}분</p>
-          <p>{cal}Kcal</p>
+          <p>{hour}분 소요</p>
+          <p>{cal} Kcal</p>
         </div>
       </article>
     </>

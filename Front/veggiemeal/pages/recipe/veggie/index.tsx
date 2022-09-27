@@ -106,11 +106,7 @@ export default function Veggie() {
           <h3>레시피 목록</h3>
         </div>
         <section className={styles.recipe_container}>
-          <Container className={`mx-3 px-6`}>
-            <Row className={`mx-3 px-5`}>
-              {dumidata.map((item, index) => <RecipeList key={index} {...item}><Col /></RecipeList>)}
-            </Row>
-          </Container>
+          {dumidata.map((item, index) => <RecipeList key={index} {...item}><Col sm={12} md={6}  /></RecipeList>)}
         </section>
       </>
     )
@@ -146,15 +142,7 @@ export default function Veggie() {
             {category === '폴로 베지테리언' && (<div className={styles.veggie}><Image src={pollo} alt='폴로 베지테리언' quality={100} width={390} height={70} /></div>)}
             {category === '플렉시테리언' && (<div className={styles.veggie}><Image src={flexi} alt='플렉시테리언' quality={100} width={390} height={70} /></div>)}
             {category === '채식단계' && (<div className={styles.veggie}><Image src={flexi} alt='플렉시테리언' quality={100} width={390} height={70} /></div>)}
-            {/* <div className={styles.veggie_img}>
-              <Image src={flexi} quality={100} alt='플렉시테리언' />
-            </div> */}
-            {/* <div className={styles.veggie}><Image src={veggie} alt='veggie' quality={100} width={40} height={40} /></div>
-            <div className={styles.milk}><Image src={milk} alt='milk' quality={100} width={40} height={40} /></div>
-            <div className={styles.egg}><Image src={egg} alt='egg' quality={100} width={40} height={40} /></div>
-            <div className={styles.fish}><Image src={fish} alt='fish' quality={100} width={40} height={40} /></div>
-            <div className={styles.hen}><Image src={hen} alt='hen' quality={100} width={40} height={40} /></div>
-            <div className={styles.meat}><Image src={meat} alt='meat' quality={100} width={40} height={40} /></div> */}
+
             {/* 모달창을 위한 물음표 */}
             <div className={styles.question}>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FFB500" className="bi bQquestionCircle" viewBox="0 0 16 16">
@@ -169,7 +157,11 @@ export default function Veggie() {
           </div>
         </section>
         <section id={styles.veggie_list}>
-          {category != '채식단계' ? <Recipes /> : <></>}
+          {category != '채식단계' ? <Recipes /> : 
+          <div className={styles.noVeggie}>
+            <Image src="/think.png" width={150} height={150} quality={100} />
+            <p> 어떤 단계의 채식 레시피를 알려드릴까요? </p>
+          </div>}
         </section>
       </main>
     </div >

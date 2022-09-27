@@ -68,7 +68,7 @@ main {
 /* 스크롤바 뒷 배경 설정*/
 ::-webkit-scrollbar-track{
     // background-color: rgba(0, 0, 0, 0);
-    background-color:white;
+    background-color:var.$grey;
     border-radius: 10px;
 }
 

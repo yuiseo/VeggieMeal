@@ -113,3 +113,22 @@
         width:300px;
     }
 }
+
+.find_way {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var.$purple;
+    border-radius: 15px;
+    padding: 10px 0;
+    margin: 10px 0;
+    p {
+        cursor:pointer;
+        font-weight: 500;
+        font-size:18px;
+        // color:var.$green;
+        color:white;
+        margin-bottom:0;
+        margin-left:10px;
+    }
+}
