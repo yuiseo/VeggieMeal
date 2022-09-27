@@ -9,8 +9,7 @@ import org.springframework.stereotype.Controller;
 public class SchedulerController {
 
     // Everyday 00:01:00 starts crawling
-    @Scheduled(cron = "0 1 0 * * *")
-//    @Scheduled(cron="0 0 0 ? * TUES-SAT")
+    @Scheduled(cron = "50 01 12 * * *")
     public void scheduler() {
         Runnable runnable = null;
         for (int i = 0; i < 20; i++) {

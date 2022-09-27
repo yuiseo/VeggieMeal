@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 /* Multi-threaded crawler */
 public class MultiCrawler implements Runnable {
 
-    private final String uri = "http://localhost:8085/kafka/deal?deal=";
+    private final String uri = "http://localhost:8090/kafka/deal?deal=";
     private boolean flag = false; // 수집 날짜가 아닌 다른 날짜의 데이터를 받아오는 경우를 표시
     private String date;
     private int page;
@@ -50,7 +50,7 @@ public class MultiCrawler implements Runnable {
 
         if(date == null || date.isEmpty()) {
             // 수집 날짜 구하기 - 매일 어제의 경매데이터를 읽어옴
-            Date today = new Date(System.currentTimeMillis() - 48 * 60 * 60 * 1000);
+            Date today = new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000);
 
             // 날짜 포매팅
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -82,7 +82,7 @@ public class MultiCrawler implements Runnable {
     }
 
     /*
-    각 행 경락일시, 부류, 품목, 품종, 수입여부, 규격(0: kg, 1: 개), 경락가 순
+    각 행 경락일시, 부류, 품목, 품종, 수입여부(0: income, 1: korea), 규격(0: kg, 1: 개), 경락가 순
      */
     private void readContents(String outputDateFormatStr, Document doc) {
         //select를 이용하여 원하는 태그를 선택한다.
@@ -137,28 +137,33 @@ public class MultiCrawler implements Runnable {
 
 
         // 규격 - kg -> 100g 단위 - 규격의 종류에 0, 개수인 경우 규격의 여부에 1 표시
-        String[] splitStr = null;
+        String kg = null;
         boolean isKg = false;
 
-        if(children.get(7).text().contains(". .")) {
-            splitStr = children.get(7).text().split(". .");
+        // 0.5kg, 500g, 0.5, "." , ". ." -> kg
+        if(children.get(7).text().contains("k")){
+            kg = children.get(7).text().split("k")[0];
             isKg = true;
-        } else if(children.get(7).text().contains("k")){
-            splitStr = children.get(7).text().split("k");
+        } else if(children.get(7).text().contains(".")) {
+            kg = children.get(7).text().split(".").length == 0 ? "0" : children.get(7).text().split(".")[0];
+            isKg = true;
+        } else if(children.get(7).text().contains("g")) {
+            kg = "0."+ children.get(7).text().split("g")[0];
             isKg = true;
         } else {
-            splitStr = children.get(7).text().split(" ");
+            kg = children.get(7).text().replace("[^0-9]", "");
+            isKg = true;
         }
 
         int byNumber = 1;
 
         if(isKg) {
             sb.append("0, ");
-            byNumber = (int) (Float.parseFloat(splitStr[0]) * 10);
+            byNumber = (int) (Float.parseFloat(kg) * 10);
         } else { // 단위가 개수인 경우
             // 만약 소수점이라면, 올림
             sb.append("1, ");
-            byNumber = (int) (Math.ceil(Float.parseFloat(splitStr[0])));
+            byNumber = Integer.parseInt(kg);
         }
 //        sb.append(byNumber).append(", "); 규격(100g or 개)
 
@@ -170,7 +175,7 @@ public class MultiCrawler implements Runnable {
         } catch(ParseException e) {
             e.printStackTrace();
         }
-        sb.append(price/(byNumber == 0 ? 10 : byNumber)).append("\n");
+        sb.append(price/(byNumber == 0 ? 1 : byNumber)).append("\n");
         // after reading one row of a table, This server should send kafka producer
         try {
             TimeUnit.MILLISECONDS.sleep(1);

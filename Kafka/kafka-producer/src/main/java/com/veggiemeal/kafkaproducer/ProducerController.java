@@ -34,14 +34,14 @@ public class ProducerController {
 
     @GetMapping("/kafka/deal")
     public void getDeal (@RequestParam(value= "deal") String dealData) { // dealData is used as Value
-        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Date is used as Key
-        now = new Date();
+        simpleDateFormat = new SimpleDateFormat("yyyyMMdd"); // Date is used as Key
+        now = new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000);
 
 //        gson = new Gson();
 //        userEventVO = new UserEventVO(simpleDateFormat.format(now), userAgent, dealData);
 //        jsonLog = gson.toJson(userEventVO);
 
-        kafkaTemplate.send("deal.log", simpleDateFormat.format(now), dealData).addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
+        kafkaTemplate.send("deal", simpleDateFormat.format(now), dealData).addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 
             @Override
             public void onSuccess(SendResult<String, String> result) {
