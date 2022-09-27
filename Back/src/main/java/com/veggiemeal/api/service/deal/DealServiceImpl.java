@@ -22,4 +22,10 @@ public class DealServiceImpl implements DealService{
         List<DealDto> dealDtoList = dealList.stream().map(entity -> DealDto.of(entity)).collect(Collectors.toList());
         return dealDtoList;
     }
+
+    @Override
+    public List<String> getLarge() {
+        List<String> largeList = dealRepository.findLarge();
+        return largeList;
+    }
 }

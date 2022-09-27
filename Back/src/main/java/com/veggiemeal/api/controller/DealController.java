@@ -22,11 +22,15 @@ public class DealController {
         this.dealService = dealService;
     }
 
+    @GetMapping("/large")
+    public ResponseEntity<List<String>> getLarge(){
+        List<String> largeList = dealService.getLarge();
+        return ResponseEntity.status(HttpStatus.OK).body(largeList);
+    }
+
     @GetMapping("/")
     public ResponseEntity<List<DealDto>> getDeal(@RequestParam("large") String large, @RequestParam("medium") String medium, @RequestParam("small") String small, @RequestParam("origin") String origin){
-        System.out.println("a");
         List<DealDto> dealDtoList = dealService.getDeal(large, medium, small, origin);
-        System.out.println(dealDtoList.toArray().toString());
         return ResponseEntity.status(HttpStatus.OK).body(dealDtoList);
     }
 
