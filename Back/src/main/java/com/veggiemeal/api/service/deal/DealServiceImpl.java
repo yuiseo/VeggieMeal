@@ -16,6 +16,7 @@ public class DealServiceImpl implements DealService{
     public DealServiceImpl(DealRepository dealRepository){
         this.dealRepository = dealRepository;
     }
+
     @Override
     public List<DealDto> getDeal(String large, String medium, String small, String origin) {
         List<Deal> dealList = dealRepository.findByLargeAndMediumAndSmallAndOrigin(large, medium, small, origin);
@@ -33,5 +34,11 @@ public class DealServiceImpl implements DealService{
     public List<String> getMedium(String large) {
         List<String> mediumList = dealRepository.findMedium(large);
         return mediumList;
+    }
+
+    @Override
+    public List<String> getSmall(String medium, String large) {
+        List<String> smallList = dealRepository.findSmall(large, medium);
+        return smallList;
     }
 }

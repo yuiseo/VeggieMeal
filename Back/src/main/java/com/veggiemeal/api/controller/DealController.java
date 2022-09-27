@@ -22,16 +22,31 @@ public class DealController {
         this.dealService = dealService;
     }
 
+    /*
+    * 부류(large) 반환
+     */
     @GetMapping("/large")
     public ResponseEntity<List<String>> getLarge(){
         List<String> largeList = dealService.getLarge();
         return ResponseEntity.status(HttpStatus.OK).body(largeList);
     }
 
+    /*
+     * 부류(large)를 입력받아 품종(medium)을 반환
+     */
     @GetMapping("/medium")
     public ResponseEntity<List<String>> getMedium(@RequestParam("large") String large){
         List<String> mediumList = dealService.getMedium(large);
         return ResponseEntity.status(HttpStatus.OK).body(mediumList);
+    }
+
+    /*
+     * 부류(large), 품종(medium)을 입력받아 품목(small)을 반환
+     */
+    @GetMapping("/small")
+    public ResponseEntity<List<String>> getSmall(@RequestParam("large") String large, @RequestParam("medium") String medium){
+        List<String> smallList = dealService.getSmall(large, medium);
+        return ResponseEntity.status(HttpStatus.OK).body(smallList);
     }
 
     @GetMapping("/")

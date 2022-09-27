@@ -10,4 +10,6 @@ public interface DealService {
     List<String> getLarge();
 
     List<String> getMedium(String large);
+
+    List<String> getSmall(String medium, String large);
 }
