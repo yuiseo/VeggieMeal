@@ -1,14 +1,10 @@
 import styles from 'styles/Mart.module.scss';
-import Image from 'next/future/image';
 import Button from 'components/Button';
-// import domtoimage from 'dom-to-image';
-import { saveAs } from 'file-saver';
-// import html2canvas from 'html2canvas';
 import * as htmlToImage from 'html-to-image';
 import download from 'downloadjs';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import {useRouter} from 'next/router';
+import Image from 'next/image';
 
 
 type MartProps={
@@ -21,31 +17,15 @@ type MartProps={
 export default function Mart({title, price, isCheap, data}: MartProps ){
     const router = useRouter();
     const martRef = useRef<any>();
+    const [martUrl, setMartUrl] = useState<string>();
     
     function DownloadMart(){
         const martImg = martRef.current;
         htmlToImage.toPng(martImg)
         .then((dataUrl) => {
+            setMartUrl(dataUrl)
            download(dataUrl, 'veggieMeal')
     })};
-
-    // function DownloadMart(){
-    //     const martImg:any = document.getElementsByClassName(`${title}_mart`);
-    //     console.log(martImg)
-    //     html2canvas(martImg).then(canvas=>{
-    //         onSaveAs(canvas.toDataURL('image/png'), 'veggieMeal.jpg')
-    //     })
-    //     }
-
-    // function onSaveAs(uri:string, filename:string){
-    //     console.log(uri)
-    //     var link = document.createElement('a');
-    //     document.body.appendChild(link);
-    //     link.href=uri;
-    //     link.download = filename;
-    //     link.click();
-    //     document.body.removeChild(link)
-    // }
     
     return(
         <article ref={martRef} className={`${title}_mart`} >
@@ -53,14 +33,14 @@ export default function Mart({title, price, isCheap, data}: MartProps ){
                 <div className={styles.header}>
                     <div className={styles.mart_icon}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-box-arrow-up" viewBox="0 0 16 16"
-                        style={{marginRight:'10px'}}
                         onClick={DownloadMart}>
                             <path fillRule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"/>
                             <path fillRule="evenodd" d="M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708l3-3z"/>
                         </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-share-fill" viewBox="0 0 16 16">
+                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-share-fill" viewBox="0 0 16 16"
+                        onClick={ShareKakao}>
                             <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
-                        </svg>
+                        </svg> */}
                     </div>
                     <div className={styles.mart_title}>
                         {title === 'emart' ? <img src="/emart.png" width={35} height={35}  /> : <img src="/homeplus.png" width={35} height={35}  />}
@@ -81,10 +61,14 @@ export default function Mart({title, price, isCheap, data}: MartProps ){
                 }
                 <hr className={styles.hr} />
                 <div className={styles.map_btn} onClick={()=>{router.push(`cart/${title}`)}}>
-                    {title === "emart" ? 
-                    <Button content="내 주변 이마트 찾기" bgColor='black' />
+                    {title === "emart" ?
+                    <div className={styles.find_way}>
+                        <p>내 주변 이마트 찾기</p>
+                    </div>
                     : 
-                    <Button content="내 주변 홈플러스 찾기" bgColor='black' />
+                    <div className={styles.find_way}>
+                        <p>내 주변 홈플러스 찾기</p>
+                    </div>
                     }
                 </div>
                 <div className={styles.item_list}>

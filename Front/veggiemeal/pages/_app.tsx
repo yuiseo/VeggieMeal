@@ -5,10 +5,11 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { RecoilRoot } from 'recoil';
 import Script from "next/script";
 import Navbar from 'components/Navbar';
+import {useEffect} from 'react';
 
 declare global {
   interface Window {
-    kakao: any;
+    kakao:any;
     naver: any;
   }}
 
