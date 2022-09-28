@@ -1,3 +1,4 @@
+import styles from 'styles/ChartLine.module.scss';
 import dynamic from 'next/dynamic';
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -6,46 +7,45 @@ export default function ChartColumn() {
 
 
   return (
-    // <>
-    <ApexChart
-      type='area'
-      series={[
-        {
-          name: '물가 평균',
-          data: [3000, 1000, 2000, 6000, 8000, 500, 10000, 700],
-        }
-      ]}
-      options={{
-
-        chart: {
-          height: 300,
-          toolbar: {
-            show: false,
+    <div className={styles.Container}>
+      <ApexChart
+        type='area'
+        series={[
+          {
+            name: '물가 평균',
+            data: [3000, 1000, 2000, 6000, 8000, 500, 10000, 700],
+          }
+        ]}
+        options={{
+          chart: {
+            height: 300,
+            toolbar: {
+              show: false,
+            },
+            background: 'transparent',
           },
-          background: 'transparent',
-        },
-        dataLabels: {
-          enabled: false
-        },
-        labels: ['9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일',],
-        xaxis: {
-          type: 'category'
-        },
-        yaxis: {
-          labels: {
-            formatter: function (value) {
-              return value.toLocaleString()
-            }
+          dataLabels: {
+            enabled: false
           },
-          forceNiceScale: true,
-          // min: function (min) {
-          //   return Math.min(min) - 100
-          // },
-        },
-        colors: ['#5C5ACD']
-      }}
-    >
-    </ApexChart >
-    // </>
+          labels: ['9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일',],
+          xaxis: {
+            type: 'category'
+          },
+          yaxis: {
+            labels: {
+              formatter: function (value) {
+                return value.toLocaleString()
+              }
+            },
+            forceNiceScale: true,
+            max: function (max) {
+              return Math.max(max) + 1
+            },
+          },
+          colors: ['#5C5ACD']
+        }}
+      >
+      </ApexChart >
+    </div>
   )
 }

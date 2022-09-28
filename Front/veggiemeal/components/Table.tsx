@@ -28,8 +28,8 @@ export default function Table({ tableData, tableColumns }: TableProps) {
 
         {/* data */}
         <tbody>
-          {tableData.map(({ date, max_val, min_val, val, index }: DataProps) => (
-            <tr key={index}>
+          {tableData.map(({ date, max_val, min_val, val }: DataProps) => (
+            <tr key={date}>
               <td>{date}</td>
               <td style={{ color: 'red' }}>▲{max_val.toLocaleString()}</td>
               <td style={{ color: 'blue' }}>▼{min_val.toLocaleString()}</td>

@@ -1,21 +1,19 @@
 @use 'variable' as var;
 
-.main {
-  display: flex;
-  flex-direction: column;
-  // align-items: flex-start;
-  min-height: 100vh;
-  max-width: 90vw;
-  padding: 4rem 0;
-  margin-top: 15px;
-}
+// .main{
+//   width: 70vw;
+//   max-height: 80vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
 
 .header {
   display: flex;
   flex-direction: column;
-  width: 80vw;
-  padding: 20px 0;
-  align-items: flex-start;
+  // width: 80vw;
+  // padding: 20px 0;
+  // align-items: flex-start;
 
   h1 {
     font-weight: 700;
@@ -32,52 +30,116 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 30px 0;
+  margin: 10px 0 30px 0;
 }
 
 
 .category {
   display: flex;
   flex-direction: row;
-  // align-items: flex-end;
-  max-width: 600px;
+  @media (max-width:var.$sm) {
+    justify-content: space-evenly;
+    width: 85vw;
+    >div>div {
+      padding-left:10px ;
+    }
+  }
+  @media(min-width:var.$sm){
+    >div {
+      margin : 0 4px
+    }
+  }
+}
+
+// .main{
+//   width: 70vw;
+//   max-height: 80vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+.header {
+  display: flex;
+  flex-direction: column;
+  // width: 80vw;
+  // padding: 20px 0;
+  // align-items: flex-start;
+
+  h1 {
+    font-weight: 700;
+    margin-left: 10px;
+    margin-bottom: 0;
+  }
+
   @media (max-width:var.$sm) {
     width: 85vw;
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 20px 0;
+}
+
+
+.category {
+  display: flex;
+  flex-direction: row;
+
+  // max-width: 600px;
+  @media (max-width:var.$sm) {
+    justify-content: space-evenly;
+    width: 85vw;
+
+    >div>div {
+      padding-left: 10px;
+    }
   }
 }
 
 //chart크기는 css로 조정한다..! 
-.chart_section{
-  display: flex;
-  flex-direction: column;
-  // max-width: 1000px;
-  // // width: 80vw;
+.chart_section {
+  @media (min-width:var.$sm) {
+    //flex하면 너무 커서 grid로 시도하다가 다 지우고 다시 했었나봐요!ㅠㅠ
+    display: grid;
+    grid-template-columns: 60% 30%;
+    grid-template-rows: 70% 30%;
+  }
+
+  // flex-direction: column;
+  width: 80vw;
+  margin-top: 20px;
+
+  h3 {
+    font-weight: 600;
+  }
+
   @media (max-width:var.$sm) {
     width: 85vw;
   }
 }
 
+.main_chart {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
 
 .sub_chart {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+
+  // justify-content: space-evenly;
   @media (max-width:var.$md) {
-      flex-direction: column;
+    flex-direction: column;
   }
 }
 
 .table_article {
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
   padding: 20px;
   border-radius: 15px;
   background-color: var.$grey;
 }
-
-// #apexchartsjrg4pf28h {
-//   width: 1000px;
-//   height: 500px;
-// }
-

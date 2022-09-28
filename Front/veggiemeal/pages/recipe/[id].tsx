@@ -87,6 +87,7 @@ export default function RecipeDetail({ data }: YoutubeProps) {
             </div>
           </div>
         </header>
+
         <section className={styles.ingredient_slider}>
           <IngredientSlider />
         </section>
@@ -116,7 +117,7 @@ export default function RecipeDetail({ data }: YoutubeProps) {
 
         {/* 유튜브 리스트 */}
         <section className={styles.youtube_section}>
-          <h3>Youtube</h3>
+          <h1>Youtube</h1>
           <div className={styles.youtube_intro}>
             <p>만드는 법이 감이 잘 안 오신다면,</p>
             <p>아래 영상들을 참고해 보세요!</p>

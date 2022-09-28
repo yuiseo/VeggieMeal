@@ -30,12 +30,13 @@
   }
 
 }
+
 #thumbnail {
   width: inherit;
   height: max-content;
-  background-size: cover;
-  background-position: center;
-  background-image: url('/main_cook.png');
+  // background-size: cover;
+  // background-position: center;
+  // background-image: url('/main_cook.png');
   &:hover {
     cursor: pointer;
   }
@@ -50,5 +51,8 @@
     &:hover{
       cursor: pointer;
     }
+  }
+  @media (max-width:var.$md) {
+    padding: 1.5rem 1rem;
   }
 }

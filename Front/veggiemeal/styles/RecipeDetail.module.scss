@@ -51,7 +51,7 @@
     margin: 10px;
     @media (min-width: var.$sm) {
       display: none;
-    :hover{
+    &:hover{
       cursor: pointer;
     }
     }
@@ -64,9 +64,9 @@
     width: 30px;
     height: 30px;
     margin: 10px;
-    :hover {
-      cursor: pointer;
-    }
+    &:hover {
+        cursor: pointer;
+      }
   }
 }
 .mobile_description {
@@ -180,8 +180,8 @@
   justify-content: center;
   padding: 0 4rem;
   
-  h3 {
-    margin-top: 20px;
+  h1 {
+    margin: 15px 0 5px;
     color: var.$purple;
     font-weight: 900;
   }
@@ -199,7 +199,7 @@
 .youtube_intro {
   display: flex;
   flex-direction: row;
-  margin: 10px 0;
+  margin: 0 0 25px 0;
   @media (max-width:var.$sm) {
     flex-direction: column;
     p{
@@ -220,21 +220,13 @@
   }
 }
 
-// #__next>main>section:nth-child(2)>div>div {
-//   max-width: 80vw;
-// }
-
-// #__next>main>section.RecipeDetail_ingredient_slider__yRcYM>div>div {
-//   max-width: 85vw;
-// }
 
 .Container {
   display: grid;
   @media (max-width:var.$sm) {
     row-gap: 16px;
   }
-  
-  @media (min-width: var.$sm) {
+  @media (max-width: var.$md) {
     grid-template-columns: 1fr;
     column-gap: 16px;
     row-gap: 16px;
@@ -249,9 +241,4 @@
     column-gap: 16px;
     row-gap: 16px;
   }
-  // @media (max-width: var.$sm) {
-  //   grid-template-columns: 1fr;
-  //   column-gap: 16px;
-  //   row-gap: 16px;
-  // }
 }

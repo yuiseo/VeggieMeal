@@ -3,7 +3,12 @@
   table{
     margin-left: auto;
     margin-right: auto;
-    
+    @media (max-width:var.$sm){
+      font-size: medium;
+      thead {
+          font-size: large;
+        }
+    }
   }
   thead {
     border-bottom: 1px solid;

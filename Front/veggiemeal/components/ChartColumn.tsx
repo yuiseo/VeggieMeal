@@ -1,33 +1,36 @@
+import styles from 'styles/ChartColumn.module.scss';
 import dynamic from 'next/dynamic';
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
+
 export default function ChartLine() {
+  const dumidata = [
+    {
+      type: 'bar',
+      name: '최고가',
+      data: [3000, 1000, 2000, 6000, 8000, 500, 1000, 700],
+    },
+    {
+      type: 'bar',
+      name: "최저가",
+      data: [3000, 1000, 2000, 6000, 8000, 500, 1000, 700],
+    },
+  ]
 
 
   return (
-    <>
+    <div className={styles.Container}>
       <ApexChart
-        style={{ width: '400px' }}
-        series={[
-          {
-            type: 'bar',
-            name: '물가 평균',
-            data: [3000, 1000, 2000, 6000, 8000, 500, 1000, 700],
-          },
-          {
-            type: 'bar',
-            name: "뭐 넣기로 했죠",
-            data: [3000, 1000, 2000, 6000, 8000, 500, 1000, 700],
-          },
-        ]}
+        // style={{ width: '400px' }}
+        series={dumidata}
         options={{
           // responsive: [{
           //   breakpoint: 800,
           // }],
 
           chart: {
-            // height: 400,
-
+            // height: 1000,
+            stacked: true,
             toolbar: {
               show: false,
             },
@@ -64,6 +67,6 @@ export default function ChartLine() {
         }}
       >
       </ApexChart>
-    </>
+    </div>
   )
 }
