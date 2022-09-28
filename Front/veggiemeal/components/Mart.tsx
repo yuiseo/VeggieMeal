@@ -2,7 +2,7 @@ import styles from 'styles/Mart.module.scss';
 import Button from 'components/Button';
 import * as htmlToImage from 'html-to-image';
 import download from 'downloadjs';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import {useRouter} from 'next/router';
 import Image from 'next/image';
 
@@ -17,11 +17,13 @@ type MartProps={
 export default function Mart({title, price, isCheap, data}: MartProps ){
     const router = useRouter();
     const martRef = useRef<any>();
+    const [martUrl, setMartUrl] = useState<string>();
     
     function DownloadMart(){
         const martImg = martRef.current;
         htmlToImage.toPng(martImg)
         .then((dataUrl) => {
+            setMartUrl(dataUrl)
            download(dataUrl, 'veggieMeal')
     })};
     
@@ -31,14 +33,14 @@ export default function Mart({title, price, isCheap, data}: MartProps ){
                 <div className={styles.header}>
                     <div className={styles.mart_icon}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-box-arrow-up" viewBox="0 0 16 16"
-                        style={{marginRight:'10px'}}
                         onClick={DownloadMart}>
                             <path fillRule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"/>
                             <path fillRule="evenodd" d="M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708l3-3z"/>
                         </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-share-fill" viewBox="0 0 16 16">
+                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-share-fill" viewBox="0 0 16 16"
+                        onClick={ShareKakao}>
                             <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
-                        </svg>
+                        </svg> */}
                     </div>
                     <div className={styles.mart_title}>
                         {title === 'emart' ? <img src="/emart.png" width={35} height={35}  /> : <img src="/homeplus.png" width={35} height={35}  />}
