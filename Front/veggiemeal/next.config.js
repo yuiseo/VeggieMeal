@@ -16,6 +16,7 @@ module.exports = {
   experimental: {
     images: {
       allowFutureImage: true,
+      domains:['i.ytimg.com']
     },
   },
 
