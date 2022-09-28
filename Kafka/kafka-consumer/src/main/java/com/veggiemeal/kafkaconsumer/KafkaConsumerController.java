@@ -30,11 +30,11 @@ public class KafkaConsumerController {
             "password='URjf+tnBRG3YmjxS79PcCkQeIuLAexwwr4Toi1KnE7I4/afnYISZKnyBJsTmbpQc';";
     private final static String SSL_ENDPOINT = "https";
     private final static String SASL_MECHANISM = "PLAIN";
-    private final static String GROUP_ID = "hdfs-save-consumer-group";
+    private final static String GROUP_ID = "consumer-test8";
     private final static int CONSUMER_COUNT = 6; // Partition 개수와 연동될 쓰레드 개수 (1 Partition : 1 Consumer Thread)
     private final static List<ConsumerWorker> workers = new ArrayList<>();
 
-    @Scheduled(cron = "30 41 15 * * *")
+    @Scheduled(cron = "50 41 17 * * *")
     private void work() {
         // 런타임 도중 셧다운 훅이 발생했을 때, 각 컨슈머를 운영하는 쓰레드에 종료를 알린다.
         Runtime.getRuntime().addShutdownHook(new ShutdownThread());
