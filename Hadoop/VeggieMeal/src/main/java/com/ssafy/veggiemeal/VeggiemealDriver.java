@@ -11,6 +11,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class VeggiemealDriver {
     public static void main(String[] args) throws Exception {
+        long beforeTime = System.currentTimeMillis();
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "VeggieMeal");
         job.setJarByClass(com.ssafy.veggiemeal.VeggiemealDriver.class);
@@ -24,5 +25,10 @@ public class VeggiemealDriver {
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
         if (!job.waitForCompletion(true))
             return;
+        long afterTime = System.currentTimeMillis();
+        long difTime = afterTime - beforeTime;
+        System.out.println("-------------------------------------------------------------------------");
+        System.out.println("run Time : " + difTime + "ms");
+        System.out.println("-------------------------------------------------------------------------");
     }
 }
