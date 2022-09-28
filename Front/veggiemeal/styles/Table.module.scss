@@ -1,0 +1,17 @@
+@use 'variable' as var;
+.table_Container {
+  table{
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+  thead {
+    border-bottom: 1px solid;
+  }
+  td {
+    padding: 5px;
+  }
+  th {
+    padding: 5px;
+  }
+}

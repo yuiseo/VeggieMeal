@@ -6,7 +6,7 @@
   width: 80vw;
   height: 80vw;
   // box-sizing: border-box;
-  margin: 10px 0;
+  // margin: 10px 0;
   border-radius: 15px;
   background-color: var.$grey;
   overflow: hidden;
@@ -15,8 +15,8 @@
     height: 70vw;
   }
   @media (min-width:var.$md) {
-    width: 250px;
-    height: 250px;
+    width: 270px;
+    height: 300px;
     // margin-right: 20px;
   }
 }
@@ -25,17 +25,20 @@
   height: 45vw;
   
   @media (min-width:var.$md) {
-    width: 250px;
-    height: 120px;
+    width: 270px;
+    height: 150px;
   }
 
 }
 #thumbnail {
   width: inherit;
-  height: inherit;
+  height: max-content;
   background-size: cover;
   background-position: center;
   background-image: url('/main_cook.png');
+  &:hover {
+    cursor: pointer;
+  }
 }
 .content {
   // margin: 10px 15px;
@@ -44,5 +47,8 @@
     margin: 0;
     font-size: medium;
     font-weight: 700;
+    &:hover{
+      cursor: pointer;
+    }
   }
 }

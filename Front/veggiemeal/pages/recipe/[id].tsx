@@ -2,15 +2,26 @@ import Head from "next/head";
 import Image from 'next/image';
 
 import styles from 'styles/RecipeDetail.module.scss';
-import Ingredient from 'components/Ingredient';
+import IngredientSlider from 'components/IngredientSlider';
 import YoutubeList from "components/YoutubeList";
 import RecipeStep from "components/RecipeStep";
 
 import hourglass from '/public/hourglass.png';
+import kakaoicon from '/public/kakaoicon.png';
+import { useRouter } from 'next/router';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
+
+interface YoutubeProps {
+  data: any;
+}
+interface YoutubeData {
+  title: any;
+  thumbnails: any;
+}
 function FoodImage() {
   return (
     <>
@@ -23,9 +34,24 @@ function FoodImage() {
     </>
   )
 }
+// const YOUTUBE_PLAYLIST_ITEMS_API = 'https://www.googleapis.com/youtube/v3/playlistItems';
+const YOUTUBE_SEARCH_API = 'https://www.googleapis.com/youtube/v3/search'
 
-export default function RecipeDetail() {
-
+// const YOUTUBE_URL = "https://www.googleapis.com/youtube/v3/playlistItems";
+export async function getServerSideProps() {
+  const res = await fetch(
+    `${YOUTUBE_SEARCH_API}?part=snippet&q=나물비빔밥&maxResults=6&key=${process.env.YOUTUBE_API_KEY}`
+  );
+  const data = await res.json();
+  return {
+    props: {
+      data
+    }
+  };
+}
+export default function RecipeDetail({ data }: YoutubeProps) {
+  const router = useRouter();
+  console.log('data', data);
   return (
     <>
       <Head>
@@ -38,11 +64,19 @@ export default function RecipeDetail() {
         <header className={styles.header}>
           <FoodImage />
           <div className={styles.header_title}>
-            <h1 className={styles.mobile_title}>나물비빔밥</h1>
+            <div className={styles.mobile_icon_title}>
+              <h1 className={styles.mobile_title}>나물비빔밥</h1>
+              <img src='/kakaoicon.png' />
+            </div>
+            <p className={styles.mobile_description}>여기에 디스크립션이 있다고 생각하기</p>
 
             {/* 모바일뷰에서 없어져야 합니다 */}
             <div className={styles.web_ingredient}>
-              <h1>나물비빔밥</h1>
+              <div className={styles.web_icon_title}>
+                <h1>나물비빔밥</h1>
+                <img src='/kakaoicon.png' />
+              </div>
+              <p>여기에 디스크립션이 있다고 생각하기</p>
               <p>재료 목록</p>
               <p>
                 나물 비빔밥에는 많은게 들어가죠 <br />
@@ -53,11 +87,12 @@ export default function RecipeDetail() {
             </div>
           </div>
         </header>
-
+        <section className={styles.ingredient_slider}>
+          <IngredientSlider />
+        </section>
         {/* 모바일 뷰에서는 재료 Compo 재료 */}
         {/* 웹 뷰에서는 재료 Compo만 */}
         <section className={styles.ingredient_section}>
-          <Ingredient />
           {/* 모바일 뷰에서만 나와야 합니다 */}
           <div className={styles.mobile_ingredient}>
             <p>재료 목록</p>
@@ -73,7 +108,7 @@ export default function RecipeDetail() {
         {/* 만드는 방법 */}
         <section className={styles.step_section}>
           <section className={styles.step_title}>
-            <Image src={hourglass} width={50} height={50} />
+            <Image src={hourglass} quality={100} width={40} height={40} />
             <h3>만드는 방법</h3>
           </section>
           <RecipeStep />
@@ -86,21 +121,19 @@ export default function RecipeDetail() {
             <p>만드는 법이 감이 잘 안 오신다면,</p>
             <p>아래 영상들을 참고해 보세요!</p>
           </div>
-          <Container>
-            <Row>
-              <Col>
-                <YoutubeList />
-              </Col>
-              <Col>
-                <YoutubeList />
-              </Col>
-              <Col>
-                <YoutubeList />
-              </Col>
-            </Row>
-          </Container>
+          <div className={styles.Container}>
+            {data.items.map(({ id, snippet = {} }: any) => {
+              const { videoId } = id;
+              const { title, thumbnails = {} }: any = snippet;
+              const { medium } = thumbnails;
+              return (
+                <YoutubeList key={id} title={title} high={medium} videoId={videoId}></YoutubeList>
+              )
+            })}
+          </div>
         </section>
       </main>
     </ >
   )
 }
+
