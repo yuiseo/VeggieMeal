@@ -58,6 +58,10 @@ public class DealController {
         return ResponseEntity.status(HttpStatus.OK).body(originList);
     }
 
+    /*
+     * 부류(large), 품종(medium), 품목(small), 원산지(origin)를 입력받아
+     * 현재 날짜 기준으로 7일 분량의 경매 데이터를 반환
+     */
     @GetMapping("/")
     public ResponseEntity<List<DealDto>> getDeal(@RequestParam("large") String large, @RequestParam("medium") String medium, @RequestParam("small") String small, @RequestParam("origin") String origin){
         List<DealDto> dealDtoList = dealService.getDeal(large, medium, small, origin);
