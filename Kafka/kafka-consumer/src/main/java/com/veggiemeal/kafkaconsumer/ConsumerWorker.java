@@ -14,7 +14,11 @@ import org.apache.kafka.common.errors.WakeupException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -101,11 +105,22 @@ public class ConsumerWorker implements Runnable {
         if(bufferString.get(partitionNo).size() > 0) {
             try{
                 // 파일이름 및 HDFS 저장
-                String fileName = "/data/" + partitionNo + "-" + currentFileOffset.get(partitionNo) + ".log";
-                Configuration configuration = new Configuration();
-                configuration.set("dfs.namenode.http-address", "http://172.31.32.75:9864"); // 하둡 HDFS 주소
-                FileSystem hdfsFileSystem = FileSystem.get(configuration);
-                FSDataOutputStream fileOutputStream = hdfsFileSystem.create(new Path(fileName));
+                String fileName = "../data/";
+//                Configuration configuration = new Configuration();
+//                configuration.set("fs.defaultFS", "hdfs://172.31.32.75:22"); // 하둡 HDFS 주소
+//                FileSystem hdfsFileSystem = FileSystem.get(configuration);
+//                FSDataOutputStream fileOutputStream = hdfsFileSystem.create(new Path(fileName));
+                File Folder = new File(fileName);
+
+                if(!Folder.exists()) {
+                    try{
+                        Folder.mkdir();
+                    } catch(Exception e) {
+                        e.getStackTrace();
+                    }
+                }
+                fileName += "deal" + partitionNo + "-" + currentFileOffset.get(partitionNo) + ".log";
+                DataOutputStream fileOutputStream = new DataOutputStream(new FileOutputStream(fileName));
                 fileOutputStream.writeBytes(StringUtils.join(bufferString.get(partitionNo), "\n"));
                 fileOutputStream.close();
 
