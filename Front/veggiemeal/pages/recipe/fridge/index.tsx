@@ -175,9 +175,16 @@ export default function Fridge() {
               <circle cx="8" cy="8" r="8"/>
             </svg>
             </div>
-          <div className={styles.recipe_container}>
-                {dumidata.map((item) =><RecipeList key={`recipeId`} {...item}></RecipeList>)}
-            </div>
+            {ingre ? 
+              <div className={styles.recipe_container}>
+                    {dumidata.map((item) =><RecipeList key={`recipeId`} {...item}></RecipeList>)}
+              </div>
+            :
+            <div className={styles.noVeggie}>
+            <Image src="/think.png" width={150} height={150} quality={100} />
+            <p> 어떤 재료의 레시피를 원하시나요? </p>
+          </div>
+            }
         </section>
       </main>
     </>
