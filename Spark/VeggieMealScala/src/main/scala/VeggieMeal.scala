@@ -22,14 +22,15 @@ object VeggieMeal {
       .config("spark.some.config.option", "some-value")
       .getOrCreate()
     val setRdd = inputRdd.map(line => line.split(","))
-    val sizeRdd = setRdd.filter(a=> a.size == 7).filter(b=> b(5).trim.equals("0")).map(x => Row(x(0).trim.replaceAll("[^0-9]", ""), x(1).trim, x(2).trim, x(3).trim, if(x(4).trim.equals("0")) "income" else "korea", x(5).trim.toDouble, x(6).trim.toDouble))
-    val sizeNRdd = setRdd.filter(a => a.size != 7).filter(b=> b(b.size-2).trim.equals("0")).map(x => Row(x(0).trim.replaceAll("[^0-9]", ""), x(1).trim, x(2).trim, x(x.size-4).trim, if(x(x.size-3).trim.equals("0")) "income" else "korea", x(x.size -2).trim.toDouble, x(x.size - 1).trim.toDouble))
+    val sizeRdd = setRdd.filter(a=> a.size == 7).filter(b=> b(5).trim.equals("0")).map(x => Row("20"+x(0).trim.replaceAll("[^0-9]", ""), x(1).trim, x(2).trim, x(3).trim, if(x(4).trim.equals("0")) "income" else "korea", x(5).trim.toDouble, x(6).trim.toDouble))
+    val sizeNRdd = setRdd.filter(a => a.size != 7).filter(b=> b(b.size-2).trim.equals("0")).map(x => Row("20"+x(0).trim.replaceAll("[^0-9]", ""), x(1).trim, x(2).trim, x(x.size-4).trim, if(x(x.size-3).trim.equals("0")) "income" else "korea", x(x.size -2).trim.toDouble, x(x.size - 1).trim.toDouble))
     val unRdd = sizeRdd.union(sizeNRdd)
     val df = spark.createDataFrame(unRdd, schema)
     df.createOrReplaceTempView("table")
     val v1 = spark.sql("SELECT date, large, middle, small, isIncome, max(price) as maxPrice, min(price) as minPrice, avg(price) as avgPrice  FROM table GROUP BY date, large, middle, small, isIncome")
     //v1.show(1000, true)
     val df2 = v1.toDF()
+    //df2.show()
     df2.write.csv(args(1))
     val afterTime = System.currentTimeMillis();
     val difTime = afterTime - befortTime;
