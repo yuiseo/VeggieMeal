@@ -11,9 +11,9 @@ import lombok.*;
 @ToString
 public class MartDto {
 
-    private long martId;
-    private long ingredientId;
-    private String ingredientName;
+    private Long martId;
+    private Long ingredientId;
+    private String ingreName;
     private int itemNo;
     private String itemName;
     private String itemPrice;

@@ -19,14 +19,14 @@ public class Mart {
     @Id
     @Column(name = "mart_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long martId;
+    private Long martId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ingredientId")
     private Ingredient ingredient;
 
     @Column(name = "ingredient_name")
-    private String ingredientName;
+    private String ingreName;
 
     @Column(name = "item_no")
     private int itemNo;

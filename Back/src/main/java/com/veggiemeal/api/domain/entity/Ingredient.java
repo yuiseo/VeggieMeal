@@ -21,7 +21,7 @@ public class Ingredient {
     @Id
     @Column(name = "ingredient_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ingredientId;
+    private Long ingredientId;
 
     private String large;
 
@@ -29,7 +29,7 @@ public class Ingredient {
 
     private String name;
 
-    private long ref;
+    private Long ref;
 
     @OneToMany(mappedBy = "ingredient")
     List<Mart> mart = new ArrayList<>();
