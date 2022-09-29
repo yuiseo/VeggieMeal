@@ -14,7 +14,7 @@ object VeggieMeal {
       .add(StructField("middle", StringType, true))
       .add(StructField("small", StringType, true))
       .add(StructField("isIncome", StringType, true))
-      .add(StructField("isKg", IntegerType, true))
+      .add(StructField("isKg", DoubleType, true))
       .add(StructField("price", DoubleType, true))
     val spark = SparkSession
       .builder()
