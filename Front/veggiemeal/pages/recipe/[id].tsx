@@ -18,10 +18,7 @@ import { useRouter } from 'next/router';
 interface YoutubeProps {
   data: any;
 }
-interface YoutubeData {
-  title: any;
-  thumbnails: any;
-}
+
 function FoodImage() {
   return (
     <>
@@ -36,13 +33,17 @@ function FoodImage() {
 }
 // const YOUTUBE_PLAYLIST_ITEMS_API = 'https://www.googleapis.com/youtube/v3/playlistItems';
 const YOUTUBE_SEARCH_API = 'https://www.googleapis.com/youtube/v3/search'
-
 // const YOUTUBE_URL = "https://www.googleapis.com/youtube/v3/playlistItems";
+
+let data: any;
 export async function getServerSideProps() {
-  const res = await fetch(
-    `${YOUTUBE_SEARCH_API}?part=snippet&q=나물비빔밥&maxResults=6&key=${process.env.YOUTUBE_API_KEY}`
-  );
-  const data = await res.json();
+  if (!data) {
+    const res = await fetch(
+      `${YOUTUBE_SEARCH_API}?part=snippet&q=${'나물비빔밥'}&maxResults=6&key=${process.env.YOUTUBE_API_KEY}`
+    );
+    data = await res.json();
+  }
+
   return {
     props: {
       data
@@ -51,7 +52,7 @@ export async function getServerSideProps() {
 }
 export default function RecipeDetail({ data }: YoutubeProps) {
   const router = useRouter();
-  console.log('data', data);
+  // console.log('data', data);
   return (
     <>
       <Head>
@@ -125,10 +126,10 @@ export default function RecipeDetail({ data }: YoutubeProps) {
           <div className={styles.Container}>
             {data.items.map(({ id, snippet = {} }: any) => {
               const { videoId } = id;
-              const { title, thumbnails = {} }: any = snippet;
+              const { channelTitle, title, thumbnails = {} }: any = snippet;
               const { medium } = thumbnails;
               return (
-                <YoutubeList key={id} title={title} high={medium} videoId={videoId}></YoutubeList>
+                <YoutubeList key={id} channelTitle={channelTitle} title={title} high={medium} videoId={videoId}></YoutubeList>
               )
             })}
           </div>

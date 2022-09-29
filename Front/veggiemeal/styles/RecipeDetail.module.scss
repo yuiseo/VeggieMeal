@@ -178,7 +178,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 0 4rem;
+  padding: 0 3rem;
   
   h1 {
     margin: 15px 0 5px;
@@ -199,7 +199,7 @@
 .youtube_intro {
   display: flex;
   flex-direction: row;
-  margin: 0 0 25px 0;
+  margin: 0 0 20px 0;
   @media (max-width:var.$sm) {
     flex-direction: column;
     p{
@@ -214,7 +214,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 10px 0;
+  margin: 15px 0;
   h3 {
     margin-bottom: 0;
   }

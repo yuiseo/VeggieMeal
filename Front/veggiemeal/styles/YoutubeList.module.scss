@@ -47,12 +47,24 @@
   p {
     margin: 0;
     font-size: medium;
-    font-weight: 700;
+    font-weight: 800;
     &:hover{
       cursor: pointer;
     }
   }
   @media (max-width:var.$md) {
     padding: 1.5rem 1rem;
+    // p{
+    //   font-size:medium;
+    // }
+  }
+  >p:nth-child(1) {
+    color: var.$purple;
+    font-weight: 600;
+    font-size:small;
+    // @media(max-width:var.$md){
+    //   font-size:small;
+    // }
   }
 }
+

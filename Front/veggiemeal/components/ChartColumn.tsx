@@ -63,7 +63,20 @@ export default function ChartLine() {
             curve: "smooth",
             // width: 4,
           },
-          colors: ['#29B973', '#5C5ACD']
+          colors: ['#29B973', '#5C5ACD'],
+          title: {
+            text: '~의 물가',
+            align: 'left',
+            margin: 10,
+            offsetX: 0,
+            offsetY: 0,
+            floating: false,
+            style: {
+              fontSize: '20px',
+              fontWeight: 'bold',
+              color: '#263238'
+            },
+          }
         }}
       >
       </ApexChart>
