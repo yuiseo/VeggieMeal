@@ -1,7 +1,5 @@
 package com.veggiemeal.api.domain.dto.recipe;
 
-import com.veggiemeal.api.domain.dto.deal.DealDto;
-import com.veggiemeal.api.domain.entity.Deal;
 import com.veggiemeal.api.domain.entity.Recipe;
 import com.veggiemeal.api.utils.ModelMapperUtils;
 import lombok.*;
@@ -14,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class RecipeDto {
-    private int recipe_id;
+    private int recipeId;
     private String name;
     private String description;
     private String time;
