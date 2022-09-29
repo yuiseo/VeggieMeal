@@ -86,4 +86,11 @@ public class RecipeServiceImpl implements RecipeService {
 
         return returnList.stream().map(entity -> RecipeDto.of(entity)).collect(Collectors.toList());
     }
+
+    @Override
+    public RecipeDto getRecipeById(int recipeId) {
+        Recipe recipeEntity = recipeRepository.getReferenceById(recipeId);
+        RecipeDto recipeDto = RecipeDto.of(recipeEntity);
+        return recipeDto;
+    }
 }

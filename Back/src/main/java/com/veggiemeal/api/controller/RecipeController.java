@@ -25,9 +25,16 @@ public class RecipeController {
     }
 
     @ApiOperation(value = "채식 카테고리를 입력받아 일치하는 레시피 데이터를 반환", response = List.class)
-    @GetMapping("/")
+    @GetMapping("/category")
     public ResponseEntity<List<RecipeDto>> getRecipeByCategory(@RequestParam("category") String category){
         List<RecipeDto> recipeDtoList = recipeService.getRecipeByVeg(category);
         return ResponseEntity.status(HttpStatus.OK).body(recipeDtoList);
+    }
+
+    @ApiOperation(value = "레시피ID를 입력받아 일치하는 레시피 데이터를 반환", response = RecipeDto.class)
+    @GetMapping("/id")
+    public ResponseEntity<RecipeDto> getRecipeById(@RequestParam("recipeId") int recipeId){
+        RecipeDto recipeDto = recipeService.getRecipeById(recipeId);
+        return ResponseEntity.status(HttpStatus.OK).body(recipeDto);
     }
 }

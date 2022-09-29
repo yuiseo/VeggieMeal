@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface RecipeService {
     List<RecipeDto> getRecipeByVeg(String category);
+
+    RecipeDto getRecipeById(int recipeId);
 }
