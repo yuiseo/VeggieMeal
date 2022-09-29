@@ -1,8 +1,10 @@
 package com.veggiemeal.api.service.recipe;
 
 import com.veggiemeal.api.domain.dto.recipe.RecipeDto;
+import com.veggiemeal.api.domain.entity.Component;
 import com.veggiemeal.api.domain.entity.Recipe;
 import com.veggiemeal.api.domain.entity.Type;
+import com.veggiemeal.api.repository.ComponentRepository;
 import com.veggiemeal.api.repository.RecipeRepository;
 import com.veggiemeal.api.repository.TypeRepository;
 import org.springframework.stereotype.Service;
@@ -16,10 +18,12 @@ public class RecipeServiceImpl implements RecipeService {
 
     private final RecipeRepository recipeRepository;
     private final TypeRepository typeRepository;
+    private final ComponentRepository componentRepository;
 
-    public RecipeServiceImpl(RecipeRepository recipeRepository, TypeRepository typeRepository){
+    public RecipeServiceImpl(RecipeRepository recipeRepository, TypeRepository typeRepository, ComponentRepository componentRepository){
         this.recipeRepository = recipeRepository;
         this.typeRepository = typeRepository;
+        this.componentRepository = componentRepository;
     }
 
 
@@ -93,4 +97,26 @@ public class RecipeServiceImpl implements RecipeService {
         RecipeDto recipeDto = RecipeDto.of(recipeEntity);
         return recipeDto;
     }
+
+    @Override
+    public List<RecipeDto> getRecipeByIngredient(List<String> ingredient) {
+        List<Recipe> recipeEntityList = recipeRepository.findAll();
+        List<RecipeDto> recipeDtoList = new ArrayList<>();
+        List<Component> componentList = componentRepository.findAll();
+        for(Recipe recipeEntity : recipeEntityList){
+            int count = 0;
+            for(Component component : componentList){
+                if(component.getRecipeId() == recipeEntity.getRecipeId() && ingredient.contains(component.getName())){
+                    count++;
+                }
+                if(count == ingredient.size()){
+                    recipeDtoList.add(RecipeDto.of(recipeEntity));
+                    break;
+                }
+            }
+        }
+
+        return recipeDtoList;
+    }
+
 }
