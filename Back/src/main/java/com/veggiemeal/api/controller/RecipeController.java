@@ -17,6 +17,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/recipe")
+@CrossOrigin(origins = "*")
 public class RecipeController {
 
     private final RecipeService recipeService;

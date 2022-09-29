@@ -7,6 +7,7 @@ import com.veggiemeal.api.repository.IngredientRepository;
 import com.veggiemeal.api.repository.MartRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class MartServiceImpl implements MartService {
 
     private final MartRepository martRepository;
