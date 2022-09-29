@@ -24,7 +24,7 @@ public class RecipeController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<RecipeDto>> getRecipeByVeg(@RequestParam("category") String category){
+    public ResponseEntity<List<RecipeDto>> getRecipeByCategory(@RequestParam("category") String category){
         List<RecipeDto> recipeDtoList = recipeService.getRecipeByVeg(category);
         return ResponseEntity.status(HttpStatus.OK).body(recipeDtoList);
     }
