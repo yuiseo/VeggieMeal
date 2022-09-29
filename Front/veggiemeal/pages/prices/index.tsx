@@ -100,18 +100,18 @@ export default function Prices() {
         <section className={styles.chart_section}>
           {/* 차트 섹션 */}
           <article className={styles.main_chart}>
-            <h3>차트입니다</h3>
             <ChartLine />
           </article>
+
           <section className={styles.sub_chart}>
             <article>
-              <h3>차트이름</h3>
               <ChartColumn />
             </article>
             <article className={styles.table_article}>
               <Table tableData={tableData} tableColumns={tableColumns} ></Table>
             </article>
           </section>
+
         </section>
       </main>
     </div >

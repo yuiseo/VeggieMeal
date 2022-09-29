@@ -42,7 +42,20 @@ export default function ChartColumn() {
               return Math.max(max) + 1
             },
           },
-          colors: ['#5C5ACD']
+          colors: ['#5C5ACD'],
+          title: {
+            text: '~의 평균 물가',
+            align: 'left',
+            margin: 10,
+            offsetX: 0,
+            offsetY: 0,
+            floating: false,
+            style: {
+              fontSize: '25px',
+              fontWeight: 'bold',
+              color: '#263238'
+            },
+          }
         }}
       >
       </ApexChart >
