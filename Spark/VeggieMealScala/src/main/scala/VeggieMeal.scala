@@ -30,7 +30,7 @@ object VeggieMeal {
     val v1 = spark.sql("SELECT date, large, middle, small, isIncome, max(price) as maxPrice, min(price) as minPrice, avg(price) as avgPrice  FROM table GROUP BY date, large, middle, small, isIncome")
     //v1.show(1000, true)
     val df2 = v1.toDF()
-    v1.write.csv(args(1))
+    df2.write.csv(args(1))
     val afterTime = System.currentTimeMillis();
     val difTime = afterTime - befortTime;
     println("-----------------------------------------------------------------------------------")
