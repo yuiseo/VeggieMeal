@@ -1,4 +1,10 @@
 package com.veggiemeal.api.service.recipe;
 
-public class RecipeService {
+
+import com.veggiemeal.api.domain.dto.recipe.RecipeDto;
+
+import java.util.List;
+
+public interface RecipeService {
+    List<RecipeDto> getRecipeByVeg(String category);
 }
