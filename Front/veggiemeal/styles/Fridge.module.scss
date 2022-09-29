@@ -162,12 +162,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top:50px;
     p{
       font-weight: 600;
       font-size:23px;
       margin-top:50px;
-    }
-    @media (max-width:var.$sm){
-      margin-top:30px;
     }
   }

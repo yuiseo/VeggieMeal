@@ -165,20 +165,22 @@ export default function Fridge() {
           <SelectBox data={cat03} setState={setIsSelect03} title="소분류" another={isIngre} />
         </section>
         <section className={styles.recipe_list}>
-          <div className={styles.recipe_list_title}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="#29B973" className="bi bi-circle-fill me-3" viewBox="0 0 16 16">
-            <circle cx="8" cy="8" r="8"/>
-          </svg>
-            <p className={styles.title_purple}>선택된 재료</p>
-            <p>가 포함된 레시피 목록</p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="#29B973" className="bi bi-circle-fill ms-3" viewBox="0 0 16 16">
-              <circle cx="8" cy="8" r="8"/>
-            </svg>
-            </div>
-            {ingre ? 
-              <div className={styles.recipe_container}>
-                    {dumidata.map((item) =><RecipeList key={`recipeId`} {...item}></RecipeList>)}
-              </div>
+            {ingre ?
+            <>
+              <div className={styles.recipe_list_title}>
+              {/* <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" fill="#29B973" className="bi bi-circle-fill me-3" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="8"/>
+              </svg> */}
+                <p className={styles.title_purple}>선택된 재료</p>
+                <p>가 포함된 레시피 목록</p>
+                {/* <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" fill="#29B973" className="bi bi-circle-fill ms-3" viewBox="0 0 16 16">
+                  <circle cx="8" cy="8" r="8"/>
+                </svg> */}
+                </div>
+                  <div className={styles.recipe_container}>
+                        {dumidata.map((item) =><RecipeList key={`recipeId`} {...item}></RecipeList>)}
+                  </div>
+            </> 
             :
             <div className={styles.noVeggie}>
             <Image src="/think.png" width={150} height={150} quality={100} />

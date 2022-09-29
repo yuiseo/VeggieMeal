@@ -1,0 +1,30 @@
+@use 'variable' as var;
+
+.news_div{
+    background-color: var.$grey;
+    border: 1px solid var.$black;
+    padding: 25px 30px;
+    border-radius: 20px;
+    margin: 0 30px 30px 30px;
+    max-width:1000px;
+}
+
+.date {
+    font-weight: 500;
+    font-size:18px;
+    margin: 0 0 5px 0;
+}
+
+.title {
+    font-weight:700;
+    font-size:20px;
+    margin: 10px 0;
+    color:var.$purple;
+}
+
+.description {
+    // font-size:15px;
+    font-weight:500;
+    margin-bottom: 0;
+
+}

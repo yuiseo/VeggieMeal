@@ -3,13 +3,16 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
-
-module.exports = nextConfig
+  webpack5: true,
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false };
+    return config;
+}}
 
 const path = require('path')
 
 module.exports = {
+  nextConfig,
   sassOptions:{
     includePaths: [path.join(__dirname, 'styles')],
   },
@@ -18,5 +21,12 @@ module.exports = {
       allowFutureImage: true,
     },
   },
-
+  // rewrites(){
+  //   return[
+  //     {
+  //       source: '/api/:path*',
+  //       destination: 'https://openapi.naver.com/:path*'
+  //     },
+  //   ];
+  // }
 }
