@@ -19,6 +19,8 @@ public class DealDto {
     private String small;
     private String origin;
     private Float price;
+    private Float max;
+    private Float min;
 
     public static DealDto of(Deal dealEntity){
         DealDto dealDto = ModelMapperUtils.getModelMapper().map(dealEntity, DealDto.class);
