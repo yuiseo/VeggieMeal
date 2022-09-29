@@ -1,5 +1,6 @@
 package com.veggiemeal.api.service.recipe;
 
+import com.veggiemeal.api.domain.dto.recipe.ComponentDto;
 import com.veggiemeal.api.domain.dto.recipe.RecipeDto;
 import com.veggiemeal.api.domain.entity.Component;
 import com.veggiemeal.api.domain.entity.Recipe;
@@ -117,6 +118,12 @@ public class RecipeServiceImpl implements RecipeService {
         }
 
         return recipeDtoList;
+    }
+
+    @Override
+    public List<ComponentDto> getIngredientByRecipeId(int recipeId) {
+        List<Component> componentEntityList = componentRepository.findAllByRecipeId(recipeId);
+        return componentEntityList.stream().map(entity -> ComponentDto.of(entity)).collect(Collectors.toList());
     }
 
 }

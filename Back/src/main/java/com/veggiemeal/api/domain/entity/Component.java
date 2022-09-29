@@ -1,5 +1,7 @@
 package com.veggiemeal.api.domain.entity;
 
+import com.veggiemeal.api.domain.dto.recipe.ComponentDto;
+import com.veggiemeal.api.utils.ModelMapperUtils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,4 +31,9 @@ public class Component {
     private String name;
 
     private String capacity;
+
+    public static Component of(ComponentDto componentDto){
+        Component componentEntity = ModelMapperUtils.getModelMapper().map(componentDto, Component.class);
+        return componentEntity;
+    }
 }
