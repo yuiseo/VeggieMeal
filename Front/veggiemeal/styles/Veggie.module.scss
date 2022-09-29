@@ -47,9 +47,9 @@
   }
 }
 .question {
-  padding: 1.2rem 0 1.2rem 0.4rem;
+  padding: 1.2rem 0 1.2rem 0.8rem;
   @media (max-width:var.$md) {
-    padding: 1rem 0 1rem 0.4rem;
+    padding: 1rem 0 1rem 0.8rem;
   }
   :hover {
     cursor: pointer;
@@ -147,7 +147,7 @@
     font-size:23px;
     margin-top:50px;
   }
-  @media (max-width:var.$sm){
+  @media (max-width:var.$md){
     margin-top:30px;
   }
 }

@@ -59,6 +59,19 @@
 //   justify-content: center;
 // }
 
+.news_section {
+  padding: 30px;
+  display:flex;
+  align-items: center;
+}
+
+.news_title {
+  font-weight: 700;
+  font-size: 25px;
+  margin-bottom: 0;
+  margin-left:15px;
+}
+  
 .header {
   display: flex;
   flex-direction: column;

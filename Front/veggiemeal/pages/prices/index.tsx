@@ -2,19 +2,40 @@ import Head from "next/head";
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { useState } from "react";
-
 import Table from 'components/Table';
 import ChartLine from 'components/ChartLine';
 import ChartColumn from 'components/ChartColumn';
 import styles from 'styles/Price.module.scss';
 import glass from '/public/glass.png';
-
-
 import SelectBox from "components/SelectBox";
+import News from "components/News";
+
+const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
+const PriceSelectBox = dynamic(() => import('components/PriceSelectBox'))
+// import PriceSelectBox from "components/PriceSelectBox";
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const keyword = encodeURI("물가");
+  const newHeader: HeadersInit = new Headers();
+  newHeader.set("X-Naver-Client-Id", "zPEQIIbwNxiP18_gyNbN" );
+  newHeader.set("X-Naver-Client-Secret", "W1O4_DezL1");
+  const res = await fetch(`https://openapi.naver.com/v1/search/news.json?query=${keyword}`, {
+      method:'GET',
+      headers:newHeader
+  })
+  const data = await res.json();
+
+  // Pass data to the page via props
+  return { props: { data } }
+}
+
+type PriceProps={
+  data:any
+}
 
 
-
-export default function Prices() {
+export default function Prices({data}:PriceProps) {
   const [isSelect01, setIsSelect01] = useState<string>();
   const [isSelect02, setIsSelect02] = useState<string>();
   const [isSelect03, setIsSelect03] = useState<string>();
@@ -111,7 +132,13 @@ export default function Prices() {
               <Table tableData={tableData} tableColumns={tableColumns} ></Table>
             </article>
           </section>
-
+        </section>
+        <section>
+          <div className={styles.news_section}>
+            <Image src="/news.png" width={50} height={50} quality={100} />
+            <p className={styles.news_title}>물가 관련 뉴스</p>
+          </div>
+          {data['items'].map((item:{[key:string]:string}, index:string)=><News key={index} data={item} />)}
         </section>
       </main>
     </div >

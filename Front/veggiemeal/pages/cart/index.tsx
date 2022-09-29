@@ -176,8 +176,10 @@ export default function Cart() {
             </div>
             <Swiper
             id={styles.mart_swiper}
+            spaceBetween={3}
             slidesPerView={1}
-            draggable={true}
+            scrollbar={{ draggable: true }}
+            // observeParents={true}
             >
               <SwiperSlide style={{marginRight:'30px'}}>
                 <Mart title="emart" price={emartPrices} isCheap={cheaper} data={emartList} />
