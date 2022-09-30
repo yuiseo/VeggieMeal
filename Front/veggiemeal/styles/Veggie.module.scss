@@ -2,14 +2,24 @@
 .container {
   width: 100%;
   max-width: var.$max-width;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 50px auto;
   padding: 0 2rem;
 }
 
+// .main {
+//   min-height: 100vh;
+//   padding: 4rem 0;
+//   margin-top: 30px;
+// }
 .main {
+  position:relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
   padding: 4rem 0;
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 .header {
@@ -18,7 +28,6 @@
   justify-content: center;
   align-items: center;
 }
-
 
 .veggie_title {
   font-weight: 700;
@@ -37,27 +46,116 @@
     margin: 2px 0;
   }
 }
-
+.question {
+  padding: 1.2rem 0 1.2rem 0.8rem;
+  @media (max-width:var.$md) {
+    padding: 1rem 0 1rem 0.8rem;
+  }
+  :hover {
+    cursor: pointer;
+  }
+}
+.pick_veggie{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (min-width:var.$md) {
+    flex-direction: row;
+    margin: 30px;
+  }
+}
+.web_select{
+  min-width:165px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  margin-right: 30px;
+  @media (max-width:var.$md) {
+    display: none;
+  }
+}
 
 #veggie_imgs {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 30px 0;
+  margin: 20px 0 10px 0;
   div {
     margin: 0 5px;
   }
+  @media (min-width:var.$md) {
+    align-items: flex-start;
+    margin: 15px 0 10px 0;
+  }
 }
-
+.mobile_select{
+  min-width:165px;
+  margin-top:15px;
+  // padding: 10px;
+  @media (min-width:var.$md) {
+    display: none;
+  }
+}
 .veggie_list_title {
   display: flex;
   flex-direction: row;
-  margin-bottom: 23px;
+  align-items: center;
+  margin: 2rem 0 3.5rem 0;
+  @media (max-width:var.$md){
+    margin:  3.5rem 0 3.5rem 0;
+  }
   h3 {
     margin: 0 5px;
     font-weight: 700;
+    // font-size: xx-large;
   }
   h3:nth-child(1) {
+    font-size: x-large;
+    color: var.$green;
+  }
+  h3:nth-child(2) {
     color: var.$purple;
+  }
+  h3:nth-child(3) {
+    font-size: x-large;
+    color: var.$green;
+  }
+  @media (max-width:var.$sm) {
+  margin: 2rem 0;
+  }
+}
+
+#veggie_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (min-width:var.$lg) {
+  padding-left: 50px;
+    }
+
+}
+
+.noVeggie {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p{
+    font-weight: 600;
+    font-size:23px;
+    margin-top:50px;
+  }
+  @media (max-width:var.$md){
+    margin-top:30px;
+  }
+}
+
+.recipe_container {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  @media (max-width:900px){
+    grid-template-columns: 1fr;
   }
 }

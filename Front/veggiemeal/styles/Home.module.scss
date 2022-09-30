@@ -1,11 +1,11 @@
-@use 'variable' as val;
+@use 'variable' as var;
 
 .header {
   display:flex;
   justify-content: center;
   width:100vw;
   height: 80vh;
-  @media (max-width: val.$md){
+  @media (max-width: var.$md){
     height:60vh;
   }
 }
@@ -173,12 +173,12 @@
     opacity: 0.8;
     font-size: 16px;
   }
-  @media (min-width:val.$sm){
+  @media (min-width:var.$sm){
     button {
       font-size:18px;
     }
   }
-  @media (min-width:val.$md){
+  @media (min-width:var.$md){
     button {
       font-size:20px;
     }
@@ -216,7 +216,7 @@
     margin: 20px 0;
     font-size: large;
   }
-  @media (max-width: val.$sm){
+  @media (max-width: var.$sm){
     display:none;
   }
 }
@@ -235,7 +235,7 @@
     margin: 20px 0;
     font-size: 18px;
   }
-  @media (min-width: val.$sm){
+  @media (min-width: var.$sm){
     display:none;
   }
 }
@@ -252,7 +252,7 @@
   background-color: #FAFAFA;
   width:100vw;
   padding: 50px 25px;
-  @media (max-width: val.$sm){
+  @media (max-width: var.$sm){
     display:none;
   }
 }
@@ -262,7 +262,7 @@
   background-color: #FAFAFA;
   width:100vw;
   padding: 50px 25px;
-  @media (min-width: val.$sm){
+  @media (min-width: var.$sm){
     display:none;
   }
 }
@@ -272,7 +272,7 @@
   justify-content: center;
   width:100vw;
   padding: 50px 25px;
-  @media (max-width: val.$sm){
+  @media (max-width: var.$sm){
     display:none;
   }
   &.section_gray {
@@ -285,7 +285,7 @@
   justify-content: center;
   width:100vw;
   padding: 50px 25px;
-  @media (min-width: val.$sm){
+  @media (min-width: var.$sm){
     display:none;
   }
   &.section_gray {
@@ -307,7 +307,7 @@
     object-fit: cover;
   }
   margin-bottom: 30px;
-  @media (max-width:val.$sm){
+  @media (max-width:var.$sm){
     p {
       font-size: 25px;
       margin-right:15px;
@@ -334,7 +334,7 @@
     line-height: 1.8;
     margin: 20px 0;
   }
-  @media (max-width: val.$sm){
+  @media (max-width: var.$sm){
     display:none;
   }
 }
@@ -349,7 +349,7 @@
     font-weight: 600;
     font-size: 20px;
   }
-  @media (max-width:val.$sm){
+  @media (max-width:var.$sm){
     p {
       margin-left: 0;
       font-size: 18px;
@@ -365,14 +365,14 @@
 
 .vg_word {
   font-weight: 900;
-  background: linear-gradient(to bottom, val.$green, val.$purple);
+  background: linear-gradient(to bottom, var.$green, var.$purple);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .second_cookimg {
   background-image: url('/main_cook.png');
-  @media (max-width:val.$sm){
+  @media (max-width:var.$sm){
     width:100vw;
     height:300px;
   }

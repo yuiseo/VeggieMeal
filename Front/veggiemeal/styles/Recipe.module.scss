@@ -1,14 +1,14 @@
-@use 'variable' as val;
+@use 'variable' as var;
 .container {
   padding: 0 2rem;
 }
 
 .recipe_title {
-  margin: 3rem;
+  margin: 3rem 3rem 5rem 3rem;
   text-align: center;
-  font-weight:  800;
-  @media (max-width: val.$sm) {
-    margin: 20px;
+  font-weight:  700;
+  @media (max-width: var.$sm) {
+    margin: 20px 20px 50px 20px;
   }
 }
 
@@ -23,66 +23,101 @@
 
 
 #veggie_btn {
-  padding: 4rem;
+  width:340px;
+  height:340px;
   border: 0;
   border-radius: 20px;
-  background-color: val.$purple !important;
+  background-color: var.$purple;
+  @media (max-width: var.$sm) {
+    margin-right:0;
+  }
+  margin-right:10px;
 
-  @media (max-width: val.$sm) {
-    margin: 0.45rem;
+  div {
+    a {
+      font-size: large;
+      color: white;
+    }
   }
-  
-  p:nth-child(1) {
-    margin: 0;
-    font-size: large;
-    font-weight: 800;
-    color: white;
-  }
-  
+ 
   p:nth-child(2) {
-    margin-bottom: 21px;
+    margin-bottom: 30px;
     font-size: large;
-    font-weight: 500;
+    font-weight: 400;
     color: white;
   }
   
   p:nth-child(4) {
-    margin-top: 16px;
+    margin-top: 30px;
     margin-bottom: 0;
     font-size: xx-large;
-    font-weight: 800;
+    font-weight: 600;
     color: white;
+  }
+  &:hover {
+    border-color: var.$green  !important;
+    background-color: var.$green  !important;
+  }
+}
+#veggie_bold {
+  margin: 0;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+}
+
+
+#fridge_btn {
+    width:340px;
+    height:340px;
+    border: 0;
+    border-radius: 20px;
+    background-color: var.$green;
+    margin-left:10px;
+    @media (max-width: var.$md) {
+        // margin: 0.45rem;
+        margin-left:0;
+        margin-top:20px;
+      }
+  
+  div {
+    a {
+      font-size: large;
+      color: white;
+    }
+  }
+
+  p:nth-child(2) {
+    margin-bottom: 30px;
+    font-size: large;
+    font-weight: 400;
+    color: white;
+  }
+
+  p:nth-child(4) {
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-size: xx-large;
+    font-weight: 600;
+    color: white;
+  }
+  &:hover {
+    border-color: var.$purple  !important;
+    background-color: var.$purple  !important;
   }
 }
 
-#fridge_btn {
-    padding: 4rem;
-    border: 0;
-    border-radius: 20px;
-    background-color: val.$green  !important;
-    @media (max-width: val.$sm) {
-        margin: 0.45rem;
-      }
-  
-    p:nth-child(1) {
-      margin: 0;
-      font-size: large;
-      font-weight: 800;
-      color: white;
-    }
-  
-    p:nth-child(2) {
-      margin-bottom: 21px;
-      font-size: large;
-      font-weight: 500;
-      color: white;
-    }
-  
-    p:nth-child(4) {
-      margin-top: 16px;
-      margin-bottom: 0;
-      font-size: xx-large;
-      font-weight: 800;
-      color: white;
+#fridge_bold{
+  margin: 0;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+}
+
+.grid_container{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+    @media (max-width: var.$md){
+        grid-template-columns: repeat(1, 1fr);
     }
 }

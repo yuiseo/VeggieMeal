@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46f46b59-861d-4878-91e4-18a93af42d68" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/../../.idea/S07P22C205.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Spark/.idea/Spark.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Spark/VeggiMealJava/src/main/java/WordCount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Spark/VeggiMealJava/test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Spark/VeggieMealJava/src/main/java/WordCount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Spark/VeggieMealJava/test.txt" afterDir="false" />
+    <list default="true" id="46f46b59-861d-4878-91e4-18a93af42d68" name="변경" comment="[S07P22C205-76][BE-지원] Mapreduce time check add">
+      <change afterPath="$PROJECT_DIR$/../.idea/Hadoop.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/azure/azureSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VeggieMeal.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spark/VeggieMealScala/.idea/VeggieMealScala.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/VeggieMeal_jar/VeggieMeal.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +39,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/2/ssafy2/project/S07P22C205/Hadoop/VeggieMeal"
+    "last_opened_file_path": "C:/Users/multicampus/Documents/GitHub/S07P22C205/Spark"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />

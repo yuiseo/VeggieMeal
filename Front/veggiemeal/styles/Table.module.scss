@@ -1,0 +1,25 @@
+@use 'variable' as var;
+.table_Container {
+  table{
+    margin-left: auto;
+    margin-right: auto;
+    @media (max-width:var.$sm){
+      font-size: medium;
+      // thead {
+      //     font-size: medium;
+      //   }
+    }
+    @media (min-width:var.$lg){
+      font-size: large;
+    }
+  }
+  thead {
+    border-bottom: 1px solid;
+  }
+  td {
+    padding: 5px;
+  }
+  th {
+    padding: 3px;
+  }
+}

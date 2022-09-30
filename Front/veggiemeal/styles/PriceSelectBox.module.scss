@@ -1,0 +1,60 @@
+@use 'variable' as var;
+
+.select {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+}
+
+.selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var.$grey;
+  padding: 15px 20px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.selected_value {
+  font-size: medium;
+  font-weight: 700;
+}
+
+#arrow{
+  width: 50%;
+  transition: .3s; // 부드럽게 회전
+}
+
+.select_ul {
+  background-color: var.$green;
+  border-radius: 10px;
+  list-style: none;
+  margin-top: 10px;
+  padding: 0;
+
+  li {
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    line-height: 2.5;
+    padding: 5px 15px;
+    border-bottom: 1px dashed white;
+    &:hover {
+      background-color: var.$purple;
+    }
+
+    &.choice_li {
+      background-color: var.$purple;
+    }
+
+    &.last_li {
+      border-bottom: 0;
+      border-radius: 0 0 10px 10px;
+    }
+
+    &.first_li {
+      border-radius: 10px 10px 0 0;;
+    }
+  }
+}

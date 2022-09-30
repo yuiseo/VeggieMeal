@@ -1,0 +1,31 @@
+@use 'variable' as var;
+
+.slider_box {
+  position: relative;
+  max-width: 71vw;
+  // margin: 2rem 0;
+  @media (max-width:var.$sm) {
+    max-width: 80vw;
+    margin: 0;
+  }
+  @media (min-width:var.$md) {
+    max-width: 850px;
+  }
+}
+
+
+
+// .swiper-button-next {
+//   background: url(/public/right.png) no-repeat;
+//   background-size: 50% auto;
+//   background-position: center;
+// }
+
+// >div.swiper-button-prev {
+//   background: url(/public/left.png) no-repeat;
+// }
+
+// .swiper-button-next::after,
+// .swiper-button-prev::after {
+//   // display: none;
+// }
