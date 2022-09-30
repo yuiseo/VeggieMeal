@@ -1,11 +1,6 @@
 package com.veggiemeal.kafkaconsumer;
 
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FSDataOutputStream;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -14,11 +9,14 @@ import org.apache.kafka.common.errors.WakeupException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.DataOutputStream;
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -37,7 +35,7 @@ public class ConsumerWorker implements Runnable {
     private static Map<Integer, Long> currentFileOffset = new ConcurrentHashMap<>();
 
     // 버퍼의 크기 - 버퍼에 20개의 데이터가 차면 flush 한다.
-    private final static int FLUSH_RECORD_COUNT = 20; // buffer의 크기
+    private final static int FLUSH_RECORD_COUNT = 10000; // buffer의 크기
     private Properties prop; // Consumer와 Partition을 매칭할 떄의 설정사항
     private String topic; // 읽고자 하는 토픽 이름
     private String threadName; // 쓰레드의 이름
@@ -101,15 +99,27 @@ public class ConsumerWorker implements Runnable {
         }
     }
 
+    /**
+     * HDFS 클러스터 접근권한이 되지않아, 파일 주석처리
+     * 로컬에 임시 저장
+     */
+
     private void save(int partitionNo) {
         if(bufferString.get(partitionNo).size() > 0) {
             try{
-                // 파일이름 및 HDFS 저장
-                String fileName = "../data/";
-//                Configuration configuration = new Configuration();
-//                configuration.set("fs.defaultFS", "hdfs://172.31.32.75:22"); // 하둡 HDFS 주소
-//                FileSystem hdfsFileSystem = FileSystem.get(configuration);
-//                FSDataOutputStream fileOutputStream = hdfsFileSystem.create(new Path(fileName));
+                // 파일이름 및 HDFS 저장 - 매일 수집되는 날짜를 기준으로 폴더 생성되고 저장됨
+                Date today = new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000);
+
+                // 날짜 포매팅
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+
+                String fileName = "../" + dateFormat.format(today);
+
+/*                Configuration configuration = new Configuration();
+                configuration.set("fs.defaultFS", "hdfs://localhost:9000"); // 하둡 HDFS 주소
+                FileSystem hdfsFileSystem = FileSystem.get(configuration);
+                FSDataOutputStream fileOutputStream = hdfsFileSystem.create(new Path(fileName)); */
+
                 File Folder = new File(fileName);
 
                 if(!Folder.exists()) {
@@ -119,10 +129,15 @@ public class ConsumerWorker implements Runnable {
                         e.getStackTrace();
                     }
                 }
-                fileName += "deal" + partitionNo + "-" + currentFileOffset.get(partitionNo) + ".log";
-                DataOutputStream fileOutputStream = new DataOutputStream(new FileOutputStream(fileName));
-                fileOutputStream.writeBytes(StringUtils.join(bufferString.get(partitionNo), "\n"));
-                fileOutputStream.close();
+                fileName += "/deal-" + partitionNo + "-" + currentFileOffset.get(partitionNo) + ".csv";
+                Path path = Paths.get(fileName);
+                BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8);
+
+                // 불필요한 문자 제거하기 위해 버퍼에 저장된 개별 값 검사
+                for(String str : bufferString.get(partitionNo)) {
+                    writer.append(str.substring(2));
+                }
+                writer.close();
 
                 bufferString.put(partitionNo, new ArrayList<>());
             } catch(Exception e) {
