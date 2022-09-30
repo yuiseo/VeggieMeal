@@ -10,4 +10,6 @@ public interface IngredientService {
 
     List<String> getNameList(String medium);
 
+    int searchName(String name);
+
 }
