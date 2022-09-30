@@ -102,6 +102,9 @@
 }
 
 .ingredient_slider{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 10px 0;
   @media (max-width:var.$sm) {
     width: 85vw;
