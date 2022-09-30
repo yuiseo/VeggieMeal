@@ -5,9 +5,12 @@
     margin-right: auto;
     @media (max-width:var.$sm){
       font-size: medium;
-      thead {
-          font-size: large;
-        }
+      // thead {
+      //     font-size: medium;
+      //   }
+    }
+    @media (min-width:var.$lg){
+      font-size: large;
     }
   }
   thead {
@@ -17,6 +20,6 @@
     padding: 5px;
   }
   th {
-    padding: 5px;
+    padding: 3px;
   }
 }

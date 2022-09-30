@@ -83,3 +83,34 @@ main {
   --swiper-theme-color: #6610f2;
   --swiper-navigation-size: 30px;
 }
+
+
+.right-swiper-button-next {
+  position: relative;
+  top: -100px;
+  right:-52rem;
+  z-index: 100;
+  @media (max-width:var.$sm) {
+    right: -280px;
+  }
+  @media (max-width:var.$md) {
+    right: -510px;
+  }
+  @media (max-width:var.$lg) {
+    right: -45rem;
+  }
+}
+.left-swiper-button-prev {
+  position: relative;
+  top: -100px;
+  left: -3rem;
+  z-index: 100;
+  @media (max-width:var.$sm) {
+    left: -30px;
+  }
+}
+
+.swiper-wrapper {
+  max-width: 74vw;
+}
+

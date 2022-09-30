@@ -17,6 +17,7 @@ import { useRouter } from 'next/router';
 
 interface YoutubeProps {
   data: any;
+  recipeData: any;
 }
 
 function FoodImage() {
@@ -44,13 +45,18 @@ export async function getServerSideProps() {
     data = await res.json();
   }
 
+  // const respond = await fetch(`https://j7c205.p.ssafy.io/api/recipe/id?recipeId=$`, {
+  //   method: 'get'
+  // })
+  // const recipeData = await respond.json()
   return {
     props: {
-      data
+      data,
+      // recipeData
     }
   };
 }
-export default function RecipeDetail({ data }: YoutubeProps) {
+export default function RecipeDetail({ data, recipeData }: YoutubeProps) {
   const router = useRouter();
   // console.log('data', data);
   return (
