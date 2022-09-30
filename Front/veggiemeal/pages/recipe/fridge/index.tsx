@@ -28,7 +28,6 @@ export default function Fridge({data}:FridgeProps) {
   const {data:cat02} = useQuery(['cat02', isSelect01], async ()=>{
     const res = await fetch(`https://j7c205.p.ssafy.io/api/ingredient/medium?large=${isSelect01}`)
     const data = await res.json()
-    console.log(data)
     return data
   });
   const {data:cat03} = useQuery(['cat03', isSelect02], async ()=>{
@@ -36,11 +35,14 @@ export default function Fridge({data}:FridgeProps) {
     const data = await res.json()
     return data
   });
-  // const {data:recipe_list} = useQuery(['recipe_list', cat03], async() => {
-  //   const res = await fetch()
-  // })
-
-  useEffect(()=>{console.log(cat02)}, [cat01])
+  const {data:recipe_list} = useQuery(['recipe_list', ingre], async() => {
+    const ingre_list = ingre?.reduce((acc, cur) => { return acc += `ingredient=${cur}`}, "")
+    const res = await fetch(`https://j7c205.p.ssafy.io/api/recipe/ingredient?${ingre_list}`)
+    const data = await res.json()
+    return data
+  }, {
+    enabled: !!ingre
+  })
 
   function isIngre(item: string) {
     if (!ingre?.includes(item)) {
@@ -133,8 +135,7 @@ export default function Fridge({data}:FridgeProps) {
           <SelectBox data={cat03} setState={setIsSelect03} title="소분류" another={isIngre} />
         </section>
         <section className={styles.recipe_list}>
-            {ingre ?
-            <>
+          {ingre && recipe_list ? <>
               <div className={styles.recipe_list_title}>
               {/* <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" fill="#29B973" className="bi bi-circle-fill me-3" viewBox="0 0 16 16">
                 <circle cx="8" cy="8" r="8"/>
@@ -145,16 +146,21 @@ export default function Fridge({data}:FridgeProps) {
                   <circle cx="8" cy="8" r="8"/>
                 </svg> */}
                 </div>
-                  {/* <div className={styles.recipe_container}>
-                        {dumidata.map((item) =><RecipeList key={`recipeId`} {...item}></RecipeList>)}
-                  </div> */}
-            </> 
-            :
-            <div className={styles.noVeggie}>
+                <div className={styles.recipe_container}>
+                      {recipe_list.map((item:{
+                        'cal':string,
+                        'img':string,
+                        'name':string,
+                        'recipeId':number,
+                        'time':string
+                      }, index:string) =><RecipeList key={index} {...item}></RecipeList>)}
+                </div>
+            </> : null}
+          {!ingre ? <div className={styles.noVeggie}>
             <Image src="/think.png" width={150} height={150} quality={100} />
             <p> 어떤 재료의 레시피를 원하시나요? </p>
-          </div>
-            }
+          </div> : null}
+          {ingre && recipe_list?.length === 0 ? <p>앗</p> :  null}
         </section>
       </main>
     </>
