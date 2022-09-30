@@ -7,12 +7,11 @@ interface RecipeListPros {
   recipeId: number;
   name: string;
   time: string;
-  category: string;
   cal: string;
   img: string;
 }
 
-export default function RecipeList({ recipeId, name, cal, time, category, img }: RecipeListPros) {
+export default function RecipeList({ recipeId, name, cal, time, img }: RecipeListPros) {
   const router = useRouter();
   return (
     <>

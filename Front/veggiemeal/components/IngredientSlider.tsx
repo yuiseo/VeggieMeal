@@ -78,6 +78,7 @@ export default function IngredientSlider() {
         {DumiData.map((item, index) => <SwiperSlide key={index}><Ingredient {...item} /></SwiperSlide>)}
         {/* <div class="swiper-pagination"></div> */}
 
+
       </Swiper>
 
       <div className={styles.arrow_Container}>

@@ -6,21 +6,34 @@ import Button from 'components/Button';
 import Mart from 'components/Mart';
 import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import "swiper/css"; //basic
+import { useQueries } from "react-query";
 
 export default function Cart() {
   const [mart, setMart] = useState<string>("none");
-  const [ingre, setIngre] = useState<string[]>(["포도", "사과"]);
+  const [ingre, setIngre] = useState<(string | number) [][]>([["포도", 0], ["사과", 1]]);
   const [ingrePrices, setIngrePrices] = useState<{[key:string]:string[][]}>(
     {"포도" : [["어쩌구저쩌구 맛있는 포도 1.5kg(봉)", "7500"],["샤인머스켓보다 맛있는 포도 1.5kg(봉)", "9500"], ["브로코리보다 맛있는 포도 1.5kg(봉)", "5500"],
     ["어쩌구저쩌구 맛있는 포도 1.5kg(봉)", "7500"],["어쩌구저쩌구 맛있는 포도 1.5kg(봉)", "7500"],["어쩌구저쩌구 맛있는 포도 1.5kg(봉)", "7500"]]}
-  )
+  );
   const [emartList, setEmartList] = useState<string[][]>();
   const [emartPrices, setEmartPrices] = useState<number>(calPrice(emartList));
   const [hpList, setHpList] = useState<string[][]>();
   const [hpPrices, setHpPrices] = useState<number>(calPrice(hpList));
   const [cheaper, setCheaper] = useState<string>();
   const [activeKey, setActiveKey] = useState<number[]>();
-
+  const ingreEmart =  useQueries(
+      ingre.map((ing:(string|number)[])=>{
+        return{
+          queryKey:[ing[0], ing[1]],
+          queryFn: async () => {
+            const data = await(await fetch(`https://j7c205.p.ssafy.io/api/mart?ingredientId=${ing[1]}&mart=0`)).json()
+            return data
+          },
+          onSuccess: (data:any) => {console.log(data)}
+        }
+      })
+    )
+  console.log(ingreEmart)
   function calPrice(data:string[][] | undefined){
     if(data !== undefined){
         let result = data?.reduce((acc, item)=> acc += Number(item[1]), 0)
@@ -92,9 +105,9 @@ export default function Cart() {
                   onClick={()=>{setActiveKey(activeKey.filter(item => item !== Number(index)))}}>
                     <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                   </svg>
-                  <p>{item}</p>
+                  <p>{item[0]}</p>
                 </div>
-                  {ingrePrices[item]?.map((res, index) => <div key={index}  className={styles.ingre_list}>
+                  {ingrePrices[item[0]]?.map((res, index) => <div key={index}  className={styles.ingre_list}>
                     <div style={{display:'flex'}}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#5C5ACD" className="bi bi-circle-fill" viewBox="0 0 16 16">
                         <circle cx="8" cy="8" r="8"/>
