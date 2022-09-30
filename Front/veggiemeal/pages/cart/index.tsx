@@ -33,7 +33,7 @@ export default function Cart() {
         }
       })
     )
-  console.log(ingreEmart)
+  // console.log(ingreEmart)
   function calPrice(data:string[][] | undefined){
     if(data !== undefined){
         let result = data?.reduce((acc, item)=> acc += Number(item[1]), 0)

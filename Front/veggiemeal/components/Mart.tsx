@@ -1,10 +1,8 @@
 import styles from 'styles/Mart.module.scss';
-import Button from 'components/Button';
 import * as htmlToImage from 'html-to-image';
 import download from 'downloadjs';
 import { useRef, useState } from 'react';
 import {useRouter} from 'next/router';
-import Image from 'next/image';
 
 
 type MartProps={

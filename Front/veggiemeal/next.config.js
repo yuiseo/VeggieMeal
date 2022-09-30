@@ -22,6 +22,9 @@ module.exports = {
       domains:['i.ytimg.com']
     },
   },
+  env: {
+    BASE_URL: process.env.BASE_URL,
+  }
   // rewrites(){
   //   return[
   //     {
