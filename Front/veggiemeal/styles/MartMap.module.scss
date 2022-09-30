@@ -1,1 +1,52 @@
 @use 'variable' as var;
+
+.parents {
+    display:relative;
+}
+
+.toggle {
+    position:absolute;
+    display:inline;
+    // vertical-align:middle;
+    height: 3rem;
+    z-index:10;
+    top:120px;
+    left:30px;
+    display:block;
+    border-radius: 2rem;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 0 1rem 3px rgba(0 0 0 / 15%);
+    font-weight: 600;
+    cursor: pointer;
+    &.isnt_show{
+        padding-left:3.5rem;
+        .toggleBtn {
+            left: .2rem;
+            transition: all 0.3s ease-in;
+        }
+    }
+    &.is_show{
+        background-color: var.$purple;
+        span {
+            color:white;
+        }
+        .toggleBtn {
+            left: calc(100% - 2.8rem);
+            transition: all 0.3s ease-in;
+            background: var.$green;
+        }
+        padding-right: 3.5rem;
+    }
+}
+
+.toggleBtn {
+    width: 2.5rem;
+    height: 2.5rem; 
+    position: absolute;
+    top: 50%;
+    left: .2rem;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: var.$green;
+}

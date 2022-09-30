@@ -32,7 +32,7 @@
     margin: 30px 0;
     padding: 20px 10px 20px 20px;
     border-radius:20px;
-    background-color: var.$gray;
+    background-color: var.$grey;
 }
 
 .choice_ingre {
@@ -45,7 +45,7 @@
     span {
         margin:0;
         margin-right:10px;
-        font-size:16px;
+        font-size:18px;
         font-weight: 600;
         color:white;
     }
@@ -73,7 +73,7 @@
 }
 
 .category {
-    background-color: var.$gray;
+    background-color: var.$grey;
     width:270px;
     height:305px;
     padding: 20px 30px;
@@ -93,6 +93,7 @@
 }
 
 .category_sec_mobile {
+    width:80vw;
     @media (min-width:var.$md){
         display: none;
     }
@@ -155,3 +156,16 @@
 .title_purple {
     color: var.$purple;
 }
+
+.noVeggie {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top:50px;
+    p{
+      font-weight: 600;
+      font-size:23px;
+      margin-top:50px;
+    }
+  }

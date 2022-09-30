@@ -8,7 +8,9 @@ export default function MartMap(){
     const router = useRouter();
     const [martList, setMartList] = useState<[{[key:number]:{}}]>();
     const [userAddress, setUserAddress] = useState<string[] | undefined>();
-    console.log(userAddress);
+    const [isShow, setIsShow] = useState<boolean>(true);
+    const [selectedMart, setSelectedMart] = useState<{[key:string]:string}>();
+    
     let map:any;
     let mart:string;
     if(router.query.id === 'emart'){
@@ -47,11 +49,11 @@ export default function MartMap(){
           // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
           // LatLngBounds 객체에 좌표를 추가합니다
           var bounds = new window.kakao.maps.LatLngBounds();
-          console.log(data)
-          setMartList(data)
-          for (var i=0; i<data.length; i++) {
-              displayMarker(data[i]);    
-              bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x));
+          const filtered_data = data.filter((item:any)=>item['category_group_code'] === 'MT1');
+          setMartList(filtered_data)
+          for (var i=0; i<filtered_data.length; i++) {
+            displayMarker(filtered_data[i]);
+            bounds.extend(new window.kakao.maps.LatLng(filtered_data[i].y, filtered_data[i].x));
           }
       }
   }
@@ -68,10 +70,7 @@ export default function MartMap(){
         image: markerImage
     });
 
-    // 마커에 클릭이벤트를 등록합니다
-    window.kakao.maps.event.addListener(marker, 'click', function() {
-        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-    });
+    marker.setMap(map);
   }
 
     function makeMap(lat:number, lon:number) {
@@ -83,16 +82,17 @@ export default function MartMap(){
         // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
         map = new window.kakao.maps.Map(mapContainer, mapOption);
         map.setDraggable(true);
-        window.kakao.maps.event.addListener(map, "idle", function () {
+        window.kakao.maps.event.addListener(map, "center_changed", function () {
           // 지도의  레벨을 얻어옵니다
           let level = map.getLevel();
           // 지도의 중심좌표를 얻어옵니다
           let locPosition = map.getCenter();
-          map.setLevel(level); 
+          map.setLevel(level);
           map.setCenter(locPosition);
-          toAddress(locPosition.getLat(), locPosition.getLng());
+          // toAddress(locPosition.getLat(), locPosition.getLng());
           SearchMart()
-        })}
+        })
+      }
 
     function SearchMart(){
       var ps = new window.kakao.maps.services.Places();
@@ -110,14 +110,33 @@ export default function MartMap(){
       window.kakao.maps.load(function(){SearchMart()})
     }, [userAddress])
 
+    useEffect(()=>{
+      if(selectedMart){
+        makeMap(Number(selectedMart['y']), Number(selectedMart['x']))
+      }
+    }, [selectedMart])
+
     return(
-      <>
+      <div className={styles.parents}>
       <Head>
         <title>{`내 주변 ${mart} | 베지밀`}</title>
       </Head>
-        <MapModal name={mart} data={martList} />
+      {isShow ? 
+        <MapModal name={mart} data={martList} setSelectedMart={setSelectedMart} />
+      :
+      null
+      }
+        <div className={ isShow ? `${styles.toggle} ${styles.is_show}` : `${styles.toggle} ${styles.isnt_show}`}
+        onClick={()=>{setIsShow(value => !value)}}>
+          <span className={styles.toggleBtn}></span>
+          {isShow ? 
+          <span>마트 목록 끄기</span>
+        :  
+          <span>마트 목록 보기</span>
+        }
+        </div>
         <div id="map">
         </div>
-      </>
+      </div>
     )
 }

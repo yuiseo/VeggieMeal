@@ -3,18 +3,51 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import styles from 'styles/Ingredient.module.scss';
 
-import glass from '/public/glass.png';
-import basket from '/public/basket.png';
 import { Button } from 'react-bootstrap';
+import { useState } from 'react';
+// import { Ingredient } from 'states/Ingredient';
 
-export default function Ingredient() {
+interface Ingredient {
+  recipe_id: number;
+  name: string;
+}
+
+export default function Ingredient({ recipe_id, name }: Ingredient) {
   const router = useRouter();
+  // const isClick = useRecoilValue(Ingredient)
+  const [isClick, setIsClick] = useState<boolean>(false);
   return (
-    <>
-      <div className={styles.box}>
-        <h4>재료이름</h4>
-        <div className={styles.button_box}>
-          <Button className={styles.price_box} onClick={() => router.push('/prices')}>
+    <div className={styles.Container}>
+      <div className={styles.Box}>
+
+        {/* 재료 이름 */}
+        <div className={styles.box_title}>
+          {/* 숫자 */}
+          {recipe_id < 10 ?
+            <div className={styles.number}><p>0{recipe_id}</p></div>
+            : <div className={styles.number}><p>{recipe_id}</p></div>}
+          {/* 제목 */}
+          <h4>{name}</h4>
+        </div>
+
+        {/* 버튼 */}
+        {isClick === false ?
+          <div className={styles.button_in_box} onClick={() => { setIsClick(!isClick) }}><p>장바구니 담기</p></div>
+          :
+          <div className={styles.button_out_box} onClick={() => { setIsClick(!isClick) }}><p>장바구니 빼기</p></div>
+        }
+
+
+        {/* <div onClick={() => { setIsClick(!isClick) }}> */}
+        {/* {isClick === false ?
+            <Button className={styles.button_in_box}><p>장바구니 담기</p></Button>
+            :
+            <Button className={styles.button_out_box}><p>장바구니 빼기</p></Button>
+          }
+          </div>  */}
+        {/*
+        <div>
+        <Button className={styles.price_box} onClick={() => router.push('/prices')}>
             <div><Image src={glass} quality={100} width={45} height={45} /></div>
             <p>물가분석</p>
             <p>보기</p>
@@ -23,10 +56,11 @@ export default function Ingredient() {
             <div><Image src={basket} quality={100} width={45} height={45} /></div>
             <p>장바구니</p>
             <p>담기</p>
-          </Button>
+          </Button> 
         </div>
+        */}
       </div>
-    </>
+    </div>
   )
 }
 

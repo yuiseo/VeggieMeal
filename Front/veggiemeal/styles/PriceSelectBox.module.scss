@@ -4,14 +4,13 @@
   display: flex;
   flex-direction: column;
   width: 30vw;
-  z-index:99;
 }
 
 .selected {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var.$gray;
+  background-color: var.$grey;
   padding: 15px 20px;
   margin: 5px;
   border-radius: 10px;
@@ -20,6 +19,11 @@
 .selected_value {
   font-size: medium;
   font-weight: 700;
+}
+
+#arrow{
+  width: 50%;
+  transition: .3s; // 부드럽게 회전
 }
 
 .select_ul {
@@ -36,7 +40,6 @@
     line-height: 2.5;
     padding: 5px 15px;
     border-bottom: 1px dashed white;
-
     &:hover {
       background-color: var.$purple;
     }
@@ -51,19 +54,7 @@
     }
 
     &.first_li {
-      border-radius: 10px 10px 0 0;
+      border-radius: 10px 10px 0 0;;
     }
   }
 }
-
-// .select {
-//   display: flex;
-//   flex-direction: column;
-//   width: 40vw;
-
-//   @media (min-width: var.$md) {
-//     justify-content: center;
-//     width: 220px;
-//     margin: 10px;
-//   }
-// }

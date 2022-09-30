@@ -1,63 +1,177 @@
 @use 'variable' as var;
 
-.box {
+.Container {
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  // align-items: flex-start;
+  margin: 0 5px;
   padding: 30px;
   border-radius: 15px;
   background-color: var.$grey;
   h4 {
     margin-bottom: 15px;
-    font-size: x-large;
     font-weight: 600;
   }
 }
-
-.button_box {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin: 5px 0;
-}
-
-.price_box {
+.Box {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+// .button_box {
+//   display: flex;
+//   flex-direction: row;
+//   // justify-content: flex-start;
+//   margin: 5px 0;
+// }
+.number {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: var.$black;
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 30px;
-  border: 0;
-  border-radius: 15px;
-  background-color: var.$green;
+  margin-right: 10px;
   p {
+    padding: 12px;
     margin: 0;
-    font-weight: 500;
     color: white;
-  }
-  &:hover {
-    border-color: var.$purple !important;
-    background-color: var.$purple !important;
+    }
+}
+
+.box_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  h4 {
+    margin:0;
   }
 }
 
-.basket_box {
+.button_in_box {
+  // position: inherit;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items:center;
-  margin-left: 10px;
-  padding: 20px 30px;
+  width: 100%;
   border: 0;
-  border-radius: 15px;
-  background-color: var.$purple;
+  border-radius: 10px;
+  background-color: var.$green  !important;
+
   p {
     margin: 0;
-    font-weight: 500;
+    padding: 10px;
     color: white;
-    }
+    font-size: large;
+  }
+
+  &:hover {
+    border-color: var.$purple  !important;
+    background-color: var.$purple  !important;
+  }
+}
+
+.button_out_box {
+  // width: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  background-color: var.$purple  !important;
+
+  p {
+    margin: 0;
+    padding: 10px;
+    color: white;
+    font-size: large;
+  }
+
   &:hover {
     border-color: var.$green  !important;
     background-color: var.$green  !important;
   }
 }
+// .button_in_box {
+//   width: 170px;
+//   border: 0;
+//   background-color: var.$green !important;
+//   p {
+//     margin: 0;
+//     padding: 5px;
+//     color: white;
+//     font-size: large;
+//   }
+//   &:hover {
+//     border-color: var.$purple  !important;
+//     background-color: var.$purple  !important;
+//   }
+// }
+// .button_out_box {
+//   width: 170px;
+//   border: 0;
+//   background-color: var.$purple !important;
+//   p {
+//     margin: 0;
+//     padding: 5px;
+//     color: white;
+//     font-size: large;
+//   }
+//   &:hover {
+//     border-color: var.$green  !important;
+//     background-color: var.$green  !important;
+//   }
+// }
+
+
+
+// .price_box {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 20px 30px;
+//   border: 0;
+//   border-radius: 15px;
+//   background-color: var.$green;
+
+//   p {
+//     margin: 0;
+//     font-weight: 500;
+//     color: white;
+//   }
+
+//   &:hover {
+//     border-color: var.$purple  !important;
+//     background-color: var.$purple  !important;
+//   }
+// }
+
+// .basket_box {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   margin-left: 10px;
+//   padding: 20px 30px;
+//   border: 0;
+//   border-radius: 15px;
+//   background-color: var.$purple;
+
+//   p {
+//     margin: 0;
+//     font-weight: 500;
+//     color: white;
+//   }
+
+//   &:hover {
+//     border-color: var.$green  !important;
+//     background-color: var.$green  !important;
+//   }
+// }
