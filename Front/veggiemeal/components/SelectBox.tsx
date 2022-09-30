@@ -7,16 +7,20 @@ import { useState } from "react";
 // another = setState 외에 추가적으로 처리해야 하는 로직
 
 type SelectProps = {
-    data:string[],
+    data:string[] | undefined,
     setState:any,
     title:string,
     another?:any,
+    dict?:{[key:string]: string}
 }
 
-export default function SelectBox({data, setState, title, another}:SelectProps){
+export default function SelectBox({data, setState, title, another, dict}:SelectProps){
     const [choice, setChocie] = useState<string>(title);
     const [isToggle, setIsToggle] = useState<Boolean>(false);
-    const len = data.length-1;
+    let len:number;
+    if(data){
+      len = data.length-1;
+    }
     return (
         <div className={styles.select}>
             <div className={styles.selected} onClick={() => {setIsToggle(value => !value)}}>
@@ -26,23 +30,33 @@ export default function SelectBox({data, setState, title, another}:SelectProps){
               </svg>
             </div>
             {isToggle ? 
-            <ul className={styles.select_ul}>
-            {data.map((item, index) => <li 
-            key={index}
-            className={
-                (item === choice ? `${styles.choice_li} ` : 'not_chice_li ') + 
-                (index === len ? `${styles.last_li} `: 
-                index === 0 ? `${styles.first_li}` : 'just_li')}
-            onClick={()=>{
-                setState(item)
-                setChocie(item)
-                setIsToggle(value => !value)
-                if(another){
-                  another(item)
+            (data ? 
+              <ul className={styles.select_ul}>
+              {data.map((item, index) => <li 
+              key={index}
+              className={
+                  (item === choice ? `${styles.choice_li} ` : 'not_chice_li ') + 
+                  (index === len ? `${styles.last_li} `: 
+                  index === 0 ? `${styles.first_li}` : 'just_li')}
+              onClick={()=>{
+                if(dict){
+                  setState(dict[item])
+                }else{
+                  setState(item)
                 }
-                }}>{item}</li>)}
-            </ul> : null
-            }
+                  setChocie(item)
+                  setIsToggle(value => !value)
+                  if(another){
+                    another(item)
+                  }
+                  }}>{item}</li>)}
+              </ul>
+              : 
+              <ul className={styles.select_ul}>
+                <li className={styles.first_li}>선택해주세요.</li>
+              </ul>
+              )
+            : null}
             
           </div>
     )

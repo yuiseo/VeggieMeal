@@ -4,7 +4,7 @@
   display: flex;
   overflow: hidden;
   width: 335px;
-  height:170px;
+  height:150px;
   margin: 15px;
   padding: 0;
   border-radius: 20px;
@@ -14,18 +14,18 @@
   }
   @media (min-width: var.$sm) {
     width: 26rem;
-    height:12rem;
+    height:150px;
   }
 }
 
 #list_img {
   width: 160px;
-  height: 170px;
+  height: 150px;
   background-size: cover;
   background-position: center;
   @media (min-width: var.$sm) {
     width: 12rem;
-    height: 12rem;
+    height: 150px;
   }
 }
 
@@ -34,7 +34,7 @@
   flex-direction: column;
   justify-content: center;
   width: 170px;
-  height: 170px;
+  height: 150px;
   padding: 18px 20px;
   div {
     display: inline-flex;
@@ -61,7 +61,7 @@
   }
   @media (min-width: var.$sm) {
     width: 13rem;
-    height: 12rem;
+    height: 150px;
     padding: 30px;
     h4 {
       font-weight: 700;
