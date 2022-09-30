@@ -1,37 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="VeggieMeal:jar" />
-    </artifacts-to-build>
-  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46f46b59-861d-4878-91e4-18a93af42d68" name="변경" comment="변경">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/VeggieMeal_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/VeggieMeal_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="46f46b59-861d-4878-91e4-18a93af42d68" name="변경" comment="[S07P22C205-76][BE-지원] Mapreduce time check add">
+      <change afterPath="$PROJECT_DIR$/../.idea/Hadoop.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/azure/azureSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VeggieMeal.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Spark/VeggieMealScala/.idea/VeggieMealScala.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/VeggieMeal_jar/VeggieMeal.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ssafy/veggiemeal/VeggiemealMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ssafy/veggiemeal/VeggiemealMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ssafy/veggiemeal/VeggiemealReducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ssafy/veggiemeal/VeggiemealReducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ssafy/veggiemeal/VeggiemealMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ssafy/veggiemeal/VeggiemealMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ssafy/veggiemeal/VeggiemealReducer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ssafy/veggiemeal/VeggiemealReducer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CodeStyleSettingsInfer">
-    <option name="done" value="true" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -41,43 +24,8 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="GitToolBoxStore">
-    <option name="recentBranches">
-      <RecentBranches>
-        <option name="branchesForRepo">
-          <list>
-            <RecentBranchesForRepo>
-              <option name="branches">
-                <list>
-                  <RecentBranch>
-                    <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1664177960" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="spark" />
-                    <option name="lastUsedInstant" value="1664177959" />
-                  </RecentBranch>
-                </list>
-              </option>
-              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$/../.." />
-            </RecentBranchesForRepo>
-          </list>
-        </option>
-      </RecentBranches>
-    </option>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectCodeStyleSettingsMigration">
-    <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="2F9sCb5h9a76Zrh5hv9cXQbE22N" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -85,18 +33,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/giyeong/S07P22C205/Hadoop/VeggieMeal&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/multicampus/Documents/GitHub/S07P22C205/Spark"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
@@ -106,13 +51,6 @@
       <option name="presentableId" value="Default" />
       <updated>1663915507697</updated>
       <workItem from="1663915508922" duration="1991000" />
-      <workItem from="1664177850229" duration="955000" />
-      <workItem from="1664237369785" duration="335000" />
-      <workItem from="1664238411714" duration="1934000" />
-      <workItem from="1664242172674" duration="4651000" />
-      <workItem from="1664299318131" duration="128000" />
-      <workItem from="1664300781141" duration="58000" />
-      <workItem from="1664300918721" duration="61000" />
     </task>
     <servers />
   </component>
