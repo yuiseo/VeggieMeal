@@ -10,34 +10,40 @@ import { useQueries } from "react-query";
 
 export default function Cart() {
   const [mart, setMart] = useState<string>("none");
-  const [ingre, setIngre] = useState<(string | number) [][]>([["포도", 0], ["사과", 1]]);
-  const [ingrePrices, setIngrePrices] = useState<{[key:string]:string[][]}>(
-    {"포도" : [["어쩌구저쩌구 맛있는 포도 1.5kg(봉)", "7500"],["샤인머스켓보다 맛있는 포도 1.5kg(봉)", "9500"], ["브로코리보다 맛있는 포도 1.5kg(봉)", "5500"],
-    ["어쩌구저쩌구 맛있는 포도 1.5kg(봉)", "7500"],["어쩌구저쩌구 맛있는 포도 1.5kg(봉)", "7500"],["어쩌구저쩌구 맛있는 포도 1.5kg(봉)", "7500"]]}
-  );
+  const [ingre, setIngre] = useState<(string | number) [][]>([["포도", 3], ["사과", 1]]);
   const [emartList, setEmartList] = useState<string[][]>();
   const [emartPrices, setEmartPrices] = useState<number>(calPrice(emartList));
   const [hpList, setHpList] = useState<string[][]>();
   const [hpPrices, setHpPrices] = useState<number>(calPrice(hpList));
   const [cheaper, setCheaper] = useState<string>();
   const [activeKey, setActiveKey] = useState<number[]>();
-  const ingreEmart =  useQueries(
-      ingre.map((ing:(string|number)[])=>{
+  let ingrePrices = {};
+  const ingreEnH = useQueries(queries)
+
+      // ingre.map((ing:(string|number)[])=>{
+      //   return{
+      //     queryKey:[ing[0], ing[1]],
+      //     queryFn: async () => {
+      //       const data = await(await fetch(`https://j7c205.p.ssafy.io/api/mart?ingredientId=${ing[1]}&mart=0`)).json()
+      //       console.log(data)
+      //     },
+      //   }
+      // })
+    const ingreH = useQueries(
+      ingre.map((ing:any)=>{
         return{
           queryKey:[ing[0], ing[1]],
           queryFn: async () => {
-            const data = await(await fetch(`https://j7c205.p.ssafy.io/api/mart?ingredientId=${ing[1]}&mart=0`)).json()
-            return data
+            const data = await(await fetch(`https://j7c205.p.ssafy.io/api/mart?ingredientId=${ing[1]}&mart=1`)).json()
+            console.log("data2", data)
           },
-          onSuccess: (data:any) => {console.log(data)}
         }
       })
     )
-  // console.log(ingreEmart)
+  
   function calPrice(data:string[][] | undefined){
     if(data !== undefined){
         let result = data?.reduce((acc, item)=> acc += Number(item[1]), 0)
-        console.log(result)
         return result
     }else{
         return 0
@@ -55,6 +61,8 @@ export default function Cart() {
       }
     }
   }
+
+  // useEffect(()=>{}, [mart])
 
   useEffect(()=>{
     let result = calPrice(emartList);

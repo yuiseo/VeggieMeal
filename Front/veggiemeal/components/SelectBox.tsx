@@ -36,8 +36,8 @@ export default function SelectBox({data, setState, title, another, dict}:SelectP
               key={index}
               className={
                   (item === choice ? `${styles.choice_li} ` : 'not_chice_li ') + 
-                  (index === len ? `${styles.last_li} `: 
-                  index === 0 ? `${styles.first_li}` : 'just_li')}
+                  (index === 0 ? `${styles.first_li} `: 
+                  index === len ? `${styles.last_li}` : 'just_li')}
               onClick={()=>{
                 if(dict){
                   setState(dict[item])

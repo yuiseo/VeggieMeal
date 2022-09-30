@@ -5,7 +5,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { RecoilRoot } from 'recoil';
 import Script from "next/script";
 import Navbar from 'components/Navbar';
-import {useEffect} from 'react';
+import * as Sentry from "@sentry/nextjs";
+import { Integrations } from "@sentry/tracing";
 
 declare global {
   interface Window {
