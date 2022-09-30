@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="769d0ad2-0ea5-4705-84b8-7e88c3adc6c1" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/../Hadoop/.idea/Hadoop.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Hadoop/VeggieMeal/.idea/azure/azureSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Hadoop/VeggieMeal/VeggieMeal.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VeggieMealScala/.idea/VeggieMealScala.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hadoop/VeggieMeal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Hadoop/VeggieMeal/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hadoop/VeggieMeal/out/artifacts/VeggieMeal_jar/VeggieMeal.jar" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2F9iOneY1LzsQZkg7uw2WmWGHBb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/multicampus/Documents/GitHub/S07P22C205/Spark/VeggieMealScala",
+    "project.structure.last.edited": "모듈",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="769d0ad2-0ea5-4705-84b8-7e88c3adc6c1" name="변경" comment="" />
+      <created>1663910670603</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663910670603</updated>
+      <workItem from="1663910671906" duration="35000" />
+      <workItem from="1664410531135" duration="7000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
