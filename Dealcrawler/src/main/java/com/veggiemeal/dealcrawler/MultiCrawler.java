@@ -140,19 +140,16 @@ public class MultiCrawler implements Runnable {
         String kg = null;
         boolean isKg = false;
 
-        // 0.5kg, 500g, 0.5, "." , ". ." -> kg
+        // 0.5kg, 500g -> kg
         if(children.get(7).text().contains("k")){
             kg = children.get(7).text().split("k")[0];
-            isKg = true;
-        } else if(children.get(7).text().contains(".")) {
-            kg = children.get(7).text().split(".").length == 0 ? "0" : children.get(7).text().split(".")[0];
             isKg = true;
         } else if(children.get(7).text().contains("g")) {
             kg = "0."+ children.get(7).text().split("g")[0];
             isKg = true;
         } else {
-            kg = children.get(7).text().replace("[^0-9]", "");
-            isKg = true;
+            kg = children.get(7).text().replaceAll("[^0-9]", "");
+            isKg = false;
         }
 
         int byNumber = 1;
@@ -160,8 +157,7 @@ public class MultiCrawler implements Runnable {
         if(isKg) {
             sb.append("0, ");
             byNumber = (int) (Float.parseFloat(kg) * 10);
-        } else { // 단위가 개수인 경우
-            // 만약 소수점이라면, 올림
+        } else { // 단위가 개수인 경우,
             sb.append("1, ");
             byNumber = Integer.parseInt(kg);
         }
@@ -175,7 +171,7 @@ public class MultiCrawler implements Runnable {
         } catch(ParseException e) {
             e.printStackTrace();
         }
-        sb.append(price/(byNumber == 0 ? 1 : byNumber)).append("\n");
+        sb.append(isKg ? price / (byNumber == 0 ? 1 : byNumber) : price).append("\n");
         // after reading one row of a table, This server should send kafka producer
         try {
             TimeUnit.MILLISECONDS.sleep(10);

@@ -22,11 +22,13 @@ public class ProducerController {
 
     private SimpleDateFormat simpleDateFormat;
     private Date now;
+    /*
     // Gson makes a role to change JSON object into String format. When VO object is activated, it would be also activated
-//    private Gson gson;
+    private Gson gson;
     // When VO object is necessary, it would be activated
-//    private UserEventVO userEventVO;
-//    private String jsonLog;
+    private UserEventVO userEventVO;
+    private String jsonLog;
+    */
 
     public ProducerController(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
@@ -37,9 +39,11 @@ public class ProducerController {
         simpleDateFormat = new SimpleDateFormat("yyyyMMdd"); // Date is used as Key
         now = new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000);
 
-//        gson = new Gson();
-//        userEventVO = new UserEventVO(simpleDateFormat.format(now), userAgent, dealData);
-//        jsonLog = gson.toJson(userEventVO);
+        /*
+        gson = new Gson();
+        userEventVO = new UserEventVO(simpleDateFormat.format(now), userAgent, dealData);
+        jsonLog = gson.toJson(userEventVO);
+        */
 
         kafkaTemplate.send("deal", simpleDateFormat.format(now), dealData).addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 
