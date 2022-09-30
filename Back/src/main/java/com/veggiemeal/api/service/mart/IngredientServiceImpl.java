@@ -1,10 +1,12 @@
 package com.veggiemeal.api.service.mart;
 
+import com.veggiemeal.api.domain.entity.Ingredient;
 import com.veggiemeal.api.repository.IngredientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,5 +30,13 @@ public class IngredientServiceImpl implements IngredientService {
     public List<String> getNameList(String medium) {
         List<String> nameList = ingredientRepository.findName(medium);
         return nameList;
+    }
+
+    @Override
+    public int searchName(String name) {
+        Optional<Ingredient> ingredient = ingredientRepository.findIngredientByName(name);
+
+        if (ingredient.isPresent()) return 1;
+        else return 0;
     }
 }

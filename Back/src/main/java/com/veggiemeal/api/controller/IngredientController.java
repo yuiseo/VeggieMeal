@@ -47,4 +47,14 @@ public class IngredientController {
         return ResponseEntity.status(HttpStatus.OK).body(nameList);
     }
 
+    /*
+     * 재료명(keyword)을 입력받아 그 재료가 전체 재료 목록에 있으면 1, 없으면 0 반환
+     */
+    @ApiOperation(value = "재료명(keyword)을 입력받아 그 재료가 전체 재료 목록에 있으면 1, 없으면 0 반환", response = Integer.class)
+    @GetMapping
+    public ResponseEntity<Integer> searchName(@RequestParam("keyword") String keyword) {
+        int result = ingredientService.searchName(keyword);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
 }
