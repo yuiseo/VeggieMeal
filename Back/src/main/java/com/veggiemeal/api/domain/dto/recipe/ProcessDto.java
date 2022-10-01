@@ -13,6 +13,7 @@ import lombok.*;
 @Builder
 public class ProcessDto {
 
+    private int processId;
     private int recipeId;
     private int no; // 요리 순서
     private String description;
