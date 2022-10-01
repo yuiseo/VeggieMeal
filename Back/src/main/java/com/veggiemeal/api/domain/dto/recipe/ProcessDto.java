@@ -5,11 +5,16 @@ import com.veggiemeal.api.utils.ModelMapperUtils;
 import lombok.*;
 
 @Data
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class ProcessDto {
 
     private int processId;
-    private long recipeId;
+    private int recipeId;
     private int no; // 요리 순서
     private String description;
 

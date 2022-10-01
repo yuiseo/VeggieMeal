@@ -20,7 +20,6 @@ public class Process {
     @Column(name = "process_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int processId;
-
     @Column(name = "recipe_id")
     private int recipeId;
     private int no;
