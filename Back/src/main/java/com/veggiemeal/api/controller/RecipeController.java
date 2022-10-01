@@ -1,5 +1,6 @@
 package com.veggiemeal.api.controller;
 
+import com.veggiemeal.api.domain.dto.recipe.ProcessDto;
 import com.veggiemeal.api.domain.dto.recipe.RecipeDto;
 import com.veggiemeal.api.service.recipe.RecipeService;
 import io.swagger.annotations.ApiOperation;
@@ -51,4 +52,10 @@ public class RecipeController {
         return ResponseEntity.status(HttpStatus.OK).body(recipeDtoList);
     }
 
+    @ApiOperation(value = "레시피 아이디를 입력받아 레시피 요리 순서, 설명 반환", response = List.class)
+    @GetMapping("/process")
+    public ResponseEntity<List<ProcessDto>> getProcessByRecipe(@RequestParam("recipeId") int recipeId){
+        List<ProcessDto> processDtoList = recipeService.getProcessByRecipeId(recipeId);
+        return ResponseEntity.status(HttpStatus.OK).body(processDtoList);
+    }
 }

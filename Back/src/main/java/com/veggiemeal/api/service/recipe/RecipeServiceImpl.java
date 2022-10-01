@@ -1,11 +1,14 @@
 package com.veggiemeal.api.service.recipe;
 
 import com.veggiemeal.api.domain.dto.recipe.ComponentDto;
+import com.veggiemeal.api.domain.dto.recipe.ProcessDto;
 import com.veggiemeal.api.domain.dto.recipe.RecipeDto;
 import com.veggiemeal.api.domain.entity.Component;
+import com.veggiemeal.api.domain.entity.Process;
 import com.veggiemeal.api.domain.entity.Recipe;
 import com.veggiemeal.api.domain.entity.Type;
 import com.veggiemeal.api.repository.ComponentRepository;
+import com.veggiemeal.api.repository.ProcessRepository;
 import com.veggiemeal.api.repository.RecipeRepository;
 import com.veggiemeal.api.repository.TypeRepository;
 import org.springframework.stereotype.Service;
@@ -20,11 +23,13 @@ public class RecipeServiceImpl implements RecipeService {
     private final RecipeRepository recipeRepository;
     private final TypeRepository typeRepository;
     private final ComponentRepository componentRepository;
+    private final ProcessRepository processRepository;
 
-    public RecipeServiceImpl(RecipeRepository recipeRepository, TypeRepository typeRepository, ComponentRepository componentRepository){
+    public RecipeServiceImpl(RecipeRepository recipeRepository, TypeRepository typeRepository, ComponentRepository componentRepository, ProcessRepository processRepository){
         this.recipeRepository = recipeRepository;
         this.typeRepository = typeRepository;
         this.componentRepository = componentRepository;
+        this.processRepository = processRepository;
     }
 
 
@@ -147,4 +152,9 @@ public class RecipeServiceImpl implements RecipeService {
         return componentEntityList.stream().map(entity -> ComponentDto.of(entity)).collect(Collectors.toList());
     }
 
+    @Override
+    public List<ProcessDto> getProcessByRecipeId(int recipeId) {
+        List<Process> processEntityList = processRepository.findAllByRecipeId(recipeId);
+        return processEntityList.stream().map(entity -> ProcessDto.of(entity)).collect(Collectors.toList());
+    }
 }
