@@ -41,6 +41,7 @@ public class RecipeController {
         Map<String, Object> result = new HashMap<>();
         result.put("recipe", recipeService.getRecipeById(recipeId));
         result.put("ingredient", recipeService.getIngredientByRecipeId(recipeId));
+        result.put("process", recipeService.getProcessByRecipeId(recipeId));
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
