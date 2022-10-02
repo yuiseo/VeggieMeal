@@ -1,0 +1,16 @@
+@use "../node_modules/bootstrap/scss/bootstrap.scss";
+@use 'variable' as val;
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2892, 90, 205, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-toggler {
+  border: none;
+  box-shadow: 0 0 0 #ffffff;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 5px rgba($color: val.$purple, $alpha: 0.5);
+}
+
