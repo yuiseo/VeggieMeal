@@ -72,7 +72,7 @@ export default function Mart({title, price, isCheap, data}: MartProps ){
                 <div className={styles.item_list}>
                     {data?.map((item, index) => <div key={index} className={styles.user_item}>
                         <p className={styles.item_title}>{item[0]}</p>
-                        <p className={styles.item_price}>{item[1].replace(/\B(?=(\d{3})+(?!\d))/g, ',') +"원" }</p>
+                        <p className={styles.item_price}>{String(item[1]).replace(/\B(?=(\d{3})+(?!\d))/g, ',') +"원" }</p>
                     </div>)}
                 </div>
             </div>

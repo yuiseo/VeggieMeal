@@ -168,4 +168,9 @@
       font-size:23px;
       margin-top:50px;
     }
+    @media (max-width:var.$sm) {
+        p {
+            font-size:20px;
+        }
+    }
   }
