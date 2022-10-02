@@ -12,33 +12,34 @@ import right from '/public/right.png';
 SwiperCore.use([Navigation, Pagination]);
 
 
-export default function IngredientSlider() {
-  const DumiData = [
-    {
-      recipe_id: 1,
-      name: '양파',
-    },
-    {
-      recipe_id: 2,
-      name: '대파',
-    },
-    {
-      recipe_id: 3,
-      name: '버섯',
-    },
-    {
-      recipe_id: 4,
-      name: '콩나물',
-    },
-    {
-      recipe_id: 5,
-      name: '시금치',
-    },
-    {
-      recipe_id: 6,
-      name: '무',
-    },
-  ]
+export default function IngredientSlider({ ingredientList }: any) {
+  // const DumiData = [
+  //   {
+  //     recipe_id: 1,
+  //     name: '양파',
+  //   },
+  //   {
+  //     recipe_id: 2,
+  //     name: '대파',
+  //   },
+  //   {
+  //     recipe_id: 3,
+  //     name: '버섯',
+  //   },
+  //   {
+  //     recipe_id: 4,
+  //     name: '콩나물',
+  //   },
+  //   {
+  //     recipe_id: 5,
+  //     name: '시금치',
+  //   },
+  //   {
+  //     recipe_id: 6,
+  //     name: '무',
+  //   },
+  // ]
+  // console.log(ingredientList)
 
   return (
     <div className={styles.slider_box}>
@@ -75,7 +76,7 @@ export default function IngredientSlider() {
         }}
       >
 
-        {DumiData.map((item, index) => <SwiperSlide key={index}><Ingredient {...item} /></SwiperSlide>)}
+        {ingredientList.map((item: any, index: number) => <SwiperSlide key={index}><Ingredient {...item} index={index} /></SwiperSlide>)}
         {/* <div class="swiper-pagination"></div> */}
 
 

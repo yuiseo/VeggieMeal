@@ -1,11 +1,19 @@
 import styles from 'styles/ChartLine.module.scss';
 import dynamic from 'next/dynamic';
+import { position } from 'html2canvas/dist/types/css/property-descriptors/position';
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-
-export default function ChartColumn() {
-
-
+interface PriceDataProps {
+  priceData?: any;
+  selectTitle?: string;
+}
+export default function ChartColumn({ priceData, selectTitle }: PriceDataProps) {
+  // console.log('hihi', priceData)
+  // console.log(priceData[0].price)
+  let priceList: number[] = priceData.map(({ price }: any) => price)
+  // console.log(priceList)
+  let PriceDate: string[] = priceData.map(({ dealDate }: any) => dealDate.slice(4, 6) + '월 ' + dealDate.slice(6, 8) + '일')
+  // console.log(PriceDate)
   return (
     <div className={styles.Container}>
       <ApexChart
@@ -13,7 +21,7 @@ export default function ChartColumn() {
         series={[
           {
             name: '물가 평균',
-            data: [3000, 1000, 2000, 6000, 8000, 500, 10000, 700],
+            data: priceList,
           }
         ]}
         options={{
@@ -24,17 +32,31 @@ export default function ChartColumn() {
             },
             background: 'transparent',
           },
+          noData: {
+            text: '데이터가 없어요',
+            align: 'center',
+            verticalAlign: 'middle',
+            offsetX: 0,
+            offsetY: 0,
+            style: {
+              color: undefined,
+              fontSize: '14px',
+              fontFamily: 'SUIT Variable'
+            }
+          },
           dataLabels: {
             enabled: false
           },
-          labels: ['9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일',],
+          labels: PriceDate,
           xaxis: {
-            type: 'category'
+            type: 'category',
+            position: 'bottom',
+
           },
           yaxis: {
             labels: {
               formatter: function (value) {
-                return value.toLocaleString()
+                return value.toLocaleString() + "원"
               }
             },
             forceNiceScale: true,
@@ -44,7 +66,7 @@ export default function ChartColumn() {
           },
           colors: ['#5C5ACD'],
           title: {
-            text: '~의 평균 물가',
+            text: `{ ${selectTitle} }의 평균 물가`,
             align: 'left',
             margin: 10,
             offsetX: 0,
@@ -52,6 +74,7 @@ export default function ChartColumn() {
             floating: false,
             style: {
               fontSize: '25px',
+              fontFamily: 'SUIT Variable',
               fontWeight: 'bold',
               color: '#263238'
             },
