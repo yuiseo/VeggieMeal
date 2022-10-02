@@ -35,7 +35,7 @@ public class RecipeController {
         return ResponseEntity.status(HttpStatus.OK).body(recipeDtoList);
     }
 
-    @ApiOperation(value = "레시피ID를 입력받아 일치하는 레시피 데이터 및 재료 데이터를 반환", response = Map.class)
+    @ApiOperation(value = "레시피ID를 입력받아 일치하는 레시피 데이터 및 재료, 과정 데이터를 반환", response = Map.class)
     @GetMapping("/id")
     public ResponseEntity<Map<String, Object>> getRecipeById(@RequestParam("recipeId") int recipeId){
         Map<String, Object> result = new HashMap<>();
