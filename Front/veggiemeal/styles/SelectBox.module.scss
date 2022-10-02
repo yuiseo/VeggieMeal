@@ -37,19 +37,28 @@
         padding:5px 15px;
         border-bottom: 1px dashed white;
         &:hover {
-            background-color: var.$purple;
+          background-color: var.$purple;
         }
         &.choice_li {
-            background-color: var.$purple;
+          background-color: var.$purple;
         }
         &.last_li {
-            border-bottom: 0;
-            border-radius: 0 0 10px 10px;
+          border-bottom: 0;
+          border-radius: 0 0 10px 10px;
         }
         &.first_li {
-            border-radius: 10px 10px 0 0;
+          border-radius: 10px 10px 0 0;
+        }  
+        &.len1_li {
+          border-radius:10px;
+          border-bottom: none;
         }
-    }
+        &.len1_choice_li {
+          background-color: var.$purple;
+          border-radius: 10px;
+          border-bottom:none;
+        }
+      }
 }
 
 // .select {

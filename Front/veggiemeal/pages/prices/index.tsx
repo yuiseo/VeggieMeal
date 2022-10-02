@@ -10,7 +10,7 @@ import glass from '/public/glass.png';
 import SelectBox from "components/SelectBox";
 import News from "components/News";
 import { useQuery } from 'react-query';
-
+import { BeatLoader } from 'react-spinners'
 // const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 // const PriceSelectBox = dynamic(() => import('components/PriceSelectBox'))
 // import PriceSelectBox from "components/PriceSelectBox";
@@ -33,7 +33,7 @@ export async function getServerSideProps() {
     method: 'get'
   })
   const largeData = await respond.json()
-  console.log(largeData)
+  // console.log(largeData)
 
   return { props: { data, largeData } }
 }
@@ -94,66 +94,83 @@ export default function Prices({ data, largeData }: PriceProps) {
   })
 
 
-
   const tableColumns = ['날짜', '최고가(원)', '최저가(원)', '평균가(원)']
+  // const tableData = [
+  //   {
+  //     data_id: 1,
+  //     date: '9월 7일',
+  //     max_val: 6700,
+  //     min_val: 3000,
+  //     val: 5000,
+  //   },
+  //   {
+  //     data_id: 2,
+  //     date: '9월 8일',
+  //     max_val: 6700,
+  //     min_val: 3000,
+  //     val: 5000,
+  //   },
+  //   {
+  //     data_id: 3,
+  //     date: '9월 9일',
+  //     max_val: 6700,
+  //     min_val: 3000,
+  //     val: 5000,
+  //   },
+  //   {
+  //     data_id: 4,
+  //     date: '9월 10일',
+  //     max_val: 6700,
+  //     min_val: 3000,
+  //     val: 5000,
+  //   },
+  //   {
+  //     data_id: 5,
+  //     date: '9월 11일',
+  //     max_val: 6700,
+  //     min_val: 3000,
+  //     val: 5000,
+  //   },
+  //   // {
+  //   //   data_id: 6,
+  //   //   date: '9월 12일',
+  //   //   max_val: 6700,
+  //   //   min_val: 3000,
+  //   //   val: 5000,
+  //   // },
+  //   // {
+  //   //   data_id: 7,
+  //   //   date: '9월 13일',
+  //   //   max_val: 6700,
+  //   //   min_val: 3000,
+  //   //   val: 5000,
+  //   // 
+  // ]
+  function Spinner() {
+    return (
+      <section className={styles.spinner}>
+        <div>
+          <h3>물가를 분석 중입니다</h3>
+          <BeatLoader color="#5C5ACD" />
+        </div>
+      </section>
+    )
+  }
 
-  const tableData = [
-    {
-      data_id: 1,
-      date: '9월 7일',
-      max_val: 6700,
-      min_val: 3000,
-      val: 5000,
-    },
-    {
-      data_id: 2,
-      date: '9월 8일',
-      max_val: 6700,
-      min_val: 3000,
-      val: 5000,
-    },
-    {
-      data_id: 3,
-      date: '9월 9일',
-      max_val: 6700,
-      min_val: 3000,
-      val: 5000,
-    },
-    {
-      data_id: 4,
-      date: '9월 10일',
-      max_val: 6700,
-      min_val: 3000,
-      val: 5000,
-    },
-    {
-      data_id: 5,
-      date: '9월 11일',
-      max_val: 6700,
-      min_val: 3000,
-      val: 5000,
-    },
-    // {
-    //   data_id: 6,
-    //   date: '9월 12일',
-    //   max_val: 6700,
-    //   min_val: 3000,
-    //   val: 5000,
-    // },
-    // {
-    //   data_id: 7,
-    //   date: '9월 13일',
-    //   max_val: 6700,
-    //   min_val: 3000,
-    //   val: 5000,
-    // 
-  ]
-
+  const [loading, setLoading] = useState<boolean>(true)
   useEffect(() => {
     if (dealData !== undefined && dealData.length) {
       setIsShow(true)
+      setTimeout(() => setLoading(false), 1500)
     }
   }, [dealData])
+
+  const [isChange, setIsChange] = useState<boolean>(true)
+  useEffect(() => {
+    setIsChange(false)
+    setLoading(true)
+  }, [isSelect01, isSelect02, isSelect03, isSelect04])
+
   return (
     <div className={styles.Container}>
       <Head>
@@ -181,20 +198,21 @@ export default function Prices({ data, largeData }: PriceProps) {
             <p> 어떤 재료의 물가를 알려드릴까요? </p>
           </div>
           :
-          <section className={styles.chart_section}>
-            <article className={styles.main_chart}>
-              <ChartLine priceData={dealData} selectTitle={isSelect03} />
-            </article>
+          (loading === true ? <Spinner /> :
+            <section className={styles.chart_section}>
+              <article className={styles.main_chart}>
+                <ChartLine priceData={dealData} selectTitle={isSelect03} />
+              </article>
 
-            <section className={styles.sub_chart}>
-              <article className={styles.column_chart}>
-                <ChartColumn selectTitle={isSelect03} priceData={dealData} />
-              </article>
-              <article className={styles.table_article}>
-                <Table dealData={dealData} tableColumns={tableColumns} ></Table>
-              </article>
-            </section>
-          </section>
+              <section className={styles.sub_chart}>
+                <article className={styles.column_chart}>
+                  <ChartColumn selectTitle={isSelect03} priceData={dealData} />
+                </article>
+                <article className={styles.table_article}>
+                  <Table dealData={dealData} tableColumns={tableColumns} ></Table>
+                </article>
+              </section>
+            </section>)
         }
         <section>
           <div className={styles.news_section}>
