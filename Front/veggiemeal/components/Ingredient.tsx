@@ -8,11 +8,12 @@ import { useState } from 'react';
 // import { Ingredient } from 'states/Ingredient';
 
 interface Ingredient {
-  recipe_id: number;
+  id: number;
   name: string;
+  index: number;
 }
 
-export default function Ingredient({ recipe_id, name }: Ingredient) {
+export default function Ingredient({ id, name, index }: Ingredient) {
   const router = useRouter();
   // const isClick = useRecoilValue(Ingredient)
   const [isClick, setIsClick] = useState<boolean>(false);
@@ -23,9 +24,9 @@ export default function Ingredient({ recipe_id, name }: Ingredient) {
         {/* 재료 이름 */}
         <div className={styles.box_title}>
           {/* 숫자 */}
-          {recipe_id < 10 ?
-            <div className={styles.number}><p>0{recipe_id}</p></div>
-            : <div className={styles.number}><p>{recipe_id}</p></div>}
+          {index + 1 < 10 ?
+            <div className={styles.number}><p>0{index + 1}</p></div>
+            : <div className={styles.number}><p>{index + 1}</p></div>}
           {/* 제목 */}
           <h4>{name}</h4>
         </div>

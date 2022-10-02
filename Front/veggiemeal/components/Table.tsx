@@ -1,18 +1,19 @@
 import styles from 'styles/Table.module.scss';
 interface TableProps {
-  tableData: any;
+  dealData: any;
   tableColumns: any;
 }
 
 interface DataProps {
-  date: string;
-  max_val: number;
-  min_val: number;
-  val: number;
+  dealDate: string;
+  max: number;
+  min: number;
+  price: number;
   index?: number;
+  selectTitle: string;
 }
 
-export default function Table({ tableData, tableColumns }: TableProps) {
+export default function Table({ dealData, tableColumns }: TableProps) {
   // console.log(index)
   return (
     <div className={styles.table_Container}>
@@ -28,12 +29,12 @@ export default function Table({ tableData, tableColumns }: TableProps) {
 
         {/* data */}
         <tbody>
-          {tableData.map(({ date, max_val, min_val, val }: DataProps) => (
-            <tr key={date}>
-              <td>{date}</td>
-              <td style={{ color: 'red' }}>▲{max_val.toLocaleString()}</td>
-              <td style={{ color: 'blue' }}>▼{min_val.toLocaleString()}</td>
-              <td>{val.toLocaleString()}</td>
+          {dealData.map(({ dealDate, max, min, price }: DataProps) => (
+            <tr key={dealDate}>
+              <td>{dealDate}</td>
+              <td style={{ color: 'red' }}>▲{max.toLocaleString()}</td>
+              <td style={{ color: 'blue' }}>▼{min.toLocaleString()}</td>
+              <td>{price.toLocaleString()}</td>
             </tr>
           ))}
         </tbody>

@@ -114,9 +114,12 @@ body::-webkit-scrollbar-track{
   right:-52rem;
   z-index: 100;
   @media (max-width:var.$sm) {
-    right: -280px;
+    top:-115px;
+    left: 280px;
+    right: auto;
   }
   @media (max-width:var.$md) {
+    max-width: 510px;
     right: -510px;
   }
   @media (max-width:var.$lg) {
@@ -126,9 +129,10 @@ body::-webkit-scrollbar-track{
 .left-swiper-button-prev {
   position: relative;
   top: -100px;
-  left: -3rem;
+  left: -2.5rem;
   z-index: 100;
   @media (max-width:var.$sm) {
+    top: -115px;
     left: -30px;
   }
 }

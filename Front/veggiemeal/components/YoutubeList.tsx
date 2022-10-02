@@ -31,7 +31,7 @@ export default function YoutubeList({ title, high, videoId, channelTitle }: Yout
   // console.log(title)
   // console.log(channelTitle)
   const router = useRouter()
-  console.log(newdata)
+  // console.log(newdata)
   return (
     <div className={styles.box}>
       {/* 섬네일 이미지 */}
