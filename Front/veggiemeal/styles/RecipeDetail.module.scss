@@ -24,6 +24,10 @@
   @media (min-width:var.$sm) {
     margin: 0 10px;
   }
+  @media (max-width:var.$sm) {
+    max-width: 85vw;
+    margin: 0 10px;
+  }
   @media (min-width:var.$md) {
     max-width: 85vw;
   }
@@ -109,6 +113,9 @@
   @media (max-width:var.$sm) {
     width: 85vw;
   }
+  @media (min-width:var.$sm) {
+    margin: 25px;
+  }
 }
 .ingredient_section {
   display: flex;
@@ -142,7 +149,7 @@
 
 .mobile_ingredient {
   // margin: 20px 40px;
-  margin: 20px 1rem;
+  margin: 15px 1rem;
   p {
       font-weight: 400;
       margin: 0;
@@ -168,8 +175,14 @@
     font-weight: 600;
     margin-bottom: 25px;
   }
+  @media (min-width:var.$sm) {
+    max-width: 90vw;
+    padding: 0 5rem;
+    margin: 20px;
+    justify-content: flex-start;
+  }
   @media (min-width:var.$lg) {
-    min-width: 1006px;
+    max-width: 1000px;
     padding: 0 5rem;
     margin: 20px;
     justify-content: flex-start;
