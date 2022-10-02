@@ -1,6 +1,5 @@
 import styles from 'styles/ChartLine.module.scss';
 import dynamic from 'next/dynamic';
-import { position } from 'html2canvas/dist/types/css/property-descriptors/position';
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 interface PriceDataProps {
