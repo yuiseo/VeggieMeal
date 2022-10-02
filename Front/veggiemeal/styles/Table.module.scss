@@ -1,8 +1,8 @@
 @use 'variable' as var;
 .table_Container {
   table{
-    margin-left: auto;
-    margin-right: auto;
+    // margin-left: 0;
+    // margin-right: auto;
     @media (max-width:var.$sm){
       font-size: medium;
       // thead {
@@ -10,14 +10,17 @@
       //   }
     }
     @media (min-width:var.$lg){
-      font-size: large;
+      font-size: medium;
     }
   }
   thead {
     border-bottom: 1px solid;
+    font-size: small;
+    font-weight: 700;
   }
   td {
     padding: 5px;
+    text-align: left;
   }
   th {
     padding: 3px;

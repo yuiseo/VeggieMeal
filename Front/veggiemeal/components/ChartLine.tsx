@@ -4,29 +4,26 @@ import { position } from 'html2canvas/dist/types/css/property-descriptors/positi
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 interface PriceDataProps {
-  priceData?: any;
-  selectTitle?: string;
+  priceData: any;
+  selectTitle?: any;
 }
 export default function ChartColumn({ priceData, selectTitle }: PriceDataProps) {
-  // console.log('hihi', priceData)
-  // console.log(priceData[0].price)
-  let priceList: number[] = priceData.map(({ price }: any) => price)
-  // console.log(priceList)
-  let PriceDate: string[] = priceData.map(({ dealDate }: any) => dealDate.slice(4, 6) + '월 ' + dealDate.slice(6, 8) + '일')
-  // console.log(PriceDate)
+  let priceList: any = priceData && priceData.map(({ price }: any) => price)
+  let PriceDate: any = priceData && priceData.map(({ dealDate }: any) => dealDate.slice(4, 6) + '월 ' + dealDate.slice(6, 8) + '일')
   return (
     <div className={styles.Container}>
       <ApexChart
+        height={400}
         type='area'
         series={[
           {
             name: '물가 평균',
-            data: priceList,
+            data: priceList === undefined ? [1] : priceList,
           }
         ]}
         options={{
           chart: {
-            height: 300,
+            // height: 300,
             toolbar: {
               show: false,
             },
@@ -66,7 +63,7 @@ export default function ChartColumn({ priceData, selectTitle }: PriceDataProps) 
           },
           colors: ['#5C5ACD'],
           title: {
-            text: `{ ${selectTitle} }의 평균 물가`,
+            text: `${selectTitle}의 평균 물가`,
             align: 'left',
             margin: 10,
             offsetX: 0,
