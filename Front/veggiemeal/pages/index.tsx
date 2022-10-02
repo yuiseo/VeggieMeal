@@ -27,7 +27,9 @@ const Home: NextPage = () => {
                   </div>
                 </Link>
                 <Link href="/prices">
-                  <Button content="물가 분석 보러 가기" bgColor="black" />
+                  <div>
+                    <Button content="물가 분석 보러 가기" bgColor="black" />
+                  </div>
                 </Link>
               </div>
             </div>
