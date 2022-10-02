@@ -5,18 +5,9 @@ import styles from 'styles/RecipeDetail.module.scss';
 import IngredientSlider from 'components/IngredientSlider';
 import YoutubeList from "components/YoutubeList";
 import RecipeStep from "components/RecipeStep";
-
+import {useState, useEffect} from 'react';
 import hourglass from '/public/hourglass.png';
-import kakaoicon from '/public/kakaoicon.png';
 import { useRouter } from 'next/router';
-
-// const router = useRouter();
-// const id = router.query.id;
-// console.log(id)
-
-// import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
 
 interface YoutubeProps {
   data: any;
@@ -71,9 +62,6 @@ export async function getServerSideProps(context: any) {
 }
 export default function RecipeDetail({ data, recipeData }: YoutubeProps) {
   const router = useRouter();
-  // console.log('data', data);
-  console.log('recipedata', recipeData)
-  // const ingredientList = recipeData.ingredient.map(({ name, capacity }: any) => name + ' ' + capacity)
   return (
     <>
       <Head>
@@ -88,7 +76,6 @@ export default function RecipeDetail({ data, recipeData }: YoutubeProps) {
           <div className={styles.header_title}>
             <div className={styles.mobile_icon_title}>
               <h1 className={styles.mobile_title}>{recipeData.recipe.name}</h1>
-              <img src='/kakaoicon.png' />
             </div>
             <p className={styles.mobile_description}>{recipeData.recipe.description}</p>
 
@@ -96,7 +83,6 @@ export default function RecipeDetail({ data, recipeData }: YoutubeProps) {
             <div className={styles.web_ingredient}>
               <div className={styles.web_icon_title}>
                 <h1>{recipeData.recipe.name}</h1>
-                <img src='/kakaoicon.png' />
               </div>
               <p>{recipeData.recipe.description}</p>
               <p>재료 목록</p>

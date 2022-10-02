@@ -7,16 +7,22 @@ import Script from "next/script";
 import Navbar from 'components/Navbar';
 import * as Sentry from "@sentry/nextjs";
 import { Integrations } from "@sentry/tracing";
+import { useEffect } from 'react';
+import initialize from './api/kakaoInitial';
 
 declare global {
   interface Window {
     kakao:any;
+    Kakao:any;
     naver: any;
   }}
 
 function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
-
+  // useEffect(()=>{
+  //   window.Kakao.init(process.env.NEXT_PUBLIC_KAKAOMAP_APPKEY);
+  // }, [])
+  
   return (
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
@@ -27,6 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_APPKEY}&libraries=services&autoload=false`}
             strategy="beforeInteractive"
           />
+        <Script src="https://developers.kakao.com/sdk/js/kakao.js" />
         <Component {...pageProps} />
       </RecoilRoot>
     </QueryClientProvider>

@@ -1,8 +1,8 @@
 import {atom} from 'recoil';
 
-const localStorage:any = typeof window !== "undefined" ? window.localStorage : null
+export const localStorage:any = typeof window !== "undefined" ? window.localStorage : null
 
-const localStorageEffect = (key:string) => ({setSelf, onSet}:any) => {
+export const localStorageEffect = (key:string) => ({setSelf, onSet}:any) => {
     const savedValue = localStorage?.getItem(key)
     if (savedValue != null) {
       setSelf(JSON.parse(savedValue));

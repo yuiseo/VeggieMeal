@@ -7,42 +7,54 @@ import Mart from 'components/Mart';
 import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import "swiper/css"; //basic
 import { useQueries, UseQueryResult } from "react-query";
+import {cart} from 'states/cart';
+import { useRecoilState } from "recoil";
 
 
 
 export default function Cart() {
+  const [isBrowser, setIsBrowser] = useState<boolean>(false);
   const [mart, setMart] = useState<string>("none");
-  const [ingre, setIngre] = useState<(string | number) [][]>([["포도", 5], ["사과", 7]]);
+  const [ingre, setIngre] = useRecoilState<any>(cart);
   const [emartList, setEmartList] = useState<(string | number)[][]>();
   const [emartPrices, setEmartPrices] = useState<number>(calPrice(emartList));
   const [hpList, setHpList] = useState<(string | number)[][]>();
   const [hpPrices, setHpPrices] = useState<number>(calPrice(hpList));
   const [cheaper, setCheaper] = useState<string>();
   const [activeKey, setActiveKey] = useState<number[]>();
-
+  const [isIn, setIsIn] = useState<boolean>(false);
+  function isInCheck(mart:any, value:any){
+    mart?.map((item:(string|number)[]) => {
+      if(item[0] === value){
+        setIsIn(true)
+        return true
+      }
+    })
+    return false
+  }
   const ingreE = useQueries(
-    ingre.map((ing:any) => {
+    ingre?.map((ing:any) => {
       return {
-        queryKey: [`emart_${ing[1]}`, ing[1]],
+        queryKey: [`emart_${ing[0]}`, ing[0]],
         queryFn: async () => {
-          const res = await fetch(`https://j7c205.p.ssafy.io/api/mart?ingredientId=${ing[1]}&mart=0`)
+          const res = await fetch(`https://j7c205.p.ssafy.io/api/mart?ingredientId=${ing[0]}&mart=0`)
           const data = await res.json()
           return data
         }
       }
-    })
+    }) ?? []
   )
   const ingreH = useQueries(
-    ingre.map((ing:any) => {
+    ingre?.map((ing:any) => {
       return {
-        queryKey: [`homeplus_${ing[1]}`, ing[1]],
+        queryKey: [`homeplus_${ing[0]}`, ing[0]],
         queryFn: async () => {
-          const res = await fetch(`https://j7c205.p.ssafy.io/api/mart?ingredientId=${ing[1]}&mart=1`)
+          const res = await fetch(`https://j7c205.p.ssafy.io/api/mart?ingredientId=${ing[0]}&mart=1`)
           const data = await res.json()
           return data
         }
       }
-    })
+    }) ?? []
   )
 
   function calPrice(data:(string | number)[][] | undefined){
@@ -65,6 +77,9 @@ export default function Cart() {
       }
     }
   }
+  useEffect(()=>{
+    setIsBrowser(true)
+  }, [])
 
   useEffect(()=>{
     let result = calPrice(emartList);
@@ -80,14 +95,6 @@ export default function Cart() {
 
   function ProductLst(productList:any, idx:number){
     const product:any = productList[idx].data;
-    const item = ["간장", 7500]
-    emartList?.map((value) => {
-      if(value == item){
-        console.log("일치!", value)
-      }else{
-        console.log("불일치!", value)
-      }
-    })
     return(
       <>
       {product.map((res:any, index:any) => <div key={index}  className={styles.ingre_list}>
@@ -103,11 +110,12 @@ export default function Cart() {
           {/* itemPrice로 추후 수정! */}
           <p>{"7500".replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"원"}</p>
           {mart === 'emart' ? (
-            emartList?.includes([res['ingreName'], 7500]) ? <>{/* 선택했을 때 */}
+            emartList?.includes([res['ingreName'], "7500"])
+             ? <>{/* 선택했을 때 */}
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-check-circle" viewBox="0 0 16 16"
            onClick={()=>{
             let isIn = [res['ingreName'], 7500]
-            setEmartList(emartList.filter((item) => item !== isIn))
+            setEmartList(emartList?.filter((item) => item !== isIn))
                }}>
              <circle cx="8" cy="8" r="8" fill="white"/>
              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -124,11 +132,11 @@ export default function Cart() {
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
           </svg></>
           ) : (
-            hpList?.includes([res['ingreName'], 7500]) ? <>{/* 선택했을 때 */}
+            hpList?.includes([res['ingreName'], "7500"]) ? <>{/* 선택했을 때 */}
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-check-circle" viewBox="0 0 16 16"
            onClick={()=>{
             let isIn = [res['ingreName'], 7500]
-            setHpList(hpList.filter((item) => item !== isIn))
+            setHpList(hpList?.filter((item) => item !== isIn))
            }}>
              <circle cx="8" cy="8" r="8" fill="white"/>
              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -153,6 +161,8 @@ export default function Cart() {
   }
 
   return (
+    <>
+    {isBrowser?
     <>
       <Head>
         <title>장바구니 | 베지밀</title>
@@ -182,7 +192,7 @@ export default function Cart() {
             </div>
             {mart !== "none" ? 
             <>
-              {ingre.map((item, index) => <div key={index}>
+            {ingre.map((item:any, index:any) => <div key={index}>
                 <div className={styles.ingre_content}>
                   {activeKey?.includes(Number(index)) ? 
                   <>
@@ -191,7 +201,7 @@ export default function Cart() {
                     onClick={()=>{setActiveKey(activeKey.filter(item => item !== Number(index)))}}>
                       <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                     </svg>
-                    <p>{item[0]}</p>
+                    <p>{item[1]}</p>
                   </div>
                     {mart === 'emart' ?
                     ProductLst(ingreE, index)
@@ -206,7 +216,7 @@ export default function Cart() {
                     onClick={()=>{activeKey ? setActiveKey([...activeKey, Number(index)]) : setActiveKey([Number(index)])}}>
                       <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
                     </svg>
-                    <p>{item[0]}</p>
+                    <p>{item[1]}</p>
                   </div>
                   </>
                   }
@@ -219,12 +229,12 @@ export default function Cart() {
                 <p>마트를 골라주세요!</p>
               </div>
               <ul className={styles.ingreLi}>
-              {ingre?.map((item, index) => <li key={index} style={{marginBottom:'10px'}}>
+              {ingre?.map((item:any, index:any) => <li key={index} style={{marginBottom:'10px'}}>
               <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="#29B973" className="bi bi-circle-fill" viewBox="0 0 16 16"
               style={{marginRight:'10px'}}>
                 <circle cx="8" cy="8" r="8"/>
               </svg>
-              <span>{item[0]}</span>
+              <span>{item[1]}</span>
               </li>)}
               </ul>
             </>
@@ -259,6 +269,9 @@ export default function Cart() {
           </div>
         </section>
       </main>
+    </>
+    :
+    null}
     </>
   )
 }

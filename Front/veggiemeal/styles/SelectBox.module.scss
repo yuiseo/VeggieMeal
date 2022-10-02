@@ -39,6 +39,10 @@
         &:hover {
             background-color: var.$purple;
         }
+        &.only_li{
+            border-radius: 10px;
+            border-bottom: 0;
+        }
         &.choice_li {
             background-color: var.$purple;
         }

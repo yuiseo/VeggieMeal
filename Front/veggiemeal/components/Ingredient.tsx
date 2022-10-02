@@ -4,19 +4,29 @@ import { useRouter } from 'next/router';
 import styles from 'styles/Ingredient.module.scss';
 
 import { Button } from 'react-bootstrap';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import { Ingredient } from 'states/Ingredient';
 
 interface Ingredient {
   id: number;
   name: string;
   index: number;
+  cart:(string | number)[][];
+  setCart:any;
 }
 
-export default function Ingredient({ id, name, index }: Ingredient) {
-  const router = useRouter();
-  // const isClick = useRecoilValue(Ingredient)
-  const [isClick, setIsClick] = useState<boolean>(false);
+export default function Ingredient({ id, name, index, cart, setCart }: Ingredient) {
+
+  const [isIn, setIsIn] = useState<boolean>(false);
+
+  useEffect(()=>{
+    cart.map((item:(string|number)[]) => {
+      if(item[0] === id){
+        setIsIn(true)
+      }
+    })
+  }, [])
+  
   return (
     <div className={styles.Container}>
       <div className={styles.Box}>
@@ -32,10 +42,21 @@ export default function Ingredient({ id, name, index }: Ingredient) {
         </div>
 
         {/* 버튼 */}
-        {isClick === false ?
-          <div className={styles.button_in_box} onClick={() => { setIsClick(!isClick) }}><p>장바구니 담기</p></div>
+        {isIn ?
+          <div className={styles.button_in_box} 
+          onClick={() => {
+            setCart(cart.filter((item:(string | number)[]) => item[0] !== id))
+            setIsIn(false)
+          }}><p>장바구니 빼기</p></div>
           :
-          <div className={styles.button_out_box} onClick={() => { setIsClick(!isClick) }}><p>장바구니 빼기</p></div>
+          <div className={styles.button_out_box} onClick={() => { 
+            if(cart.length === 0){
+              setCart([[id, name]])
+            }else{
+              setCart([...cart, [id, name]])
+            }
+            setIsIn(true)
+           }}><p>장바구니 담기</p></div>
         }
 
 
