@@ -41,6 +41,7 @@ function FoodImage({ img }: FoodImgProps) {
 
 const YOUTUBE_SEARCH_API = 'https://www.googleapis.com/youtube/v3/search'
 let data: any;
+let name: string;
 export async function getServerSideProps(context: any) {
   const recipeId = context.query;
   // console.log('id', recipeId.id)
@@ -48,12 +49,15 @@ export async function getServerSideProps(context: any) {
     method: 'get'
   });
   const recipeData = await respond.json();
-
-  if (!data) {
+  // console.log(name)
+  if (recipeData.recipe.name !== name || !data) {
     const res = await fetch(
       `${YOUTUBE_SEARCH_API}?part=snippet&q=${recipeData.recipe.name}&maxResults=6&key=${process.env.YOUTUBE_API_KEY}`
     );
+    name = recipeData.recipe.name
     data = await res.json();
+    // if (!data) {
+    // }
   }
 
   // const step = await fetch(`https://j7c205.p.ssafy.io/api/recipe/process?recipeId=${recipeId.id}`, {
@@ -72,7 +76,7 @@ export async function getServerSideProps(context: any) {
 export default function RecipeDetail({ data, recipeData }: YoutubeProps) {
   const router = useRouter();
   // console.log('data', data);
-  console.log('recipedata', recipeData)
+  // console.log('recipedata', recipeData)
   // const ingredientList = recipeData.ingredient.map(({ name, capacity }: any) => name + ' ' + capacity)
   return (
     <>
