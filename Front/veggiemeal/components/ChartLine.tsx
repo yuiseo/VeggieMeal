@@ -47,7 +47,6 @@ export default function ChartColumn({ priceData, selectTitle }: PriceDataProps) 
           xaxis: {
             type: 'category',
             position: 'bottom',
-
           },
           yaxis: {
             labels: {
@@ -62,7 +61,7 @@ export default function ChartColumn({ priceData, selectTitle }: PriceDataProps) 
           },
           colors: ['#5C5ACD'],
           title: {
-            text: `${selectTitle}의 평균 물가`,
+            text: `${selectTitle}의 평균 물가(100g/원)`,
             align: 'left',
             margin: 10,
             offsetX: 0,
