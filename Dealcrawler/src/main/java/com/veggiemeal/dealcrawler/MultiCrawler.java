@@ -111,10 +111,10 @@ public class MultiCrawler implements Runnable {
     private void splitContent(String outputDateFormatStr, Elements children) {
 
         StringBuilder sb = new StringBuilder();
+        String date = children.get(0).text().split(" ")[0].replaceAll("-", "");
         // 오늘 날짜가 아닌 경우 오늘 날짜의 csv 파일에 포함시키지 않음
-        if(children.get(0).text().isEmpty() || children.get(0).text().contains(outputDateFormatStr.substring(6))) {
-
-            sb.append(outputDateFormatStr).append(", ");
+        if(children.get(0).text().isEmpty() || date.equals(outputDateFormatStr)) {
+            sb.append(date).append(", ");
         } else {
             flag = true;
             return;
