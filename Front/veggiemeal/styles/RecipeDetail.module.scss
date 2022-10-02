@@ -182,6 +182,7 @@
     justify-content: flex-start;
   }
   @media (min-width:var.$lg) {
+    min-width: 50vw;
     max-width: 1000px;
     padding: 0 5rem;
     margin: 20px;
