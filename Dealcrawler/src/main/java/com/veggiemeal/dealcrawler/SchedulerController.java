@@ -14,6 +14,7 @@ public class SchedulerController {
         Runnable runnable = null;
         for (int i = 0; i < 20; i++) {
             runnable = new MultiCrawler(i * 500, i);
+//            runnable = new MultiCrawler("2022-09-26", i * 500, i);
             Thread t = new Thread(runnable);
             t.start();
         }
