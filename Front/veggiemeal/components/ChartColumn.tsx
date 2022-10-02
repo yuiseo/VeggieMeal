@@ -54,7 +54,7 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
             bar: {
               // distributed: true,
               barHeight: '100%',
-              columnWidth: '20%',
+              columnWidth: '13%',
               horizontal: false,
               borderRadius: 10,
             },
@@ -65,6 +65,7 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
             axisTicks: { show: false },
             type: 'category',
             min: 0,
+            max: priceData.length + 1,
           },
           yaxis: {
             max: function (max) {
@@ -74,6 +75,8 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
             forceNiceScale: true,
 
             labels: {
+              // show: true,
+              // align: 'left',
               formatter: function (value) {
                 return value.toLocaleString() + "원"
               }
@@ -81,7 +84,7 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
           },
           colors: ['#29B973', '#5C5ACD'],
           title: {
-            text: `${selectTitle}의 최저가 및 최고가`,
+            text: `${selectTitle}의 최저가 및 최고가 (100g/원)`,
             align: 'left',
             margin: 10,
             offsetX: 0,
