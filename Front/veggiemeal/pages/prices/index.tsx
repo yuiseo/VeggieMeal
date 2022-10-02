@@ -161,7 +161,7 @@ export default function Prices({ data, largeData }: PriceProps) {
   useEffect(() => {
     if (dealData !== undefined && dealData.length) {
       setIsShow(true)
-      setTimeout(() => setLoading(false), 1500)
+      setTimeout(() => setLoading(false), 2500)
     }
   }, [dealData])
 
