@@ -27,11 +27,12 @@ object VeggieMeal {
     val unRdd = sizeRdd.union(sizeNRdd)
     val df = spark.createDataFrame(unRdd, schema)
     df.createOrReplaceTempView("table")
-    val v1 = spark.sql("SELECT date, large, middle, small, isIncome, avg(price) + std(price) as maxPrice,avg(price)-std(price) min(price) as minPrice, avg(price) as avgPriceFROM table GROUP BY date, large, middle, small, isIncome")
+    val v1 = spark.sql("SELECT date, large, middle, small, isIncome, avg(price) + std(price) as maxPrice, avg(price)-std(price) as minPrice, avg(price) as avgPrice FROM table GROUP BY date, large, middle, small, isIncome")
+    val v2 = spark.sql("SELECT date, large, middle, small, isIncome, max(price), min(price) from table where table.price < avg(price) * 1.5 and table.price > avg(price) * 0.5 GROUP BY date, large, middle, small, isIncome")
     //v1.show(1000, true)
     val df2 = v1.toDF()
     //df2.show()
-    //df2.write.csv(args(1))
+    df2.write.csv(args(1))
     val afterTime = System.currentTimeMillis();
     val difTime = afterTime - befortTime;
     println("-----------------------------------------------------------------------------------")
