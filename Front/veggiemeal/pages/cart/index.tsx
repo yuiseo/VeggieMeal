@@ -6,38 +6,56 @@ import Button from 'components/Button';
 import Mart from 'components/Mart';
 import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import "swiper/css"; //basic
-import { useQueries } from "react-query";
+import { useQueries, UseQueryResult } from "react-query";
+import {cart, Ecart, Hcart, chooseMart} from 'states/cart';
+import { useRecoilState } from "recoil";
 
 export default function Cart() {
-  const [mart, setMart] = useState<string>("none");
-  const [ingre, setIngre] = useState<(string | number) [][]>([["포도", 0], ["사과", 1]]);
-  const [ingrePrices, setIngrePrices] = useState<{[key:string]:string[][]}>(
-    {"포도" : [["어쩌구저쩌구 맛있는 포도 1.5kg(봉)", "7500"],["샤인머스켓보다 맛있는 포도 1.5kg(봉)", "9500"], ["브로코리보다 맛있는 포도 1.5kg(봉)", "5500"],
-    ["어쩌구저쩌구 맛있는 포도 1.5kg(봉)", "7500"],["어쩌구저쩌구 맛있는 포도 1.5kg(봉)", "7500"],["어쩌구저쩌구 맛있는 포도 1.5kg(봉)", "7500"]]}
-  );
-  const [emartList, setEmartList] = useState<string[][]>();
+  const [isBrowser, setIsBrowser] = useState<boolean>(false);
+  const [mart, setMart] = useRecoilState<string>(chooseMart);
+  const [ingre, setIngre] = useRecoilState<any>(cart);
+  const [emartList, setEmartList] = useRecoilState<any>(Ecart);
   const [emartPrices, setEmartPrices] = useState<number>(calPrice(emartList));
-  const [hpList, setHpList] = useState<string[][]>();
+  const [hpList, setHpList] = useRecoilState<any>(Hcart);
   const [hpPrices, setHpPrices] = useState<number>(calPrice(hpList));
   const [cheaper, setCheaper] = useState<string>();
   const [activeKey, setActiveKey] = useState<number[]>();
-  const ingreEmart =  useQueries(
-      ingre.map((ing:(string|number)[])=>{
-        return{
-          queryKey:[ing[0], ing[1]],
-          queryFn: async () => {
-            const data = await(await fetch(`https://j7c205.p.ssafy.io/api/mart?ingredientId=${ing[1]}&mart=0`)).json()
-            return data
-          },
-          onSuccess: (data:any) => {console.log(data)}
+
+  let isInE = new Array(ingre.length).fill(0).map(()=> new Array(3).fill(0));
+  let isInH = new Array(ingre.length).fill(0).map(()=> new Array(3).fill(0));
+
+  const ingreE = useQueries(
+    ingre?.map((ing:any) => {
+      return {
+        queryKey: [`emart_${ing[0]}`, ing[0]],
+        queryFn: async () => {
+          const res = await fetch(`https://j7c205.p.ssafy.io/api/mart?ingredientId=${ing[0]}&mart=0`)
+          const data = await res.json()
+          return data
         }
-      })
-    )
-  // console.log(ingreEmart)
-  function calPrice(data:string[][] | undefined){
+      }
+    }) ?? []
+  )
+  const ingreH = useQueries(
+    ingre?.map((ing:any) => {
+      return {
+        queryKey: [`homeplus_${ing[0]}`, ing[0]],
+        queryFn: async () => {
+          const res = await fetch(`https://j7c205.p.ssafy.io/api/mart?ingredientId=${ing[0]}&mart=1`)
+          const data = await res.json()
+          return data
+        }
+      }
+    }) ?? []
+  )
+
+  function calPrice(data:(string | number)[][] | undefined){
     if(data !== undefined){
-        let result = data?.reduce((acc, item)=> acc += Number(item[1]), 0)
-        console.log(result)
+      let result = 0;
+      data.map((item:any) => {
+        let price = item[1].replaceAll(",", "")
+        result +=  Number(price)
+      })
         return result
     }else{
         return 0
@@ -55,6 +73,9 @@ export default function Cart() {
       }
     }
   }
+  useEffect(()=>{
+    setIsBrowser(true)
+  }, [])
 
   useEffect(()=>{
     let result = calPrice(emartList);
@@ -63,12 +84,127 @@ export default function Cart() {
   }, [emartList])
 
   useEffect(()=>{
+    let result = calPrice(emartList);
+    setEmartPrices(result)
+    setCheaper(whatIsCheaper(result, hpPrices))
+  }, [])
+
+  useEffect(()=>{
     let result = calPrice(hpList);
     setHpPrices(result)
     setCheaper(whatIsCheaper(emartPrices, result))
   }, [hpList])
 
+  useEffect(()=>{
+    let result = calPrice(hpList);
+    setHpPrices(result)
+    setCheaper(whatIsCheaper(emartPrices, result))
+  }, [])
+  
+  function isInCheckF(list:any, value:string[]){
+    let flag = 0;
+      list?.map((item:string[]) => {
+        if(item[0] === value[0]){
+          flag = 1;
+        }
+      })
+      return flag
+  }
+
+  ingreE?.map((item:any, index:number)=>{
+    if(item.status !== 'loading'){
+      isInE[index][0] = isInCheckF(emartList, [item.data[0].itemName, item.data[0].itemPrice])
+      isInE[index][1] = isInCheckF(emartList, [item.data[1].itemName, item.data[1].itemPrice])
+      isInE[index][2] = isInCheckF(emartList, [item.data[2].itemName, item.data[2].itemPrice])
+    }
+  })
+  ingreH?.map((item:any, index:number)=>{
+    if(item.status !== 'loading'){
+      isInH[index][0] = isInCheckF(emartList, [item.data[0].itemName, item.data[0].itemPrice])
+      isInH[index][1] = isInCheckF(emartList, [item.data[1].itemName, item.data[1].itemPrice])
+      isInH[index][2] = isInCheckF(emartList, [item.data[2].itemName, item.data[2].itemPrice])
+    }
+  })
+
+  function Product(product:any, index:any, idx:any){
+    return(
+      <div key={index} className={styles.ingre_list}>
+      <div style={{display:'flex'}}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#5C5ACD" className="bi bi-circle-fill" viewBox="0 0 16 16">
+          <circle cx="8" cy="8" r="8"/>
+          <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="10px" fontWeight="bold">{index+1}</text>
+        </svg>
+          {/* itemName으로 추후 수정! */}
+          <p>{product[0]}</p>
+        </div>
+        <div className={styles.ingre_price}>
+          {/* itemPrice로 추후 수정! */}
+          <p>{product[1]}원</p>
+          {mart === 'emart' ? (
+            isInE[idx][index]
+             ? <>{/* 선택했을 때 */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-check-circle" viewBox="0 0 16 16"
+           onClick={()=>{
+            isInE[idx][index] = 0;
+            setEmartList(emartList?.filter((item:any) => item[0] !== product[0]))
+            }}>
+             <circle cx="8" cy="8" r="8" fill="white"/>
+             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+             <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+           </svg></> : <> {/* 선택 안 했을 때 */}
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-circle" viewBox="0 0 16 16"
+          onClick={()=>{
+            isInE[idx][index] = 1;
+            if(emartList){
+              setEmartList([...emartList, product])
+            }else{
+            setEmartList([product])
+          }}}>
+            <circle cx="8" cy="8" r="8" fill="white"/>
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          </svg></>
+          ) : (
+            isInH ? <>{/* 선택했을 때 */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-check-circle" viewBox="0 0 16 16"
+           onClick={()=>{
+            isInH[idx][index] = 0;
+            setHpList(hpList?.filter((item:any) => item[0] !== product[0]))
+           }}>
+             <circle cx="8" cy="8" r="8" fill="white"/>
+             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+             <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+           </svg></> : <> {/* 선택 안 했을 때 */}
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-circle" viewBox="0 0 16 16"
+          onClick={()=>{
+            isInH[idx][index] = 1;
+            if(hpList){
+              setHpList([...hpList, product])
+            }else{
+            setHpList([product])
+          }}}>
+            <circle cx="8" cy="8" r="8" fill="white"/>
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          </svg></>
+          )}
+        </div>
+    </div>
+    )
+  }
+
+  function ProductLst(productList:any, idx:number){
+    const productItem:any = productList[idx].data;
+    return (
+      <>
+      {productItem.map((res:any, index:any) => 
+        Product([res['itemName'], res['itemPrice']], index, idx)
+      )}
+      </>
+    )
+    }
+
   return (
+    <>
+    {isBrowser?
     <>
       <Head>
         <title>장바구니 | 베지밀</title>
@@ -96,88 +232,59 @@ export default function Cart() {
               <p className={styles.cart_info_purple}>{ingre?.length}개</p>
               <p>입니다.</p>
             </div>
-            {ingre.map((item, index) => <div key={index}>
-              <div className={styles.ingre_content}>
-                {activeKey?.includes(Number(index)) ? 
-                <>
-                <div className={styles.ingre_title}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#5C5ACD" className="bi bi-caret-down-fill" viewBox="0 0 16 16"
-                  onClick={()=>{setActiveKey(activeKey.filter(item => item !== Number(index)))}}>
-                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-                  </svg>
-                  <p>{item[0]}</p>
-                </div>
-                  {ingrePrices[item[0]]?.map((res, index) => <div key={index}  className={styles.ingre_list}>
-                    <div style={{display:'flex'}}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#5C5ACD" className="bi bi-circle-fill" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="8"/>
-                        <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="10px" fontWeight="bold">{index+1}</text>
-                      </svg>
-                        <p>{res[0]}</p>
-                      </div>
-                      <div className={styles.ingre_price}>
-                        <p>{res[1].replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"원"}</p>
-                        {mart === 'emart' ? (
-                          emartList?.includes(res) ? <>{/* 선택했을 때 */}
-                          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-check-circle" viewBox="0 0 16 16"
-                         onClick={()=>{setEmartList(emartList.filter((item) => item !== res))
-                             }}>
-                           <circle cx="8" cy="8" r="8" fill="white"/>
-                           <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                           <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-                         </svg></> : <> {/* 선택 안 했을 때 */}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-circle" viewBox="0 0 16 16"
-                        onClick={()=>{
-                          if(emartList){
-                            setEmartList([...emartList, res])
-                          }else{
-                          setEmartList([res])
-                        }}}>
-                          <circle cx="8" cy="8" r="8" fill="white"/>
-                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        </svg></>
-                        ) : (
-                          hpList?.includes(res) ? <>{/* 선택했을 때 */}
-                          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-check-circle" viewBox="0 0 16 16"
-                         onClick={()=>{setHpList(hpList.filter((item) => item !== res))
-                         }}>
-                           <circle cx="8" cy="8" r="8" fill="white"/>
-                           <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                           <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-                         </svg></> : <> {/* 선택 안 했을 때 */}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-circle" viewBox="0 0 16 16"
-                        onClick={()=>{
-                          if(hpList){
-                            setHpList([...hpList, res])
-                          }else{
-                          setHpList([res])
-                        }}}>
-                          <circle cx="8" cy="8" r="8" fill="white"/>
-                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        </svg></>
-                        )}
-                      </div>
-                  </div>)
+            {mart !== "none" ? 
+            <>
+            {ingre.map((item:any, index:any) => <div key={index}>
+                <div className={styles.ingre_content}>
+                  {activeKey?.includes(Number(index)) ? 
+                  <>
+                  <div className={styles.ingre_title}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#5C5ACD" className="bi bi-caret-down-fill" viewBox="0 0 16 16"
+                    onClick={()=>{setActiveKey(activeKey.filter(item => item !== Number(index)))}}>
+                      <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                    </svg>
+                    <p>{item[1]}</p>
+                  </div>
+                    {mart === 'emart' ?
+                     ProductLst(ingreE, index)
+                    :
+                    ProductLst(ingreH, index)
+                    }
+                  </>
+                  :
+                  <>
+                  <div className={styles.ingre_title}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#5C5ACD" className="bi bi-caret-right-fill" viewBox="0 0 16 16"
+                    onClick={()=>{activeKey ? setActiveKey([...activeKey, Number(index)]) : setActiveKey([Number(index)])}}>
+                      <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                    </svg>
+                    <p>{item[1]}</p>
+                  </div>
+                  </>
                   }
-                </>
-                :
-                <>
-                <div className={styles.ingre_title}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#5C5ACD" className="bi bi-caret-right-fill" viewBox="0 0 16 16"
-                  onClick={()=>{activeKey ? setActiveKey([...activeKey, Number(index)]) : setActiveKey([Number(index)])}}>
-                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-                  </svg>
-                  <p>{item}</p>
                 </div>
-                </>
-                }
-                
+              </div>)}
+            </>
+            :
+            <>
+              <div className={styles.no_mart}>
+                <p>마트를 골라주세요!</p>
               </div>
-            </div>)}
+              <ul className={styles.ingreLi}>
+              {ingre?.map((item:any, index:any) => <li key={index} style={{marginBottom:'10px'}}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="#29B973" className="bi bi-circle-fill" viewBox="0 0 16 16"
+              style={{marginRight:'10px'}}>
+                <circle cx="8" cy="8" r="8"/>
+              </svg>
+              <span>{item[1]}</span>
+              </li>)}
+              </ul>
+            </>
+            }
           </article>
         </div>
         </section>
-        <section style={{display:'flex', justifyContent:'center'}}>
+        <section className={styles.mart_sections}>
           <div className={styles.mart_section}>
             <div className={styles.section_title} style={{marginBottom:'30px'}}>
               <Image src="/scale.png" width={50} height={50} quality={100} />
@@ -194,7 +301,7 @@ export default function Cart() {
             scrollbar={{ draggable: true }}
             // observeParents={true}
             >
-              <SwiperSlide style={{marginRight:'30px'}}>
+              <SwiperSlide style={{marginRight:'3px'}}>
                 <Mart title="emart" price={emartPrices} isCheap={cheaper} data={emartList} />
               </SwiperSlide>
               <SwiperSlide>
@@ -204,6 +311,9 @@ export default function Cart() {
           </div>
         </section>
       </main>
+    </>
+    :
+    null}
     </>
   )
 }

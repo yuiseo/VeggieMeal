@@ -18,16 +18,17 @@
 .selected_value {
     font-size: 16px;
     font-weight: 700;
+    cursor: pointer;
 }
 
 .select_ul {
     position:absolute;
     z-index: 100;
-    width:100%;
+    width:max-content;
     background-color: var.$green;
     border-radius: 10px;
     list-style: none;
-    margin-top:65px;
+    margin-top:55px;
     padding: 0;
     li {
         cursor: pointer;
@@ -38,6 +39,10 @@
         border-bottom: 1px dashed white;
         &:hover {
           background-color: var.$purple;
+        }
+        &.only_li{
+            border-radius: 10px;
+            border-bottom: 0;
         }
         &.choice_li {
           background-color: var.$purple;

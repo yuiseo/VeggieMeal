@@ -36,7 +36,7 @@ export default function YoutubeList({ title, high, videoId, channelTitle }: Yout
     <div className={styles.box}>
       {/* 섬네일 이미지 */}
       <div className={styles.thumbnail_box}>
-        <img src={high.url} id={styles.thumbnail} onClick={() => router.push(`https://www.youtube.com/watch?v=${videoId}`)}>
+        <img src={high.url} id={styles.thumbnail} onClick={() => window.open(`https://www.youtube.com/watch?v=${videoId}`)}>
           {/* <Image sizes={'50vw'} src={high.url} width={high.width} height={high.height} /> */}
           {/* <img src={high.url}></img> */}
         </img>
@@ -44,7 +44,7 @@ export default function YoutubeList({ title, high, videoId, channelTitle }: Yout
       {/* 유튜브 영상 */}
       <div className={styles.content}>
         <p className={styles.channel_title}>{channelTitle}</p>
-        <p onClick={() => router.push(`https://www.youtube.com/watch?v=${videoId}`)}>{title}</p>
+        <p onClick={() => window.open(`https://www.youtube.com/watch?v=${videoId}`)}>{title}</p>
       </div>
     </div>
   )
