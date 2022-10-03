@@ -7,31 +7,23 @@ import Mart from 'components/Mart';
 import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import "swiper/css"; //basic
 import { useQueries, UseQueryResult } from "react-query";
-import {cart} from 'states/cart';
+import {cart, Ecart, Hcart, chooseMart} from 'states/cart';
 import { useRecoilState } from "recoil";
-
-
 
 export default function Cart() {
   const [isBrowser, setIsBrowser] = useState<boolean>(false);
-  const [mart, setMart] = useState<string>("none");
+  const [mart, setMart] = useRecoilState<string>(chooseMart);
   const [ingre, setIngre] = useRecoilState<any>(cart);
-  const [emartList, setEmartList] = useState<(string | number)[][]>();
+  const [emartList, setEmartList] = useRecoilState<any>(Ecart);
   const [emartPrices, setEmartPrices] = useState<number>(calPrice(emartList));
-  const [hpList, setHpList] = useState<(string | number)[][]>();
+  const [hpList, setHpList] = useRecoilState<any>(Hcart);
   const [hpPrices, setHpPrices] = useState<number>(calPrice(hpList));
   const [cheaper, setCheaper] = useState<string>();
   const [activeKey, setActiveKey] = useState<number[]>();
-  const [isIn, setIsIn] = useState<boolean>(false);
-  function isInCheck(mart:any, value:any){
-    mart?.map((item:(string|number)[]) => {
-      if(item[0] === value){
-        setIsIn(true)
-        return true
-      }
-    })
-    return false
-  }
+
+  let isInE = new Array(ingre.length).fill(0).map(()=> new Array(3).fill(0));
+  let isInH = new Array(ingre.length).fill(0).map(()=> new Array(3).fill(0));
+
   const ingreE = useQueries(
     ingre?.map((ing:any) => {
       return {
@@ -59,7 +51,11 @@ export default function Cart() {
 
   function calPrice(data:(string | number)[][] | undefined){
     if(data !== undefined){
-        let result = data?.reduce((acc, item)=> acc += Number(item[1]), 0)
+      let result = 0;
+      data.map((item:any) => {
+        let price = item[1].replaceAll(",", "")
+        result +=  Number(price)
+      })
         return result
     }else{
         return 0
@@ -88,55 +84,91 @@ export default function Cart() {
   }, [emartList])
 
   useEffect(()=>{
+    let result = calPrice(emartList);
+    setEmartPrices(result)
+    setCheaper(whatIsCheaper(result, hpPrices))
+  }, [])
+
+  useEffect(()=>{
     let result = calPrice(hpList);
     setHpPrices(result)
     setCheaper(whatIsCheaper(emartPrices, result))
   }, [hpList])
 
-  function ProductLst(productList:any, idx:number){
-    const product:any = productList[idx].data;
+  useEffect(()=>{
+    let result = calPrice(hpList);
+    setHpPrices(result)
+    setCheaper(whatIsCheaper(emartPrices, result))
+  }, [])
+  
+  function isInCheckF(list:any, value:string[]){
+    let flag = 0;
+      list?.map((item:string[]) => {
+        if(item[0] === value[0]){
+          flag = 1;
+        }
+      })
+      return flag
+  }
+
+  ingreE?.map((item:any, index:number)=>{
+    if(item.status !== 'loading'){
+      isInE[index][0] = isInCheckF(emartList, [item.data[0].itemName, item.data[0].itemPrice])
+      isInE[index][1] = isInCheckF(emartList, [item.data[1].itemName, item.data[1].itemPrice])
+      isInE[index][2] = isInCheckF(emartList, [item.data[2].itemName, item.data[2].itemPrice])
+    }
+  })
+  ingreH?.map((item:any, index:number)=>{
+    if(item.status !== 'loading'){
+      isInH[index][0] = isInCheckF(emartList, [item.data[0].itemName, item.data[0].itemPrice])
+      isInH[index][1] = isInCheckF(emartList, [item.data[1].itemName, item.data[1].itemPrice])
+      isInH[index][2] = isInCheckF(emartList, [item.data[2].itemName, item.data[2].itemPrice])
+    }
+  })
+
+  function Product(product:any, index:any, idx:any){
     return(
-      <>
-      {product.map((res:any, index:any) => <div key={index}  className={styles.ingre_list}>
+      <div key={index} className={styles.ingre_list}>
       <div style={{display:'flex'}}>
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#5C5ACD" className="bi bi-circle-fill" viewBox="0 0 16 16">
           <circle cx="8" cy="8" r="8"/>
           <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="10px" fontWeight="bold">{index+1}</text>
         </svg>
           {/* itemName으로 추후 수정! */}
-          <p>{res['ingreName']}</p>
+          <p>{product[0]}</p>
         </div>
         <div className={styles.ingre_price}>
           {/* itemPrice로 추후 수정! */}
-          <p>{"7500".replace(/\B(?=(\d{3})+(?!\d))/g, ',')+"원"}</p>
+          <p>{product[1]}원</p>
           {mart === 'emart' ? (
-            emartList?.includes([res['ingreName'], "7500"])
+            isInE[idx][index]
              ? <>{/* 선택했을 때 */}
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-check-circle" viewBox="0 0 16 16"
            onClick={()=>{
-            let isIn = [res['ingreName'], 7500]
-            setEmartList(emartList?.filter((item) => item !== isIn))
-               }}>
+            isInE[idx][index] = 0;
+            setEmartList(emartList?.filter((item:any) => item[0] !== product[0]))
+            }}>
              <circle cx="8" cy="8" r="8" fill="white"/>
              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
              <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
            </svg></> : <> {/* 선택 안 했을 때 */}
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-circle" viewBox="0 0 16 16"
           onClick={()=>{
+            isInE[idx][index] = 1;
             if(emartList){
-              setEmartList([...emartList, [res['ingreName'], 7500]])
+              setEmartList([...emartList, product])
             }else{
-            setEmartList([[res['ingreName'], 7500]])
+            setEmartList([product])
           }}}>
             <circle cx="8" cy="8" r="8" fill="white"/>
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
           </svg></>
           ) : (
-            hpList?.includes([res['ingreName'], "7500"]) ? <>{/* 선택했을 때 */}
+            isInH ? <>{/* 선택했을 때 */}
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-check-circle" viewBox="0 0 16 16"
            onClick={()=>{
-            let isIn = [res['ingreName'], 7500]
-            setHpList(hpList?.filter((item) => item !== isIn))
+            isInH[idx][index] = 0;
+            setHpList(hpList?.filter((item:any) => item[0] !== product[0]))
            }}>
              <circle cx="8" cy="8" r="8" fill="white"/>
              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -144,21 +176,31 @@ export default function Cart() {
            </svg></> : <> {/* 선택 안 했을 때 */}
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-circle" viewBox="0 0 16 16"
           onClick={()=>{
+            isInH[idx][index] = 1;
             if(hpList){
-              setHpList([...hpList, [res['ingreName'], 7500]])
+              setHpList([...hpList, product])
             }else{
-            setHpList([[res['ingreName'], 7500]])
+            setHpList([product])
           }}}>
             <circle cx="8" cy="8" r="8" fill="white"/>
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
           </svg></>
           )}
         </div>
-    </div>)
-    }
-      </>
+    </div>
     )
   }
+
+  function ProductLst(productList:any, idx:number){
+    const productItem:any = productList[idx].data;
+    return (
+      <>
+      {productItem.map((res:any, index:any) => 
+        Product([res['itemName'], res['itemPrice']], index, idx)
+      )}
+      </>
+    )
+    }
 
   return (
     <>
@@ -204,7 +246,7 @@ export default function Cart() {
                     <p>{item[1]}</p>
                   </div>
                     {mart === 'emart' ?
-                    ProductLst(ingreE, index)
+                     ProductLst(ingreE, index)
                     :
                     ProductLst(ingreH, index)
                     }

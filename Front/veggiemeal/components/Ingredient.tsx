@@ -8,20 +8,20 @@ import { useEffect, useState } from 'react';
 // import { Ingredient } from 'states/Ingredient';
 
 interface Ingredient {
-  id: number;
+  ingredientId: number;
   name: string;
   index: number;
   cart:(string | number)[][];
   setCart:any;
 }
 
-export default function Ingredient({ id, name, index, cart, setCart }: Ingredient) {
+export default function Ingredient({ ingredientId, name, index, cart, setCart }: Ingredient) {
 
   const [isIn, setIsIn] = useState<boolean>(false);
 
   useEffect(()=>{
     cart.map((item:(string|number)[]) => {
-      if(item[0] === id){
+      if(item[0] === ingredientId){
         setIsIn(true)
       }
     })
@@ -45,15 +45,15 @@ export default function Ingredient({ id, name, index, cart, setCart }: Ingredien
         {isIn ?
           <div className={styles.button_in_box} 
           onClick={() => {
-            setCart(cart.filter((item:(string | number)[]) => item[0] !== id))
+            setCart(cart.filter((item:(string | number)[]) => item[0] !== ingredientId))
             setIsIn(false)
           }}><p>장바구니 빼기</p></div>
           :
           <div className={styles.button_out_box} onClick={() => { 
             if(cart.length === 0){
-              setCart([[id, name]])
+              setCart([[ingredientId, name]])
             }else{
-              setCart([...cart, [id, name]])
+              setCart([...cart, [ingredientId, name]])
             }
             setIsIn(true)
            }}><p>장바구니 담기</p></div>
