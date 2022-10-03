@@ -35,14 +35,11 @@ export default function SelectBox({ data, setState, title, another, dict }: Sele
             {data.map((item, index) => <li
               key={index}
               className={
-                // (item === choice ? `${styles.choice_li} ` : 'not_chice_li ') +
-                // (index === 0 ? `${styles.first_li} ` :
-                //   index === len ? `${styles.last_li}` : 'just_li') +
-                (item.length === 1 ?
-                  `${styles.len1_li}` :
-                  (index === 0 ? `${styles.first_li} ` : (index === len ? `${styles.last_li}` : 'just_li'))) +
-                (item === choice ? (item.length === 1 ? `${styles.len1_choice_li}` : `${styles.choice_li} `) : 'not_chice_li ')
-              }
+                (item === choice ? `${styles.choice_li} ` : 'not_chice_li ') +
+                (len === 0 ? `${styles.only_li}` : 
+                  (index === 0 ? `${styles.first_li} ` : 
+                    index === len ? `${styles.last_li}` : 'just_li')
+                )}
               onClick={() => {
                 if (dict) {
                   setState(dict[item])
