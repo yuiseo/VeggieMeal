@@ -58,8 +58,9 @@ export default function SelectBox({ data, setState, title, another, dict }: Sele
             <li className={styles.first_li}>선택해주세요.</li>
           </ul>
         )
-        : null}
+        : null
+      }
 
-    </div>
+    </div >
   )
 }

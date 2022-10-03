@@ -29,9 +29,9 @@ export default function Table({ dealData, tableColumns }: TableProps) {
 
         {/* data */}
         <tbody>
-          {dealData.map(({ dealDate, max, min, price }: DataProps) => (
+          {dealData && dealData.map(({ dealDate, max, min, price }: DataProps) => (
             <tr key={dealDate}>
-              <td>{dealDate}</td>
+              <td>{dealDate.slice(4, 6)}월 {dealDate.slice(6, 8)}일</td>
               <td style={{ color: 'red' }}>▲{max.toLocaleString()}</td>
               <td style={{ color: 'blue' }}>▼{min.toLocaleString()}</td>
               <td>{price.toLocaleString()}</td>
