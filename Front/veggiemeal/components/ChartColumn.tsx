@@ -65,7 +65,7 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
             axisTicks: { show: false },
             type: 'category',
             min: 0,
-            max: priceData.length + 1,
+            max: 9,
           },
           yaxis: {
             max: function (max) {
