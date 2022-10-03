@@ -48,7 +48,6 @@ public class RecipeController {
     @ApiOperation(value = "재료배열을 입력받아 포함되어있는 레시피 데이터를 반환", response = List.class)
     @GetMapping("/ingredient")
     public ResponseEntity<List<RecipeDto>> getRecipeByIngredient(@RequestParam("ingredient") List<String> ingredient){
-        System.out.println(ingredient.toString());
         List<RecipeDto> recipeDtoList = recipeService.getRecipeByIngredient(ingredient);
         return ResponseEntity.status(HttpStatus.OK).body(recipeDtoList);
     }

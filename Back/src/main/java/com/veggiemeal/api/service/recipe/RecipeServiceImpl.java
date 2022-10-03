@@ -3,14 +3,9 @@ package com.veggiemeal.api.service.recipe;
 import com.veggiemeal.api.domain.dto.recipe.ComponentDto;
 import com.veggiemeal.api.domain.dto.recipe.ProcessDto;
 import com.veggiemeal.api.domain.dto.recipe.RecipeDto;
-import com.veggiemeal.api.domain.entity.Component;
+import com.veggiemeal.api.domain.entity.*;
 import com.veggiemeal.api.domain.entity.Process;
-import com.veggiemeal.api.domain.entity.Recipe;
-import com.veggiemeal.api.domain.entity.Type;
-import com.veggiemeal.api.repository.ComponentRepository;
-import com.veggiemeal.api.repository.ProcessRepository;
-import com.veggiemeal.api.repository.RecipeRepository;
-import com.veggiemeal.api.repository.TypeRepository;
+import com.veggiemeal.api.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -24,12 +19,14 @@ public class RecipeServiceImpl implements RecipeService {
     private final TypeRepository typeRepository;
     private final ComponentRepository componentRepository;
     private final ProcessRepository processRepository;
+    private final IngredientRepository ingredientRepository;
 
-    public RecipeServiceImpl(RecipeRepository recipeRepository, TypeRepository typeRepository, ComponentRepository componentRepository, ProcessRepository processRepository){
+    public RecipeServiceImpl(RecipeRepository recipeRepository, TypeRepository typeRepository, ComponentRepository componentRepository, ProcessRepository processRepository, IngredientRepository ingredientRepository){
         this.recipeRepository = recipeRepository;
         this.typeRepository = typeRepository;
         this.componentRepository = componentRepository;
         this.processRepository = processRepository;
+        this.ingredientRepository = ingredientRepository;
     }
 
 
@@ -149,7 +146,16 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public List<ComponentDto> getIngredientByRecipeId(int recipeId) {
         List<Component> componentEntityList = componentRepository.findAllByRecipeId(recipeId);
-        return componentEntityList.stream().map(entity -> ComponentDto.of(entity)).collect(Collectors.toList());
+        List<ComponentDto> componentDtoList = componentEntityList.stream().map(entity -> ComponentDto.of(entity)).collect(Collectors.toList());
+
+        for(ComponentDto componentDto : componentDtoList){
+            Optional<Ingredient> ingredientEntity = ingredientRepository.findIngredientByName(componentDto.getName());
+            if(ingredientEntity.isPresent()){
+                componentDto.setIngredientId(ingredientEntity.get().getIngredientId());
+            }
+        }
+
+        return componentDtoList;
     }
 
     @Override
