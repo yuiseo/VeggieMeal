@@ -58,6 +58,11 @@ public class DealServiceImpl implements DealService{
 
         for(String dealDate : dealDateList){
             List<Deal> dealList = dealRepository.findByLargeAndMediumAndSmallAndOriginAndDealDate(large, medium, small, origin, dealDate);
+
+//            for(Deal deal : dealList){
+//                deal.
+//            }
+
             returnList.addAll(dealList.stream().map(entity -> DealDto.of(entity)).collect(Collectors.toList()));
         }
 

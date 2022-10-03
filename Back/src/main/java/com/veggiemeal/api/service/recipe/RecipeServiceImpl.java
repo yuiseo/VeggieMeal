@@ -98,6 +98,9 @@ public class RecipeServiceImpl implements RecipeService {
             }
         }
 
+        // returnList 섞기
+        Collections.shuffle(returnList);
+
         // EntityList를 DtoList로 변환하여 반환
         return returnList.stream().map(entity -> RecipeDto.of(entity)).collect(Collectors.toList());
     }
