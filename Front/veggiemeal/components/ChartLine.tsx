@@ -50,6 +50,7 @@ export default function ChartColumn({ priceData, selectTitle }: PriceDataProps) 
           },
           yaxis: {
             labels: {
+              // padding: 1,
               formatter: function (value) {
                 return value.toLocaleString() + "원"
               }
@@ -68,7 +69,7 @@ export default function ChartColumn({ priceData, selectTitle }: PriceDataProps) 
             offsetY: 0,
             floating: false,
             style: {
-              fontSize: '25px',
+              fontSize: '23px',
               fontFamily: 'SUIT Variable',
               fontWeight: 'bold',
               color: '#263238'

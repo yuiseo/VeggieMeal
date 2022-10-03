@@ -26,7 +26,7 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
   return (
     <div className={styles.Container}>
       <ApexChart
-        height={310}
+        height={300}
         series={realData}
         options={{
           noData: {
@@ -43,6 +43,7 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
           },
 
           chart: {
+
             type: 'bar',
             toolbar: {
               show: false,
@@ -52,11 +53,14 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
 
           plotOptions: {
             bar: {
-              // distributed: true,
               barHeight: '100%',
-              columnWidth: '13%',
+              columnWidth: '20%',
               horizontal: false,
-              borderRadius: 10,
+              // borderRadius: 10,
+              // dataLabels: {
+              //   position: 'center',
+              //   maxItems: 7,
+              // }
             },
           },
           labels: PriceDate,
@@ -64,8 +68,8 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
             axisBorder: { show: false },
             axisTicks: { show: false },
             type: 'category',
-            min: 0,
-            max: 9,
+            // min: 1,
+            // max: 9,
           },
           yaxis: {
             max: function (max) {
@@ -75,7 +79,8 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
             forceNiceScale: true,
 
             labels: {
-              // show: true,
+              show: true,
+              // padding: 1,
               // align: 'left',
               formatter: function (value) {
                 return value.toLocaleString() + "원"
@@ -91,7 +96,7 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
             offsetY: 0,
             floating: false,
             style: {
-              fontSize: '25px',
+              fontSize: '23px',
               fontWeight: 'bold',
               fontFamily: 'SUIT Variable',
               color: '#263238'

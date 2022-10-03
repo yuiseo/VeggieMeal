@@ -7,6 +7,7 @@ import ChartLine from 'components/ChartLine';
 import ChartColumn from 'components/ChartColumn';
 import styles from 'styles/Price.module.scss';
 import glass from '/public/glass.png';
+import think from '/public/think.png';
 import SelectBox from "components/SelectBox";
 import News from "components/News";
 import { useQuery } from 'react-query';
@@ -194,7 +195,7 @@ export default function Prices({ data, largeData }: PriceProps) {
 
         {isShow === false ?
           <div className={styles.noPrices}>
-            <Image src="/think.png" width={150} height={150} quality={100} />
+            <Image src={think} width={150} height={150} quality={100} />
             <p> 어떤 재료의 물가를 알려드릴까요? </p>
           </div>
           :
