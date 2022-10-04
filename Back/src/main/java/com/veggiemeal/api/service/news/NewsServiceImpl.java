@@ -91,6 +91,7 @@ public class NewsServiceImpl implements NewsService {
             while ((line = lineReader.readLine()) != null) {
                 String splitLine[];
                 if(line.contains("title")) {
+                    newsDto = new NewsDto();
                     splitLine = line.split("\"");
                     newsDto.setTitle(splitLine[3].replaceAll("<[^>]*>", " "));
                 } else if(line.contains("originallink")) {
