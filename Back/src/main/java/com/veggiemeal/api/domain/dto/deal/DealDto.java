@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class DealDto {
-    private long deal_id;
+    private long dealId;
     private String dealDate;
     private String large;
     private String medium;
