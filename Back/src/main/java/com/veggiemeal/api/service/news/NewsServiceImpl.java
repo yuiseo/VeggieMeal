@@ -81,8 +81,8 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public String readBody(InputStream body) {
-        InputStreamReader streamReader = new InputStreamReader(body);
+    public String readBody(InputStream body) throws UnsupportedEncodingException {
+        InputStreamReader streamReader = new InputStreamReader(body, "UTF-8");
 
         try (BufferedReader lineReader = new BufferedReader(streamReader)) {
             StringBuilder sb = new StringBuilder();
