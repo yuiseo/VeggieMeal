@@ -4,12 +4,8 @@ import lombok.*;
 import org.apache.tomcat.util.buf.Utf8Encoder;
 
 @Data
-@Getter
-@Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class NewsDto {
 
     private String title;

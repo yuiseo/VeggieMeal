@@ -91,7 +91,7 @@ public class NewsServiceImpl implements NewsService {
                 String splitLine[];
                 if(line.contains("title")) {
                     splitLine = line.split("\"");
-                    newsDto.setTitle(splitLine[3]);
+                    newsDto.setTitle(new String (splitLine[3].getBytes(), "UTF-8"));
                 } else if(line.contains("originallink")) {
                     splitLine = line.split("\"");
                     newsDto.setLink(splitLine[3]);
