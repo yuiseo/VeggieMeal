@@ -34,7 +34,7 @@ public class KafkaConsumerController {
     private final static int CONSUMER_COUNT = 6; // Partition 개수와 연동될 쓰레드 개수 (1 Partition : 1 Consumer Thread)
     private final static List<ConsumerWorker> workers = new ArrayList<>();
 
-    @Scheduled(cron = "00 05 14 * * *")
+    @Scheduled(cron = "00 01 00 * * *")
     private void work() {
         // 런타임 도중 셧다운 훅이 발생했을 때, 각 컨슈머를 운영하는 쓰레드에 종료를 알린다.
         Runtime.getRuntime().addShutdownHook(new ShutdownThread());
@@ -74,3 +74,4 @@ public class KafkaConsumerController {
         }
     }
 }
+
