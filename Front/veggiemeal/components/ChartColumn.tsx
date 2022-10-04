@@ -86,7 +86,8 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
             type: 'category',
             // min: PriceDate[0],
             // max: PriceDate[0],
-            // max: 9,
+            // max: 7,
+            // min: 7,
           },
           yaxis: {
             max: function (max) {
@@ -102,6 +103,10 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
             },
             title: {
               text: "원/100g",
+              offsetX: -5,
+              style: {
+                fontFamily: 'SUIT Variable'
+              }
             },
 
             labels: {
