@@ -16,13 +16,13 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path= "/news", produces = "application/json;charset=UTF-8")
+@RequestMapping(path= "/news")
 @CrossOrigin(origins = "*")
 public class NewsController {
 
     private final NewsService newsService;
 
-    @GetMapping(produces = "application/json; charset=UTF-8")
+    @GetMapping
     public ResponseEntity<List<NewsDto>> getNaverNews() {
         List<NewsDto> newsList = newsService.getNaverNews();
         return ResponseEntity.status(200).body(newsList);
