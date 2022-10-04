@@ -26,7 +26,7 @@ public class NewsServiceImpl implements NewsService {
         String clientSecret = "Q738IDA3U7"; //애플리케이션 클라이언트 시크릿
 
 
-        String text = null;
+        String text;
         try {
             text = URLEncoder.encode("물가", "UTF-8");
         } catch (UnsupportedEncodingException e) {
@@ -41,6 +41,7 @@ public class NewsServiceImpl implements NewsService {
         requestHeaders.put("X-Naver-Client-Id", clientId);
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
         get(apiURL, requestHeaders);
+        System.out.println(newsItems.toString());
         return newsItems;
     }
 
@@ -87,7 +88,7 @@ public class NewsServiceImpl implements NewsService {
             String line;
             NewsDto newsDto = new NewsDto();
             while ((line = lineReader.readLine()) != null) {
-                String splitLine[] = null;
+                String splitLine[];
                 if(line.contains("title")) {
                     splitLine = line.split("\"");
                     newsDto.setTitle(splitLine[3]);
