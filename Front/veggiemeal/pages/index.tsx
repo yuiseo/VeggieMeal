@@ -10,6 +10,7 @@ import { useRef } from 'react';
 const Fade = require('react-reveal/Fade');
 const Roll = require('react-reveal/Roll');
 const LightSpeed = require('react-reveal/LightSpeed');
+const Flip = require('react-reveal/Flip');
 
 
 
@@ -182,9 +183,9 @@ const Home: NextPage = () => {
             <div>
               <h2>물가 분석</h2>
               <div className={styles.section_img}>
-                <Roll top>
+                <Flip top>
                   <Image alt="우상향하는 그래프를 형상화한 아이콘" src="/graph.png" width={200} height={200} quality={100} />
-                </Roll>
+                </Flip>
               </div>
               <p>여러분의 지갑, 절대 지켜!<br />
                 베지밀과 함께라면<br />

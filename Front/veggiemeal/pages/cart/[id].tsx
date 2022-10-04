@@ -97,7 +97,7 @@ export default function MartMap(){
     function SearchMart(){
       var ps = new window.kakao.maps.services.Places();
       if(userAddress){
-        ps.keywordSearch(`${mart} ${userAddress[0]} ${userAddress[1]} ${userAddress[2]}`, placesSearchCB)
+        ps.keywordSearch(`${mart} ${userAddress[0]} ${userAddress[1]}`, placesSearchCB)
       }
     }
 
