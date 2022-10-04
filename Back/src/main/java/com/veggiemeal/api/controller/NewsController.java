@@ -20,7 +20,7 @@ public class NewsController {
 
     private final NewsService newsService;
 
-    @GetMapping(produces = "text/json; charset=UTF-8")
+    @GetMapping(produces = "application/json; charset=UTF-8")
     public ResponseEntity<List<NewsDto>> getNaverNews() {
         return ResponseEntity.status(200).body(newsService.getNaverNews());
     }
