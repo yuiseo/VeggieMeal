@@ -34,14 +34,14 @@ export default function Table({ dealData, tableColumns }: TableProps) {
               <td>{dealDate.slice(4, 6)}/{dealDate.slice(6, 8)}</td>
               <td style={{ color: 'red' }}>▲{max.toLocaleString()}</td>
               <td style={{ color: 'blue' }}>▼{min.toLocaleString()}</td>
-              <td>{price.toLocaleString()}</td>
+              <td>&nbsp;&nbsp;{price.toLocaleString()}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className={styles.footer}>
+      {/* <div className={styles.footer}>
         <p>단위 : 원/100g</p>
-      </div>
+      </div> */}
     </div>
   )
 }
