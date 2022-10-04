@@ -4,8 +4,6 @@ import com.veggiemeal.api.domain.dto.news.NewsDto;
 import com.veggiemeal.api.service.news.NewsService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path= "/news", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path= "/news")
 @CrossOrigin(origins = "*")
 public class NewsController {
 
