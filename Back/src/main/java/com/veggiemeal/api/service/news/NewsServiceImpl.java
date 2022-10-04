@@ -92,18 +92,18 @@ public class NewsServiceImpl implements NewsService {
                 String splitLine[];
                 if(line.contains("title")) {
                     splitLine = line.split("\"");
-                    newsDto.setTitle(new String(splitLine[3].getBytes(StandardCharsets.UTF_8)));
+                    newsDto.setTitle(splitLine[3].getBytes(StandardCharsets.UTF_8));
                 } else if(line.contains("originallink")) {
                     splitLine = line.split("\"");
-                    newsDto.setLink(new String(splitLine[3].getBytes(StandardCharsets.UTF_8)));
+                    newsDto.setLink(splitLine[3].getBytes(StandardCharsets.UTF_8));
                 } else if(line.contains("pubDate")) {
                     splitLine = line.split("\"");
-                    newsDto.setPubDate(new String(splitLine[3].getBytes(StandardCharsets.UTF_8)));
+                    newsDto.setPubDate(splitLine[3].getBytes(StandardCharsets.UTF_8));
                     newsItems.add(newsDto);
                     System.out.println(newsItems.toString());
                 } else if(line.contains("description")) {
                     splitLine = line.split("\"");
-                    newsDto.setDescription(new String(splitLine[3].getBytes(StandardCharsets.UTF_8)));
+                    newsDto.setDescription(splitLine[3].getBytes(StandardCharsets.UTF_8));
                 }
             }
         } catch (IOException e) {

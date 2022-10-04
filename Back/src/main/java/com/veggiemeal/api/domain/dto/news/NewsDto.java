@@ -8,10 +8,10 @@ import org.apache.tomcat.util.buf.Utf8Encoder;
 @AllArgsConstructor
 public class NewsDto {
 
-    private String title;
-    private String link;
-    private String pubDate;
-    private String description;
+    private byte[] title;
+    private byte[] link;
+    private byte[] pubDate;
+    private byte[] description;
 
 }
 
