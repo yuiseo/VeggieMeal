@@ -384,3 +384,23 @@
   background-size: cover;
   background-position: center;
 }
+
+.teamNames{
+  font-weight: 800;
+  font-size:21px;
+  margin: 10px 0 5px 40px;
+  span {
+    color:var.$purple;
+  }
+}
+
+.teamMember{
+  margin: 5px 0px 5px 40px;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.footer_div {
+  max-width:1000px;
+  width:100%;
+}

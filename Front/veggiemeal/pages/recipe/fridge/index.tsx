@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from 'styles/Fridge.module.scss';
 import SelectBox  from "components/SelectBox";
 import RecipeList from "components/RecipeList";
@@ -30,6 +30,7 @@ export default function Fridge({data}:FridgeProps) {
   const [isSelect03, setIsSelect03] = useState<string>();
   const cat01 = data;
   const [isBrowser, setIsBrowser] = useState<boolean>(false);
+  const [isNotRecipe, setIsNotRecipe] = useState<boolean>(false);
 
   useEffect(()=>{
     setIsBrowser(true)
@@ -53,8 +54,8 @@ export default function Fridge({data}:FridgeProps) {
     return data
   });
   const {data:recipe_list} = useQuery(['recipe_list', ingre], async() => {
-    const ingre_list = ingre?.reduce((acc:any, cur:any) => { return acc += `ingredient=${cur}`}, "")
-    const res = await fetch(`https://j7c205.p.ssafy.io/api/recipe/ingredient?${ingre_list}`)
+    // const ingre_list = ingre?.reduce((acc:any, cur:any) => { return acc += `ingredient=${cur}`}, "")
+    const res = await fetch(`https://j7c205.p.ssafy.io/api/recipe/ingredient?ingredient=${ingre}`)
     const data = await res.json()
     return data
   }, {
@@ -67,14 +68,18 @@ export default function Fridge({data}:FridgeProps) {
   })
 
   function isIngre(item: string) {
-    if (!ingre?.includes(item)) {
-      if (ingre) {
-        setIngre([...ingre, item])
-      } else {
-        setIngre([item])
+    if(ingre.length < 3){
+      if (!ingre?.includes(item)) {
+        if (ingre) {
+          setIngre([...ingre, item])
+        } else {
+          setIngre([item])
+        }
+      } else if (ingre?.includes(item)) {
+        alert("이미 선택하신 재료입니다.")
       }
-    } else if (ingre?.includes(item)) {
-      alert("이미 선택하신 재료입니다.")
+    }else{
+      alert("재료는 3개 이상 추가할 수 없습니다.")
     }
   }
 
@@ -94,18 +99,26 @@ export default function Fridge({data}:FridgeProps) {
             <h1 className={styles.main_title}>냉장고를 부탁해</h1>
           </header>
           <section className={styles.main_intro}>
-            <p>지금 냉장고 속에 있는 재료나, 원하는 재료를 선택해주세요! </p>
+            <p>지금 냉장고 속에 있는 재료나, 원하는 재료를 <strong>3개까지만</strong> 선택해주세요! </p>
             <p>그에 맞는 레시피를 보여드릴게요. </p>
           </section>
+          <section className={styles.main_intro_mobile}>
+            <p>지금 냉장고 속에 있는 재료나, 원하는 재료를</p>
+            <p><strong>3개까지만</strong> 선택해주세요! </p>
+            <p>그에 맞는 레시피를 보여드릴게요. </p>
+          </section>
+
           <section className={styles.choice}>
-            {ingre ? ingre.map((item:any, index:any) => 
-            <div key={index} className={styles.choice_ingre}>
-              <span>{item}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="white" className="bi bi-x-lg" viewBox="0 0 16 16"
-              onClick={()=>{removeIngre(item)}}>
-                <path stroke="white" strokeWidth="1" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-              </svg>
-            </div>) : null}
+            <div className={styles.ingre_div}>
+              {ingre ? ingre.map((item:any, index:any) => 
+              <div key={index} className={styles.choice_ingre}>
+                <span>{item}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="white" className="bi bi-x-lg" viewBox="0 0 16 16"
+                onClick={()=>{removeIngre(item)}} style={{cursor:'pointer'}}>
+                  <path stroke="white" strokeWidth="1" d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                </svg>
+              </div>) : null}
+            </div>
           </section>
           <section className={styles.search}>
             <form className={styles.form} onSubmit={(e) => {
@@ -121,7 +134,8 @@ export default function Fridge({data}:FridgeProps) {
                 onChange={(e) => {
                   setSearchItem(e.target.value)
                 }}></input>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#5C5ACD" className="bi bi-search" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#5C5ACD" className="bi bi-search" viewBox="0 0 16 16"
+              style={{cursor:'pointer'}}>
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
               </svg>
             </form>
@@ -187,11 +201,12 @@ export default function Fridge({data}:FridgeProps) {
               <Image src="/think.png" width={150} height={150} quality={100} />
               <p> 어떤 재료의 레시피를 원하시나요? </p>
             </div> : null}
-            {ingre.length !== 0 && recipe_list?.length === 0 ? 
-            <div className={styles.noVeggie}>
-              <Image src="/sorry.png" width={150} height={150} />
-              <p>선택하신 재료들로 만들 수 있는 요리가 없어요.</p>
-            </div> 
+            {ingre.length !== 0 && recipe_list?.length === 0 ? (
+              <div className={styles.noVeggie}>
+                <Image src="/sorry.png" width={150} height={150} />
+                <p>선택하신 재료들로 만들 수 있는 요리가 없어요.</p>
+              </div>
+  )
             :  null}
           </section>
         </main>

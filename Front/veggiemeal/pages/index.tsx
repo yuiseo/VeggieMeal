@@ -10,6 +10,7 @@ import { useRef } from 'react';
 const Fade = require('react-reveal/Fade');
 const Roll = require('react-reveal/Roll');
 const LightSpeed = require('react-reveal/LightSpeed');
+const Flip = require('react-reveal/Flip');
 
 
 
@@ -27,6 +28,7 @@ const Home: NextPage = () => {
     currentRef.current?.scrollIntoView({behavior:'smooth'});
   }
   return (
+    <>
     <div className={styles.container}>
       <Head>
         <title>베지밀</title>
@@ -182,9 +184,9 @@ const Home: NextPage = () => {
             <div>
               <h2>물가 분석</h2>
               <div className={styles.section_img}>
-                <Roll top>
+                <Flip top>
                   <Image alt="우상향하는 그래프를 형상화한 아이콘" src="/graph.png" width={200} height={200} quality={100} />
-                </Roll>
+                </Flip>
               </div>
               <p>여러분의 지갑, 절대 지켜!<br />
                 베지밀과 함께라면<br />
@@ -254,10 +256,20 @@ const Home: NextPage = () => {
           </div>
         </section>
         <div className={styles.gray_bg} />
-
       </main>
-
     </div>
+    <footer>
+      <div className={styles.footer_div}>
+        <div className={styles.teamNames}>
+          <span>자</span>
+          <span>:</span>
+          <span>란다</span>
+        </div>
+        <p className={styles.teamMember} style={{fontSize:'15px'}}>김윤주 | 김영서 | 유이서 | 이기영 | 정지원 | 정호진</p>
+        <p className={styles.teamMember}>Copyright © jaranda. All rights reserved.</p>
+      </div>
+    </footer>
+    </>
   )
 }
 

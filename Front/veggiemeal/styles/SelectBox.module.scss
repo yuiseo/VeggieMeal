@@ -4,6 +4,7 @@
     position:relative;
     display:flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .selected {
@@ -25,6 +26,7 @@
     position:absolute;
     z-index: 100;
     width:max-content;
+    min-width: 100%;
     background-color: var.$green;
     border-radius: 10px;
     list-style: none;

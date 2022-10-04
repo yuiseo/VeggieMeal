@@ -4,7 +4,7 @@
 }
 
 .recipe_title {
-  margin: 3rem 3rem 5rem 3rem;
+  margin: 4rem 3rem 5rem 3rem;
   text-align: center;
   font-weight:  700;
   @media (max-width: var.$sm) {
@@ -31,7 +31,7 @@
   @media (max-width: var.$sm) {
     margin-right:0;
   }
-  margin-right:10px;
+  margin-right:20px;
 
   div {
     a {

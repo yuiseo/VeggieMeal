@@ -8,7 +8,6 @@ import Navbar from 'components/Navbar';
 import * as Sentry from "@sentry/nextjs";
 import { Integrations } from "@sentry/tracing";
 import { useEffect } from 'react';
-import initialize from './api/kakaoInitial';
 
 declare global {
   interface Window {
