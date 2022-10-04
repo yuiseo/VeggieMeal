@@ -101,7 +101,7 @@ public class ConsumerWorker implements Runnable {
 
     /**
      * HDFS 클러스터 접근권한이 되지않아, 파일 주석처리
-     * 로컬서버에 임시 저장
+     * 로컬 서버에 저장
      */
 
     private void save(int partitionNo) {
@@ -111,9 +111,9 @@ public class ConsumerWorker implements Runnable {
                 Date today = new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000);
 
                 // 날짜 포매팅
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 
-                String fileName = "../all";
+                String fileName = "../" + dateFormat.format(today);
 
 /*                Configuration configuration = new Configuration();
                 configuration.set("fs.defaultFS", "hdfs://localhost:9000"); // 하둡 HDFS 주소
@@ -129,7 +129,7 @@ public class ConsumerWorker implements Runnable {
                         e.getStackTrace();
                     }
                 }
-                fileName += "/" + dateFormat.format(today) + partitionNo + "-" + currentFileOffset.get(partitionNo) + ".csv";
+                fileName += "/" +dateFormat.format(today) + "-" + partitionNo + "-" + currentFileOffset.get(partitionNo) + ".csv";
                 Path path = Paths.get(fileName);
                 BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8);
 
