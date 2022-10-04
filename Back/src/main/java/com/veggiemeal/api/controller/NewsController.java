@@ -23,7 +23,7 @@ public class NewsController {
     @GetMapping
     public ResponseEntity<List<NewsDto>> getNaverNews() {
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "application/xml; charset=utf-8");
+        responseHeaders.add("Content-Type", "text/html; charset=utf-8");
         return ResponseEntity.status(200).body(newsService.getNaverNews());
     }
 
