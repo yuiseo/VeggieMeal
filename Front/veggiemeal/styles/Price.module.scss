@@ -46,11 +46,18 @@
   display: flex;
   flex-direction: row;
   margin: 10px 0;
-  @media (max-width:var.$sm) {
-    justify-content: space-evenly;
+  // @media (max-width:var.$sm) {
+  //   justify-content: space-evenly;
+  //   width: 85vw;
+  //   >div>div {
+  //     padding-left:10px ;
+  //   }
+  // }
+  @media(max-width:var.$sm){
+    flex-direction: column;
     width: 85vw;
-    >div>div {
-      padding-left:10px ;
+    div{
+      margin: 2px;
     }
   }
   @media(min-width:var.$sm){
