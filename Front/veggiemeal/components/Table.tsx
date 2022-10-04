@@ -40,7 +40,7 @@ export default function Table({ dealData, tableColumns }: TableProps) {
         </tbody>
       </table>
       <div className={styles.footer}>
-        <p>가격의 단위 기준 : 100g당/원</p>
+        <p>단위 : 원/100g</p>
       </div>
     </div>
   )

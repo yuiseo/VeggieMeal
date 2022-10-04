@@ -65,6 +65,10 @@ export default function ChartColumn({ priceData, selectTitle }: PriceDataProps) 
             },
             title: {
               text: "원/100g",
+              offsetX: -5,
+              style: {
+                fontFamily: 'SUIT Variable'
+              }
             },
           },
           tooltip: {
