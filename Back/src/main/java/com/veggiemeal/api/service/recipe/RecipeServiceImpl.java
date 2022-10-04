@@ -118,8 +118,22 @@ public class RecipeServiceImpl implements RecipeService {
         List<Recipe> recipeEntityList = recipeRepository.findAll();
         // 반환할 레시피 Dto List
         List<RecipeDto> recipeDtoList = new ArrayList<>();
-        // 전체 재료 정보 Entity List
+        // 레시피에 포함된 전체 재료 정보 Entity List
         List<Component> componentList = componentRepository.findAll();
+
+        // 정제된 전체 재료 정보 EntityList
+        List<Ingredient> ingredientList = ingredientRepository.findAll();
+        // ingredientList를 돌면서 ref 값이 존재하는 데이터를 찾는다.
+        for(Ingredient ingredientEntity : ingredientList){
+            if(ingredientEntity.getRef() != null && ingredientEntity.getRef() > 0){
+                // ref 값이 존재하면 componentList를 돌면서 해당 재료의 이름을 ref 값에 해당하는 이름으로 치환한다.
+                for(Component component : componentList){
+                    if(component.getName().equals(ingredientEntity.getName())){
+                        component.setName(ingredientList.get((int) (ingredientEntity.getRef() - 1)).getName());
+                    }
+                }
+            }
+        }
 
         /*
          * 전체 레시피 Entity List를 돌면서 해당 레시피 ID를 가진 재료 Entity만을 DB에서 추출할 수 있지만,
