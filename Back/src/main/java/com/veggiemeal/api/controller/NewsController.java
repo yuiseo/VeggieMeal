@@ -24,7 +24,8 @@ public class NewsController {
 
     @GetMapping(produces = "application/json; charset=UTF-8")
     public ResponseEntity<List<NewsDto>> getNaverNews() {
-        return ResponseEntity.status(200).body(newsService.getNaverNews());
+        List<NewsDto> newsList = newsService.getNaverNews();
+        return ResponseEntity.status(200).body(newsList);
     }
 
 }
