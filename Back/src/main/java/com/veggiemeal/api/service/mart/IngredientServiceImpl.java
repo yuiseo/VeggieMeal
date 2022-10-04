@@ -31,6 +31,7 @@ public class IngredientServiceImpl implements IngredientService {
     public List<String> getNameList(String medium) {
         List<String> nameList = new ArrayList<>();
         List<Ingredient> ingredientList = ingredientRepository.findIngredientByMedium(medium);
+        // ref 값이 존재하는 ingredient는 제외하고 반환(이름이 애매한 것들 제외)
         for(Ingredient ingredient: ingredientList){
             if(ingredient.getRef() == null){
                 nameList.add(ingredient.getName());

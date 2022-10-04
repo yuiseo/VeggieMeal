@@ -165,6 +165,7 @@ public class RecipeServiceImpl implements RecipeService {
         List<Component> componentEntityList = componentRepository.findAllByRecipeId(recipeId);
         List<ComponentDto> componentDtoList = componentEntityList.stream().map(entity -> ComponentDto.of(entity)).collect(Collectors.toList());
 
+        // component에 이름에 맞는 ingredientId 저장
         for(ComponentDto componentDto : componentDtoList){
             Optional<Ingredient> ingredientEntity = ingredientRepository.findIngredientByName(componentDto.getName());
             if(ingredientEntity.isPresent()){
