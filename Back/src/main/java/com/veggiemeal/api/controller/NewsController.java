@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
@@ -22,7 +23,7 @@ public class NewsController {
 
     private final NewsService newsService;
 
-    @GetMapping
+    @GetMapping(produces="text/plain;charset=UTF-16")
     public ResponseEntity<List<NewsDto>> getNaverNews() {
         List<NewsDto> newsList = newsService.getNaverNews();
         return ResponseEntity.status(200).body(newsList);
