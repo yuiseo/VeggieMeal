@@ -20,7 +20,7 @@ public class NewsController {
     private final NewsService newsService;
 
     @GetMapping
-    public ResponseEntity<Object> getNaverNews() {
+    public ResponseEntity<List<NewsDto>> getNaverNews() {
         return ResponseEntity.status(200).body(newsService.getNaverNews());
     }
 
