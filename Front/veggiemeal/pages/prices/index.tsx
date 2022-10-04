@@ -95,7 +95,7 @@ export default function Prices({ data, largeData }: PriceProps) {
   })
 
 
-  const tableColumns = ['날짜', '최고가(원)', '최저가(원)', '평균가(원)']
+  const tableColumns = ['날짜', '최고가', '최저가', '평균가']
   // const tableData = [
   //   {
   //     data_id: 1,
@@ -201,10 +201,17 @@ export default function Prices({ data, largeData }: PriceProps) {
           :
           (loading === true ? <Spinner /> :
             <section className={styles.chart_section}>
+              <div className={styles.main_name}>
+                <p>{isSelect03}</p>
+                <p>의 평균 물가</p>
+              </div>
               <article className={styles.main_chart}>
                 <ChartLine priceData={dealData} selectTitle={isSelect03} />
               </article>
-
+              <div className={styles.sub_name}>
+                <p>{isSelect03}</p>
+                <p>의 최저가 및 최고가</p>
+              </div>
               <section className={styles.sub_chart}>
                 <article className={styles.column_chart}>
                   <ChartColumn selectTitle={isSelect03} priceData={dealData} />

@@ -17,7 +17,7 @@ export default function ChartColumn({ priceData, selectTitle }: PriceDataProps) 
         type='area'
         series={[
           {
-            name: '물가 평균',
+            name: '',
             data: priceList === undefined ? [1] : priceList,
           }
         ]}
@@ -75,20 +75,20 @@ export default function ChartColumn({ priceData, selectTitle }: PriceDataProps) 
             }
           },
           colors: ['#5C5ACD'],
-          title: {
-            text: `'${selectTitle}'의 평균 물가`,
-            align: 'left',
-            margin: 10,
-            offsetX: 0,
-            offsetY: 0,
-            floating: false,
-            style: {
-              fontSize: '23px',
-              fontFamily: 'SUIT Variable',
-              fontWeight: 'bold',
-              color: '#263238'
-            },
-          }
+          // title: {
+          //   text: `"${selectTitle}"의 평균 물가(원/100g)`,
+          //   align: 'left',
+          //   margin: 10,
+          //   offsetX: 0,
+          //   offsetY: 0,
+          //   floating: false,
+          //   style: {
+          //     fontSize: '23px',
+          //     fontFamily: 'SUIT Variable',
+          //     fontWeight: 'bold',
+          //     color: '#263238'
+          //   },
+          // }
         }}
       >
       </ApexChart >

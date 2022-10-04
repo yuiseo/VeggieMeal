@@ -122,7 +122,7 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
           },
           colors: ['#29B973', '#5C5ACD'],
           title: {
-            text: `'${selectTitle}'의 최저가 및 최고가`,
+            // text: `"${selectTitle}"의 최저가 및 최고가(원/100g)`,
             align: 'left',
             margin: 10,
             offsetX: 0,
