@@ -12,6 +12,7 @@ import SelectBox from "components/SelectBox";
 import News from "components/News";
 import { useQuery } from 'react-query';
 import { BeatLoader } from 'react-spinners'
+const Pulse = require('react-reveal/Pulse');
 // const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 // const PriceSelectBox = dynamic(() => import('components/PriceSelectBox'))
 // import PriceSelectBox from "components/PriceSelectBox";
@@ -146,7 +147,7 @@ export default function Prices({ data, largeData }: PriceProps) {
     return (
       <section className={styles.spinner}>
         <div>
-          <h3>물가를 분석 중입니다</h3>
+          <Pulse ><h3>물가를 분석 중입니다</h3></Pulse>
           <BeatLoader color="#5C5ACD" />
         </div>
       </section>
@@ -197,22 +198,30 @@ export default function Prices({ data, largeData }: PriceProps) {
           (loading === true ? <Spinner /> :
             <section className={styles.chart_section}>
               <div className={styles.main_name}>
-                <p>{isSelect03}</p>
-                <p>의 평균 물가</p>
+                <h4>{isSelect03}</h4>
+                <h4>의 평균 물가</h4>
               </div>
               <article className={styles.main_chart}>
                 <ChartLine priceData={dealData} selectTitle={isSelect03} />
               </article>
+              <hr className={styles.hr} />
               <div className={styles.sub_name}>
-                <p>{isSelect03}</p>
-                <p>의 최저가 및 최고가</p>
+                <h4>{isSelect03}</h4>
+                <h4>의 최저가 및 최고가</h4>
               </div>
               <section className={styles.sub_chart}>
                 <article className={styles.column_chart}>
                   <ChartColumn selectTitle={isSelect03} priceData={dealData} />
                 </article>
                 <article className={styles.table_article}>
-                  <Table dealData={dealData} tableColumns={tableColumns} ></Table>
+                  <div>
+                    <Table dealData={dealData} tableColumns={tableColumns} ></Table>
+                  </div>
+                  <div className={styles.footer}>
+                    <div>
+                      <p>* 단위 : 원/100g</p>
+                    </div>
+                  </div>
                 </article>
               </section>
             </section>)

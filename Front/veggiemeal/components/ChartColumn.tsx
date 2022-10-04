@@ -29,6 +29,9 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
         height={300}
         series={realData}
         options={{
+          legend: {
+            horizontalAlign: 'right',
+          },
           noData: {
             text: '데이터가 없어요',
             align: 'center',
@@ -58,7 +61,7 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
           plotOptions: {
             bar: {
               barHeight: '100%',
-              columnWidth: '20%',
+              columnWidth: '40%',
               horizontal: false,
               rangeBarOverlap: true,
               // borderRadius: 10,
@@ -71,14 +74,14 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
           stroke: {
             width: 3
           },
-          // dataLabels: {
-          //   enabled: true,
-          //   // formatter: function (val) {
-          //   //   return val
-          //   // },
-          //   offsetY: -15,
+          dataLabels: {
+            // enabled: true,
+            // // formatter: function (val) {
+            // //   return val
+            // // },
+            // offsetY: -15,
 
-          // },
+          },
           labels: PriceDate,
           xaxis: {
             axisBorder: { show: false },
