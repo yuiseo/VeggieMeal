@@ -92,17 +92,17 @@ public class NewsServiceImpl implements NewsService {
                 String splitLine[];
                 if(line.contains("title")) {
                     splitLine = line.split("\"");
-                    newsDto.setTitle(new String(splitLine[3].replaceAll("<[^>]*>", " ").getBytes()));
+                    newsDto.setTitle(splitLine[3].replaceAll("<[^>]*>", " "));
                 } else if(line.contains("originallink")) {
                     splitLine = line.split("\"");
-                    newsDto.setLink(new String(splitLine[3].replaceAll("<[^>]*>", " ").getBytes()));
+                    newsDto.setLink(splitLine[3].replaceAll("<[^>]*>", " "));
                 } else if(line.contains("pubDate")) {
                     splitLine = line.split("\"");
-                    newsDto.setPubDate(new String(splitLine[3].replaceAll("<[^>]*>", " ").getBytes()));
+                    newsDto.setPubDate(splitLine[3].replaceAll("<[^>]*>", " "));
                     newsItems.add(newsDto);
                 } else if(line.contains("description")) {
                     splitLine = line.split("\"");
-                    newsDto.setDescription(new String(splitLine[3].replaceAll("<[^>]*>", " ").getBytes()));
+                    newsDto.setDescription(splitLine[3].replaceAll("<[^>]*>", " "));
                 }
             }
         } catch (IOException e) {
