@@ -45,7 +45,7 @@ public class ProducerController {
         jsonLog = gson.toJson(userEventVO);
         */
 
-        kafkaTemplate.send("deal", simpleDateFormat.format(now), dealData).addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
+        kafkaTemplate.send("deal", dealData.split(",")[0], dealData).addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 
             @Override
             public void onSuccess(SendResult<String, String> result) {
@@ -60,11 +60,11 @@ public class ProducerController {
     }
 
     @GetMapping("/kafka/mart")
-    public void getMart (@RequestParam(value= "deal") String martData) {
-        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        now = new Date();
+    public void getMart (@RequestParam(value= "mart") String martData) {
+//        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        now = new Date();
 
-        kafkaTemplate.send("mart.log", simpleDateFormat.format(now), martData).addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
+        kafkaTemplate.send("mart", martData.split(",")[0], martData).addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 
             @Override
             public void onSuccess(SendResult<String, String> result) {
