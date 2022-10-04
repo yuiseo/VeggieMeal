@@ -26,7 +26,7 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
   return (
     <div className={styles.Container}>
       <ApexChart
-        height={310}
+        height={300}
         series={realData}
         options={{
           noData: {
@@ -43,7 +43,12 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
           },
 
           chart: {
-            type: 'bar',
+            // width: 300,
+            // height: 300,
+            zoom: {
+              enabled: false
+            },
+            // type: 'bar',
             toolbar: {
               show: false,
             },
@@ -52,20 +57,36 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
 
           plotOptions: {
             bar: {
-              // distributed: true,
               barHeight: '100%',
-              columnWidth: '13%',
+              columnWidth: '20%',
               horizontal: false,
-              borderRadius: 10,
+              rangeBarOverlap: true,
+              // borderRadius: 10,
+              // dataLabels: {
+              //   position: 'center',
+              //   maxItems: 7,
+              // }
             },
           },
+          stroke: {
+            width: 3
+          },
+          // dataLabels: {
+          //   enabled: true,
+          //   // formatter: function (val) {
+          //   //   return val
+          //   // },
+          //   offsetY: -15,
+
+          // },
           labels: PriceDate,
           xaxis: {
             axisBorder: { show: false },
             axisTicks: { show: false },
             type: 'category',
-            min: 0,
-            max: 9,
+            // min: PriceDate[0],
+            // max: PriceDate[0],
+            // max: 9,
           },
           yaxis: {
             max: function (max) {
@@ -73,25 +94,42 @@ export default function ChartLine({ selectTitle, priceData }: PriceDataProps) {
             },
             min: 0,
             forceNiceScale: true,
+            axisBorder: {
+              show: false
+            },
+            axisTicks: {
+              show: false
+            },
+            title: {
+              text: "원/100g",
+            },
 
             labels: {
-              // show: true,
+              show: true,
+              // padding: 1,
               // align: 'left',
               formatter: function (value) {
-                return value.toLocaleString() + "원"
+                return value.toLocaleString()
               }
             },
           },
+          tooltip: {
+            y: {
+              formatter: function (val) {
+                return val + "원/100g"
+              }
+            }
+          },
           colors: ['#29B973', '#5C5ACD'],
           title: {
-            text: `${selectTitle}의 최저가 및 최고가 (100g/원)`,
+            // text: `"${selectTitle}"의 최저가 및 최고가(원/100g)`,
             align: 'left',
             margin: 10,
             offsetX: 0,
             offsetY: 0,
             floating: false,
             style: {
-              fontSize: '25px',
+              fontSize: '23px',
               fontWeight: 'bold',
               fontFamily: 'SUIT Variable',
               color: '#263238'

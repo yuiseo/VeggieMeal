@@ -23,6 +23,18 @@
     text-align: left;
   }
   th {
-    padding: 3px;
+    padding: 2px;
+  }
+}
+
+.footer{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 5px;
+  p{
+    margin: 0;
+    font-size: xx-small;
+    color: gray;
   }
 }

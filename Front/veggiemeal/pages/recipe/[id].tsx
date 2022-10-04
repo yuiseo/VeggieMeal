@@ -5,7 +5,7 @@ import styles from 'styles/RecipeDetail.module.scss';
 import IngredientSlider from 'components/IngredientSlider';
 import YoutubeList from "components/YoutubeList";
 import RecipeStep from "components/RecipeStep";
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import hourglass from '/public/hourglass.png';
 import { useRouter } from 'next/router';
 
@@ -43,7 +43,7 @@ export async function getServerSideProps(context: any) {
   // console.log(name)
   if (recipeData.recipe.name !== name || !data) {
     const res = await fetch(
-      `${YOUTUBE_SEARCH_API}?part=snippet&q=${recipeData.recipe.name}&maxResults=6&key=${process.env.YOUTUBE_API_KEY}`
+      `${YOUTUBE_SEARCH_API}?part=snippet&q=${recipeData.recipe.name}만들기&maxResults=6&key=${process.env.YOUTUBE_API_KEY}`
     );
     name = recipeData.recipe.name
     data = await res.json();

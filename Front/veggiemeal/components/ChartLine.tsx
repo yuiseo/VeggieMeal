@@ -1,5 +1,6 @@
 import styles from 'styles/ChartLine.module.scss';
 import dynamic from 'next/dynamic';
+import { fontFamily } from 'html2canvas/dist/types/css/property-descriptors/font-family';
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 interface PriceDataProps {
@@ -16,12 +17,15 @@ export default function ChartColumn({ priceData, selectTitle }: PriceDataProps) 
         type='area'
         series={[
           {
-            name: '물가 평균',
+            name: '',
             data: priceList === undefined ? [1] : priceList,
           }
         ]}
         options={{
           chart: {
+            zoom: {
+              enabled: false
+            },
             // height: 300,
             toolbar: {
               show: false,
@@ -50,30 +54,41 @@ export default function ChartColumn({ priceData, selectTitle }: PriceDataProps) 
           },
           yaxis: {
             labels: {
+              // padding: 1,
               formatter: function (value) {
-                return value.toLocaleString() + "원"
+                return value.toLocaleString()
               }
             },
             forceNiceScale: true,
             max: function (max) {
               return Math.max(max) + 1
             },
+            title: {
+              text: "원/100g",
+            },
+          },
+          tooltip: {
+            y: {
+              formatter: function (val) {
+                return val + "원/100g"
+              }
+            }
           },
           colors: ['#5C5ACD'],
-          title: {
-            text: `${selectTitle}의 평균 물가(100g/원)`,
-            align: 'left',
-            margin: 10,
-            offsetX: 0,
-            offsetY: 0,
-            floating: false,
-            style: {
-              fontSize: '25px',
-              fontFamily: 'SUIT Variable',
-              fontWeight: 'bold',
-              color: '#263238'
-            },
-          }
+          // title: {
+          //   text: `"${selectTitle}"의 평균 물가(원/100g)`,
+          //   align: 'left',
+          //   margin: 10,
+          //   offsetX: 0,
+          //   offsetY: 0,
+          //   floating: false,
+          //   style: {
+          //     fontSize: '23px',
+          //     fontFamily: 'SUIT Variable',
+          //     fontWeight: 'bold',
+          //     color: '#263238'
+          //   },
+          // }
         }}
       >
       </ApexChart >
