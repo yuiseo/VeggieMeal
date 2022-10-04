@@ -2,6 +2,7 @@ package com.veggiemeal.api.service.news;
 
 import com.veggiemeal.api.domain.dto.news.NewsDto;
 import lombok.extern.log4j.Log4j2;
+import org.jsoup.Jsoup;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -91,18 +92,18 @@ public class NewsServiceImpl implements NewsService {
                 String splitLine[];
                 if(line.contains("title")) {
                     splitLine = line.split("\"");
-                    newsDto.setTitle(new String (splitLine[3].getBytes(), "UTF-8"));
+                    newsDto.setTitle(Jsoup.parse(splitLine[3]).text());
                 } else if(line.contains("originallink")) {
                     splitLine = line.split("\"");
-                    newsDto.setLink(splitLine[3]);
+                    newsDto.setLink(Jsoup.parse(splitLine[3]).text());
                 } else if(line.contains("pubDate")) {
                     splitLine = line.split("\"");
-                    newsDto.setPubDate(splitLine[3]);
+                    newsDto.setPubDate(Jsoup.parse(splitLine[3]).text());
                     newsItems.add(newsDto);
                     System.out.println(newsItems.toString());
                 } else if(line.contains("description")) {
                     splitLine = line.split("\"");
-                    newsDto.setDescription(splitLine[3]);
+                    newsDto.setDescription(Jsoup.parse(splitLine[3]).text());
                 }
             }
         } catch (IOException e) {
