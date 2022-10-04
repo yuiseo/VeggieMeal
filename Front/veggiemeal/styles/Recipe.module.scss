@@ -55,8 +55,9 @@
     color: white;
   }
   &:hover {
-    border-color: var.$green  !important;
-    background-color: var.$green  !important;
+    box-shadow: 1px 1px 20px rgb(138, 136, 136);
+    // border-color: var.$green  !important;
+    // background-color: var.$green  !important;
   }
 }
 #veggie_bold {
@@ -102,8 +103,9 @@
     color: white;
   }
   &:hover {
-    border-color: var.$purple  !important;
-    background-color: var.$purple  !important;
+    // border-color: var.$purple  !important;
+    // background-color: var.$purple  !important;
+    box-shadow: 1px 1px 20px rgb(138, 136, 136);
   }
 }
 

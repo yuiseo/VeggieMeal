@@ -7,6 +7,7 @@ import ChartLine from 'components/ChartLine';
 import ChartColumn from 'components/ChartColumn';
 import styles from 'styles/Price.module.scss';
 import glass from '/public/glass.png';
+import think from '/public/think.png';
 import SelectBox from "components/SelectBox";
 import News from "components/News";
 import { useQuery } from 'react-query';
@@ -94,7 +95,7 @@ export default function Prices({ data, largeData }: PriceProps) {
   })
 
 
-  const tableColumns = ['날짜', '최고가(원)', '최저가(원)', '평균가(원)']
+  const tableColumns = ['날짜', '최고가', '최저가', '평균가']
   // const tableData = [
   //   {
   //     data_id: 1,
@@ -194,16 +195,23 @@ export default function Prices({ data, largeData }: PriceProps) {
 
         {isShow === false ?
           <div className={styles.noPrices}>
-            <Image src="/think.png" width={150} height={150} quality={100} />
+            <Image src={think} width={150} height={150} quality={100} />
             <p> 어떤 재료의 물가를 알려드릴까요? </p>
           </div>
           :
           (loading === true ? <Spinner /> :
             <section className={styles.chart_section}>
+              <div className={styles.main_name}>
+                <p>{isSelect03}</p>
+                <p>의 평균 물가</p>
+              </div>
               <article className={styles.main_chart}>
                 <ChartLine priceData={dealData} selectTitle={isSelect03} />
               </article>
-
+              <div className={styles.sub_name}>
+                <p>{isSelect03}</p>
+                <p>의 최저가 및 최고가</p>
+              </div>
               <section className={styles.sub_chart}>
                 <article className={styles.column_chart}>
                   <ChartColumn selectTitle={isSelect03} priceData={dealData} />
