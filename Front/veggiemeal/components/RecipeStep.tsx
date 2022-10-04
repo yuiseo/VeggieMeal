@@ -13,7 +13,7 @@ export default function RecipeStep({ no, description }: StepDataProps) {
         </div>
         {/* 만드는 방법 상세 */}
         <div className={styles.detail}>
-          <p>
+          <p style={{fontWeight:'500'}}>
             {description}
           </p>
         </div>

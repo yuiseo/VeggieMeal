@@ -28,6 +28,7 @@ const Home: NextPage = () => {
     currentRef.current?.scrollIntoView({behavior:'smooth'});
   }
   return (
+    <>
     <div className={styles.container}>
       <Head>
         <title>베지밀</title>
@@ -255,10 +256,20 @@ const Home: NextPage = () => {
           </div>
         </section>
         <div className={styles.gray_bg} />
-
       </main>
-
     </div>
+    <footer>
+      <div className={styles.footer_div}>
+        <div className={styles.teamNames}>
+          <span>자</span>
+          <span>:</span>
+          <span>란다</span>
+        </div>
+        <p className={styles.teamMember} style={{fontSize:'15px'}}>김윤주 | 김영서 | 유이서 | 이기영 | 정지원 | 정호진</p>
+        <p className={styles.teamMember}>Copyright © jaranda. All rights reserved.</p>
+      </div>
+    </footer>
+    </>
   )
 }
 

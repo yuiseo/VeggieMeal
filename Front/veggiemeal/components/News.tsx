@@ -8,6 +8,7 @@ type NewsProps={
 
 export default function News({data}:NewsProps){
     const router = useRouter();
+    console.log(decodeURI(data['description']))
     const date = new Date(data['pubDate'])
     const year = date.getFullYear();
     const month = date.getMonth();

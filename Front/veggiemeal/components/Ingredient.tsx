@@ -43,7 +43,7 @@ export default function Ingredient({ ingredientId, name, index, cart, setCart }:
 
         {/* 버튼 */}
         {isIn ?
-          <div className={styles.button_in_box} 
+          <div className={styles.button_in_box}
           onClick={() => {
             setCart(cart.filter((item:(string | number)[]) => item[0] !== ingredientId))
             setIsIn(false)

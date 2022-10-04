@@ -113,16 +113,16 @@ export default function Cart() {
 
   ingreE?.map((item:any, index:number)=>{
     if(item.status !== 'loading'){
-      isInE[index][0] = isInCheckF(emartList, [item.data[0].itemName, item.data[0].itemPrice])
-      isInE[index][1] = isInCheckF(emartList, [item.data[1].itemName, item.data[1].itemPrice])
-      isInE[index][2] = isInCheckF(emartList, [item.data[2].itemName, item.data[2].itemPrice])
+      item.data.map((value:any, idx:any)=>{
+        isInE[index][idx] = isInCheckF(emartList, [value.itemName, value.itemPrice])
+      })
     }
   })
   ingreH?.map((item:any, index:number)=>{
     if(item.status !== 'loading'){
-      isInH[index][0] = isInCheckF(emartList, [item.data[0].itemName, item.data[0].itemPrice])
-      isInH[index][1] = isInCheckF(emartList, [item.data[1].itemName, item.data[1].itemPrice])
-      isInH[index][2] = isInCheckF(emartList, [item.data[2].itemName, item.data[2].itemPrice])
+      item.data.map((value:any, idx:any)=>{
+        isInH[index][idx] = isInCheckF(hpList, [value.itemName, value.itemPrice])
+      })
     }
   })
 
@@ -144,6 +144,7 @@ export default function Cart() {
             isInE[idx][index]
              ? <>{/* 선택했을 때 */}
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-check-circle" viewBox="0 0 16 16"
+            style={{cursor:'pointer'}}
            onClick={()=>{
             isInE[idx][index] = 0;
             setEmartList(emartList?.filter((item:any) => item[0] !== product[0]))
@@ -153,6 +154,7 @@ export default function Cart() {
              <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
            </svg></> : <> {/* 선택 안 했을 때 */}
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-circle" viewBox="0 0 16 16"
+          style={{cursor:'pointer'}}
           onClick={()=>{
             isInE[idx][index] = 1;
             if(emartList){
@@ -164,8 +166,9 @@ export default function Cart() {
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
           </svg></>
           ) : (
-            isInH ? <>{/* 선택했을 때 */}
+            isInH[idx][index] ? <>{/* 선택했을 때 */}
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-check-circle" viewBox="0 0 16 16"
+           style={{cursor:'pointer'}}
            onClick={()=>{
             isInH[idx][index] = 0;
             setHpList(hpList?.filter((item:any) => item[0] !== product[0]))
@@ -175,6 +178,7 @@ export default function Cart() {
              <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
            </svg></> : <> {/* 선택 안 했을 때 */}
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#29B973" className="bi bi-circle" viewBox="0 0 16 16"
+          style={{cursor:'pointer'}}
           onClick={()=>{
             isInH[idx][index] = 1;
             if(hpList){
@@ -195,9 +199,17 @@ export default function Cart() {
     const productItem:any = productList[idx].data;
     return (
       <>
-      {productItem.map((res:any, index:any) => 
-        Product([res['itemName'], res['itemPrice']], index, idx)
-      )}
+      {productItem.length !== 0 ? 
+        (productItem.map((res:any, index:any) => 
+          Product([res['itemName'], res['itemPrice']], index, idx)
+        ))
+      :
+      <div className={styles.no_product} style={{marginLeft:'30px'}}>
+        <Image src="/smileTear.png" width={70} height={70} />
+        <p style={{marginTop:'15px'}}>찾으시는 품목을</p>
+        <p>해당 마트에서 판매하지 않아요</p>
+        </div>
+      }
       </>
     )
     }
@@ -240,6 +252,7 @@ export default function Cart() {
                   <>
                   <div className={styles.ingre_title}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#5C5ACD" className="bi bi-caret-down-fill" viewBox="0 0 16 16"
+                     style={{cursor:'pointer'}}
                     onClick={()=>{setActiveKey(activeKey.filter(item => item !== Number(index)))}}>
                       <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                     </svg>
@@ -255,6 +268,7 @@ export default function Cart() {
                   <>
                   <div className={styles.ingre_title}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#5C5ACD" className="bi bi-caret-right-fill" viewBox="0 0 16 16"
+                    style={{cursor:'pointer'}}
                     onClick={()=>{activeKey ? setActiveKey([...activeKey, Number(index)]) : setActiveKey([Number(index)])}}>
                       <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
                     </svg>

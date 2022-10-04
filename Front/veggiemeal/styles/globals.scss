@@ -18,6 +18,7 @@ a {
   box-sizing: border-box;
   font-family: 'SUIT Variable';
   color:var.$black;
+  font-weight: 500;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,7 +41,7 @@ container {
 
 main {
   min-height: 100vh;
-  padding: 4rem 0;
+  padding: 4rem 0 0 0;
   max-width: var.$max_width;
   margin: 30px auto;
   flex: 1;
@@ -141,3 +142,9 @@ body::-webkit-scrollbar-track{
   max-width: 74vw;
 }
 
+footer {
+  background-color: var.$grey;
+  padding: 50px 0;
+  display:flex;
+  justify-content: center;
+}
