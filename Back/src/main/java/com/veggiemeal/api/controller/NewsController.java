@@ -17,7 +17,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path= "/news")
+@RequestMapping(path= "/news", headers = "Accept=text/html" )
 @CrossOrigin(origins = "*")
 public class NewsController {
 
