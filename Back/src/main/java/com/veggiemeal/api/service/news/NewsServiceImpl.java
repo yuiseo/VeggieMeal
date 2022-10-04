@@ -100,7 +100,6 @@ public class NewsServiceImpl implements NewsService {
                     splitLine = line.split("\"");
                     newsDto.setPubDate(new String(splitLine[3].replaceAll("<[^>]*>", " ").getBytes()));
                     newsItems.add(newsDto);
-                    System.out.println(newsItems.toString());
                 } else if(line.contains("description")) {
                     splitLine = line.split("\"");
                     newsDto.setDescription(new String(splitLine[3].replaceAll("<[^>]*>", " ").getBytes()));
