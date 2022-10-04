@@ -10,6 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +43,6 @@ public class NewsServiceImpl implements NewsService {
         requestHeaders.put("X-Naver-Client-Id", clientId);
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
         get(apiURL, requestHeaders);
-        System.out.println(newsItems.toString());
         return newsItems;
     }
 
@@ -92,18 +92,18 @@ public class NewsServiceImpl implements NewsService {
                 String splitLine[];
                 if(line.contains("title")) {
                     splitLine = line.split("\"");
-                    newsDto.setTitle(Jsoup.parse(splitLine[3]).text());
+                    newsDto.setTitle(splitLine[3].getBytes(StandardCharsets.UTF_8).toString());
                 } else if(line.contains("originallink")) {
                     splitLine = line.split("\"");
-                    newsDto.setLink(Jsoup.parse(splitLine[3]).text());
+                    newsDto.setLink(splitLine[3].getBytes(StandardCharsets.UTF_8).toString());
                 } else if(line.contains("pubDate")) {
                     splitLine = line.split("\"");
-                    newsDto.setPubDate(Jsoup.parse(splitLine[3]).text());
+                    newsDto.setPubDate(splitLine[3].getBytes(StandardCharsets.UTF_8).toString());
                     newsItems.add(newsDto);
                     System.out.println(newsItems.toString());
                 } else if(line.contains("description")) {
                     splitLine = line.split("\"");
-                    newsDto.setDescription(Jsoup.parse(splitLine[3]).text());
+                    newsDto.setDescription(splitLine[3].getBytes(StandardCharsets.UTF_8).toString());
                 }
             }
         } catch (IOException e) {

@@ -26,6 +26,7 @@ public class NewsController {
     @GetMapping
     public ResponseEntity<List<NewsDto>> getNaverNews() {
         List<NewsDto> newsList = newsService.getNaverNews();
+        System.out.println(newsList.toString());
         return ResponseEntity.status(200).body(newsList);
     }
 
