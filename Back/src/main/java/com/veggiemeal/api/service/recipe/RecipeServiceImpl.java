@@ -143,9 +143,14 @@ public class RecipeServiceImpl implements RecipeService {
         // 전체 레시피 Entity List를 돌면서 선택된 재료들(ingredient)가 모두 포함된 레시피를 찾아 recipeDtoList에 추가
         for(Recipe recipeEntity : recipeEntityList){
             int count = 0;
+            HashSet<String> ingredientSet = new HashSet<>();
+            for(String ingredientStr : ingredient){
+                ingredientSet.add(ingredientStr);
+            }
             // 전체 재료 정보 Entity List를 돌면서 레시피 ID가 같고, 선택된 재료들 중 현재 재료 Entity의 이름이 포함되어있는 경우 count++
             for(Component component : componentList){
-                if(component.getRecipeId() == recipeEntity.getRecipeId() && ingredient.contains(component.getName())){
+                if(component.getRecipeId() == recipeEntity.getRecipeId() && ingredientSet.contains(component.getName())){
+                    ingredientSet.remove(component.getName());
                     count++;
                 }
                 // count 값이 ingredient의 크기와 같아지면 선택된 재료들이 모두 포함되었음을 의미
