@@ -30,11 +30,14 @@ export default function Fridge({data}:FridgeProps) {
   const [isSelect03, setIsSelect03] = useState<string>();
   const cat01 = data;
   const [isBrowser, setIsBrowser] = useState<boolean>(false);
-  const [isNotRecipe, setIsNotRecipe] = useState<boolean>(false);
+  const [reset, setReset] = useState<string>();
 
   useEffect(()=>{
     setIsBrowser(true)
   }, [])
+
+  useEffect(()=>{
+  }, [isSelect01])
 
   // useEffect(()=>{
   //   if(localStorage){

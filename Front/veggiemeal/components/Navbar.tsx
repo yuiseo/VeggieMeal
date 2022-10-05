@@ -19,7 +19,7 @@ function Navigators() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto" id={styles.menus}>
             <Nav.Link href="/" className={router.pathname == "/" ? "nav_active" : "" }>홈</Nav.Link>
-            <Nav.Link href="/recipe" className={router.pathname == "/recipe" ? "nav_active" : "" }>레시피</Nav.Link>
+            <Nav.Link href="/recipe" className={router.pathname == "/recipe" || router.pathname == "/recipe/fridge" || router.pathname=="/recipe/veggie"? "nav_active" : "" }>레시피</Nav.Link>
             <Nav.Link href="/cart" className={router.pathname == "/cart" ? "nav_active" : "" }>장바구니</Nav.Link>
             <Nav.Link href="/prices" className={router.pathname == "/prices" ? "nav_active" : "" }>물가분석</Nav.Link>
           </Nav>

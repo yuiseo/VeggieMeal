@@ -27,7 +27,8 @@
   }
   @media (max-width:var.$sm) {
     width: 85vw;
-  } 
+    margin-top:0;
+  }
 }
 
 .title {
