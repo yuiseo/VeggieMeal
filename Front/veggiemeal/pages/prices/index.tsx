@@ -18,10 +18,6 @@ const Pulse = require('react-reveal/Pulse');
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const res = await fetch(`https://j7c205.p.ssafy.io/api/news`, {
-    method: 'GET',
-  })
-  const Newsdata = await res.json();
 
   const respond = await fetch('https://j7c205.p.ssafy.io/api/deal/large', {
     method: 'get'
@@ -29,7 +25,7 @@ export async function getServerSideProps() {
   const largeData = await respond.json()
   // console.log(largeData)
 
-  return { props: { Newsdata, largeData } }
+  return { props: { largeData } }
 }
 
 type PriceProps = {
@@ -38,16 +34,22 @@ type PriceProps = {
 }
 
 
-export default function Prices({ Newsdata, largeData }: PriceProps) {
+export default function Prices({ largeData }: PriceProps) {
   const [isSelect01, setIsSelect01] = useState<string>();
   const [isSelect02, setIsSelect02] = useState<string>();
   const [isSelect03, setIsSelect03] = useState<string>();
   const [isSelect04, setIsSelect04] = useState<string>();
   const [isShow, setIsShow] = useState<boolean>(false);
 
-  console.log(Newsdata)
-
   let isOrigin = '원산지'
+
+  const {data:newsData} = useQuery(['newsData'], async () => {
+    const res = await fetch(`https://j7c205.p.ssafy.io/api/news`, {
+      method: 'GET',
+    })
+    const Newsdata = await res.json();
+    return Newsdata
+  })
   const cat01 = largeData;
   const { data: cat02 } = useQuery(['cat02', isSelect01], async () => {
     const res = await fetch(`https://j7c205.p.ssafy.io/api/deal/medium?large=${isSelect01}`)
@@ -179,7 +181,7 @@ export default function Prices({ Newsdata, largeData }: PriceProps) {
             <Image src="/news.png" width={50} height={50} quality={100} />
             <p className={styles.news_title}>물가 관련 뉴스</p>
           </div>
-          {Newsdata?.map((item: { [key: string]: string }, index: string) => <News key={index} data={item} />)}
+          {newsData?.map((item: { [key: string]: string }, index: string) => <News key={index} data={item} />)}
         </section>
       </main>
     </div >
