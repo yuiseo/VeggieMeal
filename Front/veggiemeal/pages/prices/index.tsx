@@ -41,9 +41,10 @@ export default function Prices({ largeData }: PriceProps) {
   const [isSelect04, setIsSelect04] = useState<string>();
   const [isShow, setIsShow] = useState<boolean>(false);
 
+
   let isOrigin = '원산지'
 
-  const {data:newsData} = useQuery(['newsData'], async () => {
+  const { data: newsData } = useQuery(['newsData'], async () => {
     const res = await fetch(`https://j7c205.p.ssafy.io/api/news`, {
       method: 'GET',
     })
@@ -118,6 +119,13 @@ export default function Prices({ largeData }: PriceProps) {
     setIsChange(false)
     setLoading(true)
   }, [isSelect01, isSelect02, isSelect03, isSelect04])
+
+  const [reset, setReset] = useState<boolean>(false)
+  useEffect(() => {
+    if (reset === true) {
+      console.log('hihi')
+    }
+  }, [reset])
 
   return (
     <div className={styles.Container}>

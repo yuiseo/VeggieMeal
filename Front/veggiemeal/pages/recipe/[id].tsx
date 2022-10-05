@@ -35,6 +35,7 @@ let data: any;
 let name: string;
 export async function getServerSideProps(context: any) {
   const recipeId = context.query;
+  // console.log('data', data)
   // console.log('id', recipeId.id)
   const respond = await fetch(`https://j7c205.p.ssafy.io/api/recipe/id?recipeId=${recipeId.id}`, {
     method: 'get'
@@ -84,30 +85,22 @@ export default function RecipeDetail({ data, recipeData }: YoutubeProps) {
               <h1 className={styles.mobile_title}>{recipeData.recipe.name}</h1>
             </div>
             <p className={styles.mobile_description}>{recipeData.recipe.description}</p>
+          </div>
 
-            {/* 모바일뷰에서 없어져야 합니다 */}
-            <div className={styles.web_ingredient}>
-              <div className={styles.web_icon_title}>
-                <h1>{recipeData.recipe.name}</h1>
-              </div>
-              <p>{recipeData.recipe.description}</p>
-              <p>재료 목록</p>
-              <div style={{ maxWidth: '500px' }}>
-                {recipeData.ingredient.map((item: any, index: string) =>
-                  Number(index) === recipeData.ingredient.length - 1 ?
-                    <span key={index}>{item['name']} {item['capacity']}</span>
-                    :
-                    <span key={index}>{item['name']} {item['capacity']},&nbsp;</span>
-                )}
-              </div>
-              {/* <span> */}
-
-              {/* {ingredientList.map((item: string, index: number) => <a key={index} {...item} />)} */}
-              {/* 나물 비빔밥에는 많은게 들어가죠 <br />
-                정말로 많은게 들어가는데
-                저는 사실 나물만 있는건 싫어해요 고기가 들어가는게 좋아요 <br />
-                고기 대신에 버섯을 넣어도 좋습니다 짱 <br /> */}
-              {/* </span> */}
+          {/* 모바일뷰에서 없어져야 합니다 */}
+          <div className={styles.web_ingredient}>
+            <div className={styles.web_icon_title}>
+              <h1>{recipeData.recipe.name}</h1>
+            </div>
+            <p>{recipeData.recipe.description}</p>
+            <p>재료 목록</p>
+            <div style={{ maxWidth: '500px' }}>
+              {recipeData.ingredient.map((item: any, index: string) =>
+                Number(index) === recipeData.ingredient.length - 1 ?
+                  <span key={index}>{item['name']} {item['capacity']}</span>
+                  :
+                  <span key={index}>{item['name']} {item['capacity']},&nbsp;</span>
+              )}
             </div>
           </div>
         </header>
@@ -129,12 +122,6 @@ export default function RecipeDetail({ data, recipeData }: YoutubeProps) {
                   <span key={index}>{item['name']} {item['capacity']},&nbsp;</span>
               )}
             </div>
-            {/* <p>
-              나물 비빔밥에는 많은게 들어가죠 <br />
-              정말로 많은게 들어가는데
-              저는 사실 나물만 있는건 싫어해요 고기가 들어가는게 좋아요 <br />
-              고기 대신에 버섯을 넣어도 좋습니다 짱 <br />
-            </p> */}
           </div>
         </section>
 
@@ -169,4 +156,3 @@ export default function RecipeDetail({ data, recipeData }: YoutubeProps) {
     </ >
   )
 }
-

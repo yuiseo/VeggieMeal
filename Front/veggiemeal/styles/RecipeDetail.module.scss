@@ -75,7 +75,7 @@
 }
 .mobile_description {
   margin-bottom: 0;
-  @media (min-width:var.$md) {
+  @media (min-width:var.$sm) {
     display: none;
   }
 }
@@ -124,7 +124,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   min-width: 85vw;
   margin: 0 2rem 0 1rem;
   @media (min-width:var.$sm) {
@@ -147,6 +147,10 @@
   }
   @media (max-width:var.$sm) {
     display: none;
+  }
+  @media(min-width:var.$md){
+    min-width: 33vw;
+    max-width:34vw;
   }
 }
 
