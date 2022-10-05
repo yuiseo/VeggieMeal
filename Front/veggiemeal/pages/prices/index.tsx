@@ -172,13 +172,13 @@ export default function Prices({ data, largeData }: PriceProps) {
               </section>
             </section>)
         }
-        {/* <section>
+        <section>
           <div className={styles.news_section}>
             <Image src="/news.png" width={50} height={50} quality={100} />
             <p className={styles.news_title}>물가 관련 뉴스</p>
           </div>
           {data?.map((item: { [key: string]: string }, index: string) => <News key={index} data={item} />)}
-        </section> */}
+        </section>
       </main>
     </div >
   )
