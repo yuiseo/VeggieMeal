@@ -12,12 +12,9 @@ import SelectBox from "components/SelectBox";
 import News from "components/News";
 import { useQuery } from 'react-query';
 import { BeatLoader } from 'react-spinners'
-const Pulse = require('react-reveal/Pulse');
-// const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
-// const PriceSelectBox = dynamic(() => import('components/PriceSelectBox'))
-// import PriceSelectBox from "components/PriceSelectBox";
 
-// const BACK_URL = 'https://j7c205.p.ssafy.io/api/deal/'
+const Pulse = require('react-reveal/Pulse');
+
 
 export async function getServerSideProps() {
   // Fetch data from external API
@@ -92,57 +89,7 @@ export default function Prices({ data, largeData }: PriceProps) {
 
 
   const tableColumns = ['날짜', '최고가', '최저가', '평균가']
-  // const tableData = [
-  //   {
-  //     data_id: 1,
-  //     date: '9월 7일',
-  //     max_val: 6700,
-  //     min_val: 3000,
-  //     val: 5000,
-  //   },
-  //   {
-  //     data_id: 2,
-  //     date: '9월 8일',
-  //     max_val: 6700,
-  //     min_val: 3000,
-  //     val: 5000,
-  //   },
-  //   {
-  //     data_id: 3,
-  //     date: '9월 9일',
-  //     max_val: 6700,
-  //     min_val: 3000,
-  //     val: 5000,
-  //   },
-  //   {
-  //     data_id: 4,
-  //     date: '9월 10일',
-  //     max_val: 6700,
-  //     min_val: 3000,
-  //     val: 5000,
-  //   },
-  //   {
-  //     data_id: 5,
-  //     date: '9월 11일',
-  //     max_val: 6700,
-  //     min_val: 3000,
-  //     val: 5000,
-  //   },
-  //   // {
-  //   //   data_id: 6,
-  //   //   date: '9월 12일',
-  //   //   max_val: 6700,
-  //   //   min_val: 3000,
-  //   //   val: 5000,
-  //   // },
-  //   // {
-  //   //   data_id: 7,
-  //   //   date: '9월 13일',
-  //   //   max_val: 6700,
-  //   //   min_val: 3000,
-  //   //   val: 5000,
-  //   // 
-  // ]
+
   function Spinner() {
     return (
       <section className={styles.spinner}>
@@ -225,13 +172,13 @@ export default function Prices({ data, largeData }: PriceProps) {
               </section>
             </section>)
         }
-        <section>
+        {/* <section>
           <div className={styles.news_section}>
             <Image src="/news.png" width={50} height={50} quality={100} />
             <p className={styles.news_title}>물가 관련 뉴스</p>
           </div>
           {data?.map((item: { [key: string]: string }, index: string) => <News key={index} data={item} />)}
-        </section>
+        </section> */}
       </main>
     </div >
   )
