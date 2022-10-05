@@ -25,9 +25,11 @@
         }
         margin-left: auto;
         margin-right: 15px;
+        
     }
     a:hover {
         color: var.$green;
+        cursor: url("/cursor/pointer.png"), pointer;
     }
     a:active {
         color: var.$purple;

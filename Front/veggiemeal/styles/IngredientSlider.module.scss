@@ -16,7 +16,7 @@
 .arrow_Container {
  height: 0;
  :hover{
-  cursor: pointer;
+  cursor: url("/cursor/pointer.png"), pointer;
  }
 }
 

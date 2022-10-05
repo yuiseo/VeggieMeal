@@ -63,7 +63,7 @@
   border: 0;
   border-radius: 10px;
   background-color: var.$green  !important;
-  cursor: pointer;
+  cursor: url("/cursor/pointer.png"), pointer;
 
   p {
     margin: 0;
@@ -87,7 +87,7 @@
   border: 0;
   border-radius: 10px;
   background-color: var.$purple  !important;
-  cursor: pointer;
+  cursor: url("/cursor/pointer.png"), pointer;
 
   p {
     margin: 0;

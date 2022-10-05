@@ -10,7 +10,7 @@
   border-radius: 20px;
   background-color: var.$grey;
   :hover{
-    cursor: pointer;
+    cursor: url("/cursor/pointer.png"), pointer;
   }
   @media (min-width: var.$sm) {
     width: 26rem;

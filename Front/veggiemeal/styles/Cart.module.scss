@@ -52,6 +52,7 @@
     display: flex;
     justify-content: space-between;
     width:450px;
+    cursor: url("/cursor/pointer.png"), pointer;
     @media (max-width:var.$md){
         width:350px;
     }
@@ -139,7 +140,7 @@
     display:flex;
     align-items: center;
     margin-bottom: 10px;
-    cursor: pointer;
+    cursor: url("/cursor/pointer.png"), pointer;
     p {
         font-size:23px;
     }
@@ -259,6 +260,7 @@
 }
 
 .delete_ingre_btn {
+    cursor: url("/cursor/pointer.png"), pointer;
     border:0;
     background-color: var.$red;
     border-radius: 5px;

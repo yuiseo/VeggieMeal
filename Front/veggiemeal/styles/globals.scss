@@ -9,9 +9,23 @@ body {
   overflow-x: hidden;
 }
 
+html{
+  // cursor: url("/cursor/basic.png") 10 10, auto;
+  cursor: url("/cursor/default.png"), auto;
+}
+
+p, span, h1, h2, h3, h4, h5 {
+  cursor: url("/cursor/text.png") 10 10, text;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+  cursor: url("/cursor/pointer.png"), pointer;
+}
+
+button, button:hover {
+  cursor: url("/cursor/pointer.png"), pointer;
 }
 
 * {
@@ -31,13 +45,17 @@ a {
   }
 }
 
+svg {
+  cursor: url("/cursor/pointer.png"), pointer;
+}
+
 .nav_active {
   color:var.$purple !important;
 }
 
-container {
-  padding: 0 2rem;
-}
+// container {
+//   padding: 0 2rem;
+// }
 
 main {
   min-height: 100vh;

@@ -119,7 +119,7 @@ export default function Veggie() {
             </div>
           </section>
           <section id={styles.veggie_list}>
-            {category != '채식단계' ? <Recipes /> :
+            {category != '채식단계' && isShow === false ? <Recipes /> :
               <div className={styles.noVeggie}>
                 <Image src="/think.png" width={150} height={150} quality={100} />
                 <p> 어떤 단계의 채식 레시피를 알려드릴까요? </p>

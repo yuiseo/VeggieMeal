@@ -56,7 +56,7 @@
     @media (min-width: var.$sm) {
       display: none;
     &:hover{
-      cursor: pointer;
+      cursor: url("/cursor/pointer.png"), pointer;
     }
     }
   }
@@ -69,7 +69,7 @@
     height: 30px;
     margin: 10px;
     &:hover {
-        cursor: pointer;
+      cursor: url("/cursor/pointer.png"), pointer;
       }
   }
 }

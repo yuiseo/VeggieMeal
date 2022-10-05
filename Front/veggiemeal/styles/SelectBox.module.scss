@@ -4,7 +4,7 @@
     position:relative;
     display:flex;
     flex-direction: column;
-    cursor: pointer;
+    cursor: url("/cursor/pointer.png"), pointer;
 }
 
 .selected {
@@ -19,7 +19,7 @@
 .selected_value {
     font-size: 16px;
     font-weight: 700;
-    cursor: pointer;
+    cursor: url("/cursor/pointer.png"), pointer;
 }
 
 .select_ul {
@@ -34,7 +34,7 @@
     margin-bottom:20px;
     padding: 0;
     li {
-        cursor: pointer;
+      cursor: url("/cursor/pointer.png"), pointer;
         color:white;
         font-size: 16px;
         line-height: 2.5;

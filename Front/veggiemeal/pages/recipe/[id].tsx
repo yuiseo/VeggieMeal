@@ -66,7 +66,6 @@ export async function getServerSideProps(context: any) {
 }
 export default function RecipeDetail({ data, recipeData }: YoutubeProps) {
   const router = useRouter();
-  console.log('data', recipeData);
   // console.log('recipedata', recipeData)
   // const ingredientList = recipeData.ingredient.map(({ name, capacity }: any) => name + ' ' + capacity)
   return (

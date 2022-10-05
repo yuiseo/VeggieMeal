@@ -35,7 +35,7 @@ export default function MapModal({name, data, setSelectedMart}:MartModalProps){
                     <a href={item['place_url']} target="_blank" rel="noreferrer">상세보기</a>
                     </div>
                     <a href={`	https://map.kakao.com/link/to/${item['id']}`} target="_blank" rel="noreferrer" className={styles.find_road_btn}>
-                        <button>카카오맵 길찾기</button>
+                        <button style={{cursor: 'url("/cursor/pointer.png"), pointer'}}>카카오맵 길찾기</button>
                     </a>
                 </div>)}
             </article>

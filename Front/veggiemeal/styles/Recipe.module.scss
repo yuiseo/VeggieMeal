@@ -28,6 +28,7 @@
   border: 0;
   border-radius: 20px;
   background-color: var.$purple;
+  cursor: url("/cursor/pointer.png"), pointer;
   @media (max-width: var.$sm) {
     margin-right:0;
   }
@@ -75,6 +76,7 @@
     border-radius: 20px;
     background-color: var.$green;
     margin-left:10px;
+    cursor: url("/cursor/pointer.png"), pointer;
     @media (max-width: var.$md) {
         // margin: 0.45rem;
         margin-left:0;

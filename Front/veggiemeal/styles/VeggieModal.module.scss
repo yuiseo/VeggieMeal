@@ -16,8 +16,11 @@
     z-index:35;
     background-color: white;
     width:50%;
+    height:80%;
     min-width:350px;
     margin-top: 120px;
+    margin-bottom: 30px;
+    overflow-y: auto;
     @media(max-width:var.$md){
         margin-top:80px;
     }
