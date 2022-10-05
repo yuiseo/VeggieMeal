@@ -40,7 +40,9 @@ const Home: NextPage = () => {
         <header className={styles.header}>
           <div className={styles.header_title}>
             <div>
-              <h1 className={styles.slogan}>더 건강하고 <br /> 더 경제적인 <br /> 당신의 식사를 위해</h1>
+              <Fade top>
+                <h1 className={styles.slogan}>더 건강하고 <br /> 더 경제적인 <br /> 당신의 식사를 위해</h1>                
+              </Fade>
               <div id={styles.menu_btn}>
                 <Link href="/recipe">
                   <div style={{ marginRight: '20px' }}>
