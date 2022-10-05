@@ -34,7 +34,7 @@ public class ConsumerWorker implements Runnable {
     // Key: Partiton no., Value: offset - 현재 읽고 있는 파티션 번호와 오프셋
     private static Map<Integer, Long> currentFileOffset = new ConcurrentHashMap<>();
 
-    // 버퍼의 크기 - 버퍼에 20개의 데이터가 차면 flush 한다.
+    // 버퍼의 크기 - 버퍼에 10000개의 데이터가 차면 flush 한다.
     private final static int FLUSH_RECORD_COUNT = 10000; // buffer의 크기
     private Properties prop; // Consumer와 Partition을 매칭할 떄의 설정사항
     private String topic; // 읽고자 하는 토픽 이름
@@ -101,7 +101,7 @@ public class ConsumerWorker implements Runnable {
 
     /**
      * HDFS 클러스터 접근권한이 되지않아, 파일 주석처리
-     * 로컬에 임시 저장
+     * 로컬 서버에 저장
      */
 
     private void save(int partitionNo) {
@@ -129,7 +129,7 @@ public class ConsumerWorker implements Runnable {
                         e.getStackTrace();
                     }
                 }
-                fileName += "/deal-" + partitionNo + "-" + currentFileOffset.get(partitionNo) + ".csv";
+                fileName += "/" +dateFormat.format(today) + "-" + partitionNo + "-" + currentFileOffset.get(partitionNo) + ".csv";
                 Path path = Paths.get(fileName);
                 BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8);
 

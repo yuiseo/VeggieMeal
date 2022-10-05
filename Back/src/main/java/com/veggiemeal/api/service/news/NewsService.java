@@ -12,11 +12,11 @@ public interface NewsService {
 
     List<NewsDto> getNaverNews();
 
-    String get(String apiUrl, Map<String, String> requestHeader);
+    void get(String apiUrl, Map<String, String> requestHeader);
 
     HttpURLConnection connect(String apiUrl);
 
-    String readBody(InputStream body) throws UnsupportedEncodingException;
+    void readBody(InputStream body) throws UnsupportedEncodingException;
 
 
 }
