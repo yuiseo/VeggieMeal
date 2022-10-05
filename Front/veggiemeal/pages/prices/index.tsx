@@ -48,6 +48,7 @@ export default function Prices({ data, largeData }: PriceProps) {
   const [isSelect04, setIsSelect04] = useState<string>();
   const [isShow, setIsShow] = useState<boolean>(false);
 
+
   let isOrigin = '원산지'
   const cat01 = largeData;
   const { data: cat02 } = useQuery(['cat02', isSelect01], async () => {
@@ -92,57 +93,6 @@ export default function Prices({ data, largeData }: PriceProps) {
 
 
   const tableColumns = ['날짜', '최고가', '최저가', '평균가']
-  // const tableData = [
-  //   {
-  //     data_id: 1,
-  //     date: '9월 7일',
-  //     max_val: 6700,
-  //     min_val: 3000,
-  //     val: 5000,
-  //   },
-  //   {
-  //     data_id: 2,
-  //     date: '9월 8일',
-  //     max_val: 6700,
-  //     min_val: 3000,
-  //     val: 5000,
-  //   },
-  //   {
-  //     data_id: 3,
-  //     date: '9월 9일',
-  //     max_val: 6700,
-  //     min_val: 3000,
-  //     val: 5000,
-  //   },
-  //   {
-  //     data_id: 4,
-  //     date: '9월 10일',
-  //     max_val: 6700,
-  //     min_val: 3000,
-  //     val: 5000,
-  //   },
-  //   {
-  //     data_id: 5,
-  //     date: '9월 11일',
-  //     max_val: 6700,
-  //     min_val: 3000,
-  //     val: 5000,
-  //   },
-  //   // {
-  //   //   data_id: 6,
-  //   //   date: '9월 12일',
-  //   //   max_val: 6700,
-  //   //   min_val: 3000,
-  //   //   val: 5000,
-  //   // },
-  //   // {
-  //   //   data_id: 7,
-  //   //   date: '9월 13일',
-  //   //   max_val: 6700,
-  //   //   min_val: 3000,
-  //   //   val: 5000,
-  //   // 
-  // ]
   function Spinner() {
     return (
       <section className={styles.spinner}>
@@ -167,6 +117,13 @@ export default function Prices({ data, largeData }: PriceProps) {
     setIsChange(false)
     setLoading(true)
   }, [isSelect01, isSelect02, isSelect03, isSelect04])
+
+  const [reset, setReset] = useState<boolean>(false)
+  useEffect(() => {
+    if (reset === true) {
+      console.log('hihi')
+    }
+  }, [reset])
 
   return (
     <div className={styles.Container}>

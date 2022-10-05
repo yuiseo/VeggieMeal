@@ -12,6 +12,7 @@ type SelectProps = {
   title: string,
   another?: any,
   dict?: { [key: string]: string }
+  onclick?: any,
 }
 
 export default function SelectBox({ data, setState, title, another, dict }: SelectProps) {
@@ -36,8 +37,8 @@ export default function SelectBox({ data, setState, title, another, dict }: Sele
               key={index}
               className={
                 (item === choice ? `${styles.choice_li} ` : 'not_chice_li ') +
-                (len === 0 ? `${styles.only_li}` : 
-                  (index === 0 ? `${styles.first_li} ` : 
+                (len === 0 ? `${styles.only_li}` :
+                  (index === 0 ? `${styles.first_li} ` :
                     index === len ? `${styles.last_li}` : 'just_li')
                 )}
               onClick={() => {
