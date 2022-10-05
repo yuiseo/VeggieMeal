@@ -40,7 +40,9 @@ const Home: NextPage = () => {
         <header className={styles.header}>
           <div className={styles.header_title}>
             <div>
-              <h1 className={styles.slogan}>더 건강하고 <br /> 더 경제적인 <br /> 당신의 식사를 위해</h1>
+              <Fade top>
+                <h1 className={styles.slogan}>더 건강하고 <br /> 더 경제적인 <br /> 당신의 식사를 위해</h1>                
+              </Fade>
               <div id={styles.menu_btn}>
                 <Link href="/recipe">
                   <div style={{ marginRight: '20px' }}>
@@ -65,7 +67,7 @@ const Home: NextPage = () => {
         </header>
           <section ref={currentRef} id="first_section_web" className={styles.section_bg_web}>
             <div className={styles.section_web}>
-              <Fade left>
+              <Fade left duration={1500}>
                 <div>
                   <h2>그거 아세요?</h2>
                   <p>한 끼의 채식이 <br />
@@ -76,14 +78,14 @@ const Home: NextPage = () => {
                   </p>
                 </div>
               </Fade>
-              <Fade left>
+              <Fade left duration={1500}>
                 <Image alt="지구 아이콘과 요리사 아이콘" src="/main_first_section.png" width={400} height={400} quality={100} />
               </Fade>
             </div>
           </section>
           <section id="first_section_mobile" className={styles.section_bg_mobile}>
             <div className={styles.section_mobile}>
-              <Fade top>
+              <Fade top duration={1500}>
                 <div>
                   <h2>그거 아세요?</h2>
                   <Image alt="지구 아이콘과 요리사 아이콘" src="/main_first_section.png" width={300} height={300} quality={100} />
@@ -100,14 +102,14 @@ const Home: NextPage = () => {
           <section id="second_section_web" className={`${styles.section_bg_web} ${styles.section_gray}`}>
             <div className={styles.introduce_web}>
               <div>
-                <Fade top>
+                <Fade top duration={1500}>
                   <div className={styles.second_logo}>
                     <p>Veggie + Meal  =  </p>
                     <Image alt="베지밀의 로고로, 그릇에서 새싹이 피어오르는 모습" src="/Logo_icon.png" width={85} height={80} />
                   </div>
                 </Fade>
                 <Image alt="채소를 냄비에 잘라넣고 있는 여성" src="/main_cook.png" width={900} height={350} />
-                <Fade top>
+                <Fade top duration={1500}>
                   <div className={styles.second_content}>
                     <h2>그래서 베지밀은...</h2>
                     <p>VeggieMeal은 <br />
@@ -122,7 +124,7 @@ const Home: NextPage = () => {
         <section id="second_section_mobile" className={`${styles.section_bg_mobile} ${styles.section_gray}`}>
           <div className={styles.section_mobile}>
               <div>
-                <Fade top>
+                <Fade top duration={1500}>
                   <div className={styles.second_logo}>
                     <p>Veggie + Meal</p>
                     <p>=</p>
@@ -131,7 +133,7 @@ const Home: NextPage = () => {
                 </Fade>
                 <div className={styles.second_cookimg} />
                 {/* <Image src="/main_cook.png" width={900} height={350} /> */}
-                <Fade top>
+                <Fade top duration={1500}>
                   <div className={styles.second_content}>
                     <h2>그래서 베지밀은...</h2>
                     <p>VeggieMeal은 <br />
@@ -148,7 +150,7 @@ const Home: NextPage = () => {
             <div>
               <h2>레시피 추천</h2>
               <div className={styles.section_img}>
-                <Roll top>
+                <Roll top duration={1500}>
                   <Image alt="샌드위치를 형상화한 아이콘, 빵에 토마토, 상추, 치즈가 들어있다." src="/sandwich.png" width={200} height={200} quality={100} />
                 </Roll>
               </div>
@@ -156,7 +158,7 @@ const Home: NextPage = () => {
                 지금 냉장고 속 재료의 레시피도<br />
                 베지밀이 모두모두 알려드려요! </p>
             </div>
-            <Fade right>
+            <Fade right duration={1500}>
               <div className={styles.mockup}>
                 <Image alt="베지밀의 레시피 추천 서비스의 모바일 환경 첫번째 이미지" src="/mockup/recipe01.png" width={200} height={430} quality={100} />
                 <Image alt="베지밀의 레시피 추천 서비스의 모바일 환경 두번째 이미지" src="/mockup/recipe02.png" width={200} height={430} quality={100} />
@@ -168,7 +170,7 @@ const Home: NextPage = () => {
           <div className={styles.section_mobile}>
             <div>
               <h2>레시피 추천</h2>
-              <Roll top>
+              <Roll top duration={1500}>
                 <div className={styles.section_img}>
                   <Image alt="샌드위치를 형상화한 아이콘, 빵에 토마토, 상추, 치즈가 들어있다." src="/sandwich.png" width={280} height={280} quality={100} />
                 </div>
@@ -184,7 +186,7 @@ const Home: NextPage = () => {
             <div>
               <h2>물가 분석</h2>
               <div className={styles.section_img}>
-                <Flip top>
+                <Flip top duration={1500}>
                   <Image alt="우상향하는 그래프를 형상화한 아이콘" src="/graph.png" width={200} height={200} quality={100} />
                 </Flip>
               </div>
@@ -193,7 +195,7 @@ const Home: NextPage = () => {
                 건강한 식사와 두둑한 지갑<br />
                 모두 챙겨 드립니다. </p>
             </div>
-            <Fade right>
+            <Fade right duration={1500}>
               <div className={styles.mockup}>
                 <Image alt="베지밀의 물가분석 서비스의 모바일 환경 첫번째 이미지" src="/mockup/prices01.png" width={200} height={430} quality={100} />
                 <Image alt="베지밀의 물가분석 서비스의 모바일 환경 두번째 이미지" src="/mockup/prices02.png" width={200} height={430} quality={100} />
@@ -205,7 +207,7 @@ const Home: NextPage = () => {
           <div className={styles.section_mobile}>
             <div >
               <h2>물가 분석</h2>
-              <Fade left>
+              <Fade left duration={1500}>
                 <div className={styles.section_img}>
                   <Image alt="우상향하는 그래프를 형상화한 아이콘" src="/graph.png" width={280} height={280} quality={100} />
                 </div>
@@ -221,7 +223,7 @@ const Home: NextPage = () => {
           <div className={styles.section_web}>
             <div>
               <h2>장바구니</h2>
-              <LightSpeed left>
+              <LightSpeed left duration={1500}>
                 <div className={styles.section_img}>
                   <Image alt="장을 볼 때 쓰는 장바구니 카트를 형상화한 아이콘" src="/cart.png" width={200} height={200} quality={100} />
                 </div>
@@ -231,7 +233,7 @@ const Home: NextPage = () => {
                 어디서 사야 제일 저렴할지<br />
                 베지밀이 알려드릴게요. </p>
             </div>
-            <Fade right>
+            <Fade right duration={1500}>
               <div className={styles.mockup}>
                 <Image alt="베지밀의 장바구니 서비스의 모바일 환경 첫번째 이미지" src="/mockup/cart01.png" width={200} height={430} quality={100} />
                 <Image alt="베지밀의 장바구니 서비스의 모바일 환경 두번째 이미지" src="/mockup/cart02.png" width={200} height={430} quality={100} />
@@ -243,7 +245,7 @@ const Home: NextPage = () => {
           <div className={styles.section_mobile}>
             <div>
               <h2>장바구니</h2>
-              <LightSpeed left>
+              <LightSpeed left duration={1500}>
                 <div className={styles.section_img}>
                   <Image alt="장을 볼 때 쓰는 장바구니 카트를 형상화한 아이콘" src="/cart.png" width={280} height={280} quality={100} />
                 </div>

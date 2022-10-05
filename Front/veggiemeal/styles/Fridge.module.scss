@@ -5,6 +5,9 @@
     display:flex;
     justify-content: center;
     align-items: center;
+    @media(max-width:var.$sm){
+        padding-top:0;
+    }
 }
 
 .main_title {
@@ -54,6 +57,11 @@
         font-size:18px;
         font-weight: 600;
         color:white;
+    }
+    @media(max-width:var.$sm){
+        span{
+            font-size: 15px;
+        }
     }
 }
 
@@ -161,6 +169,7 @@
 
 .title_purple {
     color: var.$purple;
+    font-weight: 700;
 }
 
 .noVeggie {

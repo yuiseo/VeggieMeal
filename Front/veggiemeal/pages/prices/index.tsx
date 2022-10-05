@@ -12,19 +12,12 @@ import SelectBox from "components/SelectBox";
 import News from "components/News";
 import { useQuery } from 'react-query';
 import { BeatLoader } from 'react-spinners'
-const Pulse = require('react-reveal/Pulse');
-// const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
-// const PriceSelectBox = dynamic(() => import('components/PriceSelectBox'))
-// import PriceSelectBox from "components/PriceSelectBox";
 
-// const BACK_URL = 'https://j7c205.p.ssafy.io/api/deal/'
+const Pulse = require('react-reveal/Pulse');
+
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const res = await fetch(`https://j7c205.p.ssafy.io/api/news`, {
-    method: 'GET',
-  })
-  const data = await res.json();
 
   const respond = await fetch('https://j7c205.p.ssafy.io/api/deal/large', {
     method: 'get'
@@ -32,7 +25,7 @@ export async function getServerSideProps() {
   const largeData = await respond.json()
   // console.log(largeData)
 
-  return { props: { data, largeData } }
+  return { props: { largeData } }
 }
 
 type PriceProps = {
@@ -41,7 +34,7 @@ type PriceProps = {
 }
 
 
-export default function Prices({ data, largeData }: PriceProps) {
+export default function Prices({ largeData }: PriceProps) {
   const [isSelect01, setIsSelect01] = useState<string>();
   const [isSelect02, setIsSelect02] = useState<string>();
   const [isSelect03, setIsSelect03] = useState<string>();
@@ -50,6 +43,14 @@ export default function Prices({ data, largeData }: PriceProps) {
 
 
   let isOrigin = '원산지'
+
+  const { data: newsData } = useQuery(['newsData'], async () => {
+    const res = await fetch(`https://j7c205.p.ssafy.io/api/news`, {
+      method: 'GET',
+    })
+    const Newsdata = await res.json();
+    return Newsdata
+  })
   const cat01 = largeData;
   const { data: cat02 } = useQuery(['cat02', isSelect01], async () => {
     const res = await fetch(`https://j7c205.p.ssafy.io/api/deal/medium?large=${isSelect01}`)
@@ -93,6 +94,7 @@ export default function Prices({ data, largeData }: PriceProps) {
 
 
   const tableColumns = ['날짜', '최고가', '최저가', '평균가']
+
   function Spinner() {
     return (
       <section className={styles.spinner}>
@@ -182,13 +184,13 @@ export default function Prices({ data, largeData }: PriceProps) {
               </section>
             </section>)
         }
-        {/* <section>
+        <section>
           <div className={styles.news_section}>
             <Image src="/news.png" width={50} height={50} quality={100} />
             <p className={styles.news_title}>물가 관련 뉴스</p>
           </div>
-          {data?.map((item: { [key: string]: string }, index: string) => <News key={index} data={item} />)}
-        </section> */}
+          {newsData?.map((item: { [key: string]: string }, index: string) => <News key={index} data={item} />)}
+        </section>
       </main>
     </div >
   )

@@ -11,6 +11,9 @@
     @media (max-width:1240px){
         grid-template-columns: repeat(1, 1fr);
     }
+    @media (max-width:var.$sm){
+        padding: 4rem 0 0 0;
+    }
 }
 
 .cart_section {
@@ -82,10 +85,6 @@
         width:350px;
     }
     overflow-y: auto;
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar{
-        display:none;
-    }
 }
 
 .choice_mart {
@@ -140,6 +139,7 @@
     display:flex;
     align-items: center;
     margin-bottom: 10px;
+    cursor: pointer;
     p {
         font-size:23px;
     }
@@ -185,7 +185,7 @@
 .mart_sections {
     display: flex;
     justify-content: center;
-    margin-top:50px;
+    margin-top:30px;
     @media(min-width:1241px){
         justify-content: flex-start;
         margin-top: 0;
@@ -256,4 +256,15 @@
         font-size:18px;
         color:var.$black;
     }
+}
+
+.delete_ingre_btn {
+    border:0;
+    background-color: var.$red;
+    border-radius: 5px;
+    color:white;
+    font-size: 15px;
+    text-align: center;
+    vertical-align: baseline;
+    margin-left:10px;
 }

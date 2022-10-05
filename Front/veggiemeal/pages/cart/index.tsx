@@ -100,7 +100,7 @@ export default function Cart() {
     setHpPrices(result)
     setCheaper(whatIsCheaper(emartPrices, result))
   }, [])
-  
+
   function isInCheckF(list:any, value:string[]){
     let flag = 0;
       list?.map((item:string[]) => {
@@ -246,7 +246,7 @@ export default function Cart() {
             </div>
             {mart !== "none" ? 
             <>
-            {ingre.map((item:any, index:any) => <div key={index}>
+            {ingre.map((item:any, index:string) => <div key={index}>
                 <div className={styles.ingre_content}>
                   {activeKey?.includes(Number(index)) ? 
                   <>
@@ -257,11 +257,38 @@ export default function Cart() {
                       <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                     </svg>
                     <p>{item[1]}</p>
+                    <button className={styles.delete_ingre_btn}
+                    onClick={()=>{
+                      if(confirm(`${item[1]}을 장바구니에서 삭제할까요?`) === true){
+                        setIngre(ingre.filter((value:string) => value[1] !== item[1]))
+                        setEmartList(emartList.filter((value:string[])=> {
+                          let flag = 0;
+                          (ingreE[Number(index)].data as any).map((pd:any)=>{
+                            if(value[0] === pd['itemName']){
+                              flag = 1;
+                            }
+                          })
+                          if(!flag){
+                            return value
+                          }
+                        }))
+                        setHpList(hpList.filter((value:string[])=> {
+                          let flag = 0;
+                          (ingreH[Number(index)].data as any).map((pd:any)=>{
+                            if(value[0] === pd['itemName']){
+                              flag = 1;
+                            }
+                          })
+                          if(!flag){
+                            return value
+                          }
+                        }))
+                      }}}>삭제</button>
                   </div>
                     {mart === 'emart' ?
-                     ProductLst(ingreE, index)
+                     ProductLst(ingreE, Number(index))
                     :
-                    ProductLst(ingreH, index)
+                    ProductLst(ingreH, Number(index))
                     }
                   </>
                   :
@@ -273,6 +300,33 @@ export default function Cart() {
                       <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
                     </svg>
                     <p>{item[1]}</p>
+                    <button className={styles.delete_ingre_btn}
+                    onClick={()=>{
+                      if(confirm(`${item[1]}을 장바구니에서 삭제할까요?`) === true){
+                        setIngre(ingre.filter((value:string) => value[1] !== item[1]))
+                        setEmartList(emartList.filter((value:string[])=> {
+                          let flag = 0;
+                          (ingreE[Number(index)].data as any).map((pd:any)=>{
+                            if(value[0] === pd['itemName']){
+                              flag = 1;
+                            }
+                          })
+                          if(!flag){
+                            return value
+                          }
+                        }))
+                        setHpList(hpList.filter((value:string[])=> {
+                          let flag = 0;
+                          (ingreH[Number(index)].data as any).map((pd:any)=>{
+                            if(value[0] === pd['itemName']){
+                              flag = 1;
+                            }
+                          })
+                          if(!flag){
+                            return value
+                          }
+                        }))
+                      }}}>삭제</button>
                   </div>
                   </>
                   }
@@ -305,8 +359,8 @@ export default function Cart() {
               <p>마트별 가격 비교</p>
             </div>
             <div className={styles.mart_div}>
-            <Mart title="emart" price={emartPrices} isCheap={cheaper} data={emartList} />
-            <Mart title="homeplus" price={hpPrices} isCheap={cheaper} data={hpList} />
+            <Mart title="emart" price={emartPrices} isCheap={cheaper} data={emartList} setMart={setEmartList} />
+            <Mart title="homeplus" price={hpPrices} isCheap={cheaper} data={hpList} setMart={setHpList} />
             </div>
             <Swiper
             id={styles.mart_swiper}
@@ -316,10 +370,10 @@ export default function Cart() {
             // observeParents={true}
             >
               <SwiperSlide style={{marginRight:'3px'}}>
-                <Mart title="emart" price={emartPrices} isCheap={cheaper} data={emartList} />
+                <Mart title="emart" price={emartPrices} isCheap={cheaper} data={emartList} setMart={setEmartList}  />
               </SwiperSlide>
               <SwiperSlide>
-                <Mart title="homeplus" price={hpPrices} isCheap={cheaper} data={hpList} />
+                <Mart title="homeplus" price={hpPrices} isCheap={cheaper} data={hpList} setMart={setHpList} />
               </SwiperSlide>
             </Swiper>
           </div>
