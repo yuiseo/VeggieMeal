@@ -83,6 +83,9 @@
   display: flex;
   flex-direction: column;
   margin: 10px 0;
+  @media(min-width:var.$lg){
+    max-width: 45%;
+  }
 }
 
 #img_box{

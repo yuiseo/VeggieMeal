@@ -218,9 +218,8 @@ export default function Prices({ data, largeData }: PriceProps) {
                     <Table dealData={dealData} tableColumns={tableColumns} ></Table>
                   </div>
                   <div className={styles.footer}>
-                    <div>
-                      <p>* 단위 : 원/100g</p>
-                    </div>
+                    <p></p>
+                    <p>* 단위 : 원/100g</p>
                   </div>
                 </article>
               </section>

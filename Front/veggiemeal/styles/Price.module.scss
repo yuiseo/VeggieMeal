@@ -251,14 +251,16 @@
 
 .footer {
   margin: 1px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   p {
+    text-align: right;
     margin: 0;
     font-size: xx-small;
     color: gray;
+  }
+  p:nth-child(1){
+    margin-left: 100px;
   }
 }
 
