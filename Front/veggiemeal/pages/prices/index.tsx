@@ -21,7 +21,7 @@ export async function getServerSideProps() {
   const res = await fetch(`https://j7c205.p.ssafy.io/api/news`, {
     method: 'GET',
   })
-  const data = await res.json();
+  const Newsdata = await res.json();
 
   const respond = await fetch('https://j7c205.p.ssafy.io/api/deal/large', {
     method: 'get'
@@ -29,7 +29,7 @@ export async function getServerSideProps() {
   const largeData = await respond.json()
   // console.log(largeData)
 
-  return { props: { data, largeData } }
+  return { props: { Newsdata, largeData } }
 }
 
 type PriceProps = {
@@ -38,12 +38,14 @@ type PriceProps = {
 }
 
 
-export default function Prices({ data, largeData }: PriceProps) {
+export default function Prices({ Newsdata, largeData }: PriceProps) {
   const [isSelect01, setIsSelect01] = useState<string>();
   const [isSelect02, setIsSelect02] = useState<string>();
   const [isSelect03, setIsSelect03] = useState<string>();
   const [isSelect04, setIsSelect04] = useState<string>();
   const [isShow, setIsShow] = useState<boolean>(false);
+
+  console.log(Newsdata)
 
   let isOrigin = '원산지'
   const cat01 = largeData;
@@ -177,7 +179,7 @@ export default function Prices({ data, largeData }: PriceProps) {
             <Image src="/news.png" width={50} height={50} quality={100} />
             <p className={styles.news_title}>물가 관련 뉴스</p>
           </div>
-          {data?.map((item: { [key: string]: string }, index: string) => <News key={index} data={item} />)}
+          {Newsdata?.map((item: { [key: string]: string }, index: string) => <News key={index} data={item} />)}
         </section>
       </main>
     </div >
