@@ -9,7 +9,7 @@ import styles from 'styles/IngredientSlider.module.scss';
 import left from '/public/left.png';
 import right from '/public/right.png';
 
-import {cart} from 'states/cart';
+import { cart } from 'states/cart';
 import { useRecoilState } from 'recoil';
 
 SwiperCore.use([Navigation, Pagination]);
@@ -47,7 +47,7 @@ export default function IngredientSlider({ ingredientList }: any) {
             slidesPerView: 3,
           },
           900: {
-            slidesPerView: 3.4,
+            slidesPerView: 3,
           }
         }}
       >
