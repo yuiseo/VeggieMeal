@@ -4,7 +4,7 @@
   display:flex;
   justify-content: center;
   width:100vw;
-  height: 80vh;
+  height: 90vh;
   @media (max-width: var.$md){
     height:60vh;
   }
@@ -18,7 +18,12 @@
   position: absolute;
   z-index: 3;
   width:inherit;
-  height:inherit;
+  height:calc(90vh - 110px);
+  margin-top:80px;
+  @media (max-width:var.$md){
+    margin-top:60px;
+    height:calc(60vh - 80px);
+  }
 }
 
 .footer {
@@ -172,6 +177,12 @@
     background-color: #000000;
     opacity: 0.8;
     font-size: 16px;
+    cursor: url("/cursor/pointer.png"), pointer;
+  }
+  button:hover{
+    background-color: white;
+    color:black;
+    font-weight:700;
   }
   @media (min-width:var.$sm){
     button {
@@ -188,11 +199,6 @@
 #under_icon {
   position: relative;
   z-index: 3;
-  margin-bottom:30px;
-  * {
-    color:white;
-    opacity: 0.8;
-  }
 }
 
 .section_web {
@@ -378,4 +384,24 @@
   }
   background-size: cover;
   background-position: center;
+}
+
+.teamNames{
+  margin: 10px 0 5px 40px;
+  span {
+    color:var.$purple;
+    font-weight: 800;
+    font-size:21px;
+  }
+}
+
+.teamMember{
+  margin: 5px 0px 5px 40px;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.footer_div {
+  max-width:1000px;
+  width:100%;
 }

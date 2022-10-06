@@ -1,38 +1,60 @@
 import styles from 'styles/ChartLine.module.scss';
 import dynamic from 'next/dynamic';
+import { fontFamily } from 'html2canvas/dist/types/css/property-descriptors/font-family';
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-
-export default function ChartColumn() {
-
-
+interface PriceDataProps {
+  priceData: any;
+  selectTitle?: any;
+}
+export default function ChartColumn({ priceData, selectTitle }: PriceDataProps) {
+  let priceList: any = priceData && priceData.map(({ price }: any) => price)
+  let PriceDate: any = priceData && priceData.map(({ dealDate }: any) => dealDate.slice(4, 6) + '월 ' + dealDate.slice(6, 8) + '일')
   return (
     <div className={styles.Container}>
       <ApexChart
+        height={400}
         type='area'
         series={[
           {
-            name: '물가 평균',
-            data: [3000, 1000, 2000, 6000, 8000, 500, 10000, 700],
+            name: '',
+            data: priceList === undefined ? [1] : priceList,
           }
         ]}
         options={{
           chart: {
-            height: 300,
+            zoom: {
+              enabled: false
+            },
+            // height: 300,
             toolbar: {
               show: false,
             },
             background: 'transparent',
           },
+          noData: {
+            text: '데이터가 없어요',
+            align: 'center',
+            verticalAlign: 'middle',
+            offsetX: 0,
+            offsetY: 0,
+            style: {
+              color: undefined,
+              fontSize: '14px',
+              fontFamily: 'SUIT Variable'
+            }
+          },
           dataLabels: {
             enabled: false
           },
-          labels: ['9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일', '9월 7일',],
+          labels: PriceDate,
           xaxis: {
-            type: 'category'
+            type: 'category',
+            position: 'bottom',
           },
           yaxis: {
             labels: {
+              // padding: 1,
               formatter: function (value) {
                 return value.toLocaleString()
               }
@@ -41,21 +63,36 @@ export default function ChartColumn() {
             max: function (max) {
               return Math.max(max) + 1
             },
+            title: {
+              text: "원/100g",
+              offsetX: -5,
+              style: {
+                fontFamily: 'SUIT Variable'
+              }
+            },
+          },
+          tooltip: {
+            y: {
+              formatter: function (val) {
+                return val + "원/100g"
+              }
+            }
           },
           colors: ['#5C5ACD'],
-          title: {
-            text: '~의 평균 물가',
-            align: 'left',
-            margin: 10,
-            offsetX: 0,
-            offsetY: 0,
-            floating: false,
-            style: {
-              fontSize: '25px',
-              fontWeight: 'bold',
-              color: '#263238'
-            },
-          }
+          // title: {
+          //   text: `"${selectTitle}"의 평균 물가(원/100g)`,
+          //   align: 'left',
+          //   margin: 10,
+          //   offsetX: 0,
+          //   offsetY: 0,
+          //   floating: false,
+          //   style: {
+          //     fontSize: '23px',
+          //     fontFamily: 'SUIT Variable',
+          //     fontWeight: 'bold',
+          //     color: '#263238'
+          //   },
+          // }
         }}
       >
       </ApexChart >

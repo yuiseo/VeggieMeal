@@ -28,21 +28,23 @@ export default function Recipe() {
         <section className={styles.grid_container}>
           <Button id={styles.veggie_btn} onClick={() => router.push('/recipe/veggie')}>
             <div>
-              <a id={styles.veggie_bold}>채식 단계</a>
-              <a>에</a>
+              <span id={styles.veggie_bold} style={{cursor: 'url("/cursor/pointer.png"), pointer'}}>채식 단계</span>
+              <span style={{cursor: 'url("/cursor/pointer.png"), pointer'}}>에</span>
             </div>
-            <p>따른 레시피를 보여드려요</p>
-            <Image className={styles.leafy} src={leafy} alt="leafy_green" quality={100} width={100} height={100} />
-            <p>채식</p>
+            <p style={{cursor: 'url("/cursor/pointer.png"), pointer'}}>따른 레시피를 보여드려요</p>
+            <Image className={styles.leafy} src={leafy} alt="leafy_green" quality={100} width={100} height={100} 
+            style={{cursor: 'url("/cursor/pointer.png"), pointer'}}/>
+            <p style={{cursor: 'url("/cursor/pointer.png"), pointer'}}>채식</p>
           </Button>
           <Button id={styles.fridge_btn} onClick={() => router.push('/recipe/fridge')}>
             <div>
-              <a id={styles.fridge_bold}>원하는 재료</a>
-              <a>에</a>
+              <span id={styles.fridge_bold} style={{cursor: 'url("/cursor/pointer.png"), pointer'}}>원하는 재료</span>
+              <span style={{cursor: 'url("/cursor/pointer.png"), pointer'}}>에</span>
             </div>
-            <p>따른 레시피를 보여드려요</p>
-            <Image className={styles.cooking} src={cooking} alt="cooking pan" quality={100} width={100} height={100} />
-            <p>냉장고</p>
+            <p style={{cursor: 'url("/cursor/pointer.png"), pointer'}}>따른 레시피를 보여드려요</p>
+            <Image className={styles.cooking} src={cooking} alt="cooking pan" quality={100} width={100} height={100} 
+             style={{cursor: 'url("/cursor/pointer.png"), pointer'}}/>
+            <p style={{cursor: 'url("/cursor/pointer.png"), pointer'}}>냉장고</p>
           </Button>
         </section>
       </main>

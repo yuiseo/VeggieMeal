@@ -5,6 +5,7 @@ import com.veggiemeal.api.repository.IngredientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +29,14 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Override
     public List<String> getNameList(String medium) {
-        List<String> nameList = ingredientRepository.findName(medium);
+        List<String> nameList = new ArrayList<>();
+        List<Ingredient> ingredientList = ingredientRepository.findIngredientByMedium(medium);
+        // ref 값이 존재하는 ingredient는 제외하고 반환(이름이 애매한 것들 제외)
+        for(Ingredient ingredient: ingredientList){
+            if(ingredient.getRef() == null){
+                nameList.add(ingredient.getName());
+            }
+        }
         return nameList;
     }
 

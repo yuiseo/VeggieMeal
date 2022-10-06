@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RecipeDto {
+public class  RecipeDto {
     private int recipeId;
     private String name;
     private String description;

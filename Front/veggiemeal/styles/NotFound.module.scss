@@ -1,0 +1,35 @@
+@use 'variable' as var;
+
+.title {
+    font-weight: 900;
+    font-size:100px;
+    color:var.$purple;
+    margin-top:50px;
+    margin-bottom: 0;
+}
+
+.not_found {
+    font-weight: 900;
+    font-size: 50px;
+    color:var.$green;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    p {
+        margin-bottom: 5px;
+        font-size:18px;
+        font-weight: 600;
+    }
+}
+
+.to_main {
+    margin-top: 80px;
+    span {
+        font-size: 16px;
+    }
+}

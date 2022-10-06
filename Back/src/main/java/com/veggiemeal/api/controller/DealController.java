@@ -15,6 +15,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/deal")
+@CrossOrigin(origins = "*")
 public class DealController {
     private final DealService dealService;
 
@@ -23,9 +24,6 @@ public class DealController {
         this.dealService = dealService;
     }
 
-    /*
-    * 부류(large) 반환
-     */
     @ApiOperation(value = "부류(large) 반환", response = List.class)
     @GetMapping("/large")
     public ResponseEntity<List<String>> getLarge(){
@@ -33,9 +31,6 @@ public class DealController {
         return ResponseEntity.status(HttpStatus.OK).body(largeList);
     }
 
-    /*
-     * 부류(large)를 입력받아 품종(medium)을 반환
-     */
     @ApiOperation(value = "부류(large)를 입력받아 품종(medium)을 반환", response = List.class)
     @GetMapping("/medium")
     public ResponseEntity<List<String>> getMedium(@RequestParam("large") String large){
@@ -43,9 +38,6 @@ public class DealController {
         return ResponseEntity.status(HttpStatus.OK).body(mediumList);
     }
 
-    /*
-     * 부류(large), 품종(medium)을 입력받아 품목(small)을 반환
-     */
     @ApiOperation(value = "부류(large), 품종(medium)을 입력받아 품목(small)을 반환", response = List.class)
     @GetMapping("/small")
     public ResponseEntity<List<String>> getSmall(@RequestParam("large") String large, @RequestParam("medium") String medium){
@@ -53,9 +45,6 @@ public class DealController {
         return ResponseEntity.status(HttpStatus.OK).body(smallList);
     }
 
-    /*
-     * 부류(large), 품종(medium), 품목(small)을 입력받아 원산지(origin)을 반환
-     */
     @ApiOperation(value = "부류(large), 품종(medium), 품목(small)을 입력받아 원산지(origin)을 반환", response = List.class)
     @GetMapping("/origin")
     public ResponseEntity<List<String>> getOrigin(@RequestParam("large") String large, @RequestParam("medium") String medium, @RequestParam("small") String small){
@@ -63,10 +52,6 @@ public class DealController {
         return ResponseEntity.status(HttpStatus.OK).body(originList);
     }
 
-    /*
-     * 부류(large), 품종(medium), 품목(small), 원산지(origin)를 입력받아
-     * 현재 날짜 기준으로 7일 분량의 경매 데이터를 반환
-     */
     @ApiOperation(value = "부류(large), 품종(medium), 품목(small), 원산지(origin)를 입력받아 현재 날짜 기준으로 7일 분량의 경매 데이터를 반환", response = List.class)
     @GetMapping("/")
     public ResponseEntity<List<DealDto>> getDeal(@RequestParam("large") String large, @RequestParam("medium") String medium, @RequestParam("small") String small, @RequestParam("origin") String origin){

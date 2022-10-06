@@ -97,7 +97,7 @@ export default function MartMap(){
     function SearchMart(){
       var ps = new window.kakao.maps.services.Places();
       if(userAddress){
-        ps.keywordSearch(`${mart} ${userAddress[0]} ${userAddress[1]} ${userAddress[2]}`, placesSearchCB)
+        ps.keywordSearch(`${mart} ${userAddress[0]} ${userAddress[1]}`, placesSearchCB)
       }
     }
 
@@ -127,12 +127,13 @@ export default function MartMap(){
       null
       }
         <div className={ isShow ? `${styles.toggle} ${styles.is_show}` : `${styles.toggle} ${styles.isnt_show}`}
-        onClick={()=>{setIsShow(value => !value)}}>
-          <span className={styles.toggleBtn}></span>
+        onClick={()=>{setIsShow(value => !value)}}
+        style={{cursor: 'url("/cursor/pointer.png"), pointer'}}>
+          <span className={styles.toggleBtn} style={{cursor: 'url("/cursor/pointer.png"), pointer'}}></span>
           {isShow ? 
-          <span>마트 목록 끄기</span>
+          <span style={{cursor: 'url("/cursor/pointer.png"), pointer'}}>마트 목록 끄기</span>
         :  
-          <span>마트 목록 보기</span>
+          <span style={{cursor: 'url("/cursor/pointer.png"), pointer'}}>마트 목록 보기</span>
         }
         </div>
         <div id="map">

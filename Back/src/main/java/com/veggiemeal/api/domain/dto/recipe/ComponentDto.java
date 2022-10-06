@@ -17,6 +17,8 @@ public class ComponentDto {
     private String name;
     private String capacity;
 
+    private long ingredientId;
+
     public static ComponentDto of(Component componentEntity){
         ComponentDto componentDto = ModelMapperUtils.getModelMapper().map(componentEntity, ComponentDto.class);
         return componentDto;

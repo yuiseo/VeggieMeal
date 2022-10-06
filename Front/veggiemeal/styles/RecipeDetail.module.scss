@@ -24,6 +24,10 @@
   @media (min-width:var.$sm) {
     margin: 0 10px;
   }
+  @media (max-width:var.$sm) {
+    max-width: 85vw;
+    margin: 0 10px;
+  }
   @media (min-width:var.$md) {
     max-width: 85vw;
   }
@@ -52,7 +56,7 @@
     @media (min-width: var.$sm) {
       display: none;
     &:hover{
-      cursor: pointer;
+      cursor: url("/cursor/pointer.png"), pointer;
     }
     }
   }
@@ -65,13 +69,13 @@
     height: 30px;
     margin: 10px;
     &:hover {
-        cursor: pointer;
+      cursor: url("/cursor/pointer.png"), pointer;
       }
   }
 }
 .mobile_description {
   margin-bottom: 0;
-  @media (min-width:var.$md) {
+  @media (min-width:var.$sm) {
     display: none;
   }
 }
@@ -79,6 +83,9 @@
   display: flex;
   flex-direction: column;
   margin: 10px 0;
+  @media(min-width:var.$lg){
+    max-width: 45%;
+  }
 }
 
 #img_box{
@@ -109,12 +116,15 @@
   @media (max-width:var.$sm) {
     width: 85vw;
   }
+  @media (min-width:var.$sm) {
+    margin: 25px;
+  }
 }
 .ingredient_section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   min-width: 85vw;
   margin: 0 2rem 0 1rem;
   @media (min-width:var.$sm) {
@@ -127,7 +137,7 @@
 }
 .web_ingredient{
   p {
-    font-weight: 400;
+    font-weight: 500;
   }
   p:nth-child(3) {
     margin-bottom:3px;
@@ -138,11 +148,15 @@
   @media (max-width:var.$sm) {
     display: none;
   }
+  @media(min-width:var.$md){
+    min-width: 33vw;
+    max-width:34vw;
+  }
 }
 
 .mobile_ingredient {
   // margin: 20px 40px;
-  margin: 20px 1rem;
+  margin: 15px 1rem;
   p {
       font-weight: 400;
       margin: 0;
@@ -168,8 +182,16 @@
     font-weight: 600;
     margin-bottom: 25px;
   }
+  @media (min-width:var.$sm) {
+    max-width: 90vw;
+    padding: 0 5rem;
+    margin: 20px;
+    justify-content: flex-start;
+  }
   @media (min-width:var.$lg) {
-    min-width: 1006px;
+    min-width: 50vw;
+    max-width: 1000px;
+    width:100%;
     padding: 0 5rem;
     margin: 20px;
     justify-content: flex-start;
@@ -203,6 +225,7 @@
   display: flex;
   flex-direction: row;
   margin: 0 0 20px 0;
+  font-weight: 500;
   @media (max-width:var.$sm) {
     flex-direction: column;
     p{

@@ -4,7 +4,7 @@
 }
 
 .recipe_title {
-  margin: 3rem 3rem 5rem 3rem;
+  margin: 4rem 3rem 5rem 3rem;
   text-align: center;
   font-weight:  700;
   @media (max-width: var.$sm) {
@@ -28,13 +28,14 @@
   border: 0;
   border-radius: 20px;
   background-color: var.$purple;
+  cursor: url("/cursor/pointer.png"), pointer;
   @media (max-width: var.$sm) {
     margin-right:0;
   }
-  margin-right:10px;
+  margin-right:20px;
 
   div {
-    a {
+    span {
       font-size: large;
       color: white;
     }
@@ -55,8 +56,9 @@
     color: white;
   }
   &:hover {
-    border-color: var.$green  !important;
-    background-color: var.$green  !important;
+    box-shadow: 1px 1px 20px rgb(138, 136, 136);
+    // border-color: var.$green  !important;
+    // background-color: var.$green  !important;
   }
 }
 #veggie_bold {
@@ -74,6 +76,7 @@
     border-radius: 20px;
     background-color: var.$green;
     margin-left:10px;
+    cursor: url("/cursor/pointer.png"), pointer;
     @media (max-width: var.$md) {
         // margin: 0.45rem;
         margin-left:0;
@@ -81,7 +84,7 @@
       }
   
   div {
-    a {
+    span {
       font-size: large;
       color: white;
     }
@@ -102,8 +105,9 @@
     color: white;
   }
   &:hover {
-    border-color: var.$purple  !important;
-    background-color: var.$purple  !important;
+    // border-color: var.$purple  !important;
+    // background-color: var.$purple  !important;
+    box-shadow: 1px 1px 20px rgb(138, 136, 136);
   }
 }
 

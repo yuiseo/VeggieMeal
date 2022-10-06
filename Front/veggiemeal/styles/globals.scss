@@ -9,15 +9,30 @@ body {
   overflow-x: hidden;
 }
 
+html{
+  // cursor: url("/cursor/basic.png") 10 10, auto;
+  cursor: url("/cursor/default.png"), auto;
+}
+
+p, span, h1, h2, h3, h4, h5 {
+  cursor: url("/cursor/text.png") 10 10, text;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+  cursor: url("/cursor/pointer.png"), pointer;
+}
+
+button, button:hover {
+  cursor: url("/cursor/pointer.png"), pointer;
 }
 
 * {
   box-sizing: border-box;
   font-family: 'SUIT Variable';
   color:var.$black;
+  font-weight: 500;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,17 +45,21 @@ a {
   }
 }
 
+svg {
+  cursor: url("/cursor/pointer.png"), pointer;
+}
+
 .nav_active {
   color:var.$purple !important;
 }
 
-container {
-  padding: 0 2rem;
-}
+// container {
+//   padding: 0 2rem;
+// }
 
 main {
   min-height: 100vh;
-  padding: 4rem 0;
+  padding: 4rem 0 0 0;
   max-width: var.$max_width;
   margin: 30px auto;
   flex: 1;
@@ -48,6 +67,28 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+}
+
+/* 스크롤바 설정*/
+body::-webkit-scrollbar{
+	/*  스크롤바 막대 너비 설정 */
+    width: 8px;
+}
+
+/* 스크롤바 막대 설정*/
+body::-webkit-scrollbar-thumb{
+	 /* 스크롤바 막대 높이 설정    */
+    height: 17%;
+    background: linear-gradient(var.$green, var.$purple);
+    /* 스크롤바 둥글게 설정    */
+    border-radius: 10px;
+}
+
+/* 스크롤바 뒷 배경 설정*/
+body::-webkit-scrollbar-track{
+    // background-color: rgba(0, 0, 0, 0);
+    background-color:var.$grey;
+    border-radius: 10px;
 }
 
 /* 스크롤바 설정*/
@@ -60,17 +101,18 @@ main {
 ::-webkit-scrollbar-thumb{
 	 /* 스크롤바 막대 높이 설정    */
     height: 17%;
-    background: linear-gradient(var.$green, var.$purple);
+    background: #999999;
     /* 스크롤바 둥글게 설정    */
     border-radius: 10px;
 }
 
 /* 스크롤바 뒷 배경 설정*/
 ::-webkit-scrollbar-track{
-    // background-color: rgba(0, 0, 0, 0);
-    background-color:var.$grey;
+    background-color: rgba(0, 0, 0, 0);
+    // background-color:var.$grey;
     border-radius: 10px;
 }
+
 
 #map {
   z-index: 1;
@@ -91,9 +133,12 @@ main {
   right:-52rem;
   z-index: 100;
   @media (max-width:var.$sm) {
-    right: -280px;
+    top:-115px;
+    left: 280px;
+    right: auto;
   }
   @media (max-width:var.$md) {
+    max-width: 510px;
     right: -510px;
   }
   @media (max-width:var.$lg) {
@@ -103,9 +148,10 @@ main {
 .left-swiper-button-prev {
   position: relative;
   top: -100px;
-  left: -3rem;
+  left: -2.5rem;
   z-index: 100;
   @media (max-width:var.$sm) {
+    top: -115px;
     left: -30px;
   }
 }
@@ -114,3 +160,13 @@ main {
   max-width: 74vw;
 }
 
+footer {
+  background-color: var.$grey;
+  padding: 50px 0;
+  display:flex;
+  justify-content: center;
+}
+
+.navbar-toggler-icon {
+  cursor: url("/cursor/pointer.png"), pointer;
+}

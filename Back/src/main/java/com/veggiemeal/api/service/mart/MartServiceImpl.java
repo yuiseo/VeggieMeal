@@ -29,11 +29,11 @@ public class MartServiceImpl implements MartService {
 
         if (ingredient.isPresent()) {
             if (ingredient.get().getRef() == null) {
-                martEntityList = martRepository.findAllByIngredientAndMart(ingredient.get(), mart);
+                martEntityList = martRepository.findAllByIngredientAndMartAndItemNameIsNotNull(ingredient.get(), mart);
             }
             else {
                 ingredient = ingredientRepository.findById(ingredient.get().getRef());
-                martEntityList = martRepository.findAllByIngredientAndMart(ingredient.get(), mart);
+                martEntityList = martRepository.findAllByIngredientAndMartAndItemNameIsNotNull(ingredient.get(), mart);
             }
             martDtoList = martEntityList.stream().map(entity -> MartDto.of(entity)).collect(Collectors.toList());
         }
