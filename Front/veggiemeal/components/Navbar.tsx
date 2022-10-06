@@ -13,9 +13,9 @@ function Navigators() {
       <Container>
         <Navbar.Brand href="/" className="d-flex align-items-center">
           <Image src="/Logo.png" alt="베지밀의 로고, 그릇에서 새싹이 발아하는 모습을 형상화했다."
-          width={125} height={45} />
+          width={125} height={45} style={{cursor: 'url("/cursor/pointer.png"), pointer'}} />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto" id={styles.menus}>
             <Nav.Link href="/" className={router.pathname == "/" ? "nav_active" : "" }>홈</Nav.Link>
