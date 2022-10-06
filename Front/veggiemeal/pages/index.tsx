@@ -83,7 +83,7 @@ const Home: NextPage = () => {
               </Fade>
             </div>
           </section>
-          <section id="first_section_mobile" className={styles.section_bg_mobile}>
+          <section  ref={currentRef} id="first_section_mobile" className={styles.section_bg_mobile}>
             <div className={styles.section_mobile}>
               <Fade top duration={1500}>
                 <div>
