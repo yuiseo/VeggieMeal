@@ -45,10 +45,11 @@ public class DealServiceImpl implements DealService{
     @Override
     public List<DealDto> getDeal(String large, String medium, String small, String origin) {
         List<DealDto> returnList = new ArrayList<>();   // 반환할 List
-        List<String> dealDateList = dealRepository.findDealDateLimit7();    // 경매날짜 기준 최신순으로 7개 날짜 List
+        List<String> dealDateList = dealRepository.findDealDateLimit7(large, medium, small, origin);    // 경매날짜 기준 최신순으로 7개 날짜 List
 
-        // 날짜별로 경매 데이터 추출
-        for(String dealDate : dealDateList){
+        // 날짜별로 경매 데이터 추출(날짜 역순)
+        for(int i = dealDateList.size() - 1; i >= 0; i--){
+            String dealDate = dealDateList.get(i);
             List<Deal> dealList = dealRepository.findByLargeAndMediumAndSmallAndOriginAndDealDate(large, medium, small, origin, dealDate);
 
             // 경매 데이터 반올림
@@ -60,7 +61,6 @@ public class DealServiceImpl implements DealService{
             // 반환할 List에 추가
             returnList.addAll(dealList.stream().map(entity -> DealDto.of(entity)).collect(Collectors.toList()));
         }
-
 
         return returnList;
     }
