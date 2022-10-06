@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?><Grid_20150827000000000228_1>
+<totalCnt>3022</totalCnt>
+<startRow>3001</startRow>
+<endRow>3022</endRow>
+<result>
+<message>정상 처리되었습니다.</message>
+<code>INFO-000</code>
+</result>
+<row>
+<ROW_NUM>3001</ROW_NUM>
+<RECIPE_ID>180344</RECIPE_ID>
+<COOKING_NO>9</COOKING_NO>
+<COOKING_DC>그릇에 볶음밥과 카레소스를 함께 담는다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148291443779700021.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3002</ROW_NUM>
+<RECIPE_ID>180363</RECIPE_ID>
+<COOKING_NO>1</COOKING_NO>
+<COOKING_DC>새우와 쪽파는 데치기 전에 깨끗하게 손질한다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148298988811400115.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3003</ROW_NUM>
+<RECIPE_ID>180363</RECIPE_ID>
+<COOKING_NO>2</COOKING_NO>
+<COOKING_DC>쪽파는 끓는 물에 소금을 넣고 살짝 데친 후 찬물에 담갔다 물기를 빼준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148298988812000116.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3004</ROW_NUM>
+<RECIPE_ID>180363</RECIPE_ID>
+<COOKING_NO>3</COOKING_NO>
+<COOKING_DC>새우는 끓는 물에 소금을 약간 넣고 데친다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL/>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3005</ROW_NUM>
+<RECIPE_ID>180363</RECIPE_ID>
+<COOKING_NO>4</COOKING_NO>
+<COOKING_DC>그릇에 고추장, 식초, 설탕, 깨를 넣고 잘 섞어 초장을 만들어 준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148298988812300117.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3006</ROW_NUM>
+<RECIPE_ID>180363</RECIPE_ID>
+<COOKING_NO>5</COOKING_NO>
+<COOKING_DC>새우에 쪽파를 감아 접시에 담아 준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148298988812700118.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3007</ROW_NUM>
+<RECIPE_ID>195428</RECIPE_ID>
+<COOKING_NO>1</COOKING_NO>
+<COOKING_DC>당근과 오이는 얇게 슬라이스 해준다.
+가지는 길게 잘라준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299332506300121.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3008</ROW_NUM>
+<RECIPE_ID>195428</RECIPE_ID>
+<COOKING_NO>2</COOKING_NO>
+<COOKING_DC>오이를 제외한 당근과 가지를 기름 두른 팬에 볶아준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299332506700122.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP>가지는 간장으로 당근은 소금으로 간을 해준다.</STEP_TIP>
+</row>
+<row>
+<ROW_NUM>3009</ROW_NUM>
+<RECIPE_ID>195428</RECIPE_ID>
+<COOKING_NO>3</COOKING_NO>
+<COOKING_DC>밥에 통깨와 참기름  맛소금을 넣고 주걱을 세워 섞어준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299332507100123.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3010</ROW_NUM>
+<RECIPE_ID>195428</RECIPE_ID>
+<COOKING_NO>4</COOKING_NO>
+<COOKING_DC>김말이 위에 랩을 깔아주고 김을 올려놓고 밥을 김 위에 잘 펴 뒤집어 준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299332507500124.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3011</ROW_NUM>
+<RECIPE_ID>195428</RECIPE_ID>
+<COOKING_NO>5</COOKING_NO>
+<COOKING_DC>뒤집은 김위에 김밥속 재료인 당근, 가지, 오이를 올려준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299332508000125.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3012</ROW_NUM>
+<RECIPE_ID>195428</RECIPE_ID>
+<COOKING_NO>6</COOKING_NO>
+<COOKING_DC>김발과 랩을 빼 주며 김밥을 말아 준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299332508400126.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3013</ROW_NUM>
+<RECIPE_ID>195428</RECIPE_ID>
+<COOKING_NO>7</COOKING_NO>
+<COOKING_DC>완성된 김밥위에 참기름과 통깨를 발라 먹기 좋은 크기로 잘라준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299332508800127.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3014</ROW_NUM>
+<RECIPE_ID>195428</RECIPE_ID>
+<COOKING_NO>8</COOKING_NO>
+<COOKING_DC>접시에 어린잎 채소를 깔아주고 그 위에 자른 김밥을 올려준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299332509200128.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3015</ROW_NUM>
+<RECIPE_ID>195428</RECIPE_ID>
+<COOKING_NO>9</COOKING_NO>
+<COOKING_DC>믹서기에 두부, 식초, 설탕, 마요네즈, 통깨를 넣고 갈아 두부드레싱을 만들어 준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299332509700129.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3016</ROW_NUM>
+<RECIPE_ID>195428</RECIPE_ID>
+<COOKING_NO>10</COOKING_NO>
+<COOKING_DC>접시에 담긴 김밥위에 두부 드레싱을 뿌려준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299332510100130.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3017</ROW_NUM>
+<RECIPE_ID>195453</RECIPE_ID>
+<COOKING_NO>1</COOKING_NO>
+<COOKING_DC>대파, 호박, 배추는 작게 다져준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL/>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3018</ROW_NUM>
+<RECIPE_ID>195453</RECIPE_ID>
+<COOKING_NO>2</COOKING_NO>
+<COOKING_DC>볼에 콩비지와 고기, 다진 채소, 다진마늘, 후추, 소금, 참기름을 넣어준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299577269600132.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3019</ROW_NUM>
+<RECIPE_ID>195453</RECIPE_ID>
+<COOKING_NO>3</COOKING_NO>
+<COOKING_DC>부침가루와 전분을 넣고 계란 1개를 넣어 반죽하듯 잘 섞어준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299577270200133.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3020</ROW_NUM>
+<RECIPE_ID>195453</RECIPE_ID>
+<COOKING_NO>4</COOKING_NO>
+<COOKING_DC>동그랑땡 반죽을 동글납작하게 모양을 잡아준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299577270600134.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3021</ROW_NUM>
+<RECIPE_ID>195453</RECIPE_ID>
+<COOKING_NO>5</COOKING_NO>
+<COOKING_DC>모양을 낸 반죽에 밀가루를 묻히고, 계란을 푼 계란물을 묻혀준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299577271000135.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+<row>
+<ROW_NUM>3022</ROW_NUM>
+<RECIPE_ID>195453</RECIPE_ID>
+<COOKING_NO>6</COOKING_NO>
+<COOKING_DC>달궈진 팬에 기름을 두르고 옷을 계란물옷을 입힌 동그랑땡을 노릇하게 익혀준다.</COOKING_DC>
+<STRE_STEP_IMAGE_URL>http://file.okdab.com/recipe/148299577271500136.jpg</STRE_STEP_IMAGE_URL>
+<STEP_TIP/>
+</row>
+</Grid_20150827000000000228_1>
