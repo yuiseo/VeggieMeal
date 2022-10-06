@@ -4,24 +4,30 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   padding: 13px 17px;
+  margin: 7px 0;
   border-radius: 15px;
   background-color: var.$grey;
   @media (min-width:var.$md) {
-    // min-width: 50vw;
+    // min-width: 85vw;
     justify-content: flex-start;
   }
 }
 .number {
   // margin: 0 10px;
-  border-radius: 100%;
+  border-radius: 50%;
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
   background-color: var.$green;
   p{
     padding: 7px 10px;
     margin: 0;
-    font-weight: 600;
+    font-weight: 700;
     color: white;
   }
 }

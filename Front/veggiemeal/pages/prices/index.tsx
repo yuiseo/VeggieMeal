@@ -1,41 +1,31 @@
 import Head from "next/head";
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Table from 'components/Table';
 import ChartLine from 'components/ChartLine';
 import ChartColumn from 'components/ChartColumn';
 import styles from 'styles/Price.module.scss';
 import glass from '/public/glass.png';
+import think from '/public/think.png';
 import SelectBox from "components/SelectBox";
 import News from "components/News";
 import { useQuery } from 'react-query';
+import { BeatLoader } from 'react-spinners'
 
-// const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
-// const PriceSelectBox = dynamic(() => import('components/PriceSelectBox'))
-// import PriceSelectBox from "components/PriceSelectBox";
+const Pulse = require('react-reveal/Pulse');
 
-// const BACK_URL = 'https://j7c205.p.ssafy.io/api/deal/'
 
 export async function getServerSideProps() {
   // Fetch data from external API
-  const keyword = encodeURI("물가");
-  const newHeader: HeadersInit = new Headers();
-  newHeader.set("X-Naver-Client-Id", "zPEQIIbwNxiP18_gyNbN");
-  newHeader.set("X-Naver-Client-Secret", "W1O4_DezL1");
-  const res = await fetch(`https://openapi.naver.com/v1/search/news.json?query=${keyword}`, {
-    method: 'GET',
-    headers: newHeader
-  })
-  const data = await res.json();
 
   const respond = await fetch('https://j7c205.p.ssafy.io/api/deal/large', {
     method: 'get'
   })
   const largeData = await respond.json()
   // console.log(largeData)
-  // Pass data to the page via props
-  return { props: { data, largeData } }
+
+  return { props: { largeData } }
 }
 
 type PriceProps = {
@@ -44,11 +34,23 @@ type PriceProps = {
 }
 
 
-export default function Prices({ data, largeData }: PriceProps,) {
+export default function Prices({ largeData }: PriceProps) {
   const [isSelect01, setIsSelect01] = useState<string>();
   const [isSelect02, setIsSelect02] = useState<string>();
   const [isSelect03, setIsSelect03] = useState<string>();
   const [isSelect04, setIsSelect04] = useState<string>();
+  const [isShow, setIsShow] = useState<boolean>(false);
+
+
+  let isOrigin = '원산지'
+
+  const { data: newsData } = useQuery(['newsData'], async () => {
+    const res = await fetch(`https://j7c205.p.ssafy.io/api/news`, {
+      method: 'GET',
+    })
+    const Newsdata = await res.json();
+    return Newsdata
+  })
   const cat01 = largeData;
   const { data: cat02 } = useQuery(['cat02', isSelect01], async () => {
     const res = await fetch(`https://j7c205.p.ssafy.io/api/deal/medium?large=${isSelect01}`)
@@ -79,17 +81,51 @@ export default function Prices({ data, largeData }: PriceProps,) {
     return data
   })
 
-  const { data: dealData } = useQuery(['dealData'], async () => {
-    const res = await fetch(`https://j7c205.p.ssafy.io/api/deal/?large=${isSelect01}&medium=${isSelect02}&origin=${isSelect04}&small=${isSelect03}`)
+  const { data: dealData } = useQuery(['dealData', [isSelect01, isSelect02, isSelect03, isSelect04]], async () => {
+    if (isSelect04 === '국내산') {
+      isOrigin = 'korea'
+    } else {
+      isOrigin = 'income'
+    }
+    const res = await fetch(`https://j7c205.p.ssafy.io/api/deal/?large=${isSelect01}&medium=${isSelect02}&origin=${isOrigin}&small=${isSelect03}`)
     const data = await res.json()
-    console.log('res', res)
-    console.log('data', data)
     return data
   })
 
-  const tableColumns = ['날짜', '최고가(원)', '최저가(원)', '평균가(원)']
-  const tableData = dealData;
 
+  const tableColumns = ['날짜', '최고가', '최저가', '평균가']
+
+  function Spinner() {
+    return (
+      <section className={styles.spinner}>
+        <div>
+          <Pulse ><h3>물가를 분석 중입니다</h3></Pulse>
+          <BeatLoader color="#5C5ACD" />
+        </div>
+      </section>
+    )
+  }
+
+  const [loading, setLoading] = useState<boolean>(true)
+  useEffect(() => {
+    if (dealData !== undefined && dealData.length) {
+      setIsShow(true)
+      setTimeout(() => setLoading(false), 2500)
+    }
+  }, [dealData])
+
+  const [isChange, setIsChange] = useState<boolean>(true)
+  useEffect(() => {
+    setIsChange(false)
+    setLoading(true)
+  }, [isSelect01, isSelect02, isSelect03, isSelect04])
+
+  const [reset, setReset] = useState<boolean>(false)
+  useEffect(() => {
+    if (reset === true) {
+      console.log('hihi')
+    }
+  }, [reset])
 
   return (
     <div className={styles.Container}>
@@ -100,7 +136,7 @@ export default function Prices({ data, largeData }: PriceProps,) {
       <main className={styles.main}>
         <header className={styles.header}>
           <div className={styles.title}>
-            <Image src={glass} alt='magnifying glass' quality={100} width={50} height={50} />
+            <Image src={glass} alt='물가 분석 돋보기' quality={100} width={50} height={50} />
             <h1 className={styles.price_title}>물가분석</h1>
           </div>
           {/* 셀렉트 박스 */}
@@ -111,27 +147,49 @@ export default function Prices({ data, largeData }: PriceProps,) {
             <SelectBox data={cat04} setState={setIsSelect04} title="원산지" />
           </section>
         </header>
-        <section className={styles.chart_section}>
-          {/* 차트 섹션 */}
-          <article className={styles.main_chart}>
-            <ChartLine />
-          </article>
 
-          <section className={styles.sub_chart}>
-            <article className={styles.column_chart}>
-              <ChartColumn />
-            </article>
-            <article className={styles.table_article}>
-              <Table tableData={tableData} tableColumns={tableColumns} ></Table>
-            </article>
-          </section>
-        </section>
+        {isShow === false ?
+          <div className={styles.noPrices}>
+            <Image src={think} width={150} height={150} quality={100} />
+            <p> 어떤 재료의 물가를 알려드릴까요? </p>
+          </div>
+          :
+          (loading === true ? <Spinner /> :
+            <section className={styles.chart_section}>
+              <div className={styles.main_name}>
+                <h4>{isSelect03}</h4>
+                <h4>의 평균 물가</h4>
+              </div>
+              <article className={styles.main_chart}>
+                <ChartLine priceData={dealData} selectTitle={isSelect03} />
+              </article>
+              <hr className={styles.hr} />
+              <div className={styles.sub_name}>
+                <h4>{isSelect03}</h4>
+                <h4>의 최저가 및 최고가</h4>
+              </div>
+              <section className={styles.sub_chart}>
+                <article className={styles.column_chart}>
+                  <ChartColumn selectTitle={isSelect03} priceData={dealData} />
+                </article>
+                <article className={styles.table_article}>
+                  <div>
+                    <Table dealData={dealData} tableColumns={tableColumns} ></Table>
+                  </div>
+                  <div className={styles.footer}>
+                    <p></p>
+                    <p>* 단위 : 원/100g</p>
+                  </div>
+                </article>
+              </section>
+            </section>)
+        }
         <section>
           <div className={styles.news_section}>
             <Image src="/news.png" width={50} height={50} quality={100} />
             <p className={styles.news_title}>물가 관련 뉴스</p>
           </div>
-          {data['items'].map((item: { [key: string]: string }, index: string) => <News key={index} data={item} />)}
+          {newsData?.map((item: { [key: string]: string }, index: string) => <News key={index} data={item} />)}
         </section>
       </main>
     </div >

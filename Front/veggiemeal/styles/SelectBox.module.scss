@@ -4,6 +4,7 @@
     position:relative;
     display:flex;
     flex-direction: column;
+    cursor: url("/cursor/pointer.png"), pointer;
 }
 
 .selected {
@@ -18,38 +19,54 @@
 .selected_value {
     font-size: 16px;
     font-weight: 700;
+    cursor: url("/cursor/pointer.png"), pointer;
 }
 
 .select_ul {
     position:absolute;
     z-index: 100;
-    width:100%;
+    width:max-content;
+    min-width: 100%;
     background-color: var.$green;
     border-radius: 10px;
     list-style: none;
-    margin-top:65px;
+    margin-top:55px;
+    margin-bottom:20px;
     padding: 0;
     li {
-        cursor: pointer;
+      cursor: url("/cursor/pointer.png"), pointer;
         color:white;
         font-size: 16px;
         line-height: 2.5;
         padding:5px 15px;
         border-bottom: 1px dashed white;
         &:hover {
-            background-color: var.$purple;
+          background-color: var.$purple;
+        }
+        &.only_li{
+            border-radius: 10px;
+            border-bottom: 0;
         }
         &.choice_li {
-            background-color: var.$purple;
+          background-color: var.$purple;
         }
         &.last_li {
-            border-bottom: 0;
-            border-radius: 0 0 10px 10px;
+          border-bottom: 0;
+          border-radius: 0 0 10px 10px;
         }
         &.first_li {
-            border-radius: 10px 10px 0 0;
+          border-radius: 10px 10px 0 0;
+        }  
+        &.len1_li {
+          border-radius:10px;
+          border-bottom: none;
         }
-    }
+        &.len1_choice_li {
+          background-color: var.$purple;
+          border-radius: 10px;
+          border-bottom:none;
+        }
+      }
 }
 
 // .select {

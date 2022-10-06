@@ -29,7 +29,7 @@
 .number {
   width: 30px;
   height: 30px;
-  border-radius: 100%;
+  border-radius: 50%;
   background-color: var.$black;
   display: flex;
   justify-content: center;
@@ -39,6 +39,7 @@
     padding: 12px;
     margin: 0;
     color: white;
+    font-weight: 600;
     }
 }
 
@@ -62,6 +63,7 @@
   border: 0;
   border-radius: 10px;
   background-color: var.$green  !important;
+  cursor: url("/cursor/pointer.png"), pointer;
 
   p {
     margin: 0;
@@ -85,6 +87,7 @@
   border: 0;
   border-radius: 10px;
   background-color: var.$purple  !important;
+  cursor: url("/cursor/pointer.png"), pointer;
 
   p {
     margin: 0;
