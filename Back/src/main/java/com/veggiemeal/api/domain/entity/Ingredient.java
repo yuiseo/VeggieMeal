@@ -2,10 +2,7 @@ package com.veggiemeal.api.domain.entity;
 
 import com.veggiemeal.api.domain.dto.mart.IngredientDto;
 import com.veggiemeal.api.utils.ModelMapperUtils;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,6 +11,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Ingredient")

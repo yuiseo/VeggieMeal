@@ -1,13 +1,11 @@
 package com.veggiemeal.api.service.recipe;
 
 import com.veggiemeal.api.domain.dto.recipe.ComponentDto;
+import com.veggiemeal.api.domain.dto.recipe.ProcessDto;
 import com.veggiemeal.api.domain.dto.recipe.RecipeDto;
-import com.veggiemeal.api.domain.entity.Component;
-import com.veggiemeal.api.domain.entity.Recipe;
-import com.veggiemeal.api.domain.entity.Type;
-import com.veggiemeal.api.repository.ComponentRepository;
-import com.veggiemeal.api.repository.RecipeRepository;
-import com.veggiemeal.api.repository.TypeRepository;
+import com.veggiemeal.api.domain.entity.*;
+import com.veggiemeal.api.domain.entity.Process;
+import com.veggiemeal.api.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -20,11 +18,15 @@ public class RecipeServiceImpl implements RecipeService {
     private final RecipeRepository recipeRepository;
     private final TypeRepository typeRepository;
     private final ComponentRepository componentRepository;
+    private final ProcessRepository processRepository;
+    private final IngredientRepository ingredientRepository;
 
-    public RecipeServiceImpl(RecipeRepository recipeRepository, TypeRepository typeRepository, ComponentRepository componentRepository){
+    public RecipeServiceImpl(RecipeRepository recipeRepository, TypeRepository typeRepository, ComponentRepository componentRepository, ProcessRepository processRepository, IngredientRepository ingredientRepository){
         this.recipeRepository = recipeRepository;
         this.typeRepository = typeRepository;
         this.componentRepository = componentRepository;
+        this.processRepository = processRepository;
+        this.ingredientRepository = ingredientRepository;
     }
 
 
@@ -96,6 +98,9 @@ public class RecipeServiceImpl implements RecipeService {
             }
         }
 
+        // returnList 섞기
+        Collections.shuffle(returnList);
+
         // EntityList를 DtoList로 변환하여 반환
         return returnList.stream().map(entity -> RecipeDto.of(entity)).collect(Collectors.toList());
     }
@@ -113,8 +118,22 @@ public class RecipeServiceImpl implements RecipeService {
         List<Recipe> recipeEntityList = recipeRepository.findAll();
         // 반환할 레시피 Dto List
         List<RecipeDto> recipeDtoList = new ArrayList<>();
-        // 전체 재료 정보 Entity List
+        // 레시피에 포함된 전체 재료 정보 Entity List
         List<Component> componentList = componentRepository.findAll();
+
+        // 정제된 전체 재료 정보 EntityList
+        List<Ingredient> ingredientList = ingredientRepository.findAll();
+        // ingredientList를 돌면서 ref 값이 존재하는 데이터를 찾는다.
+        for(Ingredient ingredientEntity : ingredientList){
+            if(ingredientEntity.getRef() != null && ingredientEntity.getRef() > 0){
+                // ref 값이 존재하면 componentList를 돌면서 해당 재료의 이름을 ref 값에 해당하는 이름으로 치환한다.
+                for(Component component : componentList){
+                    if(component.getName().equals(ingredientEntity.getName())){
+                        component.setName(ingredientList.get((int) (ingredientEntity.getRef() - 1)).getName());
+                    }
+                }
+            }
+        }
 
         /*
          * 전체 레시피 Entity List를 돌면서 해당 레시피 ID를 가진 재료 Entity만을 DB에서 추출할 수 있지만,
@@ -124,9 +143,14 @@ public class RecipeServiceImpl implements RecipeService {
         // 전체 레시피 Entity List를 돌면서 선택된 재료들(ingredient)가 모두 포함된 레시피를 찾아 recipeDtoList에 추가
         for(Recipe recipeEntity : recipeEntityList){
             int count = 0;
+            HashSet<String> ingredientSet = new HashSet<>();
+            for(String ingredientStr : ingredient){
+                ingredientSet.add(ingredientStr);
+            }
             // 전체 재료 정보 Entity List를 돌면서 레시피 ID가 같고, 선택된 재료들 중 현재 재료 Entity의 이름이 포함되어있는 경우 count++
             for(Component component : componentList){
-                if(component.getRecipeId() == recipeEntity.getRecipeId() && ingredient.contains(component.getName())){
+                if(component.getRecipeId() == recipeEntity.getRecipeId() && ingredientSet.contains(component.getName())){
+                    ingredientSet.remove(component.getName());
                     count++;
                 }
                 // count 값이 ingredient의 크기와 같아지면 선택된 재료들이 모두 포함되었음을 의미
@@ -144,7 +168,22 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public List<ComponentDto> getIngredientByRecipeId(int recipeId) {
         List<Component> componentEntityList = componentRepository.findAllByRecipeId(recipeId);
-        return componentEntityList.stream().map(entity -> ComponentDto.of(entity)).collect(Collectors.toList());
+        List<ComponentDto> componentDtoList = componentEntityList.stream().map(entity -> ComponentDto.of(entity)).collect(Collectors.toList());
+
+        // component에 이름에 맞는 ingredientId 저장
+        for(ComponentDto componentDto : componentDtoList){
+            Optional<Ingredient> ingredientEntity = ingredientRepository.findIngredientByName(componentDto.getName());
+            if(ingredientEntity.isPresent()){
+                componentDto.setIngredientId(ingredientEntity.get().getIngredientId());
+            }
+        }
+
+        return componentDtoList;
     }
 
+    @Override
+    public List<ProcessDto> getProcessByRecipeId(int recipeId) {
+        List<Process> processEntityList = processRepository.findAllByRecipeId(recipeId);
+        return processEntityList.stream().map(entity -> ProcessDto.of(entity)).collect(Collectors.toList());
+    }
 }

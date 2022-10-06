@@ -2,10 +2,7 @@ package com.veggiemeal.api.domain.entity;
 
 import com.veggiemeal.api.domain.dto.deal.DealDto;
 import com.veggiemeal.api.utils.ModelMapperUtils;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -14,6 +11,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @DynamicUpdate
