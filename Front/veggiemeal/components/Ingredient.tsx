@@ -47,7 +47,7 @@ export default function Ingredient({ ingredientId, name, index, cart, setCart }:
           onClick={() => {
             setCart(cart.filter((item:(string | number)[]) => item[0] !== ingredientId))
             setIsIn(false)
-          }}><p>장바구니 빼기</p></div>
+          }}><p style={{ cursor: 'url("/cursor/pointer.png"), pointer' }}>장바구니 빼기</p></div>
           :
           <div className={styles.button_out_box} onClick={() => { 
             if(cart.length === 0){
@@ -56,7 +56,7 @@ export default function Ingredient({ ingredientId, name, index, cart, setCart }:
               setCart([...cart, [ingredientId, name]])
             }
             setIsIn(true)
-           }}><p>장바구니 담기</p></div>
+           }}><p style={{ cursor: 'url("/cursor/pointer.png"), pointer' }}>장바구니 담기</p></div>
         }
 
 
