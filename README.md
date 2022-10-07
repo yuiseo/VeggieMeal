@@ -217,7 +217,7 @@
 * [VeggieMeal - 사용자 흐름도](assets/[베지밀] 사용자 흐름도.pdf)
 * [VeggieMeal - 와이어 프레임](assets/[베지밀] 와이어 프레임.pdf)
 * [VeggieMeal - 포팅 매뉴얼](exec/[베지밀] 포팅매뉴얼.pdf)
-* [VeggieMeal - 시연시나리오](exec/[베지밀] 시연 시나리오.pdf)
+* [VeggieMeal - 시연시나리오](assets/_베지밀__시연_시나리오.pdf)
 * [VeggieMeal - UCC](assets/[베지밀] UCC.mp4)
 * [VeggieMeal - 최종발표 PPT](assets/[베지밀] 최종 발표 PPT.pdf)
 
