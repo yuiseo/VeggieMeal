@@ -49,39 +49,45 @@
 
 <details markdown="1">
 <summary><strong> 사용 IDE </summary></strong>
-	- IntelliJ IDEA 2022.1.3
-	- Visual Studio Code : 1.70.2v
-	- UI/UX: Figma
-	- Jupyter Notebook
+
+- IntelliJ IDEA 2022.1.3
+- Visual Studio Code : 1.70.2v
+- UI/UX: Figma
+- Jupyter Notebook
+
 </details>
 
 <details markdown="1">
 <summary><strong> 백엔드 기술스택 </summary></strong>
-	- Openjdk : 1.8.0
-	- Springboot :  2.7.3
-	- spring: gradle 
-	- MariaDB : mariadb 10.3.34
-	- AWS : ubuntu 20.04.4 LTS 
-	- Jenkins : 2.361.1
-	- Docker : 20.10.18
-	- nginx :  nginx/1.18.0 (Ubuntu)
-	- Hadoop : 3.2.1
-	- Spark : 3.2.1
-	- Sqoop : 1.4.7
-	- Kafka :  3.2.3
-	- Python : 3.9.12
+
+- Openjdk : 1.8.0
+- Springboot :  2.7.3
+- spring: gradle 
+- MariaDB : mariadb 10.3.34
+- AWS : ubuntu 20.04.4 LTS 
+- Jenkins : 2.361.1
+- Docker : 20.10.18
+- nginx :  nginx/1.18.0 (Ubuntu)
+- Hadoop : 3.2.1
+- Spark : 3.2.1
+- Sqoop : 1.4.7
+- Kafka :  3.2.3
+- Python : 3.9.12
+
 </details>
 
 <details markdown="1">
 <summary><strong> 프론트엔드 기술스택 </summary></strong>
-	- node.js : v16.15.1(LTS)
-	- npm : 8.11.0v
-	- next : 12.3.0v
-	- react : 18.2.0v
-	- recoil : 0.7.5v
-	- TypeScript : 4.8.3v
-	- Sass : 1.54.9v
-	- react-query : 3.39.2v
+	
+- node.js : v16.15.1(LTS)
+- npm : 8.11.0v
+- next : 12.3.0v
+- react : 18.2.0v
+- recoil : 0.7.5v
+- TypeScript : 4.8.3v
+- Sass : 1.54.9v
+- react-query : 3.39.2v
+
 </details>
 
 ### 5. ERD 다이어그램
