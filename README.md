@@ -5,8 +5,6 @@
 - [1. 소개](#1-소개)
 - [2. 주요 기능](#2-주요-기능)
 - [3. 시스템 구조도](#3-시스템-구조도)
-	- [1) 아키텍처](#1)-아키텍처)
-	- [2) 데이터 처리 개괄도](#2)-데이터-처리-개괄도)
 - [4. 기술스택](#4-기술스택)
 - [5. ERD 다이어그램](#5-erd-다이어그램)
 - [6. 기능 상세](#6-기능-상세)
@@ -46,6 +44,45 @@
 |   **Front**    | <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=next.js&logoColor=white"><img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"><img src="https://img.shields.io/badge/recoil-000000?style=for-the-badge&logo=react&logoColor=white"><img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"><img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img src="https://img.shields.io/badge/sass-CC6699?style=for-the-badge&logo=sass&logoColor=white"><img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"> |
 |    **Back**    | <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=spring&logoColor=white"><img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white"><img src="https://img.shields.io/badge/kafka-231F20?style=for-the-badge&logo=apache-kafka&logoColor=white"><img src="https://img.shields.io/badge/spark-E25A1C?style=for-the-badge&logo=apache-spark&logoColor=white"><img src="https://img.shields.io/badge/hadoop-66CCFF?style=for-the-badge&logo=apache-hadoop&logoColor=white"><img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"><img src="https://img.shields.io/badge/jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white"><img src="https://img.shields.io/badge/mariadb-003545?style=for-the-badge&logo=mariadb&logoColor=white"> |
 | **Deployment** | <img src="https://img.shields.io/badge/amazon_ec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white"><img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"><img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white"><img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white"> |
+
+- OS: Ubuntu 22.04.1 LTS 
+
+<details markdown="1">
+<summary><strong> 사용 IDE </summary></strong>
+	- IntelliJ IDEA 2022.1.3
+	- Visual Studio Code : 1.70.2v
+	- UI/UX: Figma
+	- Jupyter Notebook
+</details>
+
+<details markdown="1">
+<summary><strong> 백엔드 기술스택 </summary></strong>
+	- Openjdk : 1.8.0
+	- Springboot :  2.7.3
+	- spring: gradle 
+	- MariaDB : mariadb 10.3.34
+	- AWS : ubuntu 20.04.4 LTS 
+	- Jenkins : 2.361.1
+	- Docker : 20.10.18
+	- nginx :  nginx/1.18.0 (Ubuntu)
+	- Hadoop : 3.2.1
+	- Spark : 3.2.1
+	- Sqoop : 1.4.7
+	- Kafka :  3.2.3
+	- Python : 3.9.12
+</details>
+
+<details markdown="1">
+<summary><strong> 프론트엔드 기술스택 </summary></strong>
+	- node.js : v16.15.1(LTS)
+	- npm : 8.11.0v
+	- next : 12.3.0v
+	- react : 18.2.0v
+	- recoil : 0.7.5v
+	- TypeScript : 4.8.3v
+	- Sass : 1.54.9v
+	- react-query : 3.39.2v
+</details>
 
 ### 5. ERD 다이어그램
 <ERD 다이어그램 추가 예정>
