@@ -44,12 +44,14 @@
 
 ## 3. 시스템 구조도
 #### 1) 아키텍처
+
 ![architecture](assets/architecture.png)
 
 <br/>
 
 #### 2) 데이터 처리 개괄도
 * **도매시장 경매가 데이터 실시간 수집 Flow**
+
 ![data1](assets/data1.png)
 ![data2](assets/data2.png)
 
@@ -58,6 +60,7 @@
 <br/>
 
 * **품목별 마트 가격 데이터 수집 Flow**
+
 ![data3](assets/data3.png)
 
 ---
