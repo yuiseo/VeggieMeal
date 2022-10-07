@@ -212,12 +212,13 @@
 ---
 
 ## 8. 참고 자료
-* [Git/Jira Convention]()
+* [Git/Jira Convention](assets/[베지밀] Git&Jira 컨벤션.pdf)
 * [VeggieMeal - 기능명세서](assets/기능명세서.pdf)
 * [VeggieMeal - 사용자 흐름도](assets/[베지밀] 사용자 흐름도.pdf)
 * [VeggieMeal - 와이어 프레임](assets/[베지밀] 와이어 프레임.pdf)
 * [VeggieMeal - 포팅 매뉴얼](exec/[베지밀] 포팅매뉴얼.pdf)
-* [VeggieMeal - UCC](https://lab.ssafy.com/s07-bigdata-dist-sub2/S07P22C205/-/blob/master/assets/%5B%EB%B2%A0%EC%A7%80%EB%B0%80%5D%20UCC.mp4)
+* [VeggieMeal - 시연시나리](exec/[베지밀] 시연 시나리오.pdf)
+* [VeggieMeal - UCC](assets/[베지밀] UCC.mp4)
 
 ---
 > _If you have any questions to this project, please contact to c205.jaranda@gmail.com._
