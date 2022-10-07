@@ -106,7 +106,7 @@
 <br/>
 
 ### 5. ERD 다이어그램
-<ERD 다이어그램 추가 예정>
+<img src = "https://lab.ssafy.com/s07-bigdata-dist-sub2/S07P22C205/-/tree/master/assets">
 
 ---
 
