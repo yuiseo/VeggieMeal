@@ -160,10 +160,15 @@
 
 ### 7. 개발자
 ##### 1) 프론트엔드
+* [김윤주](https://github.com/gimewn): PM (팀장) / UI/UX 디자인 / 상태관리 
+* [유이서](https://github.com/yuiseo): UI/UX 디자인 / 물가분석 차트
 
 ##### 2) 백엔드
+* [박상현](https://github.com/dudtjakdl): 마트 데이터 수집, 가공 / 마트 API
+* [이기영](https://github.com/GiYeongLee): 서버 및 API 총괄/ MapReduce
+* [정지원](https://github.com/stopone2639): Spark / Sqoop / 배포
+* [정호진](https://github.com/junghojin): Kafka / 뉴스 API / 문서화
 
----
 <br/>
 
 ## 8. 참고 자료
