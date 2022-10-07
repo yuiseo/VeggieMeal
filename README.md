@@ -106,7 +106,7 @@
 <br/>
 
 ### 5. ERD 다이어그램
-<img src = "https://lab.ssafy.com/s07-bigdata-dist-sub2/S07P22C205/-/tree/master/assets">
+![erd](assets/erd.png)
 
 ---
 
