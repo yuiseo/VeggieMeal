@@ -149,13 +149,13 @@
 <br/>
 
 ## 8. 참고 자료
-* **Git/Jira Convention**
-* [VeggieMeal - 기능명세서]()
-* [VeggieMeal - 사용자 흐름도]()
-* [VeggieMeal - 와이어 프레임]()
-* [VeggieMeal - 포팅 매뉴얼]()
-* [VeggieMeal - API 문서]()
-* [VeggieMeal - UCC]()
+* [**Git/Jira Convention**]()
+* [**VeggieMeal - 기능명세서**]()
+* [**VeggieMeal - 사용자 흐름도**]()
+* [**VeggieMeal - 와이어 프레임**]()
+* [**VeggieMeal - 포팅 매뉴얼**]()
+* [**VeggieMeal - API 문서**]()
+* [**VeggieMeal - UCC**]()
 
 ---
 > _If you have any questions to this project, please contact to c205.jaranda@gmail.com._
