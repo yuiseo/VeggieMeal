@@ -82,7 +82,7 @@
 |    **Back**    | <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=spring&logoColor=white"><img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white"><img src="https://img.shields.io/badge/kafka-231F20?style=for-the-badge&logo=apache-kafka&logoColor=white"><img src="https://img.shields.io/badge/spark-E25A1C?style=for-the-badge&logo=apache-spark&logoColor=white"><img src="https://img.shields.io/badge/hadoop-66CCFF?style=for-the-badge&logo=apache-hadoop&logoColor=white"><img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"><img src="https://img.shields.io/badge/jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white"><img src="https://img.shields.io/badge/mariadb-003545?style=for-the-badge&logo=mariadb&logoColor=white"> |
 | **Deployment** | <img src="https://img.shields.io/badge/amazon_ec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white"><img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"><img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white"><img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white"> |
 
-> _토글을 클릭하시면 자세한 사항을 확인하실 수 있습니다. Build 방법은 [포팅매뉴얼]()을 참고해주세요._
+> _토글을 클릭하시면 자세한 사항을 확인하실 수 있습니다. Build 방법은 [포팅매뉴얼](exec/[베지밀] 포팅매뉴얼.pdf)을 참고해주세요._
 <details markdown="1">
 <summary><strong> 사용 IDE 및 OS </summary></strong>
 
