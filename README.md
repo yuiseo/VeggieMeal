@@ -151,6 +151,7 @@
 
 ![6](assets/5.gif)
 
+---
 <br/>
 
 ![7](assets/6.gif)
