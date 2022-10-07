@@ -213,7 +213,7 @@
 
 ## 8. 참고 자료
 * [Git/Jira Convention](assets/[베지밀] Git&Jira 컨벤션.pdf)
-* [VeggieMeal - 기능명세서](assets/기능명세서.pdf)
+* [VeggieMeal - 기능명세서](assets/[베지밀] 기능명세서.pdf)
 * [VeggieMeal - 사용자 흐름도](assets/[베지밀] 사용자 흐름도.pdf)
 * [VeggieMeal - 와이어 프레임](assets/[베지밀] 와이어 프레임.pdf)
 * [VeggieMeal - 포팅 매뉴얼](exec/[베지밀] 포팅매뉴얼.pdf)
