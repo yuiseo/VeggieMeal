@@ -10,9 +10,15 @@
 - [6. 기능 상세](#6-기능-상세)
 - [7. 개발자](#7-개발자)
 - [8. 참고 자료](#7-참고-자료)
+
 ---
+<br/>
+
 ### 1.소개
 **VeggieMeal**은 '채식주의자'란 'Veggie'와 '식사'라는 뜻의 'Meal'이 합쳐진 용어입니다. 본 서비스는 채식에 대한 접근성을 높이고 관련 재료의 물가 정보를 제공합니다. 사용자는 채식주의의 타입을 선택하거나 냉장고에 보유 중인 재료를 선택하여 맞춤 레시피를 찾을 수 있습니다. 레시피를 상세 클릭하여 구매하고자는 품목을 장바구니에 담을 수 있습니다.  장바구니에서 현재 마트에서 판매 중인 품목 관련 상품 정보를 확인한 뒤 비교하여 선택할 수 있습니다. **VeggieMeal**은 전국 도매시장 농수산품의 경매 데이터를 일별로 수집하여 평균가 및 최고가, 최저가를 분석합니다. 사용자는 분석 결과를 그래프와 표의 형태로 확인할 수 있습니다. 더 건강하고 더 경제적인 식사를 위한 서비스, 베지밀이 지향하는 가치입니다. 
+
+---
+<br/>
 
 ### 2. 주요 기능
 > VeggieMeal에서 제공하는 주요 기능입니다. 자세한 내용은 [6. 기능상세](#6-기능-상세) 에서 확인하실 수 있습니다.
@@ -27,6 +33,7 @@
 - 분석된 정보는 그래프와 표로 간편히 확인할 수 있습니다.
 
 ---
+<br/>
 
 ### 3. 시스템 구조도
 ##### 1) 아키텍처
@@ -36,6 +43,7 @@
 <데이터 분석 흐름>
 
 ---
+<br/>
 
 ### 4. 기술스택 - 수정예정
 
@@ -45,11 +53,10 @@
 |    **Back**    | <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=spring&logoColor=white"><img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white"><img src="https://img.shields.io/badge/kafka-231F20?style=for-the-badge&logo=apache-kafka&logoColor=white"><img src="https://img.shields.io/badge/spark-E25A1C?style=for-the-badge&logo=apache-spark&logoColor=white"><img src="https://img.shields.io/badge/hadoop-66CCFF?style=for-the-badge&logo=apache-hadoop&logoColor=white"><img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"><img src="https://img.shields.io/badge/jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white"><img src="https://img.shields.io/badge/mariadb-003545?style=for-the-badge&logo=mariadb&logoColor=white"> |
 | **Deployment** | <img src="https://img.shields.io/badge/amazon_ec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white"><img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"><img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white"><img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white"> |
 
-- OS: Ubuntu 22.04.1 LTS 
-
 <details markdown="1">
-<summary><strong> 사용 IDE </summary></strong>
+<summary><strong> 사용 IDE 및 OS </summary></strong>
 
+- OS: Ubuntu 22.04.1 LTS 
 - IntelliJ IDEA 2022.1.3
 - Visual Studio Code : 1.70.2v
 - UI/UX: Figma
@@ -90,6 +97,9 @@
 
 </details>
 
+---
+<br/>
+
 ### 5. ERD 다이어그램
 <ERD 다이어그램 추가 예정>
 
@@ -122,6 +132,7 @@
 > 물가 관련 뉴스를 통해 최신 물가 소식을 확인할 수 있습니다.
 
 ---
+<br/>
 
 ### 7. 개발자
 ##### 1) 프론트엔드
@@ -129,6 +140,7 @@
 ##### 2) 백엔드
 
 ---
+<br/>
 
 ## 8. 참고 자료
 * **Git/Jira Convention**
