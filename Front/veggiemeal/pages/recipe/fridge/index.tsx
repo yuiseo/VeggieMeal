@@ -30,7 +30,6 @@ export default function Fridge({data}:FridgeProps) {
   const [isSelect03, setIsSelect03] = useState<string>();
   const cat01 = data;
   const [isBrowser, setIsBrowser] = useState<boolean>(false);
-  const [reset, setReset] = useState<string>();
 
   useEffect(()=>{
     setIsBrowser(true)
@@ -85,6 +84,23 @@ export default function Fridge({data}:FridgeProps) {
       alert("재료는 3개 이상 추가할 수 없습니다.")
     }
   }
+
+  useEffect(()=>{
+    setIsSelect02(undefined)
+    setIsSelect03(undefined)
+  }, [isSelect01])
+
+  useEffect(()=>{
+    setIsSelect03(undefined)
+  }, [isSelect02])
+
+  useEffect(()=>{
+    if(ingre.length === 0){
+      setIsSelect01(undefined)
+      setIsSelect02(undefined)
+      setIsSelect03(undefined)
+    }
+  }, [ingre])
 
   function removeIngre(item: string) {
     setIngre(ingre?.filter((ing:any) => ing !== item))
@@ -170,9 +186,17 @@ export default function Fridge({data}:FridgeProps) {
             </div>
           </section>
           <section className={styles.category_sec_mobile}>
-            <SelectBox data={cat01} setState={setIsSelect01} title="대분류" />
-            <SelectBox data={cat02} setState={setIsSelect02} title="중분류" />
-            <SelectBox data={cat03} setState={setIsSelect03} title="소분류" another={isIngre} />
+            <SelectBox data={cat01} setState={setIsSelect01} title={isSelect01} altTitle="대분류" isT={true} />
+            {isSelect01 ? 
+              <SelectBox data={cat02} setState={setIsSelect02} title={isSelect02} altTitle="중분류" isT={true} />
+            : 
+            <SelectBox data={cat02} setState={setIsSelect02} title={isSelect02} altTitle="중분류" isT={false} />
+            }
+            {isSelect02 ? 
+              <SelectBox data={cat03} setState={setIsSelect03} title={isSelect03} altTitle="소분류" another={isIngre} isT={true} />
+            : 
+            <SelectBox data={cat03} setState={setIsSelect03} title={isSelect03} altTitle="소분류" another={isIngre} isT={false} />
+            }
           </section>
           <section className={styles.recipe_list}>
             {ingre.length !== 0 && recipe_list?.length !== 0 ? <>

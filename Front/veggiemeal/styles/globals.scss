@@ -127,37 +127,44 @@ body::-webkit-scrollbar-track{
 }
 
 
-.right-swiper-button-next {
-  position: relative;
-  top: -100px;
-  right:-52rem;
-  z-index: 100;
-  @media (max-width:var.$sm) {
-    top:-115px;
-    left: 280px;
-    right: auto;
-  }
-  @media (max-width:var.$md) {
-    max-width: 510px;
-    right: -510px;
-  }
-  @media (max-width:var.$lg) {
-    right: -45rem;
-  }
-}
-.left-swiper-button-prev {
-  position: relative;
-  top: -100px;
-  left: -2.5rem;
-  z-index: 100;
-  @media (max-width:var.$sm) {
-    top: -115px;
-    left: -30px;
-  }
-}
+// .right-swiper-button-next {
+//   position: relative;
+//   top: -100px;
+//   right:-52rem;
+//   z-index: 100;
+//   @media (max-width:var.$lg) {
+//     display: none;
+//     // top:-115px;
+//     // left: 280px;
+//     // right: auto;
+//   }
+//   // @media (max-width:var.$md) {
+//   //   max-width: 510px;
+//   //   right: -70rem;
+//   // }
+//   // @media (max-width:var.$lg) {
+//   //   right: -45rem;
+//   //   max-width: 900px;
+//   //   // right: -60rem;
+//   // }
+// }
+// .left-swiper-button-prev {
+//   position: relative;
+//   top: -100px;
+//   left: -2.5rem;
+//   z-index: 100;
+//   @media (max-width:var.$lg) {
+//     display: none;
+//     // top: -115px;
+//     // left: -30px;
+//   }
+// }
 
 .swiper-wrapper {
   max-width: 74vw;
+  @media (max-width:var.$sm){
+    max-width: 85vw;
+  }
 }
 
 footer {

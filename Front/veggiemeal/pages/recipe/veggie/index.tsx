@@ -34,7 +34,7 @@ export default function Veggie() {
     '플렉시테리언': 'flexi'
   }
 
-  const [category, setCategory] = useState<string>('채식단계');
+  const [category, setCategory] = useState<string>("채식단계");
   const [categoryName, setCategoryName] = useState<string>();
   const { data: recipe_list } = useQuery(['recipe_list', category], async () => {
     const res = await fetch(`https://j7c205.p.ssafy.io/api/recipe/category?category=${category}`, {
@@ -92,7 +92,7 @@ export default function Veggie() {
           <section className={styles.pick_veggie}>
             {/* web일때 select 박스 */}
             <div className={styles.web_select}>
-              <SelectBox data={veggieCategory} setState={setCategory} title={category} dict={veggieDict} />
+              <SelectBox data={veggieCategory} setState={setCategory} title={categoryName} altTitle="채식단계" dict={veggieDict} isT={true} />
             </div>
             {/* 비건 단계 */}
             <div id={styles.veggie_imgs}>

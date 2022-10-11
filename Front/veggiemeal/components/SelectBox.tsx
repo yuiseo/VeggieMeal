@@ -9,15 +9,16 @@ import { useState } from "react";
 type SelectProps = {
   data: string[] | undefined,
   setState: any,
-  title: string,
+  title: string | undefined,
   another?: any,
   dict?: { [key: string]: string }
   onclick?: any,
+  isT?:boolean,
+  altTitle?:string
 }
 
-export default function SelectBox({ data, setState, title, another, dict }: SelectProps) {
-  const [choice, setChocie] = useState<string>(title);
-  const [isToggle, setIsToggle] = useState<Boolean>(false);
+export default function SelectBox({ data, setState, title, altTitle, another, dict, isT }: SelectProps) {
+  const [isToggle, setIsToggle] = useState<Boolean>();
   let len: number;
   if (data) {
     len = data.length - 1;
@@ -25,18 +26,22 @@ export default function SelectBox({ data, setState, title, another, dict }: Sele
   return (
     <div className={styles.select}>
       <div className={styles.selected} onClick={() => { setIsToggle(value => !value) }}>
-        <div className={styles.selected_value}>{choice}</div>
+        {title !== undefined ? 
+        <div className={styles.selected_value}>{title}</div>
+      :
+      <div className={styles.selected_value}>{altTitle}</div>}
+        
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#5C5ACD" className="bi bi-caret-down-fill" viewBox="0 0 16 16" style={{ marginLeft: '10px' }}>
           <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
         </svg>
       </div>
-      {isToggle ?
+      {isT && isToggle ?
         (data ?
           <ul className={styles.select_ul}>
             {data.map((item, index) => <li
               key={index}
               className={
-                (item === choice ? `${styles.choice_li} ` : 'not_chice_li ') +
+                (item === title ? `${styles.choice_li} ` : 'not_chice_li ') +
                 (len === 0 ? `${styles.only_li}` :
                   (index === 0 ? `${styles.first_li} ` :
                     index === len ? `${styles.last_li}` : 'just_li')
@@ -47,7 +52,6 @@ export default function SelectBox({ data, setState, title, another, dict }: Sele
                 } else {
                   setState(item)
                 }
-                setChocie(item)
                 setIsToggle(value => !value)
                 if (another) {
                   another(item)

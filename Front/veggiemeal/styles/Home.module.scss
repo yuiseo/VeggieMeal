@@ -6,7 +6,7 @@
   width:100vw;
   height: 90vh;
   @media (max-width: var.$md){
-    height:60vh;
+    height:75vh;
   }
 }
 
@@ -18,11 +18,11 @@
   position: absolute;
   z-index: 3;
   width:inherit;
-  height:calc(90vh - 110px);
+  height:calc(90vh - 130px);
   margin-top:80px;
   @media (max-width:var.$md){
     margin-top:60px;
-    height:calc(60vh - 80px);
+    height:calc(75vh - 80px);
   }
 }
 
