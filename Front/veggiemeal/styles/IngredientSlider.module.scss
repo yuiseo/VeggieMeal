@@ -5,7 +5,7 @@
   max-width: 71vw;
   // margin: 2rem 0;
   @media (max-width:var.$sm) {
-    max-width: 80vw;
+    max-width: 90vw;
     margin: 0;
   }
   @media (min-width:var.$md) {
@@ -15,6 +15,7 @@
 
 .arrow_Container {
  height: 0;
+//  max-width: 60vw;
  :hover{
   cursor: url("/cursor/pointer.png"), pointer;
  }
