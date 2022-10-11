@@ -1,9 +1,10 @@
 @use 'variable' as var;
 
 .select {
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 30vw;
+  cursor: url("/cursor/pointer.png"), pointer;
 }
 
 .selected {
@@ -11,26 +12,26 @@
   align-items: center;
   justify-content: space-between;
   background-color: var.$grey;
-  padding: 15px 20px;
-  margin: 5px;
+  padding: 10px 10px 10px 15px;
   border-radius: 10px;
 }
 
 .selected_value {
-  font-size: medium;
+  font-size: 16px;
   font-weight: 700;
-}
-
-#arrow{
-  width: 50%;
-  transition: .3s; // 부드럽게 회전
+  cursor: url("/cursor/pointer.png"), pointer;
 }
 
 .select_ul {
+  position: absolute;
+  z-index: 100;
+  width: max-content;
+  min-width: 100%;
   background-color: var.$green;
   border-radius: 10px;
   list-style: none;
-  margin-top: 10px;
+  margin-top: 55px;
+  margin-bottom: 20px;
   padding: 0;
 
   li {
@@ -40,8 +41,14 @@
     line-height: 2.5;
     padding: 5px 15px;
     border-bottom: 1px dashed white;
+
     &:hover {
       background-color: var.$purple;
+    }
+
+    &.only_li {
+      border-radius: 10px;
+      border-bottom: 0;
     }
 
     &.choice_li {
@@ -54,7 +61,29 @@
     }
 
     &.first_li {
-      border-radius: 10px 10px 0 0;;
+      border-radius: 10px 10px 0 0;
+    }
+
+    &.len1_li {
+      border-radius: 10px;
+      border-bottom: none;
+    }
+
+    &.len1_choice_li {
+      background-color: var.$purple;
+      border-radius: 10px;
+      border-bottom: none;
     }
   }
 }
+
+// .select {
+//   display: flex;
+//   flex-direction: column;
+//   width: 80vw;
+//   @media (min-width: var.$md){
+//     justify-content: center;
+//     width: 220px;
+//     margin: 10px;
+//   }
+// }
