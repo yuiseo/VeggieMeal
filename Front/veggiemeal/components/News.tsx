@@ -11,7 +11,7 @@ export default function News({data}:NewsProps){
     const description = data['description'].replaceAll("&quot;", "").replaceAll("&apos;", "").replaceAll("<b>", "").replaceAll("</b>", "");
     const title = data['title'].replaceAll("&quot;", "").replaceAll("&apos;", "").replaceAll("<b>", "").replaceAll("</b>", "");
     return(
-        <div className={styles.news_div} onClick={()=>{window.open(`${data['link']}`)}}>
+        <div className={styles.news_div} onClick={()=>{router.push(`${data['link']}`)}}>
             <p className={styles.title}>{title}</p>
             <p className={styles.description}>{description}</p>
         </div>

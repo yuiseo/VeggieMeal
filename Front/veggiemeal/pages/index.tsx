@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.scss';
 import Button from 'components/Button';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSpring, animated } from 'react-spring'
+import { useSpring, animated } from 'react-spring';
 import { useRef } from 'react';
 
 const Fade = require('react-reveal/Fade');
@@ -13,9 +13,9 @@ const LightSpeed = require('react-reveal/LightSpeed');
 const Flip = require('react-reveal/Flip');
 
 
-
 const Home: NextPage = () => {
   const currentRef = useRef<null | HTMLElement>(null);
+  const currentMobileRef = useRef<null | HTMLElement>(null);
   const sparkle = useSpring({
     loop:{reverse:true},
     from: {opacity:0.8, y:0},
@@ -24,9 +24,7 @@ const Home: NextPage = () => {
       duration:1500
     }
   })
-  const handleClick = () => {
-    currentRef.current?.scrollIntoView({behavior:'smooth'});
-  }
+  
   return (
     <>
     <div className={styles.container}>
@@ -57,7 +55,10 @@ const Home: NextPage = () => {
               </div>
             </div>
             <animated.svg id={styles.under_icon} xmlns="http://www.w3.org/2000/svg" width="60" height="50" fill="black" className="bi bi-chevron-double-down" viewBox="0 0 16 16"
-            style={sparkle} onClick={handleClick}>
+            style={sparkle} onClick={()=>{
+              currentRef.current?.scrollIntoView({behavior:'smooth'});
+              currentMobileRef.current?.scrollIntoView({behavior:'smooth'});
+            }}>
               <path fillRule="evenodd" d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
               <path fillRule="evenodd" d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
             </animated.svg>
@@ -83,7 +84,7 @@ const Home: NextPage = () => {
               </Fade>
             </div>
           </section>
-          <section  ref={currentRef} id="first_section_mobile" className={styles.section_bg_mobile}>
+          <section ref={currentMobileRef} id="first_section_mobile" className={styles.section_bg_mobile}>
             <div className={styles.section_mobile}>
               <Fade top duration={1500}>
                 <div>

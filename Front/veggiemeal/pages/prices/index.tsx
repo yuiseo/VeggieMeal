@@ -41,6 +41,21 @@ export default function Prices({ largeData }: PriceProps) {
   const [isSelect04, setIsSelect04] = useState<string>();
   const [isShow, setIsShow] = useState<boolean>(false);
 
+  useEffect(()=>{
+    setIsSelect02(undefined)
+    setIsSelect03(undefined)
+    setIsSelect04(undefined)
+  }, [isSelect01])
+
+  useEffect(()=>{
+    setIsSelect03(undefined)
+    setIsSelect04(undefined)
+  }, [isSelect02])
+
+  useEffect(()=>{
+    setIsSelect04(undefined)
+  }, [isSelect03])
+
 
   let isOrigin = '원산지'
 
@@ -141,10 +156,31 @@ export default function Prices({ largeData }: PriceProps) {
           </div>
           {/* 셀렉트 박스 */}
           <section className={styles.category} >
-            <SelectBox data={cat01} setState={setIsSelect01} title="부류" />
-            <SelectBox data={cat02} setState={setIsSelect02} title="품종" />
-            <SelectBox data={cat03} setState={setIsSelect03} title="품목" />
-            <SelectBox data={cat04} setState={setIsSelect04} title="원산지" />
+            <div className={styles.select01}>
+            <SelectBox data={cat01} setState={setIsSelect01} title={isSelect01} altTitle="부류" isT={true} />
+            </div>
+            <div className={styles.select02}>
+              {isSelect01 ? 
+                <SelectBox data={cat02} setState={setIsSelect02} title={isSelect02} altTitle="품종" isT={true} />
+                :
+                <SelectBox data={cat02} setState={setIsSelect02} title={isSelect02} altTitle="품종" isT={false} />
+              }
+            </div>
+            <div className={styles.select03}>
+              {isSelect02 ? 
+              <SelectBox data={cat03} setState={setIsSelect03} title={isSelect03} altTitle="품목" isT={true} />
+              :
+              <SelectBox data={cat03} setState={setIsSelect03} title={isSelect03} altTitle="품목" isT={false} />
+              }
+            </div>
+            <div className={styles.select04
+            }>
+              {isSelect03 ? 
+              <SelectBox data={cat04} setState={setIsSelect04} title={isSelect04} altTitle="원산지" isT={true} />
+              : 
+              <SelectBox data={cat04} setState={setIsSelect04} title={isSelect04} altTitle="원산지" isT={false} />
+              }
+            </div>
           </section>
         </header>
 
