@@ -23,7 +23,7 @@ export default function IngredientSlider({ ingredientList }: any) {
         style={{ maxWidth: '85vw' }}
         spaceBetween={10}
         slidesPerView={3}
-        slidesPerGroup={3}
+        slidesPerGroup={1}
         scrollbar={{
           draggable: true,
           // el: '.swiper-scrollbar',
