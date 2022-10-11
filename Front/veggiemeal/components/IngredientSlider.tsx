@@ -23,7 +23,7 @@ export default function IngredientSlider({ ingredientList }: any) {
         style={{ maxWidth: '85vw' }}
         spaceBetween={10}
         slidesPerView={3}
-        slidesPerGroup={3}
+        slidesPerGroup={1}
         scrollbar={{
           draggable: true,
           // el: '.swiper-scrollbar',
@@ -41,12 +41,15 @@ export default function IngredientSlider({ ingredientList }: any) {
             // slidesPerGroup: 1
           },
           550: {
-            slidesPerView: 2,
+            slidesPerView: 2.2,
           },
           750: {
-            slidesPerView: 3,
+            slidesPerView: 2.8,
           },
           900: {
+            slidesPerView: 3.3,
+          },
+          1200: {
             slidesPerView: 3,
           }
         }}
