@@ -34,7 +34,7 @@ export default function Veggie() {
     '플렉시테리언': 'flexi'
   }
 
-  const [category, setCategory] = useState<string>();
+  const [category, setCategory] = useState<string>("채식단계");
   const [categoryName, setCategoryName] = useState<string>();
   const { data: recipe_list } = useQuery(['recipe_list', category], async () => {
     const res = await fetch(`https://j7c205.p.ssafy.io/api/recipe/category?category=${category}`, {
