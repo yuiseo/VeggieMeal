@@ -10,7 +10,7 @@ conn1 = None
 conn2 = None
 
 def db_connect():
-    conn = pymysql.connect(host='j7c205.p.ssafy.io', user='ssafy', password='jaranda', db='ssafy', charset='utf8')
+    conn = pymysql.connect(host='', user='', password='', db='', charset='utf8')
     return conn
 
 def file_open():

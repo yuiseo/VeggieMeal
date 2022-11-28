@@ -23,11 +23,11 @@ public class KafkaConsumerController {
     private final static Logger logger = LoggerFactory.getLogger(KafkaConsumerController.class);
 
     private final static String TOPIC_NAME = "deal";
-    private final static String BOOTSTRAP_SERVERS = "pkc-e82om.ap-northeast-2.aws.confluent.cloud:9092";
+    private final static String BOOTSTRAP_SERVERS = "";
     private final static String SECURITY_PROTOCOL = "SASL_SSL";
     private final static String JAAS_CONFIG = "org.apache.kafka.common." +
-            "security.plain.PlainLoginModule   required username='RCLUHOQMPNRJEOZB'   " +
-            "password='URjf+tnBRG3YmjxS79PcCkQeIuLAexwwr4Toi1KnE7I4/afnYISZKnyBJsTmbpQc';";
+            "security.plain.PlainLoginModule   required username=''   " +
+            "password='';";
     private final static String SSL_ENDPOINT = "https";
     private final static String SASL_MECHANISM = "PLAIN";
     private final static String GROUP_ID = "consumer-save-veggiemeal-";
